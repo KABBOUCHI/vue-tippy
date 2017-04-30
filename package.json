@@ -7,7 +7,7 @@
     "vue-tippy.js"
   ],
   "scripts": {
-    "build": "$(npm bin)/browserify browserify-me.js -o dist/vue-tippy.js && $(npm bin)/uglifyjs dist/vue-tippy.js -o dist/vue-tippy.min.js && echo Success"
+    "build": "$(npm bin)/browserify -g browserify-css browserify-me.js -o dist/vue-tippy.js && $(npm bin)/uglifyjs dist/vue-tippy.js -o dist/vue-tippy.min.js && echo Success"
   },
   "repository": {
     "type": "git",
@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "browserify": "^14.3.0",
+    "browserify-css": "^0.10.0",
     "uglify-js": "^2.8.22",
     "vue": "^2.2.6",
     "webpack": "^2.3.3"

@@ -1,13 +1,13 @@
-//noinspection JSUnresolvedFunction
 const Tippy = require('tippy.js');
+const css = require('tippy.js/dist/tippy.css');
 
 var VueTippy = {
     install: function (Vue) {
         Vue.directive('tippy', {
-            bind: function (el, binding,vnode) {
+            bind: function (el, binding, vnode) {
                 new Tippy(el, {
                     shown: function () {
-                        var handlers = (vnode.data && vnode.data.on) ||
+                        const handlers = (vnode.data && vnode.data.on) ||
                             (vnode.componentOptions && vnode.componentOptions.listeners);
 
                         if (handlers && handlers["shown"]) {
