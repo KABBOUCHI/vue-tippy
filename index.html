@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-tippy="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>VueTippy</title>
+    <link rel="stylesheet" href="node_modules/tippy.js/dist/tippy.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet">
+    <style>
+
+
+        body{
+            font-family: 'Nunito', 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: #3751cc;
+            background: -webkit-linear-gradient(left,#5733ea, #4894ff 70%,#a5bcff);
+            background: linear-gradient(90deg,#5733ea, #4894ff 70%,#a5bcff);
+            color: #203d5d;
+        }
+        * ,* :focus{
+            outline: none;
+        }
+
+        .opacity-low {
+            opacity: 0.8;
+        }
+
+        #app {
+            text-align: center;
+        }
+
+        .material-icons {
+            cursor: default;
+            font-size: 1.1em;
+            vertical-align: middle;
+            position: relative;
+            top: -0.05em;
+        }
+
+        .btn {
+            margin: 0;
+            color: white;
+            box-shadow: 0 3px 6px -1px rgba(0, 0, 0, 0.12), 0 10px 36px -4px rgba(77, 96, 232, 0.3);
+            background: -webkit-linear-gradient(315deg, #73a5ff, #5477f5);
+            background: linear-gradient(135deg, #73a5ff, #5477f5);
+            letter-spacing: 0.5px;
+            font-family: inherit;
+            display: inline-block;
+            font-weight: 400;
+            line-height: 1.25;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            border: 1px solid transparent;
+            padding: .5rem 1rem;
+            font-size: 1rem;
+            border-radius: .25rem;
+            -webkit-transition: all .2s ease-in-out;
+            -o-transition: all .2s ease-in-out;
+            transition: all .2s ease-in-out;
+        }
+
+        .button-showcase .btn, .button-showcase .btn:active, .button-showcase:focus {
+            margin: 1.25rem 1rem;
+        }
+        p {
+            font-weight: 300;
+            font-size: 1.5rem;
+            line-height: 1.7;
+            color: white;
+            margin-bottom: 2rem;
+        }
+        p > a{
+            display: inline-block;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            font-size: 3rem;
+            color: #7dffc3;
+            background: -webkit-linear-gradient(135deg, #fff9b0, #7dffc3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .button-showcase{
+            background-color: white;
+            max-width: 980px;
+            padding: 2.5rem 5rem;
+            margin: 2rem auto;
+            border-radius: 10px;
+            box-shadow: 0 0 80px -4px rgba(0,20,40,0.1);
+        }
+    </style>
+</head>
+<body>
+
+<div id="app">
+
+    <p>
+        Powered by <a href="https://github.com/atomiks/tippyjs">Tippy.js</a> and VueJS
+    </p>
+    <div class="button-showcase d-flex justify-content-center flex-wrap">
+
+        <button class="btn"
+                title="I'm the default tooltip!"
+                v-tippy
+        >
+            <i class="material-icons icon-left">remove</i>
+            Default
+        </button>
+
+        <button class="btn" title="Look at me on the bottom! 🙃"
+                data-animatefill="false"
+                data-position="bottom"
+                v-tippy
+        >
+            <i class="material-icons icon-left">compare_arrows</i>
+            Positioning
+        </button>
+
+        <button class="btn" title="I have a nice pointy arrow. 👆"
+                data-arrow="true"
+                data-animation="fade"
+                v-tippy
+        >
+            <i class="material-icons icon-left">play_arrow</i>
+            Arrows
+        </button>
+
+        <button class="btn"
+                title="You can interact with me as much as you like!"
+                data-interactive="true"
+                v-tippy
+        >
+            <i class="material-icons icon-left">pan_tool</i>
+            Interactivity
+        </button>
+
+        <button class="btn"
+                title="Thanks for clicking!"
+                data-trigger="click"
+                v-tippy
+        >
+            <i class="material-icons icon-left">touch_app</i>
+
+            Triggers
+            <small class="opacity-low">(click)</small>
+
+        </button>
+
+        <button class="btn"
+                title="I'm a light 💡 theme!"
+                data-theme="light"
+                data-arrow="true"
+                data-animatefill="false"
+                v-tippy
+        >
+            <i class="material-icons icon-left">brush</i>
+            Themes
+        </button>
+
+        <button class="btn"
+                title="I scaled from nothingness..."
+                data-animation="scale"
+                data-animatefill="false"
+                v-tippy
+        >
+            <i class="material-icons icon-left">loupe</i>
+            Scale animation
+        </button>
+
+        <button class="btn"
+                title="Just a fade!"
+                data-animation="fade"
+                data-animatefill="false"
+                v-tippy
+        >
+            <i class="material-icons icon-left">blur_on</i>
+            Fade animation
+        </button>
+
+        <button
+                class="btn"
+                title="Rise or fall"
+                data-animatefill="false"
+                v-tippy
+        >
+            <i class="material-icons icon-left">keyboard_arrow_up</i>
+            Shift animation
+        </button>
+
+
+        <button class="btn"
+                title="Am I fancy enough for you?"
+                data-animation="perspective"
+                data-animatefill="false"
+                v-tippy
+        >
+            <i class="material-icons icon-left">panorama_horizontal</i>
+            Perspective animation
+        </button>
+
+        <button class="btn"
+                title="Sorry for making you wait"
+                data-delay="600"
+                v-tippy
+        >
+            <i class="material-icons icon-left">timer</i>
+            Show delay
+        </button>
+
+        <button class="btn"
+                title="I won't leave for a while"
+                data-hidedelay="600"
+                v-tippy
+        >
+            <i class="material-icons icon-left">timer</i>Hide
+            delay
+        </button>
+
+        <button class="btn"
+                title="BAM! 😱"
+                data-duration="0"
+                v-tippy
+        >
+            <i class="material-icons icon-left">flash_on</i>Instant
+        </button>
+
+        <button class="btn"
+                title="Physics, bitch"
+                data-inertia="true"
+                data-animation="scale"
+                data-animatefill="false"
+                v-tippy
+        >
+            <i class="material-icons icon-left">blur_linear</i>Inertia
+        </button>
+
+        <button class="btn"
+                title="By default, hide duration is the same as show"
+                data-duration="3000"
+                data-animatefill="false"
+                data-animation="fade"
+                v-tippy
+        >
+            <i class="material-icons icon-left">timer_3</i>Show
+            duration
+        </button>
+
+
+        <button class="btn"
+                title="1s in, instant out"
+                data-duration="1000"
+                data-hideduration="0"
+                data-animatefill="false"
+                data-animation="fade"
+                v-tippy
+        >
+            <i class="material-icons icon-left">timer_3</i>Hide
+            duration
+        </button>
+
+        <button class="btn"
+                title="Call ya back!"
+                data-animatefill="false"
+                v-tippy
+                @shown="callback"
+        >
+            <i class="material-icons icon-left">call</i>
+            Callbacks
+        </button>
+
+        <button class="btn"
+                title="I'll follow your cursor! (Mouse only)"
+                data-followcursor="true"
+                data-animation="fade"
+                v-tippy
+        >
+            <i class="material-icons icon-left">mouse</i>
+            Follow cursor
+        </button>
+
+        <button class="btn"
+                title="I'm just a cute little tooltip"
+                data-theme="transparent"
+                data-size="small"
+                v-tippy
+        >
+            Small
+        </button>
+
+        <button class="btn"
+                title="I'm a big scary tooltip"
+                data-theme="transparent"
+                data-size="big"
+                v-tippy
+        >
+            Big
+        </button>
+    </div>
+
+</div>
+
+<script src="node_modules/vue/dist/vue.js"></script>
+<script src="dist/vue-tippy.js"></script>
+
+<script>
+    new Vue({
+        el: "#app",
+        methods : {
+            callback : function (){
+                alert('Hello from the @shown callback!')
+            }
+        }
+    })
+</script>
+</body>
+</html>
