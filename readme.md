@@ -7,7 +7,7 @@
 #### Available through npm as `vue-tippy`.
 
   ``` js
-  var vueTippyy = require('vue-tippy')
+  var vueTippy = require('vue-tippy')
   Vue.use(vueTippy)
   ```
 
