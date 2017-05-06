@@ -16,7 +16,7 @@
 #### Using the `v-tippy` directive
 
 ``` html
- <button v-tippy> My Button! </button>
+ <button title="Hi!" v-tippy> My Button! </button>
 ```
 
 ## License
