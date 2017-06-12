@@ -312,7 +312,7 @@
                 data-animatefill="false"
                 data-arrow="true"
                 data-html="#contentpopup">
-            <i class="material-icons icon-left">code</i>Popover HTML <small class="opacity-low">(click)
+            <i class="material-icons icon-left">code</i>Popover HTML <small class="opacity-low">(click)</small>
         </button>
         <div id="contentpopup" style="display: none">
             <div>
@@ -320,6 +320,22 @@
                 <p style="color: black"> {{ message }} - data binding </p>
             </div>
         </div>
+
+        <button class="btn"
+                v-tippy
+                data-distance="15"
+                data-theme="light"
+                data-animation="scale"
+                data-arrowsize="big"
+                data-trigger="click"
+                data-interactive="true"
+                data-animatefill="false"
+                data-arrow="true"
+                data-html="#comppopup">
+            <i class="material-icons icon-left">code</i>Popover Vue Component <small class="opacity-low">(click)</small>
+        </button>
+
+        <html-template style="display: none" id="comppopup"></html-template>
     </div>
 
 </div>
@@ -328,6 +344,14 @@
 <script src="dist/vue-tippy.js"></script>
 
 <script>
+    Vue.component("html-template",{
+        template: '<div> <p style="color: black"> {{ msg }} - Vue Component </p> </div>',
+        data () {
+            return {
+                msg: 'Hello Vue.js!'
+            }
+        },
+    });
     new Vue({
         el: "#app",
         data (){
