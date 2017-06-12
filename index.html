@@ -8,14 +8,15 @@
     <style>
 
 
-        body{
+        body {
             font-family: 'Nunito', 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             background: #3751cc;
-            background: -webkit-linear-gradient(left,#5733ea, #4894ff 70%,#a5bcff);
-            background: linear-gradient(90deg,#5733ea, #4894ff 70%,#a5bcff);
+            background: -webkit-linear-gradient(left, #5733ea, #4894ff 70%, #a5bcff);
+            background: linear-gradient(90deg, #5733ea, #4894ff 70%, #a5bcff);
             color: #203d5d;
         }
-        * ,* :focus{
+
+        *, * :focus {
             outline: none;
         }
 
@@ -65,6 +66,7 @@
         .button-showcase .btn, .button-showcase .btn:active, .button-showcase:focus {
             margin: 1.25rem 1rem;
         }
+
         p {
             font-weight: 300;
             font-size: 1.5rem;
@@ -72,7 +74,8 @@
             color: white;
             margin-bottom: 2rem;
         }
-        p > a{
+
+        p > a {
             display: inline-block;
             font-weight: 300;
             margin-bottom: 2rem;
@@ -82,13 +85,14 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-        .button-showcase{
+
+        .button-showcase {
             background-color: white;
             max-width: 980px;
             padding: 2.5rem 5rem;
             margin: 2rem auto;
             border-radius: 10px;
-            box-shadow: 0 0 80px -4px rgba(0,20,40,0.1);
+            box-shadow: 0 0 80px -4px rgba(0, 20, 40, 0.1);
         }
     </style>
 </head>
@@ -297,6 +301,25 @@
         >
             Big
         </button>
+        <button class="btn"
+                v-tippy
+                data-distance="15"
+                data-theme="light"
+                data-animation="scale"
+                data-arrowsize="big"
+                data-trigger="click"
+                data-interactive="true"
+                data-animatefill="false"
+                data-arrow="true"
+                data-html="#contentpopup">
+            <i class="material-icons icon-left">code</i>Popover HTML <small class="opacity-low">(click)
+        </button>
+        <div id="contentpopup" style="display: none">
+            <div>
+                <h3> Header</h3>
+                <p style="color: black"> {{ message }} - data binding </p>
+            </div>
+        </div>
     </div>
 
 </div>
@@ -307,8 +330,13 @@
 <script>
     new Vue({
         el: "#app",
-        methods : {
-            callback : function (){
+        data (){
+            return {
+                message: 'Hello Vue.js!'
+            }
+        },
+        methods: {
+            callback: function () {
                 alert('Hello from the @shown callback!')
             }
         }

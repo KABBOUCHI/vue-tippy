@@ -1,6 +1,6 @@
 # vue-tippy
 
-> Directive wrapper for Tippy.js 0.11
+> Directive wrapper for Tippy.js
 
 ## Install
 
