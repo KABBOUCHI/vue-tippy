@@ -335,7 +335,7 @@
                 data-animatefill="false"
                 data-arrow="true"
                 data-html="#comppopup"
-                @click=""
+                ref="tippyEl"
         >
             <i class="material-icons icon-left">code</i>Popover Vue Component <small class="opacity-low">(click)</small>
         </button>
@@ -346,7 +346,7 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.0/vue.min.js"></script>
-<script src="dist/vue-tippy.js?19072017"></script>
+<script src="dist/vue-tippy.js?190720171"></script>
 
 <script>
     Vue.component("html-template",{
@@ -360,6 +360,12 @@
                 i : 0
             }
         },
+        watch:{
+          i(){
+              if (app)
+                this.$tippy.update(app.$refs.tippyEl);
+          }
+        },
         created(){
 
             let vm = this;
@@ -370,7 +376,7 @@
 
         }
     });
-    new Vue({
+   var app = new Vue({
         el: "#app",
         data (){
             return {
