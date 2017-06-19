@@ -311,13 +311,16 @@
                 data-interactive="true"
                 data-animatefill="false"
                 data-arrow="true"
-                data-html="#contentpopup">
+                data-html="#contentpopup"
+                @click="clicked"
+        >
             <i class="material-icons icon-left">code</i>Popover HTML <small class="opacity-low">(click)</small>
         </button>
         <div id="contentpopup" style="display: none">
             <div>
                 <h3> Header</h3>
                 <p style="color: black"> {{ message }} - data binding </p>
+                <p style="color: black"> {{ clicks}} click(s) </p>
             </div>
         </div>
 
@@ -331,7 +334,9 @@
                 data-interactive="true"
                 data-animatefill="false"
                 data-arrow="true"
-                data-html="#comppopup">
+                data-html="#comppopup"
+                @click=""
+        >
             <i class="material-icons icon-left">code</i>Popover Vue Component <small class="opacity-low">(click)</small>
         </button>
 
@@ -341,27 +346,44 @@
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.0/vue.min.js"></script>
-<script src="dist/vue-tippy.js"></script>
+<script src="dist/vue-tippy.js?19072017"></script>
 
 <script>
     Vue.component("html-template",{
-        template: '<div> <p style="color: black"> {{ msg }} - Vue Component </p> </div>',
+        template: '<div> ' +
+            '<p style="color: black"> {{ msg }} - Vue Component </p> ' +
+            '<p style="color: black"> {{ i }} sec </p>'+
+        '</div>',
         data () {
             return {
-                msg: 'Hello Vue.js!'
+                msg: 'Hello Vue.js!',
+                i : 0
             }
         },
+        created(){
+
+            let vm = this;
+
+            setInterval(function(){
+              vm.i = vm.i + 1;
+            },1000);
+
+        }
     });
     new Vue({
         el: "#app",
         data (){
             return {
-                message: 'Hello Vue.js!'
+                message: 'Hello Vue.js!',
+                clicks : 0
             }
         },
         methods: {
             callback: function () {
                 alert('Hello from the @shown callback!')
+            },
+            clicked(){
+                this.clicks += 1;
             }
         }
     })
