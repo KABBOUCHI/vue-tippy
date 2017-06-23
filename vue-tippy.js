@@ -12,8 +12,10 @@ var VueTippy = {
     install: function (Vue) {
         Vue.directive('tippy', {
             bind: function (el, binding, vnode) {
-                const instance = new Tippy(el, {
+               var instance = new Tippy(el, {
                     shown: function () {
+                        el.setAttribute('title', this.title);
+                        el.setAttribute('data-original-title', this.title);
                         const handlers = (vnode.data && vnode.data.on) ||
                             (vnode.componentOptions && vnode.componentOptions.listeners);
 
@@ -21,21 +23,18 @@ var VueTippy = {
                             handlers["shown"].fns();
                         }
                     },
-                    wait: function (show, event) {
-                        // Change your app model to be rendered by the UI library/framework
-
-                        // Queue show to run once rendering is complete
-                        setTimeout(function () {
-                            // update(popper) content
-
-                            const popper = instance.getPopperElement(el);
-
-                            instance.update(popper);
-
-                            show()
-                        }, 0)
-                    }
                 });
+                this.tpy = instance;
+            },
+            update: function (el) {
+
+                if(el.getAttribute('title') || el.getAttribute('data-html'))
+                {
+                    const popper = this.tpy.getPopperElement(el);
+                    el.setAttribute('data-original-title', el.getAttribute('title'));
+                    this.tpy.update(popper);
+                }
+
             }
 
         })

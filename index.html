@@ -113,6 +113,13 @@
             Default
         </button>
 
+        <button class="btn"
+                :title="i"
+                v-tippy
+        >
+            :title - Bind title
+        </button>
+
         <button class="btn" title="Look at me on the bottom! 🙃"
                 data-animatefill="false"
                 data-position="bottom"
@@ -360,12 +367,6 @@
                 i : 0
             }
         },
-        watch:{
-          i(){
-              if (app)
-                this.$tippy.update(app.$refs.tippyEl);
-          }
-        },
         created(){
 
             let vm = this;
@@ -381,9 +382,19 @@
         data (){
             return {
                 message: 'Hello Vue.js!',
-                clicks : 0
+                clicks : 0,
+                i :0
             }
         },
+       created(){
+
+           let vm = this;
+
+           setInterval(function(){
+               vm.i = vm.i + 1;
+           },1000);
+
+       },
         methods: {
             callback: function () {
                 alert('Hello from the @shown callback!')
