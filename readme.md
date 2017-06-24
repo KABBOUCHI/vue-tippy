@@ -15,11 +15,11 @@
 
 #### Using the `v-tippy` directive
 
-####Basic
+#### Basic
 ```html
 <button title="Hi!" v-tippy> My Button! </button>
 ```
-####Bind title
+#### Bind title
 ```html
 <button :title="dynamicTitle" v-tippy> My Button! </button>
 ```
