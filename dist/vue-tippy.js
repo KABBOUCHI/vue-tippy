@@ -3689,14 +3689,16 @@ return tippy$1;
 },{}],5:[function(require,module,exports){
 const Tippy = require('tippy.js');
 const css = require('tippy.js/dist/tippy.css');
-Vue.prototype.$tippy = {
+if (window.Vue) {
+    window.Vue.prototype.$tippy = {
 
-    update: function (el) {
-        var instance = Tippy(el);
-        instance.update(instance.getPopperElement(instance.selector))
-    }
+        update: function (el) {
+            var instance = Tippy(el);
+            instance.update(instance.getPopperElement(instance.selector))
+        }
 
-};
+    };
+}
 var VueTippy = {
     install: function (Vue) {
         Vue.directive('tippy', {

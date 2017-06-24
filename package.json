@@ -4,6 +4,7 @@
   "description": "",
   "main": "vue-tippy.js",
   "files": [
+    "dist/*.js",
     "vue-tippy.js"
   ],
   "scripts": {
