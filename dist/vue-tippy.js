@@ -3704,8 +3704,6 @@ var VueTippy = {
             bind: function (el, binding, vnode) {
                var instance = new Tippy(el, {
                     shown: function () {
-                        el.setAttribute('title', this.title);
-                        el.setAttribute('data-original-title', this.title);
                         const handlers = (vnode.data && vnode.data.on) ||
                             (vnode.componentOptions && vnode.componentOptions.listeners);
 
