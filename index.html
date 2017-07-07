@@ -117,7 +117,7 @@
                 :title="i"
                 v-tippy
         >
-            :title - Bind title
+            :title - Bind title ({{i}})
         </button>
 
         <button class="btn" title="Look at me on the bottom! 🙃"
@@ -321,7 +321,8 @@
                 data-html="#contentpopup"
                 @click="clicked"
         >
-            <i class="material-icons icon-left">code</i>Popover HTML <small class="opacity-low">(click)</small>
+            <i class="material-icons icon-left">code</i>Popover HTML
+            <small class="opacity-low">(click)</small>
         </button>
         <div id="contentpopup" style="display: none">
             <div>
@@ -337,17 +338,16 @@
                 data-theme="light"
                 data-animation="scale"
                 data-arrowsize="big"
-                data-trigger="click"
                 data-interactive="true"
                 data-animatefill="false"
                 data-arrow="true"
                 data-html="#comppopup"
                 ref="tippyEl"
         >
-            <i class="material-icons icon-left">code</i>Popover Vue Component <small class="opacity-low">(click)</small>
+            <i class="material-icons icon-left">code</i>Popover Vue Component
         </button>
 
-        <html-template style="display: none" id="comppopup"></html-template>
+        <html-template id="comppopup" style="display: none"></html-template>
     </div>
 
 </div>
@@ -356,45 +356,46 @@
 <script src="dist/vue-tippy.js?190720171"></script>
 
 <script>
-    Vue.component("html-template",{
+    Vue.component("html-template", {
         template: '<div> ' +
-            '<p style="color: black"> {{ msg }} - Vue Component </p> ' +
-            '<p style="color: black"> {{ i }} sec </p>'+
+        '<p style="color: black"> {{ msg }} - Vue Component </p> ' +
+        '<p style="color: black"> {{ i }} sec </p>' +
         '</div>',
         data () {
             return {
                 msg: 'Hello Vue.js!',
-                i : 0
+                i: 0
             }
         },
         created(){
 
             let vm = this;
 
-            setInterval(function(){
-              vm.i = vm.i + 1;
-            },1000);
+            setInterval(function () {
+                vm.i = vm.i + 1;
+            }, 1000);
+
 
         }
     });
-   var app = new Vue({
+    var app = new Vue({
         el: "#app",
         data (){
             return {
                 message: 'Hello Vue.js!',
-                clicks : 0,
-                i :0
+                clicks: 0,
+                i: 0
             }
         },
-       created(){
+        created(){
 
-           let vm = this;
+            let vm = this;
 
-           setInterval(function(){
-               vm.i = vm.i + 1;
-           },1000);
+            setInterval(function () {
+                vm.i = vm.i + 1;
+            }, 1000);
 
-       },
+        },
         methods: {
             callback: function () {
                 alert('Hello from the @shown callback!')

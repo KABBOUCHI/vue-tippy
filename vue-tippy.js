@@ -11,9 +11,10 @@ var VueTippy = {
             }
 
         };
+
         Vue.directive('tippy', {
-            bind: function (el, binding, vnode) {
-               var instance = new Tippy(el, {
+            inserted: function (el, binding, vnode, oldVnode) {
+                el.tippy = new Tippy(el, {
                     shown: function () {
                         const handlers = (vnode.data && vnode.data.on) ||
                             (vnode.componentOptions && vnode.componentOptions.listeners);
@@ -23,15 +24,15 @@ var VueTippy = {
                         }
                     },
                 });
-                this.tpy = instance;
             },
-            update: function (el) {
+            componentUpdated: function (el) {
 
-                if(el.getAttribute('title') || el.getAttribute('data-html'))
-                {
-                    const popper = this.tpy.getPopperElement(el);
-                    el.setAttribute('data-original-title', el.getAttribute('title'));
-                    this.tpy.update(popper);
+                if (el.tippy && (el.getAttribute('title') || el.getAttribute('data-html'))) {
+
+                    const popper = el.tippy.getPopperElement(el);
+
+                    el.tippy.update(popper);
+
                 }
 
             }
