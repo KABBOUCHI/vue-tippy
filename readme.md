@@ -2,7 +2,7 @@
 
 > Directive wrapper for Tippy.js
 
-![](https://github.com/kabbouchi/vue-tippy/blob/master/preview.gif)
+![](https://github.com/KABBOUCHI/vue-tippy/blob/master/preview.gif)
 
 ## Install
 
