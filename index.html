@@ -314,7 +314,6 @@
                 data-theme="light"
                 data-animation="scale"
                 data-arrowsize="big"
-                data-trigger="click"
                 data-interactive="true"
                 data-animatefill="false"
                 data-arrow="true"
@@ -322,13 +321,12 @@
                 @click="clicked"
         >
             <i class="material-icons icon-left">code</i>Popover HTML
-            <small class="opacity-low">(click)</small>
         </button>
         <div id="contentpopup" style="display: none">
             <div>
                 <h3> Header</h3>
                 <p style="color: black"> {{ message }} - data binding </p>
-                <p style="color: black"> {{ clicks}} click(s) </p>
+                <p style="color: black"> {{ i }} sec </p>
             </div>
         </div>
 
@@ -342,12 +340,11 @@
                 data-animatefill="false"
                 data-arrow="true"
                 data-html="#comppopup"
-                ref="tippyEl"
         >
             <i class="material-icons icon-left">code</i>Popover Vue Component
         </button>
 
-        <html-template id="comppopup" style="display: none"></html-template>
+        <html-template id="comppopup"></html-template>
     </div>
 
 </div>
@@ -373,8 +370,8 @@
 
             setInterval(function () {
                 vm.i = vm.i + 1;
+                vm.$tippy.forceUpdateHtml();
             }, 1000);
-
 
         }
     });
