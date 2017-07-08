@@ -33,6 +33,6 @@
     "webpack": "^2.6.1"
   },
   "dependencies": {
-    "tippy.js": "^0.17.0"
+    "tippy.js": "^1.1.0"
   }
 }

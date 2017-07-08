@@ -15,7 +15,9 @@ var VueTippy = {
         Vue.directive('tippy', {
             inserted: function (el, binding, vnode, oldVnode) {
                 el.tippy = new Tippy(el, {
-                    shown: function () {
+                    onShown: function () {
+
+
                         const handlers = (vnode.data && vnode.data.on) ||
                             (vnode.componentOptions && vnode.componentOptions.listeners);
 
