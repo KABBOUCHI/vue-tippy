@@ -1,6 +1,6 @@
 {
   "name": "vue-tippy",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "",
   "main": "vue-tippy.js",
   "files": [
@@ -33,6 +33,6 @@
     "webpack": "^2.6.1"
   },
   "dependencies": {
-    "tippy.js": "^1.1.0"
+    "tippy.js": "^1.1.3"
   }
 }
