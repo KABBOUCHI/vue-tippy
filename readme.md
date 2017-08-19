@@ -8,7 +8,7 @@
 
 #### CDN
   
-  (unpkg.com)[https://unpkg.com/vue-tippy/dist/vue-tippy.min.js]
+  [unpkg.com](https://unpkg.com/vue-tippy/dist/vue-tippy.min.js)
 
 #### Available through npm as `vue-tippy`.
 
