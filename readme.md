@@ -6,12 +6,17 @@
 
 ## Install
 
+#### CDN
+  
+  (unpkg.com)[https://unpkg.com/vue-tippy/dist/vue-tippy.min.js]
+
 #### Available through npm as `vue-tippy`.
 
   ``` js
   var vueTippy = require('vue-tippy')
   Vue.use(vueTippy)
   ```
+  
 
 ## Usage
 
