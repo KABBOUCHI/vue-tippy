@@ -24,7 +24,7 @@ var VueTippy = {
             },
             destroyTippy: function (el) {
                 var i = this.getInstance(el);
-                var t = this.getTippy(el).tippy;
+                var t = this.getTippy(el);
                 t.destroy(this.getTippyPopper(t));
                 var index = Vue.$tippyInstances.indexOf(i);
                 if (index > -1)
