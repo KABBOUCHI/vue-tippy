@@ -275,7 +275,8 @@
                 title="Call ya back!"
                 data-animatefill="false"
                 v-tippy
-                @shown="callback"
+                @shown="shown"
+                @hidden="hidden"
         >
             <i class="material-icons icon-left">call</i>
             Callbacks
@@ -394,8 +395,11 @@
 
         },
         methods: {
-            callback: function () {
+            shown: function () {
                 alert('Hello from the @shown callback!')
+            },
+            hidden: function () {
+                alert('Hello from the @hidden callback!')
             },
             clicked(){
                 this.clicks += 1;

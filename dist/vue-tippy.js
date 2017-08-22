@@ -4010,10 +4010,38 @@ var VueTippy = {
         Vue.$tippyInstances = [];
         Vue.prototype.$tippy = {
 
-            update: function (el) {
-                this.instance = Vue.$tippyInstances.find(function ($instance) {
-                    return $instance.el == el;
+            getInstance: function (el) {
+                return Vue.$tippyInstances.find(function ($instance) {
+                    return $instance.el === el;
                 });
+            },
+            getTippyPopper: function (tippy) {
+                return tippy.getPopperElement(tippy.selector)
+            },
+            showPopper: function (el) {
+                var tippy = this.getTippy(el);
+                tippy.show(this.getTippyPopper(tippy));
+            },
+            hidePopper: function (el) {
+                var tippy = this.getTippy(el);
+                tippy.hide(this.getTippyPopper(tippy));
+            },
+            destroyTippy: function (el) {
+                var i = this.getInstance(el);
+                var t = this.getTippy(el).t;
+                t.destroy(this.getTippyPopper(t));
+                var index = Vue.$tippyInstances.indexOf(i);
+                if(index > -1)
+                    t.splice(index,1);
+
+            },
+            getTippy: function (el) {
+                return this.getInstance(el).tippy;
+            },
+            update: function (el) {
+
+                this.instance = this.getInstance(el);
+
                 if (this.instance) {
                     this.instance.tippy.update(this.instance.tippy.getPopperElement(this.instance.tippy.selector))
                 }
@@ -4039,16 +4067,30 @@ var VueTippy = {
 
         Vue.directive('tippy', {
             inserted: function (el, binding, vnode, oldVnode) {
+                const handlers = (vnode.data && vnode.data.on) ||
+                    (vnode.componentOptions && vnode.componentOptions.listeners);
 
                 el.tippy = new Tippy(el, {
+                    onShow: function () {
+
+                        if (handlers && handlers["show"]) {
+                            handlers["show"].fns();
+                        }
+                    },
                     onShown: function () {
-
-
-                        const handlers = (vnode.data && vnode.data.on) ||
-                            (vnode.componentOptions && vnode.componentOptions.listeners);
 
                         if (handlers && handlers["shown"]) {
                             handlers["shown"].fns();
+                        }
+                    },
+                    onHidden: function () {
+                        if (handlers && handlers["hidden"]) {
+                            handlers["hidden"].fns();
+                        }
+                    },
+                    onHide: function () {
+                        if (handlers && handlers["hide"]) {
+                            handlers["hide"].fns();
                         }
                     },
                 });
@@ -4058,6 +4100,9 @@ var VueTippy = {
 
                 })
 
+            },
+            unbind: function (el,binding,vnode) {
+                vnode.context.$tippy.destroyTippy(el);
             },
             componentUpdated: function (el) {
 
