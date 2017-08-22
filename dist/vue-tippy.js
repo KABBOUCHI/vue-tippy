@@ -4032,7 +4032,7 @@ var VueTippy = {
                 t.destroy(this.getTippyPopper(t));
                 var index = Vue.$tippyInstances.indexOf(i);
                 if (index > -1)
-                    t.splice(index, 1);
+                   Vue.$tippyInstances.splice(index, 1);
 
             },
             getTippy: function (el) {
