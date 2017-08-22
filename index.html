@@ -114,6 +114,13 @@
         </button>
 
         <button class="btn"
+                title="I'm a tooltip"
+                v-tippy="vOpt"
+        >
+            I have dynamic settings
+        </button>
+
+        <button class="btn"
                 :title="i"
                 v-tippy
         >
@@ -380,6 +387,10 @@
         el: "#app",
         data (){
             return {
+                vOpt : {position: 'top',
+                    animation: 'scale',
+                    duration: 500,
+                    arrow: true},
                 message: 'Hello Vue.js!',
                 clicks: 0,
                 i: 0
@@ -390,7 +401,7 @@
             let vm = this;
 
             setInterval(function () {
-                vm.i = vm.i + 1;
+               // vm.i = vm.i + 1;
             }, 1000);
 
         },

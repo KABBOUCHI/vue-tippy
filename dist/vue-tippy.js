@@ -4032,7 +4032,7 @@ var VueTippy = {
                 t.destroy(this.getTippyPopper(t));
                 var index = Vue.$tippyInstances.indexOf(i);
                 if (index > -1)
-                   Vue.$tippyInstances.splice(index, 1);
+                    Vue.$tippyInstances.splice(index, 1);
 
             },
             getTippy: function (el) {
@@ -4050,15 +4050,17 @@ var VueTippy = {
             forceUpdateHtml: function () {
                 Vue.$tippyInstances.forEach(function (instance) {
 
-                    instance.tippy.store.forEach(function (s) {
+                    if (instance.tippy && instance.tippy && instance.tippy.store) {
+                        instance.tippy.store.forEach(function (s) {
 
-                        if (s.settings.html) {
-                            Vue.nextTick(function () {
-                                s.tippyInstance.update(s.popper);
-                            });
-                        }
+                            if (s && s && s.settings && s.settings.html) {
+                                Vue.nextTick(function () {
+                                    s.tippyInstance.update(s.popper);
+                                });
+                            }
 
-                    });
+                        });
+                    }
 
                 });
             }
@@ -4067,33 +4069,37 @@ var VueTippy = {
 
         Vue.directive('tippy', {
             inserted: function (el, binding, vnode, oldVnode) {
+
                 const handlers = (vnode.data && vnode.data.on) ||
                     (vnode.componentOptions && vnode.componentOptions.listeners);
 
-                el.tippy = new Tippy(el, {
-                    onShow: function () {
+                var opts = binding.value || {};
 
-                        if (handlers && handlers["show"]) {
-                            handlers["show"].fns();
-                        }
-                    },
-                    onShown: function () {
+                opts.onShow = function () {
 
-                        if (handlers && handlers["shown"]) {
-                            handlers["shown"].fns();
-                        }
-                    },
-                    onHidden: function () {
-                        if (handlers && handlers["hidden"]) {
-                            handlers["hidden"].fns();
-                        }
-                    },
-                    onHide: function () {
-                        if (handlers && handlers["hide"]) {
-                            handlers["hide"].fns();
-                        }
-                    },
-                });
+                    if (handlers && handlers["show"]) {
+                        handlers["show"].fns();
+                    }
+                };
+                opts.onShown = function () {
+
+                    if (handlers && handlers["shown"]) {
+                        handlers["shown"].fns();
+                    }
+                };
+                opts.onHidden = function () {
+                    if (handlers && handlers["hidden"]) {
+                        handlers["hidden"].fns();
+                    }
+                };
+                opts.onHide = function () {
+                    if (handlers && handlers["hide"]) {
+                        handlers["hide"].fns();
+                    }
+                };
+
+
+                el.tippy = new Tippy(el, opts);
                 Vue.$tippyInstances.push({
                     el: el,
                     tippy: el.tippy,
@@ -4104,9 +4110,47 @@ var VueTippy = {
             unbind: function (el, binding, vnode) {
                 vnode.context.$tippy.destroyTippy(el);
             },
-            componentUpdated: function (el) {
+            componentUpdated: function (el, binding,vnode) {
 
-                if (el.tippy && (el.getAttribute('title') || el.getAttribute('data-html'))) {
+                var opts = binding.value || {};
+                var oldValue = binding.oldValue || {};
+
+                if (el.tippy && ( JSON.stringify(opts) !== JSON.stringify(oldValue) )) {
+
+                    const handlers = (vnode.data && vnode.data.on) ||  (vnode.componentOptions && vnode.componentOptions.listeners);
+
+                    vnode.context.$tippy.destroyTippy(el);
+                    opts.onShow = function () {
+
+                        if (handlers && handlers["show"]) {
+                            handlers["show"].fns();
+                        }
+                    };
+                    opts.onShown = function () {
+
+                        if (handlers && handlers["shown"]) {
+                            handlers["shown"].fns();
+                        }
+                    };
+                    opts.onHidden = function () {
+                        if (handlers && handlers["hidden"]) {
+                            handlers["hidden"].fns();
+                        }
+                    };
+                    opts.onHide = function () {
+                        if (handlers && handlers["hide"]) {
+                            handlers["hide"].fns();
+                        }
+                    };
+
+                    el.tippy = new Tippy(el, opts);
+                    Vue.$tippyInstances.push({
+                        el: el,
+                        tippy: el.tippy,
+
+                    })
+                }
+                else if (el.tippy && (el.getAttribute('title') || el.getAttribute('data-html'))) {
 
                     el.tippy.store.forEach(function (s) {
 

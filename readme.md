@@ -31,6 +31,11 @@
 <button :title="dynamicTitle" v-tippy> My Button! </button>
 ```
 
+#### Bind settings
+```html
+<button title="Hello" v-tippy="{ position : 'top',  arrow: true }"> My Button! </button>
+```
+
 #### Popper HTML
 ```html
 <button data-html="#contentpopup" v-tippy> My Button! </button>
