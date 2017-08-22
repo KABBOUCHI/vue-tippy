@@ -4028,11 +4028,11 @@ var VueTippy = {
             },
             destroyTippy: function (el) {
                 var i = this.getInstance(el);
-                var t = this.getTippy(el).t;
+                var t = this.getTippy(el).tippy;
                 t.destroy(this.getTippyPopper(t));
                 var index = Vue.$tippyInstances.indexOf(i);
-                if(index > -1)
-                    t.splice(index,1);
+                if (index > -1)
+                    t.splice(index, 1);
 
             },
             getTippy: function (el) {
@@ -4101,7 +4101,7 @@ var VueTippy = {
                 })
 
             },
-            unbind: function (el,binding,vnode) {
+            unbind: function (el, binding, vnode) {
                 vnode.context.$tippy.destroyTippy(el);
             },
             componentUpdated: function (el) {
