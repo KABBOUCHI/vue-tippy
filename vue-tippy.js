@@ -1,9 +1,35 @@
 const Tippy = require('tippy.js');
 const css = require('tippy.js/dist/tippy.css');
 
+if (!Array.prototype.some) {
+    Array.prototype.some = function (fun/*, thisArg*/) {
+        'use strict';
+
+        if (this == null) {
+            throw new TypeError('Array.prototype.some called on null or undefined');
+        }
+
+        if (typeof fun !== 'function') {
+            throw new TypeError();
+        }
+
+        var t = Object(this);
+        var len = t.length >>> 0;
+
+        var thisArg = arguments.length >= 2 ? arguments[1] : void 0;
+        for (var i = 0; i < len; i++) {
+            if (i in t && fun.call(thisArg, t[i], i, t)) {
+                return true;
+            }
+        }
+
+        return false;
+    };
+}
 var VueTippy = {
     install: function (Vue) {
         Vue.$tippyInstances = [];
+        Vue.$tippyComponents = [];
         Vue.prototype.$tippy = {
 
             getInstance: function (el) {
@@ -94,26 +120,44 @@ var VueTippy = {
                     }
                 };
 
-
                 el.tippy = new Tippy(el, opts);
+
+                if (el.getAttribute('data-html')) {
+
+                    vnode.context.$children.forEach(function ($vm) {
+                        if (!Vue.$tippyComponents.some(function (x) {
+                                return x._uid === $vm._uid
+                            })) {
+                            if ($vm.$options.updated === undefined) {
+                                $vm.$options.updated = [];
+                            }
+
+                            $vm.$options.updated.push(function () {
+                                $vm.$tippy.forceUpdateHtml();
+                            });
+
+                            Vue.$tippyComponents.push($vm);
+                        }
+                    })
+                }
+
                 Vue.$tippyInstances.push({
                     el: el,
-                    tippy: el.tippy,
-
-                })
+                    tippy: el.tippy
+                });
 
             },
             unbind: function (el, binding, vnode) {
                 vnode.context.$tippy.destroyTippy(el);
             },
-            componentUpdated: function (el, binding,vnode) {
+            componentUpdated: function (el, binding, vnode) {
 
                 var opts = binding.value || {};
                 var oldValue = binding.oldValue || {};
 
                 if (el.tippy && ( JSON.stringify(opts) !== JSON.stringify(oldValue) )) {
 
-                    const handlers = (vnode.data && vnode.data.on) ||  (vnode.componentOptions && vnode.componentOptions.listeners);
+                    const handlers = (vnode.data && vnode.data.on) || (vnode.componentOptions && vnode.componentOptions.listeners);
 
                     vnode.context.$tippy.destroyTippy(el);
                     opts.onShow = function () {
@@ -148,15 +192,18 @@ var VueTippy = {
                 }
                 else if (el.tippy && (el.getAttribute('title') || el.getAttribute('data-html'))) {
 
-                    el.tippy.store.forEach(function (s) {
+                    vnode.context.$nextTick(function () {
+                        el.tippy.store.forEach(function (s) {
 
-                        var popper = s.popper;
+                            var popper = s.popper;
 
-                        var tip = s.tippyInstance;
+                            var tip = s.tippyInstance;
 
-                        tip.update(popper);
+                            tip.update(popper);
 
+                        });
                     });
+
 
                 }
 

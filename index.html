@@ -207,7 +207,6 @@
             Shift animation
         </button>
 
-
         <button class="btn"
                 title="Am I fancy enough for you?"
                 data-animation="perspective"
@@ -265,7 +264,6 @@
             duration
         </button>
 
-
         <button class="btn"
                 title="1s in, instant out"
                 data-duration="1000"
@@ -316,6 +314,7 @@
         >
             Big
         </button>
+
         <button class="btn"
                 v-tippy
                 data-distance="15"
@@ -326,10 +325,10 @@
                 data-animatefill="false"
                 data-arrow="true"
                 data-html="#contentpopup"
-                @click="clicked"
         >
             <i class="material-icons icon-left">code</i>Popover HTML
         </button>
+
         <div id="contentpopup" style="display: none">
             <div>
                 <h3> Header</h3>
@@ -357,7 +356,7 @@
 
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.0/vue.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.0/vue.js"></script>
 <script src="dist/vue-tippy.js?190720171"></script>
 
 <script>
@@ -366,42 +365,37 @@
         '<p style="color: black"> {{ msg }} - Vue Component </p> ' +
         '<p style="color: black"> {{ i }} sec </p>' +
         '</div>',
-        data () {
+        data() {
             return {
                 msg: 'Hello Vue.js!',
                 i: 0
             }
         },
-        created(){
-
+        created() {
             let vm = this;
 
             setInterval(function () {
                 vm.i = vm.i + 1;
-                vm.$tippy.forceUpdateHtml();
             }, 1000);
-
         }
     });
     var app = new Vue({
         el: "#app",
-        data (){
+        data() {
             return {
-                vOpt : {position: 'top',
+                vOpt: {
+                    position: 'top',
                     animation: 'scale',
                     duration: 500,
-                    arrow: true},
+                    arrow: true
+                },
                 message: 'Hello Vue.js!',
-                clicks: 0,
                 i: 0
             }
         },
-        created(){
-
-            let vm = this;
-
-            setInterval(function () {
-               // vm.i = vm.i + 1;
+        created() {
+            setInterval(() => {
+                this.i = this.i + 1;
             }, 1000);
 
         },
@@ -411,9 +405,6 @@
             },
             hidden: function () {
                 alert('Hello from the @hidden callback!')
-            },
-            clicked(){
-                this.clicks += 1;
             }
         }
     })

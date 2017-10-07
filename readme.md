@@ -59,8 +59,8 @@
 ```
 
 #### Bugs
-- Constant updating HTML or VueComponent will cause small delay for tooltip to pickup the new content, 
-  if your tooltip depend on it, you can use  ```this.$tippy.forceUpdateHtml()``` to update it instantly.
+- ~~Constant updating HTML or VueComponent will cause small delay for tooltip to pickup the new content, 
+  if your tooltip depend on it, you can use  ```this.$tippy.forceUpdateHtml()``` to update it instantly.~~ fixed in v0.2.9
 ## License
 
 [MIT](http://opensource.org/licenses/MIT)
