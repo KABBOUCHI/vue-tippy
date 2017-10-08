@@ -36,26 +36,39 @@
 <button title="Hello" v-tippy="{ position : 'top',  arrow: true }"> My Button! </button>
 ```
 
-#### Popper HTML
+#### HTML Template 1 (without reactivity)
 ```html
-<button data-html="#contentpopup" v-tippy> My Button! </button>
+<button data-html="#contentpopup1" v-tippy> My Button! </button>
 ```
 ```html
-<div id="contentpopup" style="display: none">
+<div id="contentpopup1" style="display: none">
         <div>
             <h3> Header</h3>
             <p style="color: black"> {{ message }} - data binding </p>
-            <p style="color: black"> {{ clicks}} click(s) </p>
+        </div>
+ </div>
+```
+
+#### HTML Template 2 (with reactivity)
+```html
+<button v-tippy="{ html : '#contentpopup2'}"> My Button! </button>
+```
+```html
+<div id="contentpopup2">
+        <div>
+            <h3> Header</h3>
+            <p style="color: black"> {{ message }} - data binding </p>
+            <button @click="clicked">Click<button>
         </div>
  </div>
 ```
 
 #### Vue component
 ```html
-<button data-html="#comppopup" v-tippy> My Button! </button>
+<button  v-tippy="{ html : '#comppopup' }"> My Button! </button>
 ```
 ```html
-<vue-component-test style="display: none" id="comppopup"></vue-component-test>
+<vue-component-test id="comppopup"></vue-component-test>
 ```
 
 #### Bugs

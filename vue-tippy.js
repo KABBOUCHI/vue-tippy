@@ -75,7 +75,7 @@ var VueTippy = {
                     if (instance.tippy && instance.tippy && instance.tippy.store) {
                         instance.tippy.store.forEach(function (s) {
 
-                            if (s && s && s.settings && s.settings.html) {
+                            if (s && s && s.settings && !s.settings.html) {
                                 Vue.nextTick(function () {
                                     s.tippyInstance.update(s.popper);
                                 });
@@ -120,8 +120,6 @@ var VueTippy = {
                     }
                 };
 
-                el.tippy = new Tippy(el, opts);
-
                 if (el.getAttribute('data-html')) {
 
                     vnode.context.$children.forEach(function ($vm) {
@@ -139,7 +137,11 @@ var VueTippy = {
                             Vue.$tippyComponents.push($vm);
                         }
                     })
+                } else if (opts.html) {
+                    opts.html = document.querySelector(opts.html)
                 }
+
+                el.tippy = new Tippy(el, opts);
 
                 Vue.$tippyInstances.push({
                     el: el,
@@ -154,6 +156,8 @@ var VueTippy = {
 
                 var opts = binding.value || {};
                 var oldValue = binding.oldValue || {};
+
+                if (opts.html) return;
 
                 if (el.tippy && ( JSON.stringify(opts) !== JSON.stringify(oldValue) )) {
 

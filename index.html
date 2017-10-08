@@ -61,6 +61,7 @@
             -webkit-transition: all .2s ease-in-out;
             -o-transition: all .2s ease-in-out;
             transition: all .2s ease-in-out;
+            cursor: pointer;
         }
 
         .button-showcase .btn, .button-showcase .btn:active, .button-showcase:focus {
@@ -72,18 +73,22 @@
             font-size: 1.5rem;
             line-height: 1.7;
             color: white;
-            margin-bottom: 2rem;
+            margin-bottom: .2rem;
         }
 
         p > a {
             display: inline-block;
             font-weight: 300;
-            margin-bottom: 2rem;
+            margin-bottom: .5rem;
             font-size: 3rem;
             color: #7dffc3;
             background: -webkit-linear-gradient(135deg, #fff9b0, #7dffc3);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        a.reset {
+            color: #3751cc;
         }
 
         .button-showcase {
@@ -316,7 +321,7 @@
         </button>
 
         <button class="btn"
-                v-tippy
+                v-tippy="{ html : '#contentpopup'}"
                 data-distance="15"
                 data-theme="light"
                 data-animation="scale"
@@ -324,21 +329,21 @@
                 data-interactive="true"
                 data-animatefill="false"
                 data-arrow="true"
-                data-html="#contentpopup"
         >
             <i class="material-icons icon-left">code</i>Popover HTML
         </button>
 
-        <div id="contentpopup" style="display: none">
+        <div id="contentpopup">
             <div>
                 <h3> Header</h3>
                 <p style="color: black"> {{ message }} - data binding </p>
                 <p style="color: black"> {{ i }} sec </p>
+                <button class="btn" @click="i = 0">reset</button>
             </div>
         </div>
 
         <button class="btn"
-                v-tippy
+                v-tippy="{ html : '#comppopup' }"
                 data-distance="15"
                 data-theme="light"
                 data-animation="scale"
@@ -346,7 +351,6 @@
                 data-interactive="true"
                 data-animatefill="false"
                 data-arrow="true"
-                data-html="#comppopup"
         >
             <i class="material-icons icon-left">code</i>Popover Vue Component
         </button>
@@ -363,20 +367,19 @@
     Vue.component("html-template", {
         template: '<div> ' +
         '<p style="color: black"> {{ msg }} - Vue Component </p> ' +
-        '<p style="color: black"> {{ i }} sec </p>' +
+        '<p style="color: black"> {{ clicks }} click(s) </p>' +
+        '<button class="btn" @click="click">Click me!</button>' +
         '</div>',
         data() {
             return {
                 msg: 'Hello Vue.js!',
-                i: 0
+                clicks: 0
             }
         },
-        created() {
-            let vm = this;
-
-            setInterval(function () {
-                vm.i = vm.i + 1;
-            }, 1000);
+        methods: {
+            click() {
+                this.clicks++;
+            }
         }
     });
     var app = new Vue({
