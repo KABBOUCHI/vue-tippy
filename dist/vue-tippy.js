@@ -4241,6 +4241,10 @@ var VueTippy = {
                     opts.html = document.querySelector(opts.html)
                 }
 
+                // if (opts.show && !opts.trigger) {
+                //     opts.trigger = 'manual';
+                // }
+
                 el.tippy = new Tippy(el, opts);
 
                 Vue.$tippyInstances.push({
@@ -4292,6 +4296,7 @@ var VueTippy = {
                     };
 
                     el.tippy = new Tippy(el, opts);
+
                     Vue.$tippyInstances.push({
                         el: el,
                         tippy: el.tippy,
@@ -4317,6 +4322,8 @@ var VueTippy = {
 
                 if (el.tippy && opts.show) {
                     vnode.context.$tippy.showPopper(el);
+                } else if (el.tippy && !opts.show) {
+                    vnode.context.$tippy.hidePopper(el);
                 }
 
             }
