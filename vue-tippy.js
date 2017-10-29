@@ -222,7 +222,7 @@ var VueTippy = {
 
                 if (el.tippy && opts.show) {
                     vnode.context.$tippy.showPopper(el);
-                } else if (el.tippy && !opts.show) {
+                } else if (el.tippy && !opts.show && opts.trigger === 'manual') {
                     vnode.context.$tippy.hidePopper(el);
                 }
 
