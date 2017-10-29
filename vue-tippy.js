@@ -148,6 +148,10 @@ var VueTippy = {
                     tippy: el.tippy
                 });
 
+                if (opts.show) {
+                    vnode.context.$tippy.showPopper(el);
+                }
+
             },
             unbind: function (el, binding, vnode) {
                 vnode.context.$tippy.destroyTippy(el);
@@ -209,6 +213,12 @@ var VueTippy = {
                     });
 
 
+                }
+
+                if (el.tippy && opts.show) {
+                    vnode.context.$tippy.showPopper(el);
+                } else if (el.tippy && !opts.show) {
+                    vnode.context.$tippy.showPopper(el);
                 }
 
             }
