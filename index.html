@@ -370,8 +370,8 @@
 
         <html-template id="comppopup"></html-template>
 
-        <input class="btn" type="text" v-tippy="{ arrow : true, show : ! validateEmail() , trigger : 'manual'  }"
-               title="Please use a valid email" v-model="email" placeholder="Enter your email" autofocus>
+        <input class="btn" type="text" v-tippy="{ arrow : true, show : ! validateEmail() , trigger : 'manual' , hideOnClick :false}"
+               title="Please use a valid email" v-model="email" placeholder="Enter your email">
     </div>
 
 </div>

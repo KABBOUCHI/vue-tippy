@@ -491,6 +491,10 @@ function isVisible(popper) {
 
 function noop() {}
 
+function isObjectLiteral(input) {
+  return !!input && input.toString() === '[object Object]';
+}
+
 /**
 * Returns the non-shifted placement (e.g., 'bottom-start' => 'bottom')
 * @param {String} placement
@@ -507,12 +511,12 @@ function getCorePlacement(placement) {
 function followCursorHandler(e) {
   var _this = this;
 
-  var refData = find(Store, function (refData) {
-    return refData.el === _this;
+  var data = find(Store, function (data) {
+    return data.el === _this;
   });
 
-  var popper = refData.popper,
-      offset = refData.settings.offset;
+  var popper = data.popper,
+      offset = data.settings.offset;
 
 
   var position = getCorePlacement(popper.getAttribute('x-placement'));
@@ -531,19 +535,19 @@ function followCursorHandler(e) {
   switch (position) {
     case 'top':
       x = pageX - halfPopperWidth + offset;
-      y = pageY - 2.25 * halfPopperHeight;
-      break;
-    case 'left':
-      x = pageX - 2 * halfPopperWidth - 10;
-      y = pageY - halfPopperHeight + offset;
-      break;
-    case 'right':
-      x = pageX + halfPopperHeight;
-      y = pageY - halfPopperHeight + offset;
+      y = pageY - 2 * halfPopperHeight;
       break;
     case 'bottom':
       x = pageX - halfPopperWidth + offset;
-      y = pageY + halfPopperHeight / 1.5;
+      y = pageY + 10;
+      break;
+    case 'left':
+      x = pageX - 2 * halfPopperWidth;
+      y = pageY - halfPopperHeight + offset;
+      break;
+    case 'right':
+      x = pageX + 5;
+      y = pageY - halfPopperHeight + offset;
       break;
   }
 
@@ -570,19 +574,23 @@ function followCursorHandler(e) {
 * @return {Element[]}
 */
 function getArrayOfElements(selector) {
-  if (selector instanceof Element) {
+  if (selector instanceof Element || isObjectLiteral(selector)) {
     return [selector];
+  }
+
+  if (selector instanceof NodeList) {
+    return [].slice.call(selector);
   }
 
   if (Array.isArray(selector)) {
     return selector;
   }
 
-  if (selector.constructor.name === 'NodeList') {
-    return [].slice.call(selector);
+  try {
+    return [].slice.call(document.querySelectorAll(selector));
+  } catch (_) {
+    return [];
   }
-
-  return [].slice.call(document.querySelectorAll(selector));
 }
 
 /**
@@ -3813,7 +3821,10 @@ var Tippy = function () {
           circle = _getInnerElements.circle,
           content = _getInnerElements.content;
 
-      if (!document.body.contains(data.el)) {
+      // Destroy popper if its reference is no longer on the DOM (excluding refObjs)
+
+
+      if (!this.selector.refObj && !document.body.contains(data.el)) {
         this.destroy(popper);
         return;
       }
@@ -4080,6 +4091,41 @@ var Tippy = function () {
 }();
 
 function tippy$2(selector, settings) {
+  // Create a virtual object for custom positioning
+  if (isObjectLiteral(selector)) {
+    selector = {
+      refObj: true,
+      attributes: selector.attributes || {},
+      getBoundingClientRect: selector.getBoundingClientRect,
+      clientWidth: selector.clientWidth,
+      clientHeight: selector.clientHeight,
+      setAttribute: function setAttribute(key, val) {
+        selector.attributes[key] = val;
+      },
+      getAttribute: function getAttribute(key) {
+        return selector.attributes[key];
+      },
+      removeAttribute: function removeAttribute(key) {
+        delete selector.attributes[key];
+      },
+      addEventListener: function addEventListener() {},
+      removeEventListener: function removeEventListener() {},
+      classList: {
+        classNames: {},
+        add: function add(key) {
+          selector.classList.classNames[key] = true;
+        },
+        remove: function remove(key) {
+          selector.classList.classNames[key] = false;
+          return true;
+        },
+        contains: function contains(key) {
+          return !!selector.classList.classNames[key];
+        }
+      }
+    };
+  }
+
   return new Tippy(selector, settings);
 }
 
@@ -4252,7 +4298,7 @@ var VueTippy = {
                     tippy: el.tippy
                 });
 
-                if (opts.show) {
+                if (opts.showOnLoad) {
                     vnode.context.$tippy.showPopper(el);
                 }
 
@@ -4272,6 +4318,7 @@ var VueTippy = {
                     const handlers = (vnode.data && vnode.data.on) || (vnode.componentOptions && vnode.componentOptions.listeners);
 
                     vnode.context.$tippy.destroyTippy(el);
+
                     opts.onShow = function () {
 
                         if (handlers && handlers["show"]) {

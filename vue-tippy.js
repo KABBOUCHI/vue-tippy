@@ -152,7 +152,7 @@ var VueTippy = {
                     tippy: el.tippy
                 });
 
-                if (opts.show) {
+                if (opts.showOnLoad) {
                     vnode.context.$tippy.showPopper(el);
                 }
 
@@ -172,6 +172,7 @@ var VueTippy = {
                     const handlers = (vnode.data && vnode.data.on) || (vnode.componentOptions && vnode.componentOptions.listeners);
 
                     vnode.context.$tippy.destroyTippy(el);
+
                     opts.onShow = function () {
 
                         if (handlers && handlers["show"]) {
