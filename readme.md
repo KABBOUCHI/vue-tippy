@@ -38,7 +38,7 @@
 
 #### HTML Template 1 (without reactivity)
 ```html
-<button data-html="#contentpopup1" v-tippy> My Button! </button>
+<button data-html="#contentpopup1" data-interactive="true" v-tippy> My Button! </button>
 ```
 ```html
 <div id="contentpopup1" style="display: none">
@@ -51,7 +51,7 @@
 
 #### HTML Template 2 (with reactivity)
 ```html
-<button v-tippy="{ html : '#contentpopup2'}"> My Button! </button>
+<button v-tippy="{ html : '#contentpopup2'  , interactive : true }"> My Button! </button>
 ```
 ```html
 <div id="contentpopup2">
@@ -65,7 +65,7 @@
 
 #### Vue component
 ```html
-<button  v-tippy="{ html : '#comppopup' }"> My Button! </button>
+<button  v-tippy="{ html : '#comppopup'  , interactive : true }"> My Button! </button>
 ```
 ```html
 <vue-component-test id="comppopup"></vue-component-test>
