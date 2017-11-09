@@ -298,7 +298,7 @@
                 title="Call ya back!"
                 data-animatefill="false"
                 v-tippy
-                @shown="shown"
+                @show="show"
                 @hidden="hidden"
         >
             <i class="material-icons icon-left">call</i>
@@ -424,8 +424,8 @@
                 var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 return re.test(this.email);
             },
-            shown: function () {
-                alert('Hello from the @shown callback!')
+            show: function () {
+                alert('Hello from the @show callback!')
             },
             hidden: function () {
                 alert('Hello from the @hidden callback!')
