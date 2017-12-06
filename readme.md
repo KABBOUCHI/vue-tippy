@@ -14,8 +14,21 @@
 #### Available through npm as `vue-tippy`.
 
   ``` js
-  var vueTippy = require('vue-tippy')
-  Vue.use(vueTippy)
+    var vueTippy = require('vue-tippy')
+    Vue.use(vueTippy)
+  
+    //or with default options
+  
+    Vue.use(vueTippy,{
+        flipDuration: 0,
+            popperOptions: {
+            modifiers: {
+                preventOverflow: {
+                    enabled: false
+                }
+            }
+        }
+   })
   ```
   
 

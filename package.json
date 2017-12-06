@@ -1,6 +1,6 @@
 {
   "name": "vue-tippy",
-  "version": "0.3.4",
+  "version": "1.0.0",
   "description": "",
   "main": "vue-tippy.js",
   "files": [
@@ -26,13 +26,13 @@
     "url": "https://github.com/kabbouchi/vue-tippy/issues"
   },
   "devDependencies": {
-    "browserify": "^14.4.0",
+    "browserify": "^14.5.0",
     "browserify-css": "^0.10.1",
     "uglify-js": "^2.8.29",
-    "vue": "^2.4.4",
+    "vue": "^2.5.9",
     "webpack": "^2.7.0"
   },
   "dependencies": {
-    "tippy.js": "^1.4.1"
+    "tippy.js": "^1.4.2"
   }
 }

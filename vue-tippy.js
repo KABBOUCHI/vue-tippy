@@ -27,7 +27,7 @@ if (!Array.prototype.some) {
     };
 }
 var VueTippy = {
-    install: function (Vue) {
+    install: function (Vue, options) {
         Vue.$tippyInstances = [];
         Vue.$tippyComponents = [];
         Vue.prototype.$tippy = {
@@ -96,6 +96,8 @@ var VueTippy = {
                     (vnode.componentOptions && vnode.componentOptions.listeners);
 
                 var opts = binding.value || {};
+
+                Object.assign(opts, {}, options);
 
                 opts.onShow = function () {
 
