@@ -1,21 +1,25 @@
-import Hello from './Hello.vue'
-import HelloJsx from './Hello.jsx'
+import Tippy from 'tippy.js';
+import 'tippy.js/dist/tippy.css'
 
-function plugin (Vue) {
-  Vue.component('hello', Hello)
-  Vue.component('hello-jsx', HelloJsx)
-}
+const plugin = {
+  install(Vue, options) {
+    Vue.directive('tippy', {
+      inserted: function (el, binding, vnode, oldVnode) {
+        new Tippy(el);
+      },
+      unbind: function (el, binding, vnode) {
 
-// Install by default if using the script tag
+      },
+      componentUpdated: function (el, binding, vnode) {
+
+      }
+
+    })
+  }
+};
+
 if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.use(plugin)
 }
 
 export default plugin
-const version = '__VERSION__'
-// Export all components too
-export {
-  Hello,
-  HelloJsx,
-  version
-}

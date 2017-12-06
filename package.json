@@ -7,7 +7,6 @@
   "module": "dist/vue-tippy.esm.js",
   "browser": "dist/vue-tippy.js",
   "unpkg": "dist/vue-tippy.js",
-  "style": "dist/vue-tippy.css",
   "files": [
     "dist",
     "src"
@@ -130,5 +129,8 @@
   "license": {
     "type": "MIT",
     "url": "http://www.opensource.org/licenses/mit-license.php"
+  },
+  "dependencies": {
+    "tippy.js": "^2.0.2"
   }
 }

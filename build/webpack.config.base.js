@@ -1,6 +1,6 @@
 const webpack = require('webpack')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
-const { resolve } = require('path')
+const {resolve} = require('path')
 
 const {
   banner,
@@ -14,7 +14,7 @@ const plugins = [
     '__VERSION__': JSON.stringify(version),
     'process.env.NODE_ENV': '"test"'
   }),
-  new webpack.BannerPlugin({ banner, raw: true, entryOnly: true }),
+  new webpack.BannerPlugin({banner, raw: true, entryOnly: true}),
   new ExtractTextPlugin({
     filename: `${filename}.css`,
     // Don't extract css in test mode
@@ -52,6 +52,10 @@ module.exports = {
           loaders: vueLoaders,
           postcss: [require('postcss-cssnext')()]
         }
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
