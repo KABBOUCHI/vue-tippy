@@ -21,8 +21,8 @@
   
     Vue.use(vueTippy,{
         flipDuration: 0,
-            popperOptions: {
-            modifiers: {
+        popperOptions: {
+             modifiers: {
                 preventOverflow: {
                     enabled: false
                 }
