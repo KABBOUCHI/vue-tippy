@@ -1,11 +1,11 @@
-import Tippy from 'tippy.js';
+import Tippy from 'tippy.js'
 import 'tippy.js/dist/tippy.css'
 
 const plugin = {
-  install(Vue, options) {
+  install (Vue, options) {
     Vue.directive('tippy', {
       inserted: function (el, binding, vnode, oldVnode) {
-        new Tippy(el);
+        new Tippy(el)
       },
       unbind: function (el, binding, vnode) {
 
@@ -16,7 +16,7 @@ const plugin = {
 
     })
   }
-};
+}
 
 if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.use(plugin)
