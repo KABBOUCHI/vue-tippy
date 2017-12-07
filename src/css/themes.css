@@ -1,0 +1,138 @@
+.tippy-popper[x-placement^=top] .tippy-tooltip.light-theme .tippy-arrow {
+  border-top: 7px solid #fff;
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent;
+}
+
+.tippy-popper[x-placement^=top] .tippy-tooltip.light-theme .tippy-roundarrow {
+  width: 24px;
+  height: 24px;
+  fill: #fff;
+}
+
+.tippy-popper[x-placement^=bottom] .tippy-tooltip.light-theme .tippy-arrow {
+  border-bottom: 7px solid #fff;
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent;
+}
+
+.tippy-popper[x-placement^=bottom] .tippy-tooltip.light-theme .tippy-roundarrow {
+  width: 24px;
+  height: 24px;
+  fill: #fff;
+}
+
+.tippy-popper[x-placement^=left] .tippy-tooltip.light-theme .tippy-arrow {
+  border-left: 7px solid #fff;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+}
+
+.tippy-popper[x-placement^=left] .tippy-tooltip.light-theme .tippy-roundarrow {
+  width: 24px;
+  height: 24px;
+  fill: #fff;
+}
+
+.tippy-popper[x-placement^=right] .tippy-tooltip.light-theme .tippy-arrow {
+  border-right: 7px solid #fff;
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+}
+
+.tippy-popper[x-placement^=right] .tippy-tooltip.light-theme .tippy-roundarrow {
+  width: 24px;
+  height: 24px;
+  fill: #fff;
+}
+
+.tippy-popper .tippy-tooltip.light-theme {
+  color: #26323d;
+  box-shadow: 0 0 20px 4px rgba(154, 161, 177, 0.15), 0 4px 80px -8px rgba(36, 40, 47, 0.25), 0 4px 4px -2px rgba(91, 94, 105, 0.15);
+  background-color: #fff;
+}
+
+.tippy-popper .tippy-tooltip.light-theme .tippy-backdrop {
+  background-color: #fff;
+}
+
+.tippy-popper .tippy-tooltip.light-theme[data-animatefill] {
+  background-color: transparent;
+}
+
+.tippy-popper[x-placement^=top] .tippy-tooltip.translucent-theme .tippy-arrow {
+  border-top: 7px solid rgba(0, 0, 0, 0.7);
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent;
+}
+
+.tippy-popper[x-placement^=top] .tippy-tooltip.translucent-theme .tippy-roundarrow {
+  width: 24px;
+  height: 24px;
+  fill: rgba(0, 0, 0, 0.7);
+}
+
+.tippy-popper[x-placement^=bottom] .tippy-tooltip.translucent-theme .tippy-arrow {
+  border-bottom: 7px solid rgba(0, 0, 0, 0.7);
+  border-right: 7px solid transparent;
+  border-left: 7px solid transparent;
+}
+
+.tippy-popper[x-placement^=bottom] .tippy-tooltip.translucent-theme .tippy-roundarrow {
+  width: 24px;
+  height: 24px;
+  fill: rgba(0, 0, 0, 0.7);
+}
+
+.tippy-popper[x-placement^=left] .tippy-tooltip.translucent-theme .tippy-arrow {
+  border-left: 7px solid rgba(0, 0, 0, 0.7);
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+}
+
+.tippy-popper[x-placement^=left] .tippy-tooltip.translucent-theme .tippy-roundarrow {
+  width: 24px;
+  height: 24px;
+  fill: rgba(0, 0, 0, 0.7);
+}
+
+.tippy-popper[x-placement^=right] .tippy-tooltip.translucent-theme .tippy-arrow {
+  border-right: 7px solid rgba(0, 0, 0, 0.7);
+  border-top: 7px solid transparent;
+  border-bottom: 7px solid transparent;
+}
+
+.tippy-popper[x-placement^=right] .tippy-tooltip.translucent-theme .tippy-roundarrow {
+  width: 24px;
+  height: 24px;
+  fill: rgba(0, 0, 0, 0.7);
+}
+
+.tippy-popper .tippy-tooltip.translucent-theme,
+.tippy-popper .tippy-tooltip.translucent-theme .tippy-backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.tippy-popper .tippy-tooltip.translucent-theme[data-animatefill] {
+  background-color: transparent;
+}
+
+.tippy-tooltip.gradient-theme {
+  background: linear-gradient(45deg, #8c61f5, #ff9cad);
+  font-weight: bold;
+}
+
+.tippy-tooltip.gradient-theme::after {
+  position: absolute;
+  left: 0;
+  top: 5px;
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, #8c61f5, #ff9cad);
+  -webkit-filter: blur(12px) brightness(1.2);
+  filter: blur(12px) brightness(1.2);
+  opacity: 0.8;
+  font-weight: bold;
+  z-index: -1;
+}
