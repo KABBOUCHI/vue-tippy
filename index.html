@@ -80,7 +80,7 @@
       display: inline-block;
       font-weight: 300;
       margin-bottom: .5rem;
-      font-size: 3rem;
+      font-size: 2rem;
       color: #7dffc3;
       background: -webkit-linear-gradient(135deg, #fff9b0, #7dffc3);
       -webkit-background-clip: text;
@@ -103,12 +103,15 @@
     ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
       color: white;
     }
+
     ::-moz-placeholder { /* Firefox 19+ */
       color: white;
     }
+
     :-ms-input-placeholder { /* IE 10+ */
       color: white;
     }
+
     :-moz-placeholder { /* Firefox 18- */
       color: white;
     }
@@ -119,265 +122,229 @@
 <div id="app">
 
   <p>
-    Powered by <a href="https://github.com/atomiks/tippyjs">Tippy.js</a> and VueJS
+    Powered by <a href="https://github.com/atomiks/tippyjs">Tippy.js 2.0</a> and VueJS
   </p>
   <div class="button-showcase d-flex justify-content-center flex-wrap">
-
-    <button class="btn"
-            title="I'm the default tooltip!"
-            v-tippy
-    >
-      <i class="material-icons icon-left">remove</i>
-      Default
+    <button class="btn" :title="i" data-tippy-animatefill="false"
+            data-tippy-placement="top" data-tippy-animation="fade" v-tippy>
+      Dynamic Title
     </button>
-
     <button class="btn"
             title="I'm a tooltip"
             v-tippy="vOpt"
+            test="true"
     >
       I have dynamic settings
     </button>
-
-    <button class="btn"
-            :title="i"
-            v-tippy
-    >
-      :title - Bind title ({{i}})
+    <button class="btn" title="Look at me on the top!" data-tippy-animatefill="false"
+            data-tippy-placement="top" data-tippy-animation="fade" v-tippy>Top
+    </button>
+    <button class="btn" title="Look at me on the bottom!" data-tippy-animatefill="false"
+            data-tippy-placement="bottom" data-tippy-animation="fade" v-tippy>Bottom
+    </button>
+    <button class="btn" title="Look at me on the left!" data-tippy-animatefill="false"
+            data-tippy-placement="left" data-tippy-animation="fade" v-tippy>Left
+    </button>
+    <button class="btn" title="Look at me on the right!" data-tippy-animatefill="false"
+            data-tippy-placement="right" data-tippy-animation="fade" v-tippy>Right
+    </button>
+    <button class="btn" title="I start at the left edge!" data-tippy-animatefill="false"
+            data-tippy-placement="top-start" data-tippy-animation="fade" v-tippy>Top-Start
+    </button>
+    <button class="btn" title="I end at the right edge!" data-tippy-animatefill="false"
+            data-tippy-placement="top-end" data-tippy-animation="fade" v-tippy>Top-End
     </button>
 
-    <button class="btn" title="Look at me on the bottom! 🙃"
-            data-animatefill="false"
-            data-position="bottom"
-            v-tippy
-    >
-      <i class="material-icons icon-left">compare_arrows</i>
-      Positioning
+    <button class="btn" title="I have a nice sharp arrow." data-tippy-arrow="true" data-tippy-animation="fade" v-tippy>
+      Sharp
+    </button>
+    <button class="btn" title="I have a nice round arrow." data-tippy-arrow="true" data-tippy-arrowType="round"
+            data-tippy-animation="fade" v-tippy>Round
+    </button>
+    <button class="btn" title="My arrow is wide." data-tippy-arrow="true" data-tippy-arrowtransform="scaleX(1.4)"
+            data-tippy-animation="fade" v-tippy>Wide
+    </button>
+    <button class="btn" title="My arrow is skinny and round." data-tippy-arrow="true" data-tippy-arrowType="round"
+            data-tippy-arrowtransform="scale(0.7, 1)" data-tippy-animation="fade" v-tippy>Skinny
+    </button>
+    <button class="btn" title="My arrow is small." data-tippy-arrow="true"
+            data-tippy-arrowtransform="scale(0.75) translateY(-1.5px)" data-tippy-animation="fade" v-tippy>Small
+    </button>
+    <button class="btn" title="My arrow is large." data-tippy-arrow="true" data-tippy-arrowtransform="scale(1.75)"
+            data-tippy-animation="fade" v-tippy>Large
     </button>
 
-    <button class="btn" title="I have a nice pointy arrow. 👆"
-            data-arrow="true"
-            data-animation="fade"
-            v-tippy
-    >
-      <i class="material-icons icon-left">play_arrow</i>
-      Arrows
+    <button class="btn" title="Thanks for hovering (or tapping on mobile!)" data-tippy-trigger="mouseenter" v-tippy>
+      Hover or Touch
+    </button>
+    <button class="btn" title="Thanks for focusing!" data-tippy-trigger="focus" data-tippy-hideOnClick="false" v-tippy>
+      Focus
+    </button>
+    <button class="btn" title="Thanks for clicking!" data-tippy-trigger="click" v-tippy>Click</button>
+    <button class="btn" title="I don't close when the cursor moves onto me!" data-tippy-interactive="true" v-tippy>
+      Interactive with hover
+    </button>
+    <button class="btn" title="Feel free to interact with me." data-tippy-interactive="true" data-tippy-trigger="click"
+            v-tippy>Interactive with click
     </button>
 
-    <button class="btn"
-            title="You can interact with me as much as you like!"
-            data-interactive="true"
-            v-tippy
-    >
-      <i class="material-icons icon-left">pan_tool</i>
-      Interactivity
+    <button class="btn" title="I shifted away from my reference element!" data-tippy-animation="shift-away"
+            data-tippy-arrow="true" v-tippy>Shift away
+    </button>
+    <button class="btn" title="I shifted toward my reference element!" data-tippy-animation="shift-toward"
+            data-tippy-arrow="true" v-tippy>Shift toward
+    </button>
+    <button class="btn" title="I just faded into existence!" data-tippy-animation="fade" data-tippy-arrow="true"
+            v-tippy>Fade
+    </button>
+    <button class="btn" title="I rotated with perspective!" data-tippy-animation="perspective" data-tippy-arrow="true"
+            v-tippy>Perspective
+    </button>
+    <button class="btn" title="I scaled up from nothingness!" data-tippy-animation="scale" data-tippy-arrow="true"
+            v-tippy>Scale
+    </button>
+    <button class="btn" title="Slingshot" data-tippy-inertia="true" data-tippy-arrow="true"
+            data-tippy-duration="[600,300]" v-tippy>Inertia (shift away)
+    </button>
+    <button class="btn" title="Slingshot" data-tippy-inertia="true" data-tippy-arrow="true"
+            data-tippy-animation="shift-toward" data-tippy-duration="[600,300]" v-tippy>Inertia (shift toward)
+    </button>
+    <button class="btn" title="Slingshot" data-tippy-inertia="true" data-tippy-arrow="true" data-tippy-animation="scale"
+            data-tippy-duration="[600,300]" v-tippy>Inertia (scale)
+    </button>
+    <button class="btn" title="Slingshot" data-tippy-inertia="true" data-tippy-arrow="true"
+            data-tippy-animation="perspective" data-tippy-duration="[600,300]" v-tippy>Inertia (perspective)
     </button>
 
-    <button class="btn"
-            title="Thanks for clicking!"
-            data-trigger="click"
-            v-tippy
-    >
-      <i class="material-icons icon-left">touch_app</i>
+    <button class="btn" title="BAM!" data-tippy-animation="fade" data-tippy-arrow="true" data-tippy-duration="0"
+            v-tippy>Instant
+    </button>
+    <button class="btn" title="Fast" data-tippy-animation="fade" data-tippy-arrow="true" data-tippy-duration="200"
+            v-tippy>Short duration
+    </button>
+    <button class="btn" title="Slooooow" data-tippy-animation="fade" data-tippy-arrow="true" data-tippy-duration="1000"
+            v-tippy>Long duration
+    </button>
+    <button class="btn" title="Waited to show" data-tippy-animation="fade" data-tippy-arrow="true"
+            data-tippy-delay="[600, 0]" v-tippy>Show delay
+    </button>
+    <button class="btn" title="Waited to hide" data-tippy-animation="fade" data-tippy-arrow="true"
+            data-tippy-delay="[0, 600]" v-tippy>Hide delay
+    </button>
+    <button class="btn" title="Waited for both" data-tippy-animation="fade" data-tippy-arrow="true"
+            data-tippy-delay="600" v-tippy>Combined delay
+    </button>
 
-      Triggers
+    <button class="btn" title="See through!" data-tippy-animation="fade" data-tippy-arrow="true"
+            data-tippy-animateFill="false" data-tippy-theme="translucent" data-tippy-flip="false" v-tippy>Translucent
+    </button>
+    <button class="btn" title="Awesome colors!" data-tippy-animation="fade" data-tippy-animateFill="false"
+            data-tippy-createPopperInstanceOnInit="true" data-tippy-theme="gradient" data-tippy-flip="false" v-tippy>
+      Gradient
+    </button>
+    <button class="btn" title="Cool huh?" data-tippy-animation="fade" data-tippy-theme="light bordered"
+            data-tippy-arrow="true" data-tippy-flip="false" v-tippy> Light
+    </button>
+
+    <button class="btn" title="I'm called when a tooltip begins to show." data-tippy-animation="fade"
+            data-tippy-arrow="true" data-tippy-duration="600" v-tippy @show="alert('show')">
+      onShow()
+    </button>
+    <button class="btn" title="I'm called when a tooltip begins to hide." data-tippy-animation="fade"
+            data-tippy-arrow="true" data-tippy-duration="600" v-tippy @hide="alert('hide')">
+      onHide()
+    </button>
+    <button class="btn" title="I'm called when a tooltip has fully transitioned in." data-tippy-animation="fade"
+            data-tippy-arrow="true" data-tippy-duration="600" data-tippy-maxWidth="400px" v-tippy
+            @shown="alert('shown')">
+      onShown()
+    </button>
+    <button class="btn" title="I'm called when a tooltip has fully transitioned out." data-tippy-animation="fade"
+            data-tippy-arrow="true" data-tippy-duration="600" data-tippy-maxWidth="400px" v-tippy
+            @hidden="alert('hidden')">
+      onHidden()
+    </button>
+
+    <button class="btn" title="I'm hugging the tooltip!" data-tippy-distance="0" data-tippy-animation="fade"
+            data-tippy-animateFill="false" v-tippy>Distance
+    </button>
+    <button class="btn" title="I'm offset 50px on the x-axis, and 10px on the y-axis!" data-tippy-offset="50, 10"
+            data-tippy-arrow="true" data-tippy-animation="fade" data-tippy-animateFill="false" v-tippy>Offset
+    </button>
+    <button class="btn" title="I'll follow your mouse cursor!" data-tippy-followcursor="true"
+            data-tippy-animation="scale" data-tippy-arrow="true" v-tippy>Follow cursor
+    </button>
+    <button class="btn" title="I'll flip to the bottom if there's not enough room on the right." v-tippy="{
+  placement: 'right',
+  animation: 'fade',
+  arrowType: 'round',
+  arrow: true,
+  flipBehavior: ['right', 'bottom']
+}">Custom flips
+    </button>
+    <button class="btn" id="animated-tippy" title="Sticky tooltip! Click my element to hide me."
+            data-tippy-theme="transparent" data-tippy-sticky="true" data-tippy-hideonclick="false"
+            data-tippy-trigger="click" v-tippy>Sticky
+      <small class="opacity-low" v-tippy>(click)</small>
+    </button>
+    <button class="btn" title="I'm a tooltip!" data-tippy-size="small" v-tippy>Small tooltip</button>
+    <button class="btn" title="I'm a tooltip!" data-tippy-size="large" v-tippy>Large tooltip</button>
+    <button class="btn" title="Use a touch device to see" data-tippy-touchHold="true" v-tippy>Touch and hold only
+    </button>
+
+
+    <button class="btn" data-tippy-html="#template" data-tippy-interactiveBorder="15"
+            data-tippy-arrowType="round" data-tippy-trigger="click" data-tippy-theme="light"
+            data-tippy-arrowTransform="scale(2, 2.5) translateY(2.5px)" data-tippy-distance="25"
+            data-tippy-animation="scale" data-tippy-interactive="true" data-tippy-arrow="true" v-tippy>
+      HTML templates
       <small class="opacity-low">(click)</small>
+    </button>
 
+
+    <button class="btn" data-tippy-html="#template2" data-tippy-interactiveBorder="15"
+            data-tippy-arrowType="round" data-tippy-trigger="click" data-tippy-theme="light"
+            data-tippy-arrowTransform="scale(2, 2.5) translateY(2.5px)" data-tippy-distance="25"
+            data-tippy-animation="scale" data-tippy-interactive="true" data-tippy-arrow="true"
+            v-tippy>
+      HTML templates ({{ i }})
+      <small class="opacity-low">(click)</small>
     </button>
 
     <button class="btn"
-            title="I'm a light 💡 theme!"
-            data-theme="light"
-            data-arrow="true"
-            data-animatefill="false"
-            v-tippy
-    >
-      <i class="material-icons icon-left">brush</i>
-      Themes
-    </button>
+            data-tippy-distance="15"
+            data-tippy-theme="light"
+            data-tippy-animation="scale"
+            data-tippy-arrowsize="big"
+            data-tippy-interactive="true"
+            data-tippy-animatefill="false"
+            data-tippy-arrow="true"
+            v-tippy="{ html : '#comppopup' , reactive : true}"
 
-    <button class="btn"
-            title="I scaled from nothingness..."
-            data-animation="scale"
-            data-animatefill="false"
-            v-tippy
-    >
-      <i class="material-icons icon-left">loupe</i>
-      Scale animation
-    </button>
-
-    <button class="btn"
-            title="Just a fade!"
-            data-animation="fade"
-            data-animatefill="false"
-            v-tippy
-    >
-      <i class="material-icons icon-left">blur_on</i>
-      Fade animation
-    </button>
-
-    <button
-      class="btn"
-      title="Rise or fall"
-      data-animatefill="false"
-      v-tippy
-    >
-      <i class="material-icons icon-left">keyboard_arrow_up</i>
-      Shift animation
-    </button>
-
-    <button class="btn"
-            title="Am I fancy enough for you?"
-            data-animation="perspective"
-            data-animatefill="false"
-            v-tippy
-    >
-      <i class="material-icons icon-left">panorama_horizontal</i>
-      Perspective animation
-    </button>
-
-    <button class="btn"
-            title="Sorry for making you wait"
-            data-delay="600"
-            v-tippy
-    >
-      <i class="material-icons icon-left">timer</i>
-      Show delay
-    </button>
-
-    <button class="btn"
-            title="I won't leave for a while"
-            data-hidedelay="600"
-            v-tippy
-    >
-      <i class="material-icons icon-left">timer</i>Hide
-      delay
-    </button>
-
-    <button class="btn"
-            title="BAM! 😱"
-            data-duration="0"
-            v-tippy
-    >
-      <i class="material-icons icon-left">flash_on</i>Instant
-    </button>
-
-    <button class="btn"
-            title="Physics, bitch"
-            data-inertia="true"
-            data-animation="scale"
-            data-animatefill="false"
-            v-tippy
-    >
-      <i class="material-icons icon-left">blur_linear</i>Inertia
-    </button>
-
-    <button class="btn"
-            title="By default, hide duration is the same as show"
-            data-duration="3000"
-            data-animatefill="false"
-            data-animation="fade"
-            v-tippy
-    >
-      <i class="material-icons icon-left">timer_3</i>Show
-      duration
-    </button>
-
-    <button class="btn"
-            title="1s in, instant out"
-            data-duration="1000"
-            data-hideduration="0"
-            data-animatefill="false"
-            data-animation="fade"
-            v-tippy
-    >
-      <i class="material-icons icon-left">timer_3</i>Hide
-      duration
-    </button>
-
-    <button class="btn"
-            title="Call ya back!"
-            data-animatefill="false"
-            v-tippy
-            @show="show"
-            @hidden="hidden"
-    >
-      <i class="material-icons icon-left">call</i>
-      Callbacks
-    </button>
-
-    <button class="btn"
-            title="I'll follow your cursor! (Mouse only)"
-            data-followcursor="true"
-            data-animation="fade"
-            v-tippy
-    >
-      <i class="material-icons icon-left">mouse</i>
-      Follow cursor
-    </button>
-
-    <button class="btn"
-            title="I'm just a cute little tooltip"
-            data-theme="transparent"
-            data-size="small"
-            v-tippy
-    >
-      Small
-    </button>
-
-    <button class="btn"
-            title="I'm a big scary tooltip"
-            data-theme="transparent"
-            data-size="big"
-            v-tippy
-    >
-      Big
-    </button>
-
-    <button class="btn"
-            v-tippy="{ html : '#contentpopup'}"
-            data-distance="15"
-            data-theme="light"
-            data-animation="scale"
-            data-arrowsize="big"
-            data-interactive="true"
-            data-animatefill="false"
-            data-arrow="true"
-    >
-      <i class="material-icons icon-left">code</i>Popover HTML
-    </button>
-
-    <div id="contentpopup">
-      <div>
-        <h3> Header</h3>
-        <p style="color: black"> {{ message }} - data binding </p>
-        <p style="color: black"> {{ i }} sec </p>
-        <button class="btn" @click="i = 0">reset</button>
-      </div>
-    </div>
-
-    <button class="btn"
-            v-tippy="{ html : '#comppopup' }"
-            data-distance="15"
-            data-theme="light"
-            data-animation="scale"
-            data-arrowsize="big"
-            data-interactive="true"
-            data-animatefill="false"
-            data-arrow="true"
     >
       <i class="material-icons icon-left">code</i>Popover Vue Component
     </button>
 
     <html-template id="comppopup"></html-template>
 
-    <input class="btn" type="text" v-tippy="{ arrow : true, show : ! validateEmail() , trigger : 'manual' , hideOnClick :false}"
-           title="Please use a valid email" v-model="email" placeholder="Enter your email">
+    <div id="template" style="visibility: hidden" v-tippy-html>
+      <div style="color: black">This is an example of an <strong>no interactive HTML tooltip</strong> created with a
+        template.
+      </div>
+    </div>
+
+    <div id="template2" style="visibility: hidden" v-tippy-html>
+      <div style="color: black">
+        <pre> v-tippy="{ autoUpdateHtml : true}" </pre>
+        <span>{{ i }}</span>
+      </div>
+    </div>
   </div>
 
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.0/vue.js"></script>
-<script src="dist/vue-tippy.js?190720171"></script>
+<script src="dist/vue-tippy.js?190720172"></script>
 
 <script>
   Vue.component("html-template", {
@@ -398,37 +365,28 @@
       }
     }
   });
-  var app = new Vue({
+
+  new Vue({
     el: "#app",
     data() {
       return {
+        i: 0,
         vOpt: {
-          position: 'top',
+          placement: 'top',
           animation: 'scale',
           duration: 500,
           arrow: true
-        },
-        email: '',
-        message: 'Hello Vue.js!',
-        i: 0
+        }
       }
     },
     created() {
       setInterval(() => {
-        this.i = this.i + 1;
-      }, 1000);
-
+        this.i++
+      }, 1000)
     },
     methods: {
-      validateEmail: function () {
-        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-        return re.test(this.email);
-      },
-      show: function () {
-        alert('Hello from the @show callback!')
-      },
-      hidden: function () {
-        alert('Hello from the @hidden callback!')
+      alert(data) {
+        alert(data)
       }
     }
   })
