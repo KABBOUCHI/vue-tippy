@@ -1,7 +1,7 @@
 {
   "name": "vue-tippy",
   "version": "2.0.0",
-  "description": "A Vue.js Plugin",
+  "description": "Directive wrapper for Tippy.js",
   "author": "Georges KABBOUCHI <georges.kabbouchi@gmail.com>",
   "main": "dist/vue-tippy.common.js",
   "module": "dist/vue-tippy.esm.js",
@@ -88,7 +88,7 @@
     "stylelint-config-standard": "^16.0.0",
     "stylelint-processor-html": "^1.0.0",
     "uppercamelcase": "^3.0.0",
-    "vue": "^2.3.0",
+    "vue": "^2.5.9",
     "vue-loader": "^12.0.0",
     "vue-template-compiler": "^2.3.0",
     "webpack": "^2.5.0",
@@ -99,7 +99,7 @@
     "yarn-or-npm": "^2.0.0"
   },
   "peerDependencies": {
-    "vue": "^2.3.0"
+    "vue": "^2.5.9"
   },
   "dllPlugin": {
     "name": "vuePluginTemplateDeps",
@@ -126,10 +126,13 @@
     "url": "https://github.com/KABBOUCHI/vue-tippy/issues"
   },
   "homepage": "https://github.com/KABBOUCHI/vue-tippy#readme",
-  "license": {
-    "type": "MIT",
-    "url": "http://www.opensource.org/licenses/mit-license.php"
-  },
+  "license": "MIT",
+  "keywords": [
+    "tooltip",
+    "tippy",
+    "tippy.js",
+    "vue"
+  ],
   "dependencies": {
     "tippy.js": "^2.0.2"
   }

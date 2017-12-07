@@ -82,6 +82,12 @@ const plugin = {
         if (el._tippy && (JSON.stringify(opts) !== JSON.stringify(oldOpts))) {
           createTippy(el, binding, vnode)
         }
+
+        if (el._tippy && opts.show) {
+          el._tippy.show()
+        } else if (el._tippy && !opts.show && opts.trigger === 'manual') {
+          el._tippy.hide()
+        }
       }
     })
   }

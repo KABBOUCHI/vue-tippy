@@ -131,7 +131,7 @@
     </button>
     <button class="btn"
             title="I'm a tooltip"
-            v-tippy="vOpt"
+            v-tippy="{ placement: placement, animation: animation}"
             test="true"
     >
       I have dynamic settings
@@ -325,6 +325,10 @@
       <i class="material-icons icon-left">code</i>Popover Vue Component
     </button>
 
+    <input class="btn" type="text"
+           v-tippy="{ arrow : true, show : ! validateEmail() , trigger : 'manual' , hideOnClick :false}"
+           title="Please use a valid email" v-model="email" placeholder="Enter your email">
+
     <html-template id="comppopup"></html-template>
 
     <div id="template" style="visibility: hidden" v-tippy-html>
@@ -335,7 +339,7 @@
 
     <div id="template2" style="visibility: hidden" v-tippy-html>
       <div style="color: black">
-        <pre> v-tippy="{ autoUpdateHtml : true}" </pre>
+        <pre> use ``v-tippy-html`` and the HTML template will be updated automatically</pre>
         <span>{{ i }}</span>
       </div>
     </div>
@@ -343,8 +347,8 @@
 
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.0/vue.js"></script>
-<script src="dist/vue-tippy.js?190720172"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.min.js"></script>
+<script src="dist/vue-tippy.min.js?1907201722"></script>
 
 <script>
   Vue.component("html-template", {
@@ -371,12 +375,9 @@
     data() {
       return {
         i: 0,
-        vOpt: {
-          placement: 'top',
-          animation: 'scale',
-          duration: 500,
-          arrow: true
-        }
+        email: '',
+        placement: 'top',
+        animation: 'scale',
       }
     },
     created() {
@@ -385,6 +386,10 @@
       }, 1000)
     },
     methods: {
+      validateEmail: function () {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(this.email);
+      },
       alert(data) {
         alert(data)
       }

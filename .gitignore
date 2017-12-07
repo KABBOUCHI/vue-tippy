@@ -2,7 +2,7 @@
 node_modules/
 npm-debug.log
 test/coverage
-dist
+test/dist
 yarn-error.log
 reports
 .idea
