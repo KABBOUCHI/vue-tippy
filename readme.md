@@ -13,9 +13,9 @@
 
 #### Available through npm as `vue-tippy`.
 
-  ``bash
+  ```bash
     npm i vue-tippy@v1
-  ``
+  ```
   
   ``` js
     var vueTippy = require('vue-tippy')
