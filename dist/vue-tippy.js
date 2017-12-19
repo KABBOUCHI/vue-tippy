@@ -4663,26 +4663,28 @@ var plugin = {
 
       opts = Object.assign({ dynamicTitle: true, reactive: false, showOnLoad: false }, options, opts);
 
-      opts.onShow = function () {
-        if (handlers && handlers['show']) {
+      if (handlers && handlers['show']) {
+        opts.onShow = function () {
           handlers['show'].fns();
-        }
-      };
-      opts.onShown = function () {
-        if (handlers && handlers['shown']) {
+        };
+      }
+
+      if (handlers && handlers['shown']) {
+        opts.onShown = function () {
           handlers['shown'].fns();
-        }
-      };
-      opts.onHidden = function () {
-        if (handlers && handlers['hidden']) {
+        };
+      }
+      if (handlers && handlers['hidden']) {
+        opts.onHidden = function () {
           handlers['hidden'].fns();
-        }
-      };
-      opts.onHide = function () {
-        if (handlers && handlers['hide']) {
+        };
+      }
+
+      if (handlers && handlers['hide']) {
+        opts.onHide = function () {
           handlers['hide'].fns();
-        }
-      };
+        };
+      }
 
       if (opts.html) {
         if (opts.reactive) {
