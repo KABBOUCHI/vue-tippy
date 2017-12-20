@@ -75,7 +75,7 @@ const plugin = {
         createTippy(el, binding, vnode)
       },
       unbind (el) {
-        el._tippy.destroy()
+        el._tippy && el._tippy.destroy()
       },
       componentUpdated (el, binding, vnode) {
         const opts = binding.value || {}

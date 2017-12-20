@@ -1,5 +1,5 @@
 /*!
- * vue-tippy v2.0.2
+ * vue-tippy v2.0.3
  * (c) 2017 Georges KABBOUCHI
  * Released under the MIT License.
  */
@@ -4710,7 +4710,7 @@ var plugin = {
         createTippy(el, binding, vnode);
       },
       unbind: function unbind(el) {
-        el._tippy.destroy();
+        el._tippy && el._tippy.destroy();
       },
       componentUpdated: function componentUpdated(el, binding, vnode) {
         var opts = binding.value || {};
