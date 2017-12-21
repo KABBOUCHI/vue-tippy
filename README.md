@@ -57,7 +57,7 @@ Vue.use(VueTippy,{
 
 #### Bind settings
 ```html
-<button title="Hello" v-tippy="{ position : 'top',  arrow: true }"> My Button! </button>
+<button title="Hello" v-tippy="{ placement : 'top',  arrow: true }"> My Button! </button>
 ```
 
 #### HTML Template 1 (without reactivity)
