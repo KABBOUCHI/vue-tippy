@@ -4,9 +4,9 @@ import './css/themes.css'
 
 window.Tippy = Tippy
 const plugin = {
-  install(Vue, options) {
+  install (Vue, options) {
     Vue.directive('tippy-html', {
-      componentUpdated(el) {
+      componentUpdated (el) {
         const t = el._tipppyReference._tippy
         if (t) {
           Vue.nextTick(() => {
@@ -15,18 +15,18 @@ const plugin = {
           })
         }
       },
-      unbind(el) {
+      unbind (el) {
         delete el._tipppyReference
       }
     })
 
-    function createTippy(el, binding, vnode) {
+    function createTippy (el, binding, vnode) {
       const handlers = (vnode.data && vnode.data.on) ||
         (vnode.componentOptions && vnode.componentOptions.listeners)
 
       let opts = binding.value || {}
 
-      opts = Object.assign({dynamicTitle: true, reactive: false, showOnLoad: false}, options, opts)
+      opts = Object.assign({ dynamicTitle: true, reactive: false, showOnLoad: false }, options, opts)
 
       if (handlers && handlers['show']) {
         opts.onShow = function () {
@@ -71,13 +71,13 @@ const plugin = {
     }
 
     Vue.directive('tippy', {
-      inserted(el, binding, vnode) {
+      inserted (el, binding, vnode) {
         createTippy(el, binding, vnode)
       },
-      unbind(el) {
+      unbind (el) {
         el._tippy && el._tippy.destroy()
       },
-      componentUpdated(el, binding, vnode) {
+      componentUpdated (el, binding, vnode) {
         const opts = binding.value || {}
         const oldOpts = binding.oldValue || {}
 
