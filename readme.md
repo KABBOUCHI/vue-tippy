@@ -1,7 +1,7 @@
 # VueTippy
 
 
-[![npm](https://img.shields.io/npm/v/vue-tippy.svg)](https://www.npmjs.com/package/vue-tippy) [![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg)](https://vuejs.org/) [![download](https://img.shields.io/npm/dt/vue-tippy.svg)](https://www.npmjs.com/package/vue-tippy)
+[![npm](https://img.shields.io/npm/v/vue-tippy.svg)](https://www.npmjs.com/package/vue-tippy) [![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg)](https://vuejs.org/) [![download](https://img.shields.io/npm/dt/vue-tippy.svg)](https://www.npmjs.com/package/vue-tippy) [![size](http://img.badgesize.io/kabbouchi/vue-tippy/master/dist/vue-tippy.min.js?label=size)](https://github.com/kabbouchi/vue-tippy/tree/master/dist/vue-tippy.min.js) [![gzip size](http://img.badgesize.io/kabbouchi/vue-tippy/master/dist/vue-tippy.min.js?compression=gzip&label=gzip+size)](https://github.com/kabbouchi/vue-tippy/tree/master/dist/vue-tippy.min.js)
 
 
 > Directive wrapper for Tippy.js
