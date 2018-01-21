@@ -1,8 +1,6 @@
 # VueTippy
 
-
-[![npm](https://img.shields.io/npm/v/vue-tippy.svg)](https://www.npmjs.com/package/vue-tippy) [![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg)](https://vuejs.org/) [![download](https://img.shields.io/npm/dt/vue-tippy.svg)](https://www.npmjs.com/package/vue-tippy) [![size](http://img.badgesize.io/kabbouchi/vue-tippy/master/dist/vue-tippy.min.js?label=size)](https://github.com/kabbouchi/vue-tippy/tree/master/dist/vue-tippy.min.js) [![gzip size](http://img.badgesize.io/kabbouchi/vue-tippy/master/dist/vue-tippy.min.js?compression=gzip&label=gzip+size)](https://github.com/kabbouchi/vue-tippy/tree/master/dist/vue-tippy.min.js)
-
+[![npm](https://img.shields.io/npm/v/vue-tippy.svg)](https://www.npmjs.com/package/vue-tippy) [![vue2](https://img.shields.io/badge/vue-2.x-brightgreen.svg)](https://vuejs.org/)
 
 > Directive wrapper for Tippy.js
 
@@ -16,6 +14,8 @@
 
 ```bash
 npm install --save vue-tippy
+# or
+yarn add vue-tippy
 ```
 
 ## Usage
@@ -29,15 +29,15 @@ import VueTippy from 'vue-tippy'
 Vue.use(VueTippy)
 // or
 Vue.use(VueTippy,{
-        flipDuration: 0,
-        popperOptions: {
-             modifiers: {
-                preventOverflow: {
-                    enabled: false
-                }
+    flipDuration: 0,
+    popperOptions: {
+        modifiers: {
+            preventOverflow: {
+                enabled: false
             }
         }
-   })
+    }
+})
 ```
 
 ### Browser
@@ -51,6 +51,7 @@ Vue.use(VueTippy,{
 #### Basic
 ```html
 <button title="Hi!" v-tippy> My Button! </button>
+```
 
 #### Bind title
 ```html
@@ -66,36 +67,39 @@ Vue.use(VueTippy,{
 ```html
 <button data-tippy-html="#contentpopup1" data-tippy-interactive="true" v-tippy> My Button! </button>
 ```
+
 ```html
 <div id="contentpopup1" style="display: none" v-tippy-html>
-        <div>
-            <h3> Header</h3>
-            <p style="color: black"> {{ message }} - data binding </p>
-        </div>
- </div>
+    <div>
+        <h3> Header</h3>
+        <p style="color: black"> {{ message }} - data binding </p>
+    </div>
+</div>
 ```
-
 
 #### HTML Template 2 (with reactivity)
 ```html
 <button v-tippy="{ html : '#contentpopup2'  , interactive : true , reactive : true }"> My Button! </button>
 ```
+
 ```html
 <div id="contentpopup2">
-        <div>
-            <h3> Header</h3>
-            <p style="color: black"> {{ message }} - data binding </p>
-            <button @click="clicked">Click<button>
-        </div>
- </div>
+    <div>
+        <h3> Header</h3>
+        <p style="color: black"> {{ message }} - data binding </p>
+        <button @click="clicked">Click<button>
+    </div>
+</div>
+```
  
- #### Vue component
- ```html
- <button  v-tippy="{ html : '#comppopup'  , interactive : true, reactive : true }"> My Button! </button>
- ```
- ```html
- <vue-component-test id="comppopup"></vue-component-test>
- ```
+#### Vue component
+```html
+<button  v-tippy="{ html : '#comppopup'  , interactive : true, reactive : true }"> My Button! </button>
+```
+
+```html
+<vue-component-test id="comppopup"></vue-component-test>
+```
  
 > For more info on TippyJS view the documentation and demo here: https://atomiks.github.io/tippyjs/
 
