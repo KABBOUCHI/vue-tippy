@@ -7,11 +7,15 @@ const plugin = {
   install (Vue, options) {
     Vue.directive('tippy-html', {
       componentUpdated (el) {
-        const t = el._tipppyReference._tippy
-        if (t) {
+        const els = el._tipppyReferences
+        if (els && els.length > 0) {
           Vue.nextTick(() => {
-            const content = t.popper.querySelector('.tippy-content')
-            content.innerHTML = el.innerHTML
+            els.forEach((et) => {
+              if (et._tippy) {
+                const content = et._tippy.popper.querySelector('.tippy-content')
+                content.innerHTML = el.innerHTML
+              }
+            })
           })
         }
       },
@@ -22,7 +26,7 @@ const plugin = {
 
     function createTippy (el, binding, vnode) {
       const handlers = (vnode.data && vnode.data.on) ||
-        (vnode.componentOptions && vnode.componentOptions.listeners)
+                (vnode.componentOptions && vnode.componentOptions.listeners)
 
       let opts = binding.value || {}
 
@@ -55,14 +59,22 @@ const plugin = {
         if (opts.reactive) {
           opts.html = document.querySelector(opts.html)
         } else {
-          document.querySelector(opts.html)._tipppyReference = el
+          if (document.querySelector(opts.html)._tipppyReferences) {
+            document.querySelector(opts.html)._tipppyReferences.push(el)
+          } else {
+            document.querySelector(opts.html)._tipppyReferences = [el]
+          }
         }
       }
 
       new Tippy(el, opts)
 
       if (el.getAttribute('data-tippy-html')) {
-        document.querySelector(el.getAttribute('data-tippy-html'))._tipppyReference = el
+        if (document.querySelector(el.getAttribute('data-tippy-html'))._tipppyReferences) {
+          document.querySelector(el.getAttribute('data-tippy-html'))._tipppyReferences.push(el)
+        } else {
+          document.querySelector(el.getAttribute('data-tippy-html'))._tipppyReferences = [el]
+        }
       }
 
       if (opts.showOnLoad) {

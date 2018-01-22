@@ -1,5 +1,5 @@
 /*!
- * vue-tippy v2.0.6
+ * vue-tippy v2.0.7
  * (c) 2018 Georges KABBOUCHI
  * Released under the MIT License.
  */
@@ -2181,11 +2181,15 @@ var plugin = {
   install: function install(Vue, options) {
     Vue.directive('tippy-html', {
       componentUpdated: function componentUpdated(el) {
-        var t = el._tipppyReference._tippy;
-        if (t) {
+        var els = el._tipppyReferences;
+        if (els && els.length > 0) {
           Vue.nextTick(function () {
-            var content = t.popper.querySelector('.tippy-content');
-            content.innerHTML = el.innerHTML;
+            els.forEach(function (et) {
+              if (et._tippy) {
+                var content = et._tippy.popper.querySelector('.tippy-content');
+                content.innerHTML = el.innerHTML;
+              }
+            });
           });
         }
       },
@@ -2228,14 +2232,22 @@ var plugin = {
         if (opts.reactive) {
           opts.html = document.querySelector(opts.html);
         } else {
-          document.querySelector(opts.html)._tipppyReference = el;
+          if (document.querySelector(opts.html)._tipppyReferences) {
+            document.querySelector(opts.html)._tipppyReferences.push(el);
+          } else {
+            document.querySelector(opts.html)._tipppyReferences = [el];
+          }
         }
       }
 
       new _tippy2.default(el, opts);
 
       if (el.getAttribute('data-tippy-html')) {
-        document.querySelector(el.getAttribute('data-tippy-html'))._tipppyReference = el;
+        if (document.querySelector(el.getAttribute('data-tippy-html'))._tipppyReferences) {
+          document.querySelector(el.getAttribute('data-tippy-html'))._tipppyReferences.push(el);
+        } else {
+          document.querySelector(el.getAttribute('data-tippy-html'))._tipppyReferences = [el];
+        }
       }
 
       if (opts.showOnLoad) {
