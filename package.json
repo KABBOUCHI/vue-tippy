@@ -136,6 +136,6 @@
   ],
   "dependencies": {
     "popper.js": "^1.13.0",
-    "tippy.js": "^2.0.9"
+    "tippy.js": "^2.0.8"
   }
 }
