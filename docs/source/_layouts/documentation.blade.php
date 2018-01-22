@@ -107,7 +107,7 @@
                                     @if (is_string($slugOrChildren))
                                         <li class="mb-3"><a
                                                     class="hover:underline {{ $page->active('/' . $slugOrChildren) ? 'text-black font-bold' : 'text-grey-darkest' }}"
-                                                    href="{{ $page->baseUrl }}/{{ $slugOrChildren }}">{{ $name }}</a>
+                                                    href="{{ $page->baseUrl }}/{{ ltrim($slugOrChildren,'/') }}">{{ $name }}</a>
                                         </li>
                                     @else
                                         <li class="mb-3">
@@ -209,11 +209,11 @@
         <!-- Algolia DocSearch  -->
         {{--<script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.js"></script>--}}
         {{--<script type="text/javascript">--}}
-            {{--docsearch({--}}
-                {{--apiKey: '',--}}
-                {{--indexName: 'vue-tippy',--}}
-                {{--inputSelector: '#docsearch',--}}
-            {{--});--}}
+        {{--docsearch({--}}
+        {{--apiKey: '',--}}
+        {{--indexName: 'vue-tippy',--}}
+        {{--inputSelector: '#docsearch',--}}
+        {{--});--}}
         {{--</script>--}}
     @endif
 @endpush

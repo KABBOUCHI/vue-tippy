@@ -2,7 +2,7 @@
 
 return [
     'Introduction'    => [
-        'What is VueTippy?' => '',
+        'What is VueTippy?' => '/',
     ],
     'Getting Started' => [
         'Installation and Configuration'  => 'installation',
