@@ -1,21 +1,7 @@
 @extends('_layouts.master')
 
 @section('meta')
-    <meta name="twitter:card" content="summary">
-    <meta name="twitter:site" content="@tailwindcss">
-    <meta name="twitter:title"
-          content="{{ $page->title ? $page->title . ' - Tailwind CSS' : 'Tailwind CSS - A Utility-First CSS Framework for Rapid UI Development' }}">
-    <meta name="twitter:description"
-          content="{{ $page->description ? $page->description : 'Documentation for the Tailwind CSS framework.' }}">
-    <meta name="twitter:image" content="https://tailwindcss.com/img/tailwind-square.png">
-    <meta name="twitter:creator" content="@tailwindcss">
-    <meta property="og:url" content="https://tailwindcss.com/"/>
-    <meta property="og:type" content="article"/>
-    <meta property="og:title"
-          content="{{ $page->title ? $page->title . ' - Tailwind CSS' : 'Tailwind CSS - A Utility-First CSS Framework for Rapid UI Development' }}"/>
-    <meta property="og:description"
-          content="{{ $page->description ? $page->description : 'Documentation for the Tailwind CSS framework.' }}"/>
-    <meta property="og:image" content="https://tailwindcss.com/img/twitter-card.png"/>
+
 @endsection
 
 @push('headScripts')
@@ -157,7 +143,7 @@
                         </svg>
                     </div>
                     <a href="/" class="mx-auto inline-flex items-center">
-                        <img class="w-8 h-8" src="/img/vue-tippy.png" alt="">
+                        <img class="w-8 h-8" src="{{ $page->baseUrl }}/img/vue-tippy.png" alt="">
                     </a>
                     <div id="sidebar-close" class="hidden">
                         <div class="flex items-center absolute pin-r pin-y px-4">

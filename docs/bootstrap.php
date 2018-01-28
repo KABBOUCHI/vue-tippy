@@ -28,5 +28,5 @@ function mix($path, $manifestDirectory = '')
     if (! isset($manifest[$path])) {
         throw new InvalidArgumentException("Unable to locate Mix file: {$path}.");
     }
-    return new HtmlString($manifestDirectory.$manifest[$path]);
+    return new HtmlString( $manifestDirectory.$manifest[$path]);
 }
