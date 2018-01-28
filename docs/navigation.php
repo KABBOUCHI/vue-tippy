@@ -21,7 +21,7 @@ return [
         'Misc'                 => 'features/misc',
 
     ],
-    'Examples' => [
-
+    'Examples'        => [
+        'Example1' => 'examples/example-1'
     ],
 ];
