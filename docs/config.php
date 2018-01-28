@@ -23,4 +23,43 @@ return [
         });
     },
     'navigation'        => require_once('navigation.php'),
+    'previous'          => function ($page) {
+
+        $navigation = collect($page->navigation)->flatten()->map(function ($value) {
+            return trim($value, '/');
+        })->all();
+
+        $currentPage = trim($page->getPath(), '/');
+
+        $index = array_search($currentPage, $navigation, true);
+
+        if ($index > 0) {
+
+            $slug = $navigation[$index - 1];
+
+            return $page->baseUrl . '/' . $slug;
+        }
+
+        return null;
+    },
+    'next'              => function ($page) {
+
+        $navigation = collect($page->navigation)->flatten()->map(function ($value) {
+            return trim($value, '/');
+        })->all();
+
+        $currentPage = trim($page->getPath(), '/');
+
+        $count = count($navigation);
+
+        $index = array_search($currentPage, $navigation, true);
+
+        if ($index + 1 < $count) {
+            $slug = $navigation[$index + 1];
+
+            return $page->baseUrl . '/' . $slug;
+        }
+
+        return null;
+    },
 ];

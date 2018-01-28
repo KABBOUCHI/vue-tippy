@@ -147,7 +147,7 @@
                 </div>
             </div>
         </div>
-        <div class="md:ml-80">
+        <div class="flex flex-col md:ml-80 min-h-screen">
             <div class="fixed w-full z-20">
                 <div class="pin-t bg-white md:hidden relative border-b border-grey-light h-12 flex items-center">
                     <div id="sidebar-open" class="absolute pin-l pin-y px-4 flex items-center">
@@ -157,10 +157,7 @@
                         </svg>
                     </div>
                     <a href="/" class="mx-auto inline-flex items-center">
-                        <svg class="w-8 h-8" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M13.5 11.1C15.3 3.9 19.8.3 27 .3c10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 27.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"
-                                  transform="translate(5 16)" fill="url(#logoGradient)" fill-rule="evenodd"/>
-                        </svg>
+                        <img class="w-8 h-8" src="/img/vue-tippy.png" alt="">
                     </a>
                     <div id="sidebar-close" class="hidden">
                         <div class="flex items-center absolute pin-r pin-y px-4">
@@ -172,7 +169,7 @@
                     </div>
                 </div>
             </div>
-            <div id="content" class="px-6 pb-8 pt-20 md:pt-16 w-full max-w-lg mx-auto">
+            <div id="content" class="flex-1 px-6 pb-8 pt-20 md:pt-16 w-full max-w-lg mx-auto">
                 <div id="app" v-cloak>
                     <div class="markdown">
                         <h1>{{ $page->title }}</h1>
@@ -187,8 +184,30 @@
                         @yield('content')
                     </div>
                 </div>
+
                 <script src="/js/app.js"></script>
             </div>
+
+            <div class="w-full bg-grey-lighter border-t border-grey-light px-8 py-4">
+                <div class="flex justify-between text-grey" id="pagination">
+                    @if($previous = $page->previous())
+                        <a class="block flex items-center hover:text-grey-darker mr-16"
+                           href="{{ $previous}}">
+                            Previous
+                        </a>
+                    @else
+                        <span></span>
+                    @endif
+                    @if($next = $page->next())
+                        <a class="block flex items-center hover:text-grey-darker"
+                           href="{{ $next }}">
+                            Next
+                        </a>
+                    @endif
+
+                </div>
+            </div>
+
         </div>
     </div>
 

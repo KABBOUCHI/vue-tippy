@@ -29,6 +29,7 @@ $.when($.ready).then(function () {
       var title = $(html).filter('title').text()
       var nav = $(html).find('#nav').html()
       var content = $(html).find('#content').html()
+      var pagination = $(html).find('#pagination').html()
 
       $('#sidebar').addClass('hidden')
       $('#sidebar-close').addClass('hidden')
@@ -37,6 +38,7 @@ $.when($.ready).then(function () {
       $('title').text(title)
       $('#nav').html(nav)
       $('#content').html(content)
+      $('#pagination').html(pagination)
 
       // Scroll to the top of the page
       $(document).scrollTop(0)
