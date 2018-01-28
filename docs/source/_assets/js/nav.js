@@ -21,7 +21,7 @@ $.when($.ready).then(function () {
     // Make Ajax request to get the page content
     $.ajax({
       method: 'GET',
-      url: href,
+      url: href + '/',
       cache: false,
       dataType: 'html'
     }).done(function (html) {
