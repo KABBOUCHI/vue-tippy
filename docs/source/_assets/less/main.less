@@ -15,7 +15,7 @@ a {
 
 ol,
 ul {
-  @apply .list-reset;
+@apply .list-reset;
 }
 
 @import "docsearch";
@@ -25,15 +25,15 @@ ul {
 @tailwind utilities;
 
 .focus\:bg-grey-dark:focus {
-  @apply .bg-grey-dark;
+@apply .bg-grey-dark;
 }
 
 .focus\:text-white:focus {
-  @apply .text-white;
+@apply .text-white;
 }
 
 .group:hover .group-hover\:text-white {
-  @apply .text-white;
+@apply .text-white;
 }
 
 .bg-pattern {
@@ -45,9 +45,20 @@ ul {
 }
 
 .placeholder-grey-dark::placeholder {
-  @apply .text-grey-dark;
+@apply .text-grey-dark;
 }
 
 [v-cloak] .v-cloak-hidden {
   display: none;
+}
+
+.btn {
+@apply .bg-blue .text-white .font-bold .py-2 .px-4 .border-b-4 .border-blue-dark .rounded;
+}
+
+.btn:hover {
+@apply .bg-blue-light .border-blue;
+}
+#animated-tippy {
+  animation: hover 2s ease-in-out infinite;
 }

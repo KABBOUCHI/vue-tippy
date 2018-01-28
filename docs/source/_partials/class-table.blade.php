@@ -8,9 +8,10 @@
     <table class="w-full text-left table-collapse">
       <thead>
         <tr>
-          <th class="text-sm font-semibold text-grey-darker p-2 bg-grey-lightest">Class</th>
-          <th class="text-sm font-semibold text-grey-darker p-2 bg-grey-lightest">Properties</th>
-          <th class="text-sm font-semibold text-grey-darker p-2 bg-grey-lightest">Description</th>
+          <th class="text-sm font-semibold text-grey-darker p-2 bg-grey-lightest">Option</th>
+          <th class="text-sm font-semibold text-grey-darker p-2 bg-grey-lightest">Default</th>
+          <th class="text-sm font-semibold text-grey-darker p-2 bg-grey-lightest">Inputs</th>
+          <th class="text-sm font-semibold text-grey-darker p-2 bg-grey-lightest">Role</th>
         </tr>
       </thead>
       <tbody class="align-baseline">
@@ -18,7 +19,8 @@
         <tr>
           <td class="p-2 border-t {{ $loop->first ? 'border-grey-light' : 'border-grey-lighter' }} font-mono text-xs text-purple-dark whitespace-no-wrap">{!! $row[0] !!}</td>
           <td class="p-2 border-t {{ $loop->first ? 'border-grey-light' : 'border-grey-lighter' }} font-mono text-xs text-blue-dark whitespace-pre">{!! $row[1] !!}</td>
-          <td class="p-2 border-t {{ $loop->first ? 'border-grey-light' : 'border-grey-lighter' }} text-sm text-grey-darker whitespace-no-wrap lg:whitespace-normal">{!! $row[2] !!}</td>
+          <td class="p-2 border-t {{ $loop->first ? 'border-grey-light' : 'border-grey-lighter' }} font-mono text-xs text-blue-dark whitespace-pre">{!! $row[2] !!}</td>
+          <td class="p-2 border-t {{ $loop->first ? 'border-grey-light' : 'border-grey-lighter' }} text-sm text-grey-darker ">{!! $row[3] !!}</td>
         </tr>
         @endforeach
       </tbody>

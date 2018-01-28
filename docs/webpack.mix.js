@@ -38,4 +38,5 @@ mix
         tailwind('tailwind.js')
       ]
     })
+    .disableNotifications()
     .version()

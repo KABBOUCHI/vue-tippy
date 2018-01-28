@@ -30,11 +30,9 @@
                 <div class="mb-4">
                     <div class="hidden md:flex md:justify-center">
                         <a href="/" class="flex justify-center">
-                            <svg width="222px" height="184px" viewBox="0 0 222 184" version="1.1"
+                            <svg width="111px" height="92px" viewBox="0 0 222 184" version="1.1"
                                  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                                 <!-- Generator: Sketch 41.2 (35397) - http://www.bohemiancoding.com/sketch -->
-                                <title>Artboard</title>
-                                <desc>Created with Sketch.</desc>
                                 <defs>
                                     <rect id="path-1" x="90.7780977" y="135.681765" width="40" height="40"
                                           rx="5"></rect>
@@ -87,8 +85,8 @@
                 </div>
                 <div class="relative">
                     <input id="docsearch"
-                           class="placeholder-grey-dark rounded bg-white border border-grey-light py-2 pr-4 pl-10 block w-full appearance-none"
-                           type="text" placeholder="Search the docs">
+                           class="placeholder-grey-dark rounded border border-grey-light py-2 pr-4 pl-10 block w-full appearance-none bg-grey-lighter"
+                           type="text" placeholder="Search the docs" disabled>
                     <div class="pointer-events-none absolute pin-y pin-l pl-3 flex items-center">
                         <svg class="fill-current pointer-events-none text-grey-darker w-4 h-4"
                              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
