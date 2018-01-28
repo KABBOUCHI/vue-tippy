@@ -5,7 +5,7 @@
 @endsection
 
 @push('headScripts')
-    <script src="{{ mix('/js/nav.js') }}"></script>
+    <script src="{{ $page->baseUrl . mix('/js/nav.js') }}"></script>
 @endpush
 
 @section('body')
@@ -171,7 +171,7 @@
                     </div>
                 </div>
 
-                <script src="/js/app.js"></script>
+                <script src="{{$page->baseUrl}}/js/app.js"></script>
             </div>
 
             <div class="w-full bg-grey-lighter border-t border-grey-light px-8 py-4">
