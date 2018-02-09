@@ -1,5 +1,5 @@
 /*!
- * vue-tippy v2.0.7
+ * vue-tippy v2.0.8
  * (c) 2018 Georges KABBOUCHI
  * Released under the MIT License.
  */
@@ -2249,7 +2249,7 @@ return tippy$1;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _tippy = __webpack_require__(4);
@@ -2264,115 +2264,114 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 window.Tippy = _tippy2.default;
 var plugin = {
-    install: function install(Vue, options) {
-        Vue.directive('tippy-html', {
-            componentUpdated: function componentUpdated(el) {
-                var els = el._tipppyReferences;
-                if (els && els.length > 0) {
-                    Vue.nextTick(function () {
-                        els.forEach(function (et) {
-                            if (et._tippy) {
-                                var content = et._tippy.popper.querySelector('.tippy-content');
-                                content.innerHTML = el.innerHTML;
-                            }
-                        });
-                    });
-                }
-            },
-            unbind: function unbind(el) {
-                delete el._tipppyReference;
-            }
-        });
+  install: function install(Vue, options) {
+    Vue.directive('tippy-html', {
+      componentUpdated: function componentUpdated(el) {
+        var els = el._tipppyReferences;
+        if (els && els.length > 0) {
+          Vue.nextTick(function () {
+            els.forEach(function (et) {
+              if (et._tippy) {
+                var content = et._tippy.popper.querySelector('.tippy-content');
+                content.innerHTML = el.innerHTML;
+              }
+            });
+          });
+        }
+      },
+      unbind: function unbind(el) {
+        delete el._tipppyReference;
+      }
+    });
 
-        function createTippy(el, binding, vnode) {
-            var handlers = vnode.data && vnode.data.on || vnode.componentOptions && vnode.componentOptions.listeners;
+    function createTippy(el, binding, vnode) {
+      var handlers = vnode.data && vnode.data.on || vnode.componentOptions && vnode.componentOptions.listeners;
 
-            var opts = binding.value || {};
+      var opts = binding.value || {};
 
-            opts = Object.assign({ dynamicTitle: true, reactive: false, showOnLoad: false }, options, opts);
+      opts = Object.assign({ dynamicTitle: true, reactive: false, showOnLoad: false }, options, opts);
 
-            if (handlers && handlers['show']) {
-                opts.onShow = function () {
-                    handlers['show'].fns();
-                };
-            }
+      if (handlers && handlers['show']) {
+        opts.onShow = function () {
+          handlers['show'].fns();
+        };
+      }
 
-            if (handlers && handlers['shown']) {
-                opts.onShown = function () {
-                    handlers['shown'].fns();
-                };
-            }
-            if (handlers && handlers['hidden']) {
-                opts.onHidden = function () {
-                    handlers['hidden'].fns();
-                };
-            }
+      if (handlers && handlers['shown']) {
+        opts.onShown = function () {
+          handlers['shown'].fns();
+        };
+      }
+      if (handlers && handlers['hidden']) {
+        opts.onHidden = function () {
+          handlers['hidden'].fns();
+        };
+      }
 
-            if (handlers && handlers['hide']) {
-                opts.onHide = function () {
-                    handlers['hide'].fns();
-                };
-            }
+      if (handlers && handlers['hide']) {
+        opts.onHide = function () {
+          handlers['hide'].fns();
+        };
+      }
 
-            if (opts.html) {
+      if (opts.html) {
+        if (opts.reactive) {
+          opts.html = document.querySelector(opts.html);
+        } else {
+          if (document.querySelector(opts.html)._tipppyReferences) {
+            document.querySelector(opts.html)._tipppyReferences.push(el);
+          } else {
+            document.querySelector(opts.html)._tipppyReferences = [el];
+          }
+        }
+      }
 
-                if (opts.reactive) {
-                    opts.html = document.querySelector(opts.html);
-                } else {
-                    if (document.querySelector(opts.html)._tipppyReferences) {
-                        document.querySelector(opts.html)._tipppyReferences.push(el);
-                    } else {
-                        document.querySelector(opts.html)._tipppyReferences = [el];
-                    }
-                }
-            }
+      if (opts.html || el.getAttribute('data-tippy-html')) {
+        opts.dynamicTitle = false;
+      }
 
-            if (opts.html || el.getAttribute('data-tippy-html')) {
-                opts.dynamicTitle = false;
-            }
+      new _tippy2.default(el, opts);
 
-            new _tippy2.default(el, opts);
+      if (el.getAttribute('data-tippy-html')) {
+        if (document.querySelector(el.getAttribute('data-tippy-html'))._tipppyReferences) {
+          document.querySelector(el.getAttribute('data-tippy-html'))._tipppyReferences.push(el);
+        } else {
+          document.querySelector(el.getAttribute('data-tippy-html'))._tipppyReferences = [el];
+        }
+      }
 
-            if (el.getAttribute('data-tippy-html')) {
-                if (document.querySelector(el.getAttribute('data-tippy-html'))._tipppyReferences) {
-                    document.querySelector(el.getAttribute('data-tippy-html'))._tipppyReferences.push(el);
-                } else {
-                    document.querySelector(el.getAttribute('data-tippy-html'))._tipppyReferences = [el];
-                }
-            }
+      if (opts.showOnLoad) {
+        el._tippy.show();
+      }
+    }
 
-            if (opts.showOnLoad) {
-                el._tippy.show();
-            }
+    Vue.directive('tippy', {
+      inserted: function inserted(el, binding, vnode) {
+        createTippy(el, binding, vnode);
+      },
+      unbind: function unbind(el) {
+        el._tippy && el._tippy.destroy();
+      },
+      componentUpdated: function componentUpdated(el, binding, vnode) {
+        var opts = binding.value || {};
+        var oldOpts = binding.oldValue || {};
+
+        if (el._tippy && JSON.stringify(opts) !== JSON.stringify(oldOpts)) {
+          createTippy(el, binding, vnode);
         }
 
-        Vue.directive('tippy', {
-            inserted: function inserted(el, binding, vnode) {
-                createTippy(el, binding, vnode);
-            },
-            unbind: function unbind(el) {
-                el._tippy && el._tippy.destroy();
-            },
-            componentUpdated: function componentUpdated(el, binding, vnode) {
-                var opts = binding.value || {};
-                var oldOpts = binding.oldValue || {};
-
-                if (el._tippy && JSON.stringify(opts) !== JSON.stringify(oldOpts)) {
-                    createTippy(el, binding, vnode);
-                }
-
-                if (el._tippy && opts.show) {
-                    el._tippy.show();
-                } else if (el._tippy && !opts.show && opts.trigger === 'manual') {
-                    el._tippy.hide();
-                }
-            }
-        });
-    }
+        if (el._tippy && opts.show) {
+          el._tippy.show();
+        } else if (el._tippy && !opts.show && opts.trigger === 'manual') {
+          el._tippy.hide();
+        }
+      }
+    });
+  }
 };
 
 if (typeof window !== 'undefined' && window.Vue) {
-    window.Vue.use(plugin);
+  window.Vue.use(plugin);
 }
 
 exports.default = plugin;
