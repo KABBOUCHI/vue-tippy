@@ -52,7 +52,7 @@
     "babel-plugin-syntax-jsx": "^6.18.0",
     "babel-plugin-transform-object-rest-spread": "^6.23.0",
     "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-plugin-transform-vue-jsx": "^3.4.0",
+    "babel-plugin-transform-vue-jsx": "^3.5.1",
     "babel-preset-env": "^1.4.0",
     "chai": "^3.5.0",
     "chai-dom": "^1.7.0",
@@ -76,7 +76,7 @@
     "mocha": "^3.3.0",
     "mocha-css": "^1.0.1",
     "null-loader": "^0.1.1",
-    "postcss": "^6.0.16",
+    "postcss": "^6.0.17",
     "postcss-cssnext": "^2.10.0",
     "pre-commit": "^1.2.0",
     "precommit-hook": "^3.0.0",
@@ -93,9 +93,9 @@
     "vue-loader": "^12.0.0",
     "vue-template-compiler": "^2.5.13",
     "webpack": "^2.5.0",
-    "webpack-bundle-analyzer": "^2.9.2",
+    "webpack-bundle-analyzer": "^2.10.0",
     "webpack-dashboard": "^0.4.0",
-    "webpack-dev-server": "^2.11.0",
+    "webpack-dev-server": "^2.11.1",
     "webpack-merge": "^4.0.0",
     "yarn-or-npm": "^2.0.0"
   },
@@ -136,6 +136,6 @@
   ],
   "dependencies": {
     "popper.js": "^1.13.0",
-    "tippy.js": "^2.0.8"
+    "tippy.js": "^2.1.1"
   }
 }

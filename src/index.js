@@ -67,6 +67,10 @@ const plugin = {
         }
       }
 
+      if (opts.html || el.getAttribute('data-tippy-html')) {
+        opts.dynamicTitle = false
+      }
+
       new Tippy(el, opts)
 
       if (el.getAttribute('data-tippy-html')) {
