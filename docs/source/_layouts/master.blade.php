@@ -14,7 +14,8 @@
     @yield('meta')
     <link rel="stylesheet" href="{{ $page->baseUrl . mix('/css/main.css') }}">
     {{--<link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/2/docsearch.min.css">--}}
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     @stack('headScripts')
 </head>
 <body data-sidebar-visible="true" class="font-sans font-normal text-black leading-normal">
@@ -22,8 +23,8 @@
 @yield('body')
 
 @if ($page->production)
-    <!-- Google Analytics  -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-109068504-1"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-46282921-2"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
 
@@ -33,8 +34,9 @@
 
         gtag('js', new Date());
 
-        // gtag('config', 'UA-109068504-1');
+        gtag('config', 'UA-46282921-2');
     </script>
+
 @endif
 
 @stack('scripts')
