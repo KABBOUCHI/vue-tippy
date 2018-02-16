@@ -12,7 +12,7 @@
     <title>Themes - VueTippy</title>
     <meta name="theme-color" content="#ffffff">
     
-    <link rel="stylesheet" href="https://kabbouchi.github.io/vue-tippy/css/main.css?id=3cb18603ac48daa4f0e7">
+    <link rel="stylesheet" href="https://kabbouchi.github.io/vue-tippy/css/main.css?id=2f716a87e4c948a98c6f">
     
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"
             integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
@@ -288,6 +288,91 @@ Gradient
     <pre class="language-html" style="margin: 0; padding: 0;"><code>&lt;button title=&quot;Cool huh?&quot; 
         v-tippy=&quot;{ animateFill: false, theme : &#039;light bordered&#039; }&quot;&gt;
     Light
+&lt;/button&gt;</code></pre>
+  </div>
+</div>
+<h2>Creating themes</h2>
+<p>Creating a theme for your tooltips is easy. If you wanted to make a theme called honeybee, then your CSS would look like:</p>
+<pre><code class="language-css">.tippy-tooltip.honeybee-theme {
+  /* Your styling here. Example: */
+  background-color: yellow;
+  border: 2px solid orange;
+}</code></pre>
+<p>Themes need the -theme suffix.</p>
+<h4>Style the arrow</h4>
+<p>To style the arrow, target the element with a <span class="text-purple-dark">tippy-arrow</span> or <span class="text-purple-dark">tippy-roundarrow</span> class:</p>
+<pre><code class="language-css">.tippy-popper[x-placement^=top] .tippy-tooltip.honeybee-theme .tippy-arrow {
+  /* Your arrow styling here. */
+}</code></pre>
+<p>In this example, the arrow is being styled when the tooltip placement begins with <span class="text-purple-dark">top</span>. You will need to target a specific popper placement (top, bottom, left, right) because the arrow will change based on the placement.</p>
+<p>Sharp arrows are CSS triangles which use the border trick, while round arrows are an SVG shape which can have their color changed with <span class="text-purple-dark">fill</span>.</p>
+<h4>Style content directly</h4>
+<p><span></span>  </p>
+<pre><code class="language-css">.tippy-tooltip.honeybee-theme .tippy-content {
+  /* Your styling here. Example: */
+  color: black;
+}</code></pre>
+<h4>Style the animateFill backdrop</h4>
+<p><span></span>  </p>
+<pre><code class="language-css">.tippy-tooltip.honeybee-theme .tippy-backdrop {
+  /* Your styling here. Example: */
+  background-color: yellow;
+}</code></pre>
+<h4>Specify a theme</h4>
+<p><span></span></p>
+<div class="rounded overflow-hidden border-2 border-grey-light mb-8 bg-white">
+  <div class="border-b-2 border-grey-light p-4 text-center">
+    <button class="btn mt-2 mb-2" 
+            title="I'm a tooltip" 
+            v-tippy="{ theme : 'honeybee' , animateFill : false}" 
+     >
+       Honeybee theme
+    </button>
+  </div>
+  <div class="p-4 bg-grey-lightest">
+    <pre class="language-html" style="margin: 0; padding: 0;"><code>&lt;button title=&quot;I&#039;m a tooltip&quot; v-tippy=&quot;{ theme : &#039;honeybee&#039; }&quot;&gt;
+    Honeybee theme
+&lt;/button&gt;
+
+&lt;style&gt;
+    .tippy-tooltip.honeybee-theme {
+        background-color: yellow;
+        border: 2px solid orange;
+        color: black;
+    }
+    .tippy-popper[x-placement^=&#039;top&#039;] 
+    .tippy-tooltip.honeybee-theme 
+    .tippy-arrow {
+        border-top: 7px solid orange;
+    }
+    .tippy-popper[x-placement^=&#039;top&#039;] 
+    .tippy-tooltip.honeybee-theme 
+    .tippy-arrow::after {
+        content: &#039;&#039;;
+        position: absolute;
+        top: -8px;
+        left: -6px;
+        border-left: 6px solid transparent;
+        border-right: 6px solid transparent;
+        border-top: 6px solid yellow;
+    }
+&lt;/style&gt;</code></pre>
+  </div>
+</div>
+<h4>Multiple themes</h4>
+<p><span></span>  </p>
+<div class="rounded overflow-hidden border-2 border-grey-light mb-8 bg-white">
+  <div class="border-b-2 border-grey-light p-4 text-center">
+    <button class="btn mt-2 mb-2" 
+            title="I'm a tooltip" 
+            v-tippy="{ theme : 'honeybee light' , animateFill : false}" 
+     >
+       Multiple themes
+    </button>
+  </div>
+  <div class="p-4 bg-grey-lightest">
+    <pre class="language-html" style="margin: 0; padding: 0;"><code>&lt;button title=&quot;I&#039;m a tooltip&quot; v-tippy=&quot;{ theme : &#039;honeybee light&#039; }&quot;&gt;
+    Multiple themes
 &lt;/button&gt;</code></pre>
   </div>
 </div>                    </div>
