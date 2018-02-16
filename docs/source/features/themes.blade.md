@@ -83,7 +83,7 @@ Creating a theme for your tooltips is easy. If you wanted to make a theme called
 }
 ```
 
-Themes need the -theme suffix.
+Themes need the <span class="text-purple-dark">-theme</span> suffix.
 
 #### Style the arrow
 
