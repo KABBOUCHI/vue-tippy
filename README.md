@@ -9,6 +9,10 @@
 <a href="https://github.com/KABBOUCHI/vue-tippy/tree/v1">For tippyJS v1 use v1 branch</a>
 </aside>
 
+## Documentation
+
+For full documentation, visit [github.com/KABBOUCHI/vue-tippy](https://github.com/KABBOUCHI/vue-tippy).
+
 ## Installation
 
 ```bash
