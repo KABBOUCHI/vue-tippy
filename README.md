@@ -11,7 +11,7 @@
 
 ## Documentation
 
-For full documentation, visit [github.com/KABBOUCHI/vue-tippy](https://github.com/KABBOUCHI/vue-tippy).
+For full documentation, visit [https://kabbouchi.github.io/vue-tippy/](https://kabbouchi.github.io/vue-tippy/).
 
 ## Installation
 
