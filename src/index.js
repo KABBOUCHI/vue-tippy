@@ -88,7 +88,9 @@ const plugin = {
 
     Vue.directive('tippy', {
       inserted (el, binding, vnode) {
-        createTippy(el, binding, vnode)
+        Vue.nextTick(() => {
+          createTippy(el, binding, vnode)
+        })
       },
       unbind (el) {
         el._tippy && el._tippy.destroy()
