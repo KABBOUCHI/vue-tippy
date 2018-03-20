@@ -100,7 +100,9 @@ const plugin = {
         const oldOpts = binding.oldValue || {}
 
         if (el._tippy && (JSON.stringify(opts) !== JSON.stringify(oldOpts))) {
-          createTippy(el, binding, vnode)
+          Vue.nextTick(() => {
+            createTippy(el, binding, vnode)
+          })
         }
 
         if (el._tippy && opts.show) {

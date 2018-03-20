@@ -1,5 +1,5 @@
 /*!
- * vue-tippy v2.0.9
+ * vue-tippy v2.0.10
  * (c) 2018 Georges KABBOUCHI
  * Released under the MIT License.
  */
@@ -2388,7 +2388,9 @@ var plugin = {
         var oldOpts = binding.oldValue || {};
 
         if (el._tippy && JSON.stringify(opts) !== JSON.stringify(oldOpts)) {
-          createTippy(el, binding, vnode);
+          Vue.nextTick(function () {
+            createTippy(el, binding, vnode);
+          });
         }
 
         if (el._tippy && opts.show) {
