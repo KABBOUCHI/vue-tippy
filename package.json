@@ -1,6 +1,6 @@
 {
   "name": "vue-tippy",
-  "version": "2.0.10",
+  "version": "2.0.11",
   "description": "Directive wrapper for Tippy.js",
   "author": "Georges KABBOUCHI <georges.kabbouchi@gmail.com>",
   "jsnext:main": "src/index.js",
@@ -76,7 +76,7 @@
     "mocha": "^3.3.0",
     "mocha-css": "^1.0.1",
     "null-loader": "^0.1.1",
-    "postcss": "^6.0.20",
+    "postcss": "^6.0.21",
     "postcss-cssnext": "^2.10.0",
     "pre-commit": "^1.2.0",
     "precommit-hook": "^3.0.0",
@@ -135,7 +135,7 @@
     "vue"
   ],
   "dependencies": {
-    "popper.js": "^1.14.1",
-    "tippy.js": "^2.3.0"
+    "popper.js": "^1.14.3",
+    "tippy.js": "^2.5.0"
   }
 }
