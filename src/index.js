@@ -59,10 +59,17 @@ const plugin = {
         if (opts.reactive) {
           opts.html = document.querySelector(opts.html)
         } else {
-          if (document.querySelector(opts.html)._tipppyReferences) {
-            document.querySelector(opts.html)._tipppyReferences.push(el)
+          const htmlElement = document.querySelector(opts.html)
+
+          if (htmlElement) {
+            if (htmlElement._tipppyReferences) {
+              htmlElement._tipppyReferences.push(el)
+            } else {
+              htmlElement._tipppyReferences = [el]
+            }
           } else {
-            document.querySelector(opts.html)._tipppyReferences = [el]
+            console.error(`[VueTippy] Selector ${opts.html} not found`)
+            return
           }
         }
       }
@@ -71,15 +78,21 @@ const plugin = {
         opts.dynamicTitle = false
       }
 
-      new Tippy(el, opts)
-
       if (el.getAttribute('data-tippy-html')) {
-        if (document.querySelector(el.getAttribute('data-tippy-html'))._tipppyReferences) {
-          document.querySelector(el.getAttribute('data-tippy-html'))._tipppyReferences.push(el)
+        const htmlEl = document.querySelector(el.getAttribute('data-tippy-html'))
+        if (htmlEl) {
+          if (htmlEl._tipppyReferences) {
+            htmlEl._tipppyReferences.push(el)
+          } else {
+            htmlEl._tipppyReferences = [el]
+          }
         } else {
-          document.querySelector(el.getAttribute('data-tippy-html'))._tipppyReferences = [el]
+          console.error(`[VueTippy] Selector '${el.getAttribute('data-tippy-html')}' not found`, el)
+          return
         }
       }
+
+      new Tippy(el, opts)
 
       if (opts.showOnLoad) {
         el._tippy.show()
