@@ -1,5 +1,4 @@
-import Tippy from 'tippy.js/dist/tippy.standalone'
-import 'tippy.js/dist/tippy.css'
+import Tippy from 'tippy.js/dist/tippy.all'
 import './css/themes.css'
 
 window.Tippy = Tippy
