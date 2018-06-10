@@ -4467,12 +4467,14 @@ var plugin = {
       }
 
       if (opts.html) {
-        if (opts.reactive) {
-          opts.html = document.querySelector(opts.html);
-        } else {
-          var htmlElement = document.querySelector(opts.html);
 
-          if (htmlElement) {
+        var selector = opts.html;
+
+        if (opts.reactive || !(selector instanceof String)) {
+          opts.html = selector instanceof Element ? selector : selector instanceof Vue ? selector.$el : document.querySelector(selector);
+        } else {
+
+          if (document.querySelector(opts.html)) {
             if (htmlElement._tipppyReferences) {
               htmlElement._tipppyReferences.push(el);
             } else {
@@ -4508,6 +4510,10 @@ var plugin = {
       if (opts.showOnLoad) {
         el._tippy.show();
       }
+    }
+
+    function isObjectLiteral(value) {
+      return {}.toString.call(value) === '[object Object]';
     }
 
     Vue.directive('tippy', {

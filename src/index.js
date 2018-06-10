@@ -55,12 +55,12 @@ const plugin = {
       }
 
       if (opts.html) {
-        if (opts.reactive) {
-          opts.html = document.querySelector(opts.html)
-        } else {
-          const htmlElement = document.querySelector(opts.html)
+        var selector = opts.html
 
-          if (htmlElement) {
+        if (opts.reactive || !(selector instanceof String)) {
+          opts.html = selector instanceof Element ? selector : (selector instanceof Vue ? selector.$el : document.querySelector(selector))
+        } else {
+          if (document.querySelector(opts.html)) {
             if (htmlElement._tipppyReferences) {
               htmlElement._tipppyReferences.push(el)
             } else {
@@ -96,6 +96,10 @@ const plugin = {
       if (opts.showOnLoad) {
         el._tippy.show()
       }
+    }
+
+    function isObjectLiteral (value) {
+      return {}.toString.call(value) === '[object Object]'
     }
 
     Vue.directive('tippy', {
