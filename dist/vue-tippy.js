@@ -1,5 +1,5 @@
 /*!
- * vue-tippy v2.0.14
+ * vue-tippy v2.0.15
  * (c) 2018 Georges KABBOUCHI
  * Released under the MIT License.
  */
@@ -4478,8 +4478,7 @@ var plugin = {
 
       if (opts.html) {
         var selector = opts.html;
-
-        if (opts.reactive || !(selector instanceof String)) {
+        if (opts.reactive || !(typeof selector === 'string')) {
           opts.html = selector instanceof Element ? selector : selector instanceof Vue ? selector.$el : document.querySelector(selector);
         } else {
           var htmlElement = document.querySelector(opts.html);
