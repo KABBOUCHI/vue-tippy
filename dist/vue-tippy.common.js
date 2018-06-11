@@ -4472,7 +4472,8 @@ var plugin = {
         if (opts.reactive || !(selector instanceof String)) {
           opts.html = selector instanceof Element ? selector : selector instanceof Vue ? selector.$el : document.querySelector(selector);
         } else {
-          if (document.querySelector(opts.html)) {
+          var htmlElement = document.querySelector(opts.html);
+          if (htmlElement) {
             if (htmlElement._tipppyReferences) {
               htmlElement._tipppyReferences.push(el);
             } else {

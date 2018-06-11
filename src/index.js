@@ -56,11 +56,11 @@ const plugin = {
 
       if (opts.html) {
         var selector = opts.html
-
         if (opts.reactive || !(typeof selector === 'string')) {
           opts.html = selector instanceof Element ? selector : (selector instanceof Vue ? selector.$el : document.querySelector(selector))
         } else {
-          if (document.querySelector(opts.html)) {
+          const htmlElement = document.querySelector(opts.html)
+          if (htmlElement) {
             if (htmlElement._tipppyReferences) {
               htmlElement._tipppyReferences.push(el)
             } else {
