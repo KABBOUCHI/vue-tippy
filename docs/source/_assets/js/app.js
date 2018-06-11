@@ -1,6 +1,6 @@
 // const anchorJS = require('anchor-js')
 const Prism = require('./prism')
-import VueTippy from 'vue-tippy';
+import VueTippy from '../../../../dist/vue-tippy';
 
 // window.anchors = new anchorJS()
 window.Vue = require('vue')
