@@ -1,27 +1,28 @@
 <?php
 
 return [
-    'Introduction'    => [
-        'What is VueTippy?' => '/',
-    ],
-    'Getting Started' => [
-        'Installation and Configuration' => 'installation',
-    ],
-    'Features'        => [
-        'Default'              => 'features/default',
-        'Placement'            => 'features/placement',
-        'Arrows'               => 'features/arrows',
-        'Triggers'             => 'features/triggers',
-        'Interactivity'        => 'features/interactivity',
-        'Animations'           => 'features/animations',
-        'Transitions & Delays' => 'features/transitions-and-delays',
-        'Themes'               => 'features/themes',
-        'Callbacks'            => 'features/callbacks',
-        'HTML'                 => 'features/html',
-        'Misc'                 => 'features/misc',
+	'Introduction'    => [
+		'What is VueTippy?' => '/',
+	],
+	'Getting Started' => [
+		'Installation and Configuration' => 'installation',
+	],
+	'Features'        => [
+		'Default'              => 'features/default',
+		'Placement'            => 'features/placement',
+		'Arrows'               => 'features/arrows',
+		'Triggers'             => 'features/triggers',
+		'Interactivity'        => 'features/interactivity',
+		'Animations'           => 'features/animations',
+		'Transitions & Delays' => 'features/transitions-and-delays',
+		'Themes'               => 'features/themes',
+		'Callbacks'            => 'features/callbacks',
+		'Component'            => 'features/component',
+		'HTML'                 => 'features/html',
+		'Misc'                 => 'features/misc',
 
-    ],
-    'Examples'        => [
-        'Example1' => 'examples/example-1'
-    ],
+	],
+	'Examples'        => [
+		'Example1' => 'examples/example-1'
+	],
 ];

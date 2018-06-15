@@ -4469,7 +4469,7 @@ var plugin = {
       if (opts.html) {
         var selector = opts.html;
         if (opts.reactive || !(typeof selector === 'string')) {
-          opts.html = selector instanceof Element ? selector : selector instanceof Vue ? selector.$el : document.querySelector(selector);
+          opts.html = selector instanceof window.Element ? selector : selector instanceof Vue ? selector.$el : document.querySelector(selector);
         } else {
           var htmlElement = document.querySelector(opts.html);
           if (htmlElement) {
@@ -4510,10 +4510,6 @@ var plugin = {
       }
     }
 
-    function isObjectLiteral(value) {
-      return {}.toString.call(value) === '[object Object]';
-    }
-
     Vue.directive('tippy', {
       inserted: function inserted(el, binding, vnode) {
         Vue.nextTick(function () {
@@ -4538,6 +4534,13 @@ var plugin = {
         } else if (el._tippy && !opts.show && opts.trigger === 'manual') {
           el._tippy.hide();
         }
+      }
+    });
+
+    Vue.component('tippy', {
+      props: ['ref'],
+      mounted: function mounted() {
+        console.log(this);
       }
     });
   }

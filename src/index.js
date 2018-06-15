@@ -98,10 +98,6 @@ const plugin = {
       }
     }
 
-    function isObjectLiteral (value) {
-      return {}.toString.call(value) === '[object Object]'
-    }
-
     Vue.directive('tippy', {
       inserted (el, binding, vnode) {
         Vue.nextTick(() => {
@@ -126,6 +122,85 @@ const plugin = {
         } else if (el._tippy && !opts.show && opts.trigger === 'manual') {
           el._tippy.hide()
         }
+      }
+    })
+
+    Vue.component('tippy', {
+      template: `<div><slot></slot></div>`,
+      props: {
+        to: {
+          type: String,
+          required: true
+        },
+        placement: {
+          type: String,
+          default: 'top'
+        },
+        theme: {
+          type: String,
+          default: 'light'
+        },
+        interactive: {
+          type: [Boolean, String],
+          default: false
+        },
+        arrow: {
+          type: [Boolean, String],
+          default: false
+        },
+        arrowType: {
+          type: String,
+          default: 'sharp'
+        },
+        arrowTransform: {
+          type: String,
+          default: ''
+        },
+        trigger: {
+          type: String,
+          default: 'mouseenter focus'
+        },
+        interactiveBorder: {
+          type: Number,
+          default: 2
+        },
+        animation: {
+          type: String,
+          default: 'shift-away'
+        },
+        animationFill: {
+          type: [Boolean, String],
+          default: true
+        },
+        distance: {
+          type: Number,
+          default: 10
+        },
+
+        offset: {
+          type: Number,
+          default: 0
+        },
+        followCursor: {
+          type: [Boolean, String],
+          default: false
+        },
+        sticky: {
+          type: [Boolean, String],
+          default: false
+        },
+        size: {
+          type: String,
+          default: 'regular'
+        }
+      },
+      mounted: function () {
+        document
+                    .querySelectorAll(`[name=${this.to}]`)
+                    .forEach(elem => {
+                      const value = Object.assign({ reactive: true, html: this.$el }, this.$props)
+                      createTippy(elem, { value }, this.$vnode)
+                    })
       }
     })
   }
