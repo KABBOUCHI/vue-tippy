@@ -5,9 +5,6 @@ description: "Tooltip as component"
 ---
 @include('_partials.work-in-progress')
 
-
-<h3>Reactive set to false</h3>
-
 @component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
 
     <tippy to="tippy01" @@hidden="onHidden" interactive="true" theme="light" distance="20">
@@ -44,7 +41,7 @@ description: "Tooltip as component"
         Maiores et perferendis eaque, exercitationem praesentium nihil.
     </p>
     
-    <p> Timer:  @{{ timer }} </p> 
+    <p> Timer:  { { timer } }  </p> 
     
     <button @click="timer +=3"> 
         Increase
