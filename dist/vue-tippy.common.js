@@ -1,5 +1,5 @@
 /*!
- * vue-tippy v2.0.15
+ * vue-tippy v2.0.16
  * (c) 2018 Georges KABBOUCHI
  * Released under the MIT License.
  */
@@ -4469,7 +4469,7 @@ var plugin = {
       if (opts.html) {
         var selector = opts.html;
         if (opts.reactive || !(typeof selector === 'string')) {
-          opts.html = selector instanceof window.Element ? selector : selector instanceof Vue ? selector.$el : document.querySelector(selector);
+          opts.html = selector instanceof Element ? selector : selector instanceof Vue ? selector.$el : document.querySelector(selector);
         } else {
           var htmlElement = document.querySelector(opts.html);
           if (htmlElement) {
@@ -4538,9 +4538,81 @@ var plugin = {
     });
 
     Vue.component('tippy', {
-      props: ['ref'],
+      template: '<div><slot></slot></div>',
+      props: {
+        to: {
+          type: String,
+          required: true
+        },
+        placement: {
+          type: String,
+          default: 'top'
+        },
+        theme: {
+          type: String,
+          default: 'light'
+        },
+        interactive: {
+          type: [Boolean, String],
+          default: false
+        },
+        arrow: {
+          type: [Boolean, String],
+          default: false
+        },
+        arrowType: {
+          type: String,
+          default: 'sharp'
+        },
+        arrowTransform: {
+          type: String,
+          default: ''
+        },
+        trigger: {
+          type: String,
+          default: 'mouseenter focus'
+        },
+        interactiveBorder: {
+          type: Number,
+          default: 2
+        },
+        animation: {
+          type: String,
+          default: 'shift-away'
+        },
+        animationFill: {
+          type: [Boolean, String],
+          default: true
+        },
+        distance: {
+          type: Number,
+          default: 10
+        },
+
+        offset: {
+          type: Number,
+          default: 0
+        },
+        followCursor: {
+          type: [Boolean, String],
+          default: false
+        },
+        sticky: {
+          type: [Boolean, String],
+          default: false
+        },
+        size: {
+          type: String,
+          default: 'regular'
+        }
+      },
       mounted: function mounted() {
-        console.log(this);
+        var _this = this;
+
+        document.querySelectorAll('[name=' + this.to + ']').forEach(function (elem) {
+          var value = Object.assign({ reactive: true, html: _this.$el }, _this.$props);
+          createTippy(elem, { value: value }, _this.$vnode);
+        });
       }
     });
   }
