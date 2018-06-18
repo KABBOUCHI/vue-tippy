@@ -33,24 +33,24 @@ const plugin = {
 
       if (handlers && handlers['show']) {
         opts.onShow = function () {
-          handlers['show'].fns()
+          handlers['show'].fns(el, vnode)
         }
       }
 
       if (handlers && handlers['shown']) {
         opts.onShown = function () {
-          handlers['shown'].fns()
+          handlers['shown'].fns(el, vnode)
         }
       }
       if (handlers && handlers['hidden']) {
         opts.onHidden = function () {
-          handlers['hidden'].fns()
+          handlers['hidden'].fns(el, vnode)
         }
       }
 
       if (handlers && handlers['hide']) {
         opts.onHide = function () {
-          handlers['hide'].fns()
+          handlers['hide'].fns(el, vnode)
         }
       }
 
