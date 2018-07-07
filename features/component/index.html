@@ -77,7 +77,7 @@
                     </div>
                     <p class="text-center">
                         <a href="https://github.com/kabbouchi/vue-tippy/releases"
-                           class="text-sm hover:text-grey-dark text-grey font-semibold">v2.0.16</a>
+                           class="text-sm hover:text-grey-dark text-grey font-semibold">v2.0.18</a>
                     </p>
                 </div>
                 <div class="relative">
@@ -236,7 +236,7 @@
 </div>
 <div class="rounded overflow-hidden border-2 border-grey-light mb-8 bg-white">
   <div class="border-b-2 border-grey-light p-4 text-center">
-    <tippy to="tippy01" @hidden="onHidden" interactive="true" theme="light" distance="20">
+    <tippy to="tippy01" @init="onTippyInit" @hidden="onHidden" interactive="true" theme="light" :distance="20">
         <div class="max-w-md w-full">
              <div class="m-2">
                <div class="text-black font-bold text-xl">Can coffee make you a better developer?</div>
@@ -257,10 +257,11 @@
   </div>
   <div class="p-4 bg-grey-lightest">
     <pre class="language-html" style="margin: 0; padding: 0;"><code>&lt;tippy  to=&quot;tippy01&quot; 
+        @init=&quot;onTippyInit&quot;
         @hidden=&quot;onHidden&quot; 
         interactive=&quot;true&quot; 
         theme=&quot;light&quot; 
-        distance=&quot;20&quot;
+        :distance=&quot;20&quot;
 &gt;
     &lt;div&gt;
         Can coffee make you a better developer?
