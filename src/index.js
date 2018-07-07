@@ -96,6 +96,10 @@ const plugin = {
       if (opts.showOnLoad) {
         el._tippy.show()
       }
+
+      Vue.nextTick(() => {
+        if (handlers && handlers['init']) { handlers['init'].fns(el._tippy, el) }
+      })
     }
 
     Vue.directive('tippy', {

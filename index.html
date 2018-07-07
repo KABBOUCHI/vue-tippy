@@ -293,7 +293,7 @@
     </button>
 
 
-    <button class="btn" data-tippy-html="#template" data-tippy-interactiveBorder="15"
+    <button class="btn" @init="onTippyInit" data-tippy-html="#template" data-tippy-interactiveBorder="15"
             data-tippy-arrowType="round" data-tippy-trigger="click" data-tippy-theme="light"
             data-tippy-arrowTransform="scale(2, 2.5) translateY(2.5px)" data-tippy-distance="25"
             data-tippy-animation="scale" data-tippy-interactive="true" data-tippy-arrow="true" v-tippy>
@@ -392,7 +392,12 @@
       },
       alert(data) {
         alert(data)
-      }
+      },
+        onTippyInit(tippy) {
+            console.log(tippy)
+            console.log(tippy.popper)
+            console.log(tippy.popper.id)
+        }
     }
   })
 </script>
