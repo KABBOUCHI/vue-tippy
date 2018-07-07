@@ -7,7 +7,7 @@ description: "Tooltip as component"
 
 @component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
 
-    <tippy to="tippy01" @@hidden="onHidden" interactive="true" theme="light" distance="20">
+    <tippy to="tippy01" @@init="onTippyInit" @@hidden="onHidden" interactive="true" theme="light" :distance="20">
         <div class="max-w-md w-full">
              <div class="m-2">
                <div class="text-black font-bold text-xl">Can coffee make you a better developer?</div>
@@ -27,10 +27,11 @@ description: "Tooltip as component"
     </button>
 @slot('code')
 <tippy  to="tippy01" 
+        @init="onTippyInit"
         @hidden="onHidden" 
         interactive="true" 
         theme="light" 
-        distance="20"
+        :distance="20"
 >
     <div>
         Can coffee make you a better developer?

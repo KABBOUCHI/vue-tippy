@@ -36,6 +36,10 @@ const app = new Vue({
         onHidden() {
             alert('onHidden');
         },
+        onTippyInit(tippy)
+        {
+            console.log('[onTippyInit]', tippy);
+        }
     }
 })
 
