@@ -1,5 +1,5 @@
 /*!
- * vue-tippy v2.0.17
+ * vue-tippy v2.0.18
  * (c) 2018 Georges KABBOUCHI
  * Released under the MIT License.
  */
