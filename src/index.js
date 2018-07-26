@@ -1,4 +1,5 @@
 import Tippy from 'tippy.js/dist/tippy.all'
+import './polyfill.js'
 import './css/themes.css'
 
 window.Tippy = Tippy
