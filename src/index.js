@@ -99,7 +99,9 @@ const plugin = {
       }
 
       Vue.nextTick(() => {
-        if (handlers && handlers['init']) { handlers['init'].fns(el._tippy, el) }
+        if (handlers && handlers['init']) {
+          handlers['init'].fns(el._tippy, el)
+        }
       })
     }
 
@@ -197,6 +199,26 @@ const plugin = {
         size: {
           type: String,
           default: 'regular'
+        },
+        watchProps: {
+          type: [Boolean, String],
+          default: false
+        }
+      },
+      watch: {
+        '$props': {
+          deep: true,
+          handler (val, oldVal) {
+            document
+                            .querySelectorAll(`[name=${this.to}]`)
+                            .forEach(elem => {
+                              if (!this.watchProps) return
+
+                              elem._tippy && elem._tippy.destroy()
+                              const value = Object.assign({ reactive: true, html: this.$el }, this.$props)
+                              createTippy(elem, { value }, this.$vnode)
+                            })
+          }
         }
       },
       mounted: function () {

@@ -14,11 +14,18 @@ const app = new Vue({
        message : 'Hello Vue!',
        timer : 0,
        counter : 0,
+        theme : 'light'
     },
     created () {
         setInterval(() => {
             this.timer++;
         },1000);
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 't') {
+                this.theme = this.theme == 'light' ? 'dark' : 'light';
+            }
+         });
     },
     methods: {
         onShow() {
