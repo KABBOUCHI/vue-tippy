@@ -70,265 +70,17 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-__webpack_require__(4);
-
-var plugin = {
-  install: function install(Vue, options) {
-    Vue.directive('tippy-html', {
-      componentUpdated: function componentUpdated(el) {
-        var els = el._tipppyReferences;
-        if (els && els.length > 0) {
-          Vue.nextTick(function () {
-            els.forEach(function (et) {
-              if (et._tippy) {
-                var content = et._tippy.popper.querySelector('.tippy-content');
-                content.innerHTML = el.innerHTML;
-              }
-            });
-          });
-        }
-      },
-      unbind: function unbind(el) {
-        delete el._tipppyReference;
-      }
-    });
-
-    function createTippy(el, binding, vnode) {
-      var handlers = vnode.data && vnode.data.on || vnode.componentOptions && vnode.componentOptions.listeners;
-
-      var opts = binding.value || {};
-
-      opts = Object.assign({ dynamicTitle: true, reactive: false, showOnLoad: false }, options, opts);
-
-      if (handlers && handlers['show']) {
-        opts.onShow = function () {
-          handlers['show'].fns(el, vnode);
-        };
-      }
-
-      if (handlers && handlers['shown']) {
-        opts.onShown = function () {
-          handlers['shown'].fns(el, vnode);
-        };
-      }
-      if (handlers && handlers['hidden']) {
-        opts.onHidden = function () {
-          handlers['hidden'].fns(el, vnode);
-        };
-      }
-
-      if (handlers && handlers['hide']) {
-        opts.onHide = function () {
-          handlers['hide'].fns(el, vnode);
-        };
-      }
-
-      if (opts.html) {
-        var selector = opts.html;
-        if (opts.reactive || !(typeof selector === 'string')) {
-          opts.html = selector instanceof Element ? selector : selector instanceof Vue ? selector.$el : document.querySelector(selector);
-        } else {
-          var htmlElement = document.querySelector(opts.html);
-          if (htmlElement) {
-            if (htmlElement._tipppyReferences) {
-              htmlElement._tipppyReferences.push(el);
-            } else {
-              htmlElement._tipppyReferences = [el];
-            }
-          } else {
-            console.error('[VueTippy] Selector ' + opts.html + ' not found');
-            return;
-          }
-        }
-      }
-
-      if (opts.html || el.getAttribute('data-tippy-html')) {
-        opts.dynamicTitle = false;
-      }
-
-      if (el.getAttribute('data-tippy-html')) {
-        var htmlEl = document.querySelector(el.getAttribute('data-tippy-html'));
-        if (htmlEl) {
-          if (htmlEl._tipppyReferences) {
-            htmlEl._tipppyReferences.push(el);
-          } else {
-            htmlEl._tipppyReferences = [el];
-          }
-        } else {
-          console.error('[VueTippy] Selector \'' + el.getAttribute('data-tippy-html') + '\' not found', el);
-          return;
-        }
-      }
-
-      new Tippy(el, opts);
-
-      if (opts.showOnLoad) {
-        el._tippy.show();
-      }
-
-      Vue.nextTick(function () {
-        if (handlers && handlers['init']) {
-          handlers['init'].fns(el._tippy, el);
-        }
-      });
-    }
-
-    Vue.directive('tippy', {
-      inserted: function inserted(el, binding, vnode) {
-        Vue.nextTick(function () {
-          createTippy(el, binding, vnode);
-        });
-      },
-      unbind: function unbind(el) {
-        el._tippy && el._tippy.destroy();
-      },
-      componentUpdated: function componentUpdated(el, binding, vnode) {
-        var opts = binding.value || {};
-        var oldOpts = binding.oldValue || {};
-
-        if (el._tippy && JSON.stringify(opts) !== JSON.stringify(oldOpts)) {
-          Vue.nextTick(function () {
-            createTippy(el, binding, vnode);
-          });
-        }
-
-        if (el._tippy && opts.show) {
-          el._tippy.show();
-        } else if (el._tippy && !opts.show && opts.trigger === 'manual') {
-          el._tippy.hide();
-        }
-      }
-    });
-
-    Vue.component('tippy', {
-      template: '<div><slot></slot></div>',
-      props: {
-        to: {
-          type: String,
-          required: true
-        },
-        placement: {
-          type: String,
-          default: 'top'
-        },
-        theme: {
-          type: String,
-          default: 'light'
-        },
-        interactive: {
-          type: [Boolean, String],
-          default: false
-        },
-        arrow: {
-          type: [Boolean, String],
-          default: false
-        },
-        arrowType: {
-          type: String,
-          default: 'sharp'
-        },
-        arrowTransform: {
-          type: String,
-          default: ''
-        },
-        trigger: {
-          type: String,
-          default: 'mouseenter focus'
-        },
-        interactiveBorder: {
-          type: Number,
-          default: 2
-        },
-        animation: {
-          type: String,
-          default: 'shift-away'
-        },
-        animationFill: {
-          type: [Boolean, String],
-          default: true
-        },
-        distance: {
-          type: Number,
-          default: 10
-        },
-
-        offset: {
-          type: Number,
-          default: 0
-        },
-        followCursor: {
-          type: [Boolean, String],
-          default: false
-        },
-        sticky: {
-          type: [Boolean, String],
-          default: false
-        },
-        size: {
-          type: String,
-          default: 'regular'
-        },
-        watchProps: {
-          type: [Boolean, String],
-          default: false
-        }
-      },
-      watch: {
-        '$props': {
-          deep: true,
-          handler: function handler(val, oldVal) {
-            var _this = this;
-
-            document.querySelectorAll('[name=' + this.to + ']').forEach(function (elem) {
-              if (!_this.watchProps) return;
-
-              elem._tippy && elem._tippy.destroy();
-              var value = Object.assign({ reactive: true, html: _this.$el }, _this.$props);
-              createTippy(elem, { value: value }, _this.$vnode);
-            });
-          }
-        }
-      },
-      mounted: function mounted() {
-        var _this2 = this;
-
-        document.querySelectorAll('[name=' + this.to + ']').forEach(function (elem) {
-          var value = Object.assign({ reactive: true, html: _this2.$el }, _this2.$props);
-          createTippy(elem, { value: value }, _this2.$vnode);
-        });
-      }
-    });
-  }
-};
-
-if (typeof window !== 'undefined' && window.Vue) {
-  window.Vue.use(plugin);
-}
-
-exports.default = plugin;
-
-/***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(5);
+var content = __webpack_require__(3);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // Prepare cssTransformation
 var transform;
@@ -336,7 +88,7 @@ var transform;
 var options = {}
 options.transform = transform
 // add the styles to the DOM
-var update = __webpack_require__(7)(content, options);
+var update = __webpack_require__(5)(content, options);
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -353,7 +105,7 @@ if(false) {
 }
 
 /***/ }),
-/* 2 */
+/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*!
@@ -4644,17 +4396,19 @@ return tippy;
 
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _tippy = __webpack_require__(2);
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _tippy = __webpack_require__(1);
 
 var _tippy2 = _interopRequireDefault(_tippy);
-
-__webpack_require__(1);
 
 __webpack_require__(0);
 
@@ -4662,121 +4416,13 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 window.Tippy = _tippy2.default;
 
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-// Production steps of ECMA-262, Edition 5, 15.4.4.18
-// Reference: http://es5.github.io/#x15.4.4.18
-if (!Array.prototype.forEach) {
-  Array.prototype.forEach = function (callback /*, thisArg*/) {
-    var T, k;
-
-    if (this == null) {
-      throw new TypeError('this is null or not defined');
-    }
-
-    // 1. Let O be the result of calling toObject() passing the
-    // |this| value as the argument.
-    var O = Object(this);
-
-    // 2. Let lenValue be the result of calling the Get() internal
-    // method of O with the argument "length".
-    // 3. Let len be toUint32(lenValue).
-    var len = O.length >>> 0;
-
-    // 4. If isCallable(callback) is false, throw a TypeError exception.
-    // See: http://es5.github.com/#x9.11
-    if (typeof callback !== 'function') {
-      throw new TypeError(callback + ' is not a function');
-    }
-
-    // 5. If thisArg was supplied, let T be thisArg; else let
-    // T be undefined.
-    if (arguments.length > 1) {
-      T = arguments[1];
-    }
-
-    // 6. Let k be 0.
-    k = 0;
-
-    // 7. Repeat while k < len.
-    while (k < len) {
-      var kValue;
-
-      // a. Let Pk be ToString(k).
-      //    This is implicit for LHS operands of the in operator.
-      // b. Let kPresent be the result of calling the HasProperty
-      //    internal method of O with argument Pk.
-      //    This step can be combined with c.
-      // c. If kPresent is true, then
-      if (k in O) {
-        // i. Let kValue be the result of calling the Get internal
-        // method of O with argument Pk.
-        kValue = O[k];
-
-        // ii. Call the Call internal method of callback with T as
-        // the this value and argument list containing kValue, k, and O.
-        callback.call(T, kValue, k, O);
-      }
-      // d. Increase k by 1.
-      k++;
-    }
-    // 8. return undefined.
-  };
-}
-
-if (typeof Object.assign !== 'function') {
-  // Must be writable: true, enumerable: false, configurable: true
-  Object.defineProperty(Object, 'assign', {
-    value: function assign(target, varArgs) {
-      // .length of function is 2
-      'use strict';
-
-      if (target == null) {
-        // TypeError if undefined or null
-        throw new TypeError('Cannot convert undefined or null to object');
-      }
-
-      var to = Object(target);
-
-      for (var index = 1; index < arguments.length; index++) {
-        var nextSource = arguments[index];
-
-        if (nextSource != null) {
-          // Skip over if undefined or null
-          for (var nextKey in nextSource) {
-            // Avoid bugs when hasOwnProperty is shadowed
-            if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
-              to[nextKey] = nextSource[nextKey];
-            }
-          }
-        }
-      }
-      return to;
-    },
-    writable: true,
-    configurable: true
-  });
-}
-
-if (window.NodeList && !NodeList.prototype.forEach) {
-  NodeList.prototype.forEach = function (callback, thisArg) {
-    thisArg = thisArg || window;
-    for (var i = 0; i < this.length; i++) {
-      callback.call(thisArg, this[i], i, this);
-    }
-  };
-}
+exports.default = './plugin';
 
 /***/ }),
-/* 5 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(6)(false);
+exports = module.exports = __webpack_require__(4)(false);
 // imports
 
 
@@ -4787,7 +4433,7 @@ exports.push([module.i, ".tippy-popper[x-placement^=top] .tippy-tooltip.light-th
 
 
 /***/ }),
-/* 6 */
+/* 4 */
 /***/ (function(module, exports) {
 
 /*
@@ -4869,7 +4515,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 7 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -4906,7 +4552,7 @@ var stylesInDom = {},
 	singletonElement = null,
 	singletonCounter = 0,
 	styleElementsInsertedAtTop = [],
-	fixUrls = __webpack_require__(8);
+	fixUrls = __webpack_require__(6);
 
 module.exports = function(list, options) {
 	if(typeof DEBUG !== "undefined" && DEBUG) {
@@ -5182,7 +4828,7 @@ function updateLink(linkElement, options, obj) {
 
 
 /***/ }),
-/* 8 */
+/* 6 */
 /***/ (function(module, exports) {
 
 

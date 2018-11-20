@@ -3,4 +3,4 @@ import './css/themes.css'
 
 window.Tippy = Tippy
 
-import './plugin'
+export default './plugin'
