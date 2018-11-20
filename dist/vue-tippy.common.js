@@ -1,5 +1,5 @@
 /*!
- * vue-tippy v2.0.20
+ * vue-tippy v2.0.21
  * (c) 2018 Georges KABBOUCHI
  * Released under the MIT License.
  */
@@ -81,242 +81,242 @@ module.exports =
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 __webpack_require__(4);
 
 var plugin = {
-    install: function install(Vue, options) {
-        Vue.directive('tippy-html', {
-            componentUpdated: function componentUpdated(el) {
-                var els = el._tipppyReferences;
-                if (els && els.length > 0) {
-                    Vue.nextTick(function () {
-                        els.forEach(function (et) {
-                            if (et._tippy) {
-                                var content = et._tippy.popper.querySelector('.tippy-content');
-                                content.innerHTML = el.innerHTML;
-                            }
-                        });
-                    });
-                }
-            },
-            unbind: function unbind(el) {
-                delete el._tipppyReference;
-            }
-        });
-
-        function createTippy(el, binding, vnode) {
-            var handlers = vnode.data && vnode.data.on || vnode.componentOptions && vnode.componentOptions.listeners;
-
-            var opts = binding.value || {};
-
-            opts = Object.assign({ dynamicTitle: true, reactive: false, showOnLoad: false }, options, opts);
-
-            if (handlers && handlers['show']) {
-                opts.onShow = function () {
-                    handlers['show'].fns(el, vnode);
-                };
-            }
-
-            if (handlers && handlers['shown']) {
-                opts.onShown = function () {
-                    handlers['shown'].fns(el, vnode);
-                };
-            }
-            if (handlers && handlers['hidden']) {
-                opts.onHidden = function () {
-                    handlers['hidden'].fns(el, vnode);
-                };
-            }
-
-            if (handlers && handlers['hide']) {
-                opts.onHide = function () {
-                    handlers['hide'].fns(el, vnode);
-                };
-            }
-
-            if (opts.html) {
-                var selector = opts.html;
-                if (opts.reactive || !(typeof selector === 'string')) {
-                    opts.html = selector instanceof Element ? selector : selector instanceof Vue ? selector.$el : document.querySelector(selector);
-                } else {
-                    var htmlElement = document.querySelector(opts.html);
-                    if (htmlElement) {
-                        if (htmlElement._tipppyReferences) {
-                            htmlElement._tipppyReferences.push(el);
-                        } else {
-                            htmlElement._tipppyReferences = [el];
-                        }
-                    } else {
-                        console.error('[VueTippy] Selector ' + opts.html + ' not found');
-                        return;
-                    }
-                }
-            }
-
-            if (opts.html || el.getAttribute('data-tippy-html')) {
-                opts.dynamicTitle = false;
-            }
-
-            if (el.getAttribute('data-tippy-html')) {
-                var htmlEl = document.querySelector(el.getAttribute('data-tippy-html'));
-                if (htmlEl) {
-                    if (htmlEl._tipppyReferences) {
-                        htmlEl._tipppyReferences.push(el);
-                    } else {
-                        htmlEl._tipppyReferences = [el];
-                    }
-                } else {
-                    console.error('[VueTippy] Selector \'' + el.getAttribute('data-tippy-html') + '\' not found', el);
-                    return;
-                }
-            }
-
-            new Tippy(el, opts);
-
-            if (opts.showOnLoad) {
-                el._tippy.show();
-            }
-
-            Vue.nextTick(function () {
-                if (handlers && handlers['init']) {
-                    handlers['init'].fns(el._tippy, el);
-                }
+  install: function install(Vue, options) {
+    Vue.directive('tippy-html', {
+      componentUpdated: function componentUpdated(el) {
+        var els = el._tipppyReferences;
+        if (els && els.length > 0) {
+          Vue.nextTick(function () {
+            els.forEach(function (et) {
+              if (et._tippy) {
+                var content = et._tippy.popper.querySelector('.tippy-content');
+                content.innerHTML = el.innerHTML;
+              }
             });
+          });
+        }
+      },
+      unbind: function unbind(el) {
+        delete el._tipppyReference;
+      }
+    });
+
+    function createTippy(el, binding, vnode) {
+      var handlers = vnode.data && vnode.data.on || vnode.componentOptions && vnode.componentOptions.listeners;
+
+      var opts = binding.value || {};
+
+      opts = Object.assign({ dynamicTitle: true, reactive: false, showOnLoad: false }, options, opts);
+
+      if (handlers && handlers['show']) {
+        opts.onShow = function () {
+          handlers['show'].fns(el, vnode);
+        };
+      }
+
+      if (handlers && handlers['shown']) {
+        opts.onShown = function () {
+          handlers['shown'].fns(el, vnode);
+        };
+      }
+      if (handlers && handlers['hidden']) {
+        opts.onHidden = function () {
+          handlers['hidden'].fns(el, vnode);
+        };
+      }
+
+      if (handlers && handlers['hide']) {
+        opts.onHide = function () {
+          handlers['hide'].fns(el, vnode);
+        };
+      }
+
+      if (opts.html) {
+        var selector = opts.html;
+        if (opts.reactive || !(typeof selector === 'string')) {
+          opts.html = selector instanceof Element ? selector : selector instanceof Vue ? selector.$el : document.querySelector(selector);
+        } else {
+          var htmlElement = document.querySelector(opts.html);
+          if (htmlElement) {
+            if (htmlElement._tipppyReferences) {
+              htmlElement._tipppyReferences.push(el);
+            } else {
+              htmlElement._tipppyReferences = [el];
+            }
+          } else {
+            console.error('[VueTippy] Selector ' + opts.html + ' not found');
+            return;
+          }
+        }
+      }
+
+      if (opts.html || el.getAttribute('data-tippy-html')) {
+        opts.dynamicTitle = false;
+      }
+
+      if (el.getAttribute('data-tippy-html')) {
+        var htmlEl = document.querySelector(el.getAttribute('data-tippy-html'));
+        if (htmlEl) {
+          if (htmlEl._tipppyReferences) {
+            htmlEl._tipppyReferences.push(el);
+          } else {
+            htmlEl._tipppyReferences = [el];
+          }
+        } else {
+          console.error('[VueTippy] Selector \'' + el.getAttribute('data-tippy-html') + '\' not found', el);
+          return;
+        }
+      }
+
+      new Tippy(el, opts);
+
+      if (opts.showOnLoad) {
+        el._tippy.show();
+      }
+
+      Vue.nextTick(function () {
+        if (handlers && handlers['init']) {
+          handlers['init'].fns(el._tippy, el);
+        }
+      });
+    }
+
+    Vue.directive('tippy', {
+      inserted: function inserted(el, binding, vnode) {
+        Vue.nextTick(function () {
+          createTippy(el, binding, vnode);
+        });
+      },
+      unbind: function unbind(el) {
+        el._tippy && el._tippy.destroy();
+      },
+      componentUpdated: function componentUpdated(el, binding, vnode) {
+        var opts = binding.value || {};
+        var oldOpts = binding.oldValue || {};
+
+        if (el._tippy && JSON.stringify(opts) !== JSON.stringify(oldOpts)) {
+          Vue.nextTick(function () {
+            createTippy(el, binding, vnode);
+          });
         }
 
-        Vue.directive('tippy', {
-            inserted: function inserted(el, binding, vnode) {
-                Vue.nextTick(function () {
-                    createTippy(el, binding, vnode);
-                });
-            },
-            unbind: function unbind(el) {
-                el._tippy && el._tippy.destroy();
-            },
-            componentUpdated: function componentUpdated(el, binding, vnode) {
-                var opts = binding.value || {};
-                var oldOpts = binding.oldValue || {};
+        if (el._tippy && opts.show) {
+          el._tippy.show();
+        } else if (el._tippy && !opts.show && opts.trigger === 'manual') {
+          el._tippy.hide();
+        }
+      }
+    });
 
-                if (el._tippy && JSON.stringify(opts) !== JSON.stringify(oldOpts)) {
-                    Vue.nextTick(function () {
-                        createTippy(el, binding, vnode);
-                    });
-                }
+    Vue.component('tippy', {
+      template: '<div><slot></slot></div>',
+      props: {
+        to: {
+          type: String,
+          required: true
+        },
+        placement: {
+          type: String,
+          default: 'top'
+        },
+        theme: {
+          type: String,
+          default: 'light'
+        },
+        interactive: {
+          type: [Boolean, String],
+          default: false
+        },
+        arrow: {
+          type: [Boolean, String],
+          default: false
+        },
+        arrowType: {
+          type: String,
+          default: 'sharp'
+        },
+        arrowTransform: {
+          type: String,
+          default: ''
+        },
+        trigger: {
+          type: String,
+          default: 'mouseenter focus'
+        },
+        interactiveBorder: {
+          type: Number,
+          default: 2
+        },
+        animation: {
+          type: String,
+          default: 'shift-away'
+        },
+        animationFill: {
+          type: [Boolean, String],
+          default: true
+        },
+        distance: {
+          type: Number,
+          default: 10
+        },
 
-                if (el._tippy && opts.show) {
-                    el._tippy.show();
-                } else if (el._tippy && !opts.show && opts.trigger === 'manual') {
-                    el._tippy.hide();
-                }
-            }
+        offset: {
+          type: Number,
+          default: 0
+        },
+        followCursor: {
+          type: [Boolean, String],
+          default: false
+        },
+        sticky: {
+          type: [Boolean, String],
+          default: false
+        },
+        size: {
+          type: String,
+          default: 'regular'
+        },
+        watchProps: {
+          type: [Boolean, String],
+          default: false
+        }
+      },
+      watch: {
+        '$props': {
+          deep: true,
+          handler: function handler(val, oldVal) {
+            var _this = this;
+
+            document.querySelectorAll('[name=' + this.to + ']').forEach(function (elem) {
+              if (!_this.watchProps) return;
+
+              elem._tippy && elem._tippy.destroy();
+              var value = Object.assign({ reactive: true, html: _this.$el }, _this.$props);
+              createTippy(elem, { value: value }, _this.$vnode);
+            });
+          }
+        }
+      },
+      mounted: function mounted() {
+        var _this2 = this;
+
+        document.querySelectorAll('[name=' + this.to + ']').forEach(function (elem) {
+          var value = Object.assign({ reactive: true, html: _this2.$el }, _this2.$props);
+          createTippy(elem, { value: value }, _this2.$vnode);
         });
-
-        Vue.component('tippy', {
-            template: '<div><slot></slot></div>',
-            props: {
-                to: {
-                    type: String,
-                    required: true
-                },
-                placement: {
-                    type: String,
-                    default: 'top'
-                },
-                theme: {
-                    type: String,
-                    default: 'light'
-                },
-                interactive: {
-                    type: [Boolean, String],
-                    default: false
-                },
-                arrow: {
-                    type: [Boolean, String],
-                    default: false
-                },
-                arrowType: {
-                    type: String,
-                    default: 'sharp'
-                },
-                arrowTransform: {
-                    type: String,
-                    default: ''
-                },
-                trigger: {
-                    type: String,
-                    default: 'mouseenter focus'
-                },
-                interactiveBorder: {
-                    type: Number,
-                    default: 2
-                },
-                animation: {
-                    type: String,
-                    default: 'shift-away'
-                },
-                animationFill: {
-                    type: [Boolean, String],
-                    default: true
-                },
-                distance: {
-                    type: Number,
-                    default: 10
-                },
-
-                offset: {
-                    type: Number,
-                    default: 0
-                },
-                followCursor: {
-                    type: [Boolean, String],
-                    default: false
-                },
-                sticky: {
-                    type: [Boolean, String],
-                    default: false
-                },
-                size: {
-                    type: String,
-                    default: 'regular'
-                },
-                watchProps: {
-                    type: [Boolean, String],
-                    default: false
-                }
-            },
-            watch: {
-                '$props': {
-                    deep: true,
-                    handler: function handler(val, oldVal) {
-                        var _this = this;
-
-                        document.querySelectorAll('[name=' + this.to + ']').forEach(function (elem) {
-                            if (!_this.watchProps) return;
-
-                            elem._tippy && elem._tippy.destroy();
-                            var value = Object.assign({ reactive: true, html: _this.$el }, _this.$props);
-                            createTippy(elem, { value: value }, _this.$vnode);
-                        });
-                    }
-                }
-            },
-            mounted: function mounted() {
-                var _this2 = this;
-
-                document.querySelectorAll('[name=' + this.to + ']').forEach(function (elem) {
-                    var value = Object.assign({ reactive: true, html: _this2.$el }, _this2.$props);
-                    createTippy(elem, { value: value }, _this2.$vnode);
-                });
-            }
-        });
-    }
+      }
+    });
+  }
 };
 
 if (typeof window !== 'undefined' && window.Vue) {
-    window.Vue.use(plugin);
+  window.Vue.use(plugin);
 }
 
 exports.default = plugin;
