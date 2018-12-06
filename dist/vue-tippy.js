@@ -1,5 +1,5 @@
 /*!
- * vue-tippy v2.0.23
+ * vue-tippy v2.0.24
  * (c) 2018 Georges KABBOUCHI
  * Released under the MIT License.
  */
@@ -215,9 +215,9 @@ var plugin = {
           });
         }
 
-        if (el._tippy && opts.show) {
+        if (el._tippy && el._tippy.popperInstance && opts.show) {
           el._tippy.show();
-        } else if (el._tippy && !opts.show && opts.trigger === 'manual') {
+        } else if (el._tippy && el._tippy.popperInstance && !opts.show && opts.trigger === 'manual') {
           el._tippy.hide();
         }
       }
