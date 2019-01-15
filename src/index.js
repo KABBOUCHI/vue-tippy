@@ -1,7 +1,39 @@
-import Tippy from 'tippy.js/dist/tippy.all'
+import tippy from 'tippy.js/dist/tippy.all'
 import './css/themes.css'
-window.Tippy = Tippy
 
-import Plugin from './plugin'
+const plugin = {
+  install (Vue, opts) {
+    Vue.component('tippy', {
+      template: `
+<div>
+   <slot name="trigger"></slot>
+   <slot name="content"></slot>
+</div>
+`,
+      data () {
+        return {
+          tip: null,
+          options: {}
+        }
+      },
+      mounted () {
+        var options = this.$attrs
+        options.content = this.$attrs.content != undefined ? this.$attrs.content : this.$slots.content[0].elm
+        this.tip = tippy.one(this.$slots.trigger[0].elm, options)
+      },
+      updated () {
+        if (this.tip) {
+          var options = this.$attrs
+          options.content = this.$attrs.content != undefined ? this.$attrs.content : this.$slots.content[0].elm
+          this.tip.set(options)
+        }
+      }
+    })
+  }
+}
 
-export default Plugin
+if (typeof window !== 'undefined' && window.Vue) {
+  window.Vue.use(plugin)
+}
+
+export default plugin

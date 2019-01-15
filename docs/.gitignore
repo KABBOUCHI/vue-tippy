@@ -1,8 +1,0 @@
-/build_local/
-/node_modules/
-/vendor/
-/source/css/
-/source/js/
-/source/mix-manifest.json
-/tailwind.json
-/_tmp
