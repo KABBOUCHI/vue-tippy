@@ -1,5 +1,5 @@
 /*!
- * vue-tippy v2.0.24
+ * vue-tippy v3.0.0-alpha.0
  * (c) 2019 Georges KABBOUCHI
  * Released under the MIT License.
  */
@@ -4686,9 +4686,9 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var plugin = {
     install: function install(Vue, opts) {
-
         Vue.component('tippy', {
             template: '\n<div>\n   <slot name="trigger"></slot>\n   <slot name="content"></slot>\n</div>\n',
+            props: ['isEnabled', 'isVisible'],
             data: function data() {
                 return {
                     tip: null,
@@ -4696,15 +4696,29 @@ var plugin = {
                 };
             },
             mounted: function mounted() {
-                var options = this.$attrs;
-                options.content = this.$attrs.content != undefined ? this.$attrs.content : this.$slots.content[0].elm;
-                this.tip = _tippy2.default.one(this.$slots.trigger[0].elm, options);
+                this.options = this.$attrs;
+                this.options.content = this.$attrs.content != undefined ? this.$attrs.content : this.$slots.content[0].elm;
+                this.tip = _tippy2.default.one(this.$slots.trigger[0].elm, this.options);
+                this.$emit('onCreate', this.tip);
+                if (this.isEnabled === false) {
+                    this.tip.disable();
+                }
+
+                if (this.isManualTrigger && this.isVisible === true) {
+                    this.tip.show();
+                }
             },
             updated: function updated() {
                 if (this.tip) {
-                    var options = this.$attrs;
-                    options.content = this.$attrs.content != undefined ? this.$attrs.content : this.$slots.content[0].elm;
-                    this.tip.set(options);
+                    this.options = this.$attrs;
+                    this.options.content = this.$attrs.content != undefined ? this.$attrs.content : this.$slots.content[0].elm;
+                    this.tip.set(this.options);
+                }
+            },
+
+            computed: {
+                isManualTrigger: function isManualTrigger() {
+                    return this.options.trigger === 'manual';
                 }
             }
         });
