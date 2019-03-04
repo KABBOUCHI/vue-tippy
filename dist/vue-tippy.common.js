@@ -1,5 +1,5 @@
 /*!
- * vue-tippy v2.1.0
+ * vue-tippy v2.1.1
  * (c) 2019 Georges KABBOUCHI
  * Released under the MIT License.
  */
@@ -264,6 +264,15 @@ var plugin = {
         distance: {
           type: Number,
           default: 10
+        },
+
+        delay: {
+          type: [Number, Array],
+          default: [0, 20]
+        },
+        duration: {
+          type: [Number, Array],
+          default: [325, 275]
         },
 
         offset: {
