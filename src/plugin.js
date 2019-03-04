@@ -180,14 +180,14 @@ const plugin = {
           type: Number,
           default: 10
         },
-        
+
         delay: {
             type: [Number, Array],
-            default: [0, 20]
+            default: () => [0, 20]
         },
         duration: {
             type: [Number, Array],
-            default: [325, 275]
+            default: () => [325, 275]
         },
 
         offset: {
