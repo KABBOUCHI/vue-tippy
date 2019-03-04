@@ -1,6 +1,6 @@
 {
   "name": "vue-tippy",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Directive wrapper for Tippy.js",
   "author": "Georges KABBOUCHI <georges.kabbouchi@gmail.com>",
   "jsnext:main": "src/index.js",
