@@ -1,5 +1,5 @@
 /*!
- * vue-tippy v2.1.1
+ * vue-tippy v2.1.2
  * (c) 2019 Georges KABBOUCHI
  * Released under the MIT License.
  */
@@ -277,11 +277,15 @@ var plugin = {
 
         delay: {
           type: [Number, Array],
-          default: [0, 20]
+          default: function _default() {
+            return [0, 20];
+          }
         },
         duration: {
           type: [Number, Array],
-          default: [325, 275]
+          default: function _default() {
+            return [325, 275];
+          }
         },
 
         offset: {
