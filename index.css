@@ -1,0 +1,116 @@
+body {
+    font-family: "Nunito", "Roboto", "Helvetica Neue", Helvetica, Arial,
+        sans-serif;
+    background: #3751cc;
+    background: -webkit-linear-gradient(left, #5733ea, #4894ff 70%, #a5bcff);
+    background: linear-gradient(90deg, #5733ea, #4894ff 70%, #a5bcff);
+    color: #203d5d;
+}
+
+*,
+* :focus {
+    outline: none;
+}
+
+.opacity-low {
+    opacity: 0.8;
+}
+
+#app {
+    text-align: center;
+}
+
+.material-icons {
+    cursor: default;
+    font-size: 1.1em;
+    vertical-align: middle;
+    position: relative;
+    top: -0.05em;
+}
+
+.btn {
+    margin: 0;
+    color: white;
+    box-shadow: 0 3px 6px -1px rgba(0, 0, 0, 0.12),
+        0 10px 36px -4px rgba(77, 96, 232, 0.3);
+    background: -webkit-linear-gradient(315deg, #73a5ff, #5477f5);
+    background: linear-gradient(135deg, #73a5ff, #5477f5);
+    letter-spacing: 0.5px;
+    font-family: inherit;
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1.25;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    border: 1px solid transparent;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.25rem;
+    -webkit-transition: all 0.2s ease-in-out;
+    -o-transition: all 0.2s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+}
+
+.button-showcase .btn,
+.button-showcase .btn:active,
+.button-showcase:focus {
+    margin: 1.25rem 1rem;
+}
+
+p {
+    font-weight: 300;
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: white;
+    margin-bottom: 0.2rem;
+}
+
+p > a {
+    display: inline-block;
+    font-weight: 300;
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+    color: #7dffc3;
+    background: -webkit-linear-gradient(135deg, #fff9b0, #7dffc3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+a.reset {
+    color: #3751cc;
+}
+
+.button-showcase {
+    background-color: white;
+    max-width: 980px;
+    padding: 2.5rem 5rem;
+    margin: 2rem auto;
+    border-radius: 10px;
+    box-shadow: 0 0 80px -4px rgba(0, 20, 40, 0.1);
+}
+
+::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: white;
+}
+
+::-moz-placeholder {
+    /* Firefox 19+ */
+    color: white;
+}
+
+:-ms-input-placeholder {
+    /* IE 10+ */
+    color: white;
+}
+
+:-moz-placeholder {
+    /* Firefox 18- */
+    color: white;
+}

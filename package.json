@@ -1,140 +1,142 @@
 {
-  "name": "vue-tippy",
-  "version": "3.0.0-alpha.0",
-  "description": "Directive wrapper for Tippy.js",
-  "author": "Georges KABBOUCHI <georges.kabbouchi@gmail.com>",
-  "jsnext:main": "src/index.js",
-  "main": "dist/vue-tippy.common.js",
-  "module": "dist/vue-tippy.esm.js",
-  "browser": "dist/vue-tippy.js",
-  "unpkg": "dist/vue-tippy.js",
-  "files": [
-    "dist",
-    "src"
-  ],
-  "scripts": {
-    "clean": "rimraf dist",
-    "build": "yon run build:common && yon run build:browser && yon run build:browser:min",
-    "build:common": "cross-env NODE_ENV=common webpack --config build/webpack.config.common.js --progress --hide-modules",
-    "build:browser:base": "webpack --config build/webpack.config.browser.js --progress --hide-modules",
-    "build:browser": "cross-env NODE_ENV=browser yon run build:browser:base",
-    "build:browser:min": "cross-env NODE_ENV=production yon run build:browser:base -- -p",
-    "build:dll": "webpack --progress --config build/webpack.config.dll.js",
-    "lint": "yon run lint:js && yon run lint:css",
-    "lint:js": "eslint --ext js --ext jsx --ext vue src test/**/*.spec.js test/*.js build",
-    "lint:js:fix": "yon run lint:js -- --fix",
-    "lint:css": "stylelint src/**/*.{vue,css}",
-    "lint:staged": "lint-staged",
-    "pretest": "yon run lint",
-    "test": "cross-env BABEL_ENV=test karma start test/karma.conf.js --single-run",
-    "dev": "webpack-dashboard -- webpack-dev-server --config build/webpack.config.dev.js --open",
-    "dev:coverage": "cross-env BABEL_ENV=test karma start test/karma.conf.js",
-    "prepublish": "yon run build",
-    "validate": "npm ls"
-  },
-  "lint-staged": {
-    "*.{vue,jsx,js}": [
-      "eslint --fix"
+    "name": "vue-tippy",
+    "version": "4.0.0-alpha.0",
+    "description": "Directive wrapper for Tippy.js",
+    "author": "Georges KABBOUCHI <georges.kabbouchi@gmail.com>",
+    "jsnext:main": "src/index.js",
+    "main": "dist/vue-tippy.common.js",
+    "module": "dist/vue-tippy.esm.js",
+    "browser": "dist/vue-tippy.js",
+    "unpkg": "dist/vue-tippy.js",
+    "files": [
+        "dist",
+        "src"
     ],
-    "*.{vue,css}": [
-      "stylefmt",
-      "stylelint"
-    ]
-  },
-  "pre-commit": "lint:staged",
-  "devDependencies": {
-    "add-asset-html-webpack-plugin": "^2.1.3",
-    "babel-core": "^6.26.3",
-    "babel-eslint": "^7.2.0",
-    "babel-helper-vue-jsx-merge-props": "^2.0.0",
-    "babel-loader": "^7.1.4",
-    "babel-plugin-istanbul": "^4.1.6",
-    "babel-plugin-syntax-jsx": "^6.18.0",
-    "babel-plugin-transform-object-rest-spread": "^6.23.0",
-    "babel-plugin-transform-runtime": "^6.23.0",
-    "babel-plugin-transform-vue-jsx": "^3.7.0",
-    "babel-preset-env": "^1.4.0",
-    "chai": "^3.5.0",
-    "chai-dom": "^1.7.0",
-    "cross-env": "^4.0.0",
-    "css-loader": "^0.28.11",
-    "eslint": "^3.19.0",
-    "eslint-config-vue": "^2.0.0",
-    "eslint-plugin-vue": "^2.0.0",
-    "extract-text-webpack-plugin": "^2.1.0",
-    "html-webpack-plugin": "^2.28.0",
-    "karma": "^1.7.0",
-    "karma-chai-dom": "^1.1.0",
-    "karma-chrome-launcher": "^2.1.0",
-    "karma-coverage": "^1.1.2",
-    "karma-mocha": "^1.3.0",
-    "karma-sinon-chai": "^1.3.4",
-    "karma-sourcemap-loader": "^0.3.7",
-    "karma-spec-reporter": "^0.0.31",
-    "karma-webpack": "^2.0.13",
-    "lint-staged": "^3.4.0",
-    "mocha": "^3.3.0",
-    "mocha-css": "^1.0.1",
-    "null-loader": "^0.1.1",
-    "postcss": "^6.0.22",
-    "postcss-cssnext": "^2.10.0",
-    "pre-commit": "^1.2.0",
-    "precommit-hook": "^3.0.0",
-    "rimraf": "^2.6.0",
-    "sinon": "2.2.0",
-    "sinon-chai": "^2.10.0",
-    "style-loader": "^0.17.0",
-    "stylefmt": "^5.3.0",
-    "stylelint": "^7.10.0",
-    "stylelint-config-standard": "^16.0.0",
-    "stylelint-processor-html": "^1.0.0",
-    "uppercamelcase": "^3.0.0",
-    "vue": "^2.5.16",
-    "vue-loader": "^12.0.0",
-    "vue-template-compiler": "^2.5.16",
-    "webpack": "^2.5.0",
-    "webpack-bundle-analyzer": "^2.11.1",
-    "webpack-dashboard": "^0.4.0",
-    "webpack-dev-server": "^2.11.2",
-    "webpack-merge": "^4.1.2",
-    "yarn-or-npm": "^2.0.0"
-  },
-  "peerDependencies": {
-    "vue": "^2.5.9"
-  },
-  "dllPlugin": {
-    "name": "vuePluginTemplateDeps",
-    "include": [
-      "mocha/mocha.js",
-      "style-loader!css-loader!mocha-css",
-      "html-entities",
-      "vue/dist/vue.js",
-      "chai",
-      "core-js/library",
-      "url",
-      "sockjs-client",
-      "vue-style-loader/lib/addStylesClient.js",
-      "events",
-      "ansi-html",
-      "style-loader/addStyles.js"
-    ]
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KABBOUCHI/vue-tippy.git"
-  },
-  "bugs": {
-    "url": "https://github.com/KABBOUCHI/vue-tippy/issues"
-  },
-  "homepage": "https://github.com/KABBOUCHI/vue-tippy#readme",
-  "license": "MIT",
-  "keywords": [
-    "tooltip",
-    "tippy",
-    "tippy.js",
-    "vue"
-  ],
-  "dependencies": {
-    "tippy.js": "^3.4.1"
-  }
+    "scripts": {
+        "clean": "rimraf dist",
+        "build": "yon run build:common && yon run build:browser && yon run build:browser:min",
+        "build:common": "cross-env NODE_ENV=common webpack --config build/webpack.config.common.js --progress --hide-modules",
+        "build:browser:base": "webpack --config build/webpack.config.browser.js --progress --hide-modules",
+        "build:browser": "cross-env NODE_ENV=browser yon run build:browser:base",
+        "build:browser:min": "cross-env NODE_ENV=production yon run build:browser:base -- -p",
+        "build:dll": "webpack --progress --config build/webpack.config.dll.js",
+        "lint": "yon run lint:js && yon run lint:css",
+        "lint:js": "eslint --ext js --ext jsx --ext vue src test/**/*.spec.js test/*.js build",
+        "lint:js:fix": "yon run lint:js -- --fix",
+        "lint:css": "stylelint src/**/*.{vue,css}",
+        "lint:staged": "lint-staged",
+        "pretest": "yon run lint",
+        "test": "cross-env BABEL_ENV=test karma start test/karma.conf.js --single-run",
+        "dev": "webpack-dashboard -- webpack-dev-server --config build/webpack.config.dev.js --open",
+        "dev:coverage": "cross-env BABEL_ENV=test karma start test/karma.conf.js",
+        "prepublish": "yon run build",
+        "validate": "npm ls"
+    },
+    "lint-staged": {
+        "*.{vue,jsx,js}": [
+            "eslint --fix"
+        ],
+        "*.{vue,css}": [
+            "stylefmt",
+            "stylelint"
+        ]
+    },
+    "pre-commit": "lint:staged",
+    "devDependencies": {
+        "add-asset-html-webpack-plugin": "^2.1.3",
+        "babel-core": "^6.26.3",
+        "babel-eslint": "^7.2.0",
+        "babel-helper-vue-jsx-merge-props": "^2.0.0",
+        "babel-loader": "^7.1.4",
+        "babel-plugin-istanbul": "^4.1.6",
+        "babel-plugin-syntax-jsx": "^6.18.0",
+        "babel-plugin-transform-object-rest-spread": "^6.23.0",
+        "babel-plugin-transform-runtime": "^6.23.0",
+        "babel-plugin-transform-vue-jsx": "^3.7.0",
+        "babel-preset-env": "^1.4.0",
+        "chai": "^3.5.0",
+        "chai-dom": "^1.7.0",
+        "cross-env": "^4.0.0",
+        "css-loader": "^0.28.11",
+        "eslint": "^3.19.0",
+        "eslint-config-vue": "^2.0.0",
+        "eslint-plugin-vue": "^2.0.0",
+        "extract-text-webpack-plugin": "^2.1.0",
+        "html-webpack-plugin": "^2.28.0",
+        "karma": "^1.7.0",
+        "karma-chai-dom": "^1.1.0",
+        "karma-chrome-launcher": "^2.1.0",
+        "karma-coverage": "^1.1.2",
+        "karma-mocha": "^1.3.0",
+        "karma-sinon-chai": "^1.3.4",
+        "karma-sourcemap-loader": "^0.3.7",
+        "karma-spec-reporter": "^0.0.31",
+        "karma-webpack": "^2.0.13",
+        "lint-staged": "^3.4.0",
+        "mocha": "^3.3.0",
+        "mocha-css": "^1.0.1",
+        "null-loader": "^0.1.1",
+        "postcss": "^6.0.22",
+        "postcss-cssnext": "^2.10.0",
+        "pre-commit": "^1.2.0",
+        "precommit-hook": "^3.0.0",
+        "rimraf": "^2.6.0",
+        "sinon": "2.2.0",
+        "sinon-chai": "^2.10.0",
+        "style-loader": "^0.17.0",
+        "stylefmt": "^5.3.0",
+        "stylelint": "^7.10.0",
+        "stylelint-config-standard": "^16.0.0",
+        "stylelint-processor-html": "^1.0.0",
+        "uppercamelcase": "^3.0.0",
+        "vue": "^2.5.16",
+        "vue-loader": "^12.0.0",
+        "vue-template-compiler": "^2.5.16",
+        "webpack": "^2.5.0",
+        "webpack-bundle-analyzer": "^2.11.1",
+        "webpack-dashboard": "^0.4.0",
+        "webpack-dev-server": "^2.11.2",
+        "webpack-merge": "^4.1.2",
+        "yarn-or-npm": "^2.0.0"
+    },
+    "peerDependencies": {
+        "vue": "^2.5.9"
+    },
+    "dllPlugin": {
+        "name": "vuePluginTemplateDeps",
+        "include": [
+            "mocha/mocha.js",
+            "style-loader!css-loader!mocha-css",
+            "html-entities",
+            "vue/dist/vue.js",
+            "chai",
+            "core-js/library",
+            "url",
+            "sockjs-client",
+            "vue-style-loader/lib/addStylesClient.js",
+            "events",
+            "ansi-html",
+            "style-loader/addStyles.js"
+        ]
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/KABBOUCHI/vue-tippy.git"
+    },
+    "bugs": {
+        "url": "https://github.com/KABBOUCHI/vue-tippy/issues"
+    },
+    "homepage": "https://github.com/KABBOUCHI/vue-tippy#readme",
+    "license": "MIT",
+    "keywords": [
+        "tooltip",
+        "tippy",
+        "tippy.js",
+        "vue"
+    ],
+    "dependencies": {
+        "camelcase": "^5.2.0",
+        "camelcase-keys": "^5.0.0",
+        "tippy.js": "^4.2.0"
+    }
 }
