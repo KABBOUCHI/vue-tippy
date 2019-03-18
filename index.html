@@ -1,39 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <title>VueTippy</title>
-        <link
-            href="https://fonts.googleapis.com/icon?family=Material+Icons"
-            rel="stylesheet"
-        />
-        <link
-            href="https://fonts.googleapis.com/css?family=Nunito:300,400,700"
-            rel="stylesheet"
-        />
 
-        <link rel="stylesheet" href="./index.css" />
-    </head>
-    <body>
-        <div id="app">
-            <p>
-                Powered by
-                <a href="https://github.com/atomiks/tippyjs">Tippy.js 4</a> and
-                VueJS
-            </p>
-            <div
-                class="button-showcase d-flex justify-content-center flex-wrap"
-            >
-                <tippy :content="i" arrow="true">
-                    <button class="btn" slot="trigger">Dynamic Title</button>
-                </tippy>
+<head>
+    <meta charset="UTF-8" />
+    <title>VueTippy</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:300,400,700" rel="stylesheet" />
 
-                <tippy arrow="true">
-                    <span slot="content">
-                        Hi!
-                    </span>
-                    <button class="btn" slot="trigger">My Button</button>
-                </tippy>
+    <link rel="stylesheet" href="./index.css" />
+</head>
+
+<body>
+    <div id="app">
+        <p>
+            Powered by
+            <a href="https://github.com/atomiks/tippyjs">Tippy.js 4</a> and
+            VueJS
+        </p>
+        <div class="button-showcase d-flex justify-content-center flex-wrap">
+
+            <!-- BTN1 -->
+            <tippy :content="i" to="dyn" arrow="true"></tippy>
+
+            <button class="btn" name="dyn">Dynamic Title</button>
+
+
+            <!-- BTN2 -->
+            <tippy arrow="true">
+                <span slot="content">
+                    Hi!
+                </span>
+                <button class="btn" slot="trigger">My Button</button>
+            </tippy>
+
+
+            <!-- BTN3 -->
+            <tippy to="btn3" arrow="true">{{i}}</tippy>
+
+            <button class="btn" name="btn3">btn3</button>
+
+
+            <!-- BTN4 -->
+            <button class="btn" :content="i" v-tippy>btn4</button>
+
+
+            <!-- BTN5 -->
+            <button class="btn" v-tippy='{ content : btn5El }'>btn5</button>
+
+            <div id="btn5Html" style="display:none"><b>btn5</b> html</div>
+
+
+
+            <!-- 
 
                 <tippy content="<i>ITALIC<i/>" arrow="true">
                     <button class="btn" slot="trigger">Italic Title</button>
@@ -79,33 +97,35 @@
                     arrow="true"
                 >
                     <button class="btn" slot="trigger">OnShown</button>
-                </tippy>
-            </div>
+                </tippy> -->
         </div>
+    </div>
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.js"></script>
-        <script src="dist/vue-tippy.js?2019v4a"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.js"></script>
+    <script src="dist/vue-tippy.js?2019v4a"></script>
 
-        <script>
-            new Vue({
-                el: "#app",
-                data() {
-                    return {
-                        i: 0
-                    };
-                },
-                created() {
-                    setInterval(() => {
-                        this.i++;
-                    }, 1000);
-                },
-                methods: {
-                    alert(msg) {
-                        alert(msg);
-                        console.log(msg);
-                    }
+    <script>
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    i: 0,
+                    btn5El: document.querySelector("#btn5Html")
+                };
+            },
+            created() {
+                setInterval(() => {
+                    this.i++;
+                }, 1000);
+            },
+            methods: {
+                alert(msg) {
+                    alert(msg);
+                    console.log(msg);
                 }
-            });
-        </script>
-    </body>
+            }
+        });
+    </script>
+</body>
+
 </html>
