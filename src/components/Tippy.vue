@@ -7,26 +7,26 @@
 </template>
 
 <script>
-import tippy from "tippy.js";
-import camelcaseKeys from "camelcase-keys";
+import tippy from 'tippy.js'
+import camelcaseKeys from 'camelcase-keys'
 
 export default {
-  props: ["to", "content", "isEnabled", "isVisible"],
-  data() {
+  props: ['to', 'content', 'isEnabled', 'isVisible'],
+  data () {
     return {
       tip: null,
       options: {}
-    };
+    }
   },
-  mounted() {
-    this.options = camelcaseKeys(this.$attrs);
+  mounted () {
+    this.options = camelcaseKeys(this.$attrs)
 
-    let elm = null;
+    let elm = null
 
     if (this.to) {
-      elm = document.querySelector(`[name='${this.to}']`);
+      elm = document.querySelector(`[name='${this.to}']`)
     } else {
-      elm = this.$slots.trigger[0].elm;
+      elm = this.$slots.trigger[0].elm
     }
 
     this.options.content =
@@ -34,43 +34,43 @@ export default {
         ? this.content
         : this.$slots.content
         ? this.$slots.content[0].elm
-        : this.$el;
+        : this.$el
 
-    this.tip = tippy(elm, this.options);
-    this.$emit("onCreate", this.tip);
+    this.tip = tippy(elm, this.options)
+    this.$emit('onCreate', this.tip)
     if (this.isEnabled === false) {
-      this.tip.disable();
+      this.tip.disable()
     }
 
     if (this.isManualTrigger && this.isVisible === true) {
-      this.tip.show();
+      this.tip.show()
     }
   },
   watch: {
-    content() {
-      this.updateOptions();
+    content () {
+      this.updateOptions()
     }
   },
-  updated() {
-    this.updateOptions();
+  updated () {
+    this.updateOptions()
   },
   computed: {
-    isManualTrigger() {
-      return this.options.trigger === "manual";
+    isManualTrigger () {
+      return this.options.trigger === 'manual'
     }
   },
   methods: {
-    updateOptions() {
+    updateOptions () {
       if (this.tip) {
         this.options.content =
           this.content != null
             ? this.content
             : this.$slots.content
             ? this.$slots.content[0].elm
-            : this.$el;
-        this.tip.set(this.options);
+            : this.$el
+        this.tip.set(this.options)
       }
     }
   }
-};
+}
 </script>

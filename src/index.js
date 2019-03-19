@@ -2,12 +2,12 @@ import tippy from 'tippy.js'
 import 'tippy.js/index.css'
 
 const plugin = {
-  install(Vue, options) {
+  install (Vue, options) {
     window.tippy = tippy
     tippy.setDefaults(options || {})
     Vue.component('tippy', require('./components/Tippy.vue'))
 
-    function createTippy(el, binding, vnode) {
+    function createTippy (el, binding, vnode) {
       const handlers = (vnode.data && vnode.data.on) ||
         (vnode.componentOptions && vnode.componentOptions.listeners)
 
@@ -39,11 +39,11 @@ const plugin = {
       }
 
       if (el.getAttribute('title') && !opts.content) {
-        opts.content = el.getAttribute('title');
+        opts.content = el.getAttribute('title')
       }
 
       if (el.getAttribute('content') && !opts.content) {
-        opts.content = el.getAttribute('content');
+        opts.content = el.getAttribute('content')
       }
 
       tippy(el, opts)
@@ -59,31 +59,29 @@ const plugin = {
       })
     }
 
-
     Vue.directive('tippy', {
-      inserted(el, binding, vnode) {
+      inserted (el, binding, vnode) {
         Vue.nextTick(() => {
           createTippy(el, binding, vnode)
         })
       },
-      unbind(el) {
+      unbind (el) {
         el._tippy && el._tippy.destroy()
       },
-      componentUpdated(el, binding, vnode) {
+      componentUpdated (el, binding, vnode) {
         const opts = binding.value || {}
 
         if (el.getAttribute('title') && !opts.content) {
-          opts.content = el.getAttribute('title');
+          opts.content = el.getAttribute('title')
         }
 
         if (el.getAttribute('content') && !opts.content) {
-          opts.content = el.getAttribute('content');
+          opts.content = el.getAttribute('content')
         }
 
-        el._tippy.set(opts);
+        el._tippy.set(opts)
       }
-    });
-
+    })
   }
 }
 
