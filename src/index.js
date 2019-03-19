@@ -1,13 +1,12 @@
 import tippy from 'tippy.js'
-import 'tippy.js/index.css'
 
 const plugin = {
-  install (Vue, options) {
+  install(Vue, options) {
     window.tippy = tippy
     tippy.setDefaults(options || {})
     Vue.component('tippy', require('./components/Tippy.vue'))
 
-    function createTippy (el, binding, vnode) {
+    function createTippy(el, binding, vnode) {
       const handlers = (vnode.data && vnode.data.on) ||
         (vnode.componentOptions && vnode.componentOptions.listeners)
 
@@ -16,25 +15,31 @@ const plugin = {
       opts = Object.assign({}, options, opts)
 
       if (handlers && handlers['show']) {
-        opts.onShow = function () {
-          handlers['show'].fns(el, vnode)
+        opts.onShow = function (...args) {
+          handlers['show'].fns(...args)
         }
       }
 
       if (handlers && handlers['shown']) {
-        opts.onShown = function () {
-          handlers['shown'].fns(el, vnode)
+        opts.onShown = function (...args) {
+          handlers['shown'].fns(...args)
         }
       }
       if (handlers && handlers['hidden']) {
-        opts.onHidden = function () {
-          handlers['hidden'].fns(el, vnode)
+        opts.onHidden = function (...args) {
+          handlers['hidden'].fns(...args)
         }
       }
 
       if (handlers && handlers['hide']) {
-        opts.onHide = function () {
-          handlers['hide'].fns(el, vnode)
+        opts.onHide = function (...args) {
+          handlers['hide'].fns(...args)
+        }
+      }
+
+      if (handlers && handlers['mount']) {
+        opts.onMount = function (...args) {
+          handlers['mount'].fns(...args)
         }
       }
 
@@ -60,15 +65,15 @@ const plugin = {
     }
 
     Vue.directive('tippy', {
-      inserted (el, binding, vnode) {
+      inserted(el, binding, vnode) {
         Vue.nextTick(() => {
           createTippy(el, binding, vnode)
         })
       },
-      unbind (el) {
+      unbind(el) {
         el._tippy && el._tippy.destroy()
       },
-      componentUpdated (el, binding, vnode) {
+      componentUpdated(el, binding, vnode) {
         const opts = binding.value || {}
 
         if (el.getAttribute('title') && !opts.content) {

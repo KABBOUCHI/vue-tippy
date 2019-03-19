@@ -35,43 +35,35 @@
 
 
             <!-- BTN3 -->
-            <tippy to="btn3" arrow="true">{{i}}</tippy>
+            <tippy to="btn3" arrow="true" @shown="log">{{i}}</tippy>
 
             <button class="btn" name="btn3">btn3</button>
 
 
             <!-- BTN4 -->
-            <button class="btn" :content="i" v-tippy>btn4</button>
+            <button class="btn" :content="i"
+                v-tippy="{ showOnInit : true , sticky : true, arrow : i % 2 == 0}">btn4</button>
 
 
             <!-- BTN5 -->
-            <button class="btn" v-tippy='{ content : btn5El }'>btn5</button>
-
-            <div id="btn5Html" style="display:none"><b>btn5</b> html</div>
-
-
+            <button class="btn" content="@shown" v-tippy @shown="alert('@shown')">@shown</button>
 
             <!-- 
 
-                <tippy content="<i>ITALIC<i/>" arrow="true">
-                    <button class="btn" slot="trigger">Italic Title</button>
+                <tippy content=" <i>ITALIC<i />" arrow="true">
+                <button class="btn" slot="trigger">Italic Title</button>
                 </tippy>
 
                 <tippy arrow="true" interactive="true">
                     <span slot="content">
-                        <button class="btn" @click="alert('@click')">
+                        <button class="btn" @click="alert(' @click')">
                             Click Me
                         </button>
                     </span>
                     <button class="btn" slot="trigger">My Button</button>
                 </tippy>
 
-                <tippy
-                    content="Animation"
-                    animate-fill="false"
-                    animation="scale"
-                    arrow="true"
-                >
+                <tippy content="Animation" animate-fill="false" animation="scale" arrow="true">
                     <button class="btn" slot="trigger">Animation</button>
                 </tippy>
 
@@ -83,19 +75,11 @@
                     <button class="btn" slot="trigger">Duration</button>
                 </tippy>
 
-                <tippy
-                    content="Follow Cursor"
-                    follow-cursor="true"
-                    arrow="true"
-                >
+                <tippy content="Follow Cursor" follow-cursor="true" arrow="true">
                     <button class="btn" slot="trigger">Follow Cursor</button>
                 </tippy>
 
-                <tippy
-                    content="OnShown"
-                    :on-shown="(tip) => alert('OnShown')"
-                    arrow="true"
-                >
+                <tippy content="OnShown" :on-shown="(tip) => alert('OnShown')" arrow="true">
                     <button class="btn" slot="trigger">OnShown</button>
                 </tippy> -->
         </div>
@@ -109,8 +93,7 @@
             el: "#app",
             data() {
                 return {
-                    i: 0,
-                    btn5El: document.querySelector("#btn5Html")
+                    i: 0
                 };
             },
             created() {
@@ -122,7 +105,12 @@
                 alert(msg) {
                     alert(msg);
                     console.log(msg);
+                },
+                log(args) {
+                    console.log(args)
+
                 }
+
             }
         });
     </script>
