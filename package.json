@@ -137,6 +137,8 @@
     "dependencies": {
         "camelcase": "^5.2.0",
         "camelcase-keys": "^5.0.0",
+        "lodash.mapvalues": "^4.6.0",
+        "lodash.pickby": "^4.6.0",
         "tippy.js": "^4.2.0"
     }
 }

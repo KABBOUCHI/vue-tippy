@@ -19,14 +19,21 @@
         </p>
         <div class="button-showcase d-flex justify-content-center flex-wrap">
 
+            <!-- BTN0 -->
+            <tippy to="dyn0" :content="i" arrow show-on-init sticky></tippy>
+
+            <button class="btn" name="dyn0">BTN0</button>
+
             <!-- BTN1 -->
-            <tippy :content="i" to="dyn" arrow="true"></tippy>
+            <tippy to="dyn" arrow show-on-init sticky trigger="manual">
+                {{ i }}
+            </tippy>
 
             <button class="btn" name="dyn">Dynamic Title</button>
 
 
             <!-- BTN2 -->
-            <tippy arrow="true">
+            <tippy class="test" test="asdas" arrow="true">
                 <span slot="content">
                     Hi!
                 </span>

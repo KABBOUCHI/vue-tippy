@@ -9,6 +9,9 @@
 <script>
 import tippy from 'tippy.js'
 import camelcaseKeys from 'camelcase-keys'
+import defaultProps, { booleanProps } from '../props'
+import pickBy from 'lodash.pickby'
+import mapValues from 'lodash.mapvalues'
 
 export default {
   props: ['to', 'content', 'isEnabled', 'isVisible'],
@@ -47,7 +50,7 @@ export default {
     }
   },
   updated () {
-    if (this.tip) {
+    if (this.tip && !this.content) {
       this.tip.set(this.getOptions())
     }
   },
@@ -57,8 +60,26 @@ export default {
     }
   },
   methods: {
+    tippy () {
+      return this.tip
+    },
     getOptions () {
       this.options = camelcaseKeys(this.$attrs)
+
+      this.options = pickBy(this.options, (value, key) => {
+        return defaultProps.hasOwnProperty(key)
+      })
+
+      this.options = mapValues(this.options, (value, key) => {
+        if (booleanProps.hasOwnProperty(key)) {
+          if (value === '') return true
+
+          return value === 'false' ? false : value
+        }
+        return value
+      })
+
+      console.log(this.options)
 
       if (!this.options.onShow) {
         this.options.onShow = (...args) => {

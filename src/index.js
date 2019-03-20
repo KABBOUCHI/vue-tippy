@@ -74,17 +74,19 @@ const plugin = {
         el._tippy && el._tippy.destroy()
       },
       componentUpdated (el, binding, vnode) {
-        const opts = binding.value || {}
+        if (el._tippy) {
+          const opts = binding.value || {}
 
-        if (el.getAttribute('title') && !opts.content) {
-          opts.content = el.getAttribute('title')
+          if (el.getAttribute('title') && !opts.content) {
+            opts.content = el.getAttribute('title')
+          }
+
+          if (el.getAttribute('content') && !opts.content) {
+            opts.content = el.getAttribute('content')
+          }
+
+          el._tippy.set(opts)
         }
-
-        if (el.getAttribute('content') && !opts.content) {
-          opts.content = el.getAttribute('content')
-        }
-
-        el._tippy.set(opts)
       }
     })
   }
