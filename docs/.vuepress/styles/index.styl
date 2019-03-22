@@ -1,0 +1,204 @@
+html, body
+  background-color #f6f7ff !important
+  font-family "Nunito", -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif !important
+
+p, ul, ol
+  line-height: 1.8;
+
+table
+  font-size: 0.85rem;
+
+.home .hero img
+  margin-bottom 0 !important
+
+.home .hero h1
+  margin: 0.2rem auto !important
+  font-size: 2.5rem !important
+
+.home .hero .description
+  margin: 0.4rem auto !important
+  font-size: 1.1rem !important
+
+.home .hero .action-button
+  font-size: 1rem !important
+  padding: 0.7rem 1.3rem !important
+
+.theme-container
+  max-width 90rem
+  margin 0 auto;
+
+.navbar
+  background-color $accentColor !important
+  border none
+  border-bottom none !important
+  box-shadow 0 3px 3px 0 rgba(0, 0, 0, 0.07), 0 4px 9px 0 rgba(0, 0, 0, 0.06)
+
+.navbar .links
+  background-color $accentColor !important
+
+.site-name, .nav-item, .repo-link, .sidebar-button
+  color white !important
+
+.nav-item a:hover
+  color #e0daff !important
+
+.nav-item .dropdown-item a
+  color #3e446b;
+
+.nav-item .dropdown-item a:hover
+  color #283659 !important
+
+.sidebar
+  position relative !important
+  background-color transparent !important
+  border none !important
+  top: 0 !important
+  display inline-block
+  padding-top 6rem
+
+.sidebar > .sidebar-links
+  position fixed
+  padding 2.5rem 0
+  overflow-y auto
+  max-height 79vh
+
+.sidebar-heading
+  color: #2c3e50 !important
+
+.sidebar-heading.open, .sidebar-heading:hover
+  color: $accentColor  !important
+
+h4
+  font-size: 1.2rem;
+  font-weight: bold;
+
+.page
+  padding-bottom 0.5rem
+  padding-left 16rem
+  padding-right 12rem
+  margin-bottom 6rem
+  position relative
+
+.no-toc .page
+  padding-right 0
+
+.content:not(.custom)
+  max-width 100%
+  margin-bottom 1rem
+  background-color white
+  border-radius 0.5rem
+  box-shadow 0 4px 8px 0 rgba(0, 0, 0, .12), 0 2px 4px 0 rgba(0, 0, 0, .08)
+
+.content:not(.custom) > *:first-child
+  margin-top 0 !important
+  padding-top 0 !important
+
+.page-edit, .page-nav
+  max-width 100%
+  padding 0 1.5rem
+
+.page-edit
+  padding-bottom 1rem
+
+.page-nav .inner
+  border none
+
+  a
+    color #56637b
+
+.table-of-contents
+  position absolute
+  right -5rem
+  top 1rem
+  width 15rem
+  font-size 1rem
+
+.table-of-contents > ul
+  margin-top 1rem
+  position fixed
+  list-style none
+  padding-left 0
+
+.table-of-contents > ul ul
+  margin-top 0.5rem
+  margin-bottom 0.5rem
+  list-style none
+
+.table-of-contents li
+  margin-bottom 0.5rem
+
+.table-of-contents a
+  color #2c3e50
+  font-size 0.85rem
+
+.token.punctuation, .token.operator
+  color: #84DAF5 !important
+
+.namespace
+  opacity: .7 !important
+
+.token.property,
+.token.keyword,
+.token.tag
+  color: #C48EE8 !important
+  font-style: italic !important
+
+.token.class-name
+  color: #F9C862 !important
+
+.token.scope
+  color: #F9C862 !important
+
+.token.package
+  color: #C2D3DF !important
+
+.token.package >.punctuation
+  color: #8C93C1 !important
+
+.token.function
+  color: #80A8FF !important
+
+.token.single-quoted-string, .token.string
+  color: #C3E88D !important
+
+.token.variable, .token.constant, .token.number
+  color: #F78C6C !important
+
+@media (max-width: 992px)
+  .page
+    padding-right 1rem
+
+  .site-name, .nav-item, .repo-link
+    color $textColor !important
+
+  .table-of-contents
+    position relative
+    right 0
+    top 0
+    width auto
+    font-size inherit
+
+  .table-of-contents > ul
+    position relative
+
+  .table-of-contents a
+    font-size inherit
+    color: $accentColor
+
+  .sidebar
+    background white !important
+    position fixed !important
+
+  .sidebar > .sidebar-links
+    position relative !important
+    padding 1rem 0 !important
+
+  .page
+    padding-top 4rem
+    padding-left 0
+    padding-right 0
+
+  .content:not(.custom)
+    background-color transparent
+    border-radius 0
+    box-shadow none

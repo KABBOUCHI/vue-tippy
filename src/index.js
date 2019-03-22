@@ -1,10 +1,12 @@
 import tippy from 'tippy.js'
 
+var tippyDirective = 'tippy'
+
 const plugin = {
-  install (Vue, options) {
-    window.tippy = tippy
+  install (Vue, options = {}) {
+    tippyDirective = options.directive || 'tippy'
+
     tippy.setDefaults(options || {})
-    Vue.component('tippy', require('./components/Tippy.vue'))
 
     function createTippy (el, binding, vnode) {
       const handlers = (vnode.data && vnode.data.on) ||
@@ -64,7 +66,7 @@ const plugin = {
       })
     }
 
-    Vue.directive('tippy', {
+    Vue.directive(tippyDirective, {
       inserted (el, binding, vnode) {
         Vue.nextTick(() => {
           createTippy(el, binding, vnode)
@@ -92,6 +94,12 @@ const plugin = {
   }
 }
 
+import TippyComponent from './components/Tippy.vue'
+
 if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.use(plugin)
+  window.Vue.component('tippy', TippyComponent)
 }
+
+export default plugin
+export { TippyComponent }

@@ -1,0 +1,24 @@
+{
+    "dependencies": {
+        "@silvanite/vuepress-plugin-tailwind": "^1.1.0",
+        "@vuepress/plugin-last-updated": "^1.0.0-alpha.0",
+        "sass-loader": "^7.1.0",
+        "tailwindcss": "^0.7.4",
+        "viewcode": "^0.0.27",
+        "vuepress": "^v1.0.0-alpha.44ya",
+        "vuepress-plugin-sitemap": "^2.1.1"
+    },
+    "scripts": {
+        "docs:build": "vuepress build",
+        "docs:dev": "vuepress dev"
+    },
+    "devDependencies": {
+        "@vuepress/plugin-google-analytics": "^1.0.0-alpha.0",
+        "@vuepress/plugin-pwa": "^1.0.0-alpha.0",
+        "autoprefixer": "^9.4.2",
+        "node-sass": "^4.11.0",
+        "postcss-import": "^12.0.1",
+        "postcss-loader": "^3.0.0",
+        "tailwindcss": "^0.7.3"
+    }
+}

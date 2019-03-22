@@ -2064,7 +2064,7 @@ var _lodash4 = _interopRequireDefault(_lodash3);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = {
-  props: ["to", "content", "isEnabled", "isVisible"],
+  props: ['to', 'content', 'isEnabled', 'isVisible'],
   data: function data() {
     return {
       tip: null,
@@ -2075,14 +2075,14 @@ exports.default = {
     var elm = null;
 
     if (this.to) {
-      elm = document.querySelector("[name='" + this.to + "']");
+      elm = document.querySelector('[name=\'' + this.to + '\']');
     } else {
       elm = this.$slots.trigger[0].elm;
     }
 
     this.tip = (0, _tippy2.default)(elm, this.getOptions());
 
-    this.$emit("onCreate", this.tip);
+    this.$emit('onCreate', this.tip);
 
     if (this.isEnabled === false) {
       this.tip.disable();
@@ -2102,13 +2102,13 @@ exports.default = {
   },
   updated: function updated() {
     if (this.tip && !this.content) {
-      // this.tip.set(this.getOptions());
+      this.tip.set(this.getOptions());
     }
   },
 
   computed: {
     isManualTrigger: function isManualTrigger() {
-      return this.options.trigger === "manual";
+      return this.options.trigger === 'manual';
     }
   },
   methods: {
@@ -2126,9 +2126,9 @@ exports.default = {
 
       this.options = (0, _lodash4.default)(this.options, function (value, key) {
         if (_props.booleanProps.hasOwnProperty(key)) {
-          if (value === "") return true;
+          if (value === '') return true;
 
-          return value == "false" ? false : value;
+          return value === 'false' ? false : value;
         }
         return value;
       });
@@ -2141,7 +2141,7 @@ exports.default = {
             args[_key] = arguments[_key];
           }
 
-          _this.$emit.apply(_this, ["show"].concat(args));
+          _this.$emit.apply(_this, ['show'].concat(args));
         };
       }
 
@@ -2151,7 +2151,7 @@ exports.default = {
             args[_key2] = arguments[_key2];
           }
 
-          _this.$emit.apply(_this, ["shown"].concat(args));
+          _this.$emit.apply(_this, ['shown'].concat(args));
         };
       }
 
@@ -2161,7 +2161,7 @@ exports.default = {
             args[_key3] = arguments[_key3];
           }
 
-          _this.$emit.apply(_this, ["hidden"].concat(args));
+          _this.$emit.apply(_this, ['hidden'].concat(args));
         };
       }
 
@@ -2171,7 +2171,7 @@ exports.default = {
             args[_key4] = arguments[_key4];
           }
 
-          _this.$emit.apply(_this, ["hide"].concat(args));
+          _this.$emit.apply(_this, ['hide'].concat(args));
         };
       }
 
@@ -2181,7 +2181,7 @@ exports.default = {
             args[_key5] = arguments[_key5];
           }
 
-          _this.$emit.apply(_this, ["mount"].concat(args));
+          _this.$emit.apply(_this, ['mount'].concat(args));
         };
       }
 
@@ -2206,17 +2206,30 @@ exports.default = {
 "use strict";
 
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.TippyComponent = undefined;
+
 var _tippy = __webpack_require__(0);
 
 var _tippy2 = _interopRequireDefault(_tippy);
 
+var _Tippy = __webpack_require__(2);
+
+var _Tippy2 = _interopRequireDefault(_Tippy);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var tippyDirective = 'tippy';
+
 var plugin = {
-  install: function install(Vue, options) {
-    window.tippy = _tippy2.default;
+  install: function install(Vue) {
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    tippyDirective = options.directive || 'tippy';
+
     _tippy2.default.setDefaults(options || {});
-    Vue.component('tippy', __webpack_require__(2));
 
     function createTippy(el, binding, vnode) {
       var handlers = vnode.data && vnode.data.on || vnode.componentOptions && vnode.componentOptions.listeners;
@@ -2285,7 +2298,7 @@ var plugin = {
       });
     }
 
-    Vue.directive('tippy', {
+    Vue.directive(tippyDirective, {
       inserted: function inserted(el, binding, vnode) {
         Vue.nextTick(function () {
           createTippy(el, binding, vnode);
@@ -2295,7 +2308,6 @@ var plugin = {
         el._tippy && el._tippy.destroy();
       },
       componentUpdated: function componentUpdated(el, binding, vnode) {
-
         if (el._tippy) {
           var opts = binding.value || {};
 
@@ -2316,7 +2328,11 @@ var plugin = {
 
 if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.use(plugin);
+  window.Vue.component('tippy', _Tippy2.default);
 }
+
+exports.default = plugin;
+exports.TippyComponent = _Tippy2.default;
 
 /***/ }),
 /* 5 */
@@ -2326,63 +2342,63 @@ if (typeof window !== 'undefined' && window.Vue) {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var booleanProps = {
-    a11y: true,
-    allowHTML: true,
-    animateFill: true,
-    arrow: false,
-    flip: true,
-    flipOnUpdate: false,
-    followCursor: false,
-    hideOnClick: true,
-    ignoreAttributes: false,
-    inertia: false,
-    interactive: false,
-    lazy: true,
-    multiple: false,
-    showOnInit: false,
-    sticky: false,
-    touch: true,
-    touchHold: false
+  a11y: true,
+  allowHTML: true,
+  animateFill: true,
+  arrow: false,
+  flip: true,
+  flipOnUpdate: false,
+  followCursor: false,
+  hideOnClick: true,
+  ignoreAttributes: false,
+  inertia: false,
+  interactive: false,
+  lazy: true,
+  multiple: false,
+  showOnInit: false,
+  sticky: false,
+  touch: true,
+  touchHold: false
 };
 exports.default = _extends({
-    animation: 'shift-away',
-    appendTo: function appendTo() {
-        return document.body;
-    },
-    aria: 'describedby',
-    arrowType: 'sharp',
-    boundary: 'scrollParent',
-    content: '',
-    delay: 0,
-    distance: 10,
-    duration: [325, 275],
-    flipBehavior: 'flip',
-    interactiveBorder: 2,
-    interactiveDebounce: 0,
-    maxWidth: 350,
-    offset: 0,
-    onHidden: function onHidden() {},
-    onHide: function onHide() {},
-    onMount: function onMount() {},
-    onShow: function onShow() {},
-    onShown: function onShown() {},
+  animation: 'shift-away',
+  appendTo: function appendTo() {
+    return document.body;
+  },
+  aria: 'describedby',
+  arrowType: 'sharp',
+  boundary: 'scrollParent',
+  content: '',
+  delay: 0,
+  distance: 10,
+  duration: [325, 275],
+  flipBehavior: 'flip',
+  interactiveBorder: 2,
+  interactiveDebounce: 0,
+  maxWidth: 350,
+  offset: 0,
+  onHidden: function onHidden() {},
+  onHide: function onHide() {},
+  onMount: function onMount() {},
+  onShow: function onShow() {},
+  onShown: function onShown() {},
 
-    placement: 'top',
-    popperOptions: {},
-    role: 'tooltip',
-    size: 'regular',
-    target: '',
-    theme: 'dark',
-    trigger: 'mouseenter focus',
-    updateDuration: 0,
-    wait: null,
-    zIndex: 9999
+  placement: 'top',
+  popperOptions: {},
+  role: 'tooltip',
+  size: 'regular',
+  target: '',
+  theme: 'dark',
+  trigger: 'mouseenter focus',
+  updateDuration: 0,
+  wait: null,
+  zIndex: 9999
 }, booleanProps);
 exports.booleanProps = booleanProps;
 
