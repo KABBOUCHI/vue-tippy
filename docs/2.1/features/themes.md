@@ -1,17 +1,7 @@
 # Themes
-#### You can create all kinds of custom funky themes for your tooltips with ease.
-@include('_partials.class-table', [
-    'rows' => 
-    [ 
-        [ 
-            'theme', 
-            "'dark'",
-            "'dark' 'light' \n'translucent' 'gradient",
-            "" 
-        ], 
-    ] 
-])
-<br>  
+> You can create all kinds of custom funky themes for your tooltips with ease.
+
+<themes-table-v2/>
 
 @component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
 

@@ -1,35 +1,6 @@
 # Callbacks (events)
-#### Callbacks allow you to react to a tooltip's show and hide events. Open your browser console to see when the logs occur.
-@include('_partials.class-table', [
-    'rows' => 
-    [ 
-        [ 
-            '@show', 
-            "-",
-            "Function",
-            "Callback function triggered when a tooltip begins to show." 
-        ],
-        [ 
-            '@shown', 
-            "-",
-            "Function",
-            "Callback function triggered when a tooltip has fully transitioned in." 
-        ], 
-        [ 
-            '@hide', 
-            "-",
-            "Function",
-            "Callback function triggered when a tooltip begins to hide." 
-        ], 
-        [ 
-            '@hidden', 
-            "-",
-            "Function",
-            "Callback function triggered when a tooltip has fully transitioned out." 
-        ],  
-    ] 
-])
-<br>  
+> Callbacks allow you to react to a tooltip's show and hide events. Open your browser console to see when the logs occur.
+<events-table-v2/>
 
 @component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
 

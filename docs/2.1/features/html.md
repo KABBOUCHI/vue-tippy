@@ -1,44 +1,7 @@
 # HTML
-#### Tooltips can even contain HTML!
+> Tooltips can even contain HTML!
 
-@include('_partials.work-in-progress')
-
-
-@include('_partials.class-table', [
-    'rows' => 
-    [ 
-        [ 
-            'reactive', 
-            "false",
-            "Boolean",
-            "<div class='p-2 border-b border-grey-lighter'>
-                 <p class='m-2'>When you set <span class='text-purple-dark'>reactive</span> to <span class='text-blue-dark'>true</span>, element will be used directly:</p>
-                 <p class='pl-8'>&ndash; Can only be used once</p>
-                 <p class='pl-8'>&ndash; Removed from the page and appended directly to the tooltip</p>
-                 <p class='pl-8'>&ndash; Saves event listeners attached to it</p>
-                 <p class='pl-8'>&ndash; Directly modifiable</p>
-             </div>
-             
-             <div class='p-2'>
-                   <p class='m-2'>When you set <span class='text-purple-dark'>reactive</span> to <span class='text-blue-dark'>false</span>, element will be cloned:</p>
-                   <p class='pl-8'>&ndash; Can be re-used multiple times</p>
-                   <p class='pl-8'>&ndash; Not removed from the page</p>
-                   <p class='pl-8'>&ndash; Will not save event listeners attached to it</p>
-                   <p class='pl-8'>&ndash; Not directly modifiable</p>
-                   <p class='pl-8'>&ndash; if you add <span class='text-purple-dark'>v-tippy-html</span> directive will update the tooltip content automatically</p>
-             </div>
-         
-             " 
-        ], 
-        [ 
-            'interactive', 
-            "false",
-            "Boolean",
-            "Makes a tooltip interactive, i.e. will not close when the user hovers over or clicks on the tooltip. This lets you create a popover (similar to Bootstrap) when used in conjunction with a click trigger." 
-        ], 
-        
-    ] 
-])
+<html-table-v2/>
 
 <h3>Reactive set to false</h3>
 

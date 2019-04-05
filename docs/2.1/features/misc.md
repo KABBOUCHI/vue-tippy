@@ -1,49 +1,8 @@
 
 # Misc
-#### Tippy has many more features! These are just some of them.
-@include('_partials.class-table', [
-    'rows' => 
-    [ 
-        [ 
-            'distance', 
-            "10",
-            "Number (pixels)",
-            "Specifies how far away the tooltip is from its reference element. This contrasts the offset option in that it only applies to a single axis and allows tooltips to still be interactive when their trigger is mouseenter."
-        ],
-        [ 
-            'offset', 
-            "0",
-            "Number | String (pixels)",
-            "Offsets a tooltip on a certain axis. Use a string such as '25, 10' to offset it on both the x and y axes."
-        ],
-        [ 
-            'followCursor', 
-            "false",
-            "Boolean",
-            "Specifies whether to follow the user's mouse cursor (mouse devices only)."
-        ], 
-        [ 
-            'sticky', 
-            "false",
-            "Boolean",
-            "Specifies whether the tooltip should stick to its reference element when it's showing (for example, if the element is animated/moves)."
-        ],
-        [ 
-            'size', 
-            "'regular'",
-            "'small' 'regular' 'large'",
-            "Specifies how large the tooltip is."
-        ],
-        [ 
-            'touchHold', 
-            "false",
-            "Boolean",
-            "Changes the trigger behavior on touch devices. It will change it from a tap to show and tap off to hide, to a tap and hold to show, and a release to hide."
-        ],          
-    ] 
-])
+> Tippy has many more features! These are just some of them.
 
-<br>  
+<misc-table-v2/>
 
 @component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
 

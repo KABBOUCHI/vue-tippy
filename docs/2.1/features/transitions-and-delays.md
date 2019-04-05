@@ -1,25 +1,7 @@
 # Transitions and Delays
-#### Tooltips can have different transition durations or delays.
+> Tooltips can have different transition durations or delays.
 
-@include('_partials.class-table', [
-    'rows' => 
-    [ 
-        [ 
-            'delay', 
-            "0",
-            "Number | Array \n(milliseconds)",
-            "Specifies how long it takes after a show or hide event is fired for a tooltip to begin showing or hiding. Use an array to specify a different show and hide delay, such as [300, 100]." 
-        ],
-        [ 
-            'duration', 
-            "[350, 300]",
-            "Number | Array \n(milliseconds)",
-            "Specifies how long the transition animation takes to complete. A single number will use the same duration for the show and hide events. Use an array to specify a different show and hide duration, such as [300, 100]." 
-        ]
-    ] 
-])
-
-<br>  
+<transitions-delays-table-v2/>
 
 @component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
 

@@ -1,11 +1,7 @@
 # Placement
 > Tooltips can be placed in four different ways in relation to their reference element. Additionally, the tooltip can be shifted.
 
-| Option        | Default       | Inputs| Role|
-| ------------- |:-------------:|:-----:|----:|
-| placement      | top  | top  bottom left right | Specifies which direction to place the tooltip in relation to the reference element. Add the suffix -start or -end to shift the placement. top-end is an example.
-
-<br>  
+<placement-table-v2/>  
 
 <vue-code>
 <div slot="demo">

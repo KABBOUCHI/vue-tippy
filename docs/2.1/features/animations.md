@@ -1,36 +1,8 @@
 # Animations
-#### Tooltips can have different types of transition animations.
+> Tooltips can have different types of transition animations.
 
-@include('_partials.class-table', [
-    'rows' => 
-    [ 
-        [ 
-            'animation', 
-            "'shift-away'",
-            "'shift-away' \n'shift-toward' \n'perspective' \n'fade' 'scale'",
-            "Specifies the type of transition animation a tooltip has." 
-        ], 
-        [ 
-            'animationFill', 
-            "true",
-            "Boolean",
-            "Adds a material design-esque filling animation. This is disabled if you have 'arrow' set to true." 
-        ], 
-        [ 
-            'duration', 
-            "[350, 300]",
-            "Number | Array \n(milliseconds)",
-            "Specifies how long the transition animation takes to complete. A single number will use the same duration for the show and hide events. Use an array to specify a different show and hide duration, such as [300, 100]." 
-        ], 
-        [ 
-            'inertia', 
-            "false",
-            "Boolean",
-            "	Modifies the transition-timing-function with a cubic bezier to create a 'slingshot' intertial effect." 
-        ],
-    ] 
-])
-<br>  
+<animations-table-v2/>
+
 @component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
 
     <button class="btn mt-2 mb-2" 

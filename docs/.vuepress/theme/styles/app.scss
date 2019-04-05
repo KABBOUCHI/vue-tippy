@@ -19,8 +19,8 @@
 
 ::-webkit-scrollbar
 {
-  width: 8px;
-  height: 8px;
+  width: 2px;
+  height: 2px;
 }
 
 ::-webkit-scrollbar-thumb
@@ -44,4 +44,8 @@ code::-webkit-scrollbar
 code::-webkit-scrollbar-thumb
 {
   @apply .rounded-full .bg-red;
+}
+
+.table-collapse {
+    border-collapse: collapse;
 }

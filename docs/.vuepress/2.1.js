@@ -1,21 +1,21 @@
 module.exports = [
     {
         title: 'Introduction',
-        collapsable: true,
+        collapsable: false,
         children: prefix('introduction', [
             'what-is-vue-tippy'
         ]),
     },
     {
         title: 'Getting Started',
-        collapsable: true,
+        collapsable: false,
         children: prefix('getting-started', [
             'installation'
         ]),
     },
     {
         title: 'Features',
-        collapsable: true,
+        collapsable: false,
         children: prefix('features', [
             'default',
             'placement',

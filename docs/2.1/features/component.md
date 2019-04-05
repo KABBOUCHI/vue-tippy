@@ -1,6 +1,5 @@
 # Component
-#### ooltip as component
-@include('_partials.work-in-progress')
+> Tooltip as component
 
 @component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
 
