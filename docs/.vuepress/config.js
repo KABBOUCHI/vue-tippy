@@ -29,6 +29,54 @@ module.exports = {
         [
             'link',
             {
+                href: '/apple-touch-icon.png',
+                rel: 'apple-touch-icon',
+                size: '180x180',
+            },
+        ],
+        [
+            'link',
+            {
+                href: '/favicon-32x32.png',
+                rel: 'icon',
+                type: 'image/png',
+                size: '32x32',
+            },
+        ],
+        [
+            'link',
+            {
+                href: '/favicon-16x16.png',
+                rel: 'icon',
+                type: 'image/png',
+                size: '16x16',
+            },
+        ],
+        [
+            'link',
+            {
+                href: '/manifest.json',
+                rel: 'manifest',
+            },
+        ],
+        [
+            'link',
+            {
+                href: '/safari-pinned-tab.svg',
+                rel: 'mask-icon',
+                color: '#00b4b6',
+            },
+        ],
+        [
+            'meta',
+            {
+                name: 'theme-color',
+                content: '#ffffff',
+            },
+        ],
+        [
+            'link',
+            {
                 href: 'https://fonts.googleapis.com/css?family=Nunito:100,300,400,500,600,700',
                 rel: 'stylesheet',
                 type: 'text/css',
@@ -45,6 +93,7 @@ module.exports = {
 
     themeConfig: {
         repo: 'kabbouchi/vue-tippy',
+        logo: '/logo.svg',
         docsDir: 'docs',
         docsBranch: 'master',
         editLinks: true,
