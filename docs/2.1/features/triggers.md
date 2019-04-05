@@ -3,40 +3,54 @@
 
 <triggers-table-v2/>
 
-@component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
+<vue-code>
+<div slot="demo">
+<button class="btn mt-2 mb-2" title="Some mobile browsers only fire mouseenter" v-tippy='{ trigger : "mouseenter" }'>
+Hover or touch
+</button>
 
-    <button class="btn mt-2 mb-2" title="Some mobile browsers only fire mouseenter" v-tippy='{ trigger : "mouseenter" }'>Hover or touch</button>
+</div>
+<div slot="code">
 
-    @slot('code')
+```html
 <button title="Some mobile browsers only fire mouseenter" 
         v-tippy='{ trigger : "mouseenter" }'>
     Hover or touch
 </button>
-    @endslot 
+```
 
-@endcomponent
+</div>
+</vue-code>
 
-@component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
+<vue-code>
+<div slot="demo">
+    <button class="btn mt-2 mb-2" title="Some mobile browsers only fire focus" v-tippy='{ trigger : "focus", hideOnClick : false }'>
+    Focus or touch
+    </button>
 
-    <button class="btn mt-2 mb-2" title="Some mobile browsers only fire focus" v-tippy='{ trigger : "focus", hideOnClick : false }'>Focus or touch</button>
+</div>
+<div slot="code">
 
-    @slot('code')
+```html
 <button title="Some mobile browsers only fire focus" 
         v-tippy='{ trigger : "focus", hideOnClick : false }'>
     Focus or touch
 </button>
-    @endslot 
+```
 
-@endcomponent
+</div>
+</vue-code>
 
-@component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
+<vue-code>
+<div slot="demo">
+<button class="btn mt-2 mb-2" title="Thanks for clicking" v-tippy='{ trigger : "click" }'>Click</button>
+</div>
+<div slot="code">
 
-    <button class="btn mt-2 mb-2" title="Thanks for clicking" v-tippy='{ trigger : "click" }'>Click</button>
-
-    @slot('code')
+```html
 <button title="Thanks for clicking" v-tippy='{ trigger : "click"}'>
     Click
 </button>
-    @endslot 
-
-@endcomponent
+```
+</div>
+</vue-code>

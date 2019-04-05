@@ -116,4 +116,7 @@ module.exports = {
             '/4.0/': require('./4.0'),
         },
     },
+    chainWebpack(config) {
+        config.resolve.alias.set('vue', 'vue/dist/vue.common.js')
+    }
 };

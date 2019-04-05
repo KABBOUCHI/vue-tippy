@@ -8,6 +8,48 @@ export default ({
 }) => {
     window.Vue = Vue;
 
+    Vue.mixin({
+        data() {
+            return {
+                message: 'Hello Vue!',
+                timer: 0,
+                counter: 0,
+                tippyTheme: 'light'
+            }
+        },
+        created() {
+            setInterval(() => {
+                this.timer++;
+            }, 1000);
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 't') {
+                    this.tippyTheme = this.tippyTheme == 'light' ? 'dark' : 'light';
+                }
+            });
+        },
+        methods: {
+            onShow() {
+                alert('onShow');
+
+            },
+            onShown() {
+                alert('onShown');
+
+            },
+            onHide() {
+                alert('onHide');
+
+            },
+            onHidden() {
+                alert('onHidden');
+            },
+            onTippyInit(tippy) {
+                console.log('[onTippyInit]', tippy);
+            }
+        }
+    })
+
     Vue.use(VueTippyV4, {
         directive: 'tippy-v4',
     })

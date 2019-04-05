@@ -2,99 +2,116 @@
 > Callbacks allow you to react to a tooltip's show and hide events. Open your browser console to see when the logs occur.
 <events-table-v2/>
 
-@component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
 
+<vue-code>
+<div slot="demo">
     <button class="btn mt-2 mb-2" 
             title="I'm called when a tooltip begins to show."
-            @@show="onShow"
+            @show="onShow"
             v-tippy="{ arrow : true, duration : 600 }"
      >
-       @@show
+       @show
     </button>
+</div>
+<div slot="code">
 
-@slot('code')
+```html
 <button title="I'm called when a tooltip begins to show."
-        @@show="onShow"
+        @show="onShow"
         v-tippy="{ arrow : true, duration : 600 }">
-    @@show
+    @show
 </button>
-@endslot 
-@endcomponent
+```
+</div>
+</vue-code>
 
-@component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
-
+<vue-code>
+<div slot="demo">
     <button class="btn mt-2 mb-2" 
             title="I'm called when a tooltip begins to hide."
-            @@hide="onHide"
+            @hide="onHide"
             v-tippy="{ arrow : true, duration : 600 }"
      >
-       @@hide
+       @hide
     </button>
+</div>
+<div slot="code">
 
-@slot('code')
+```html
 <button title="I'm called when a tooltip begins to hide."
-        @@hide="onHide"
+        @hide="onHide"
         v-tippy="{ arrow : true, duration : 600 }">
-    @@hide
+    @hide
 </button>
-@endslot 
-@endcomponent
+```
+</div>
+</vue-code>
 
-@component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
-
-    <button class="btn mt-2 mb-2" 
+<vue-code>
+<div slot="demo">
+ <button class="btn mt-2 mb-2" 
             title="I'm called when a tooltip begins to show."
-            @@show="onShow"
+            @how="onShow"
             v-tippy="{ arrow : true, duration : 600 }"
      >
-       @@show
+       @show
     </button>
+</div>
+<div slot="code">
 
-@slot('code')
+```html
 <button title="I'm called when a tooltip begins to show."
-        @@show="onShow"
+        @show="onShow"
         v-tippy="{ arrow : true, duration : 600 }">
-    @@show
+    @show
 </button>
-@endslot 
-@endcomponent
+```
+</div>
+</vue-code>
 
-@component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
 
-    <button class="btn mt-2 mb-2" 
+<vue-code>
+<div slot="demo">
+ <button class="btn mt-2 mb-2" 
             title="I'm called when a tooltip has fully transitioned in."
-            @@shown="onShown"
+            @shown="onShown"
             v-tippy="{ arrow : true, duration : 600, maxWidth : '400px' }"
      >
-       @@shown
+       @shown
     </button>
+</div>
+<div slot="code">
 
-@slot('code')
+```html
 <button title="I'm called when a tooltip has fully transitioned in."
-        @@shown="onShown"
+        @@hown="onShown"
         v-tippy="{ arrow : true, duration : 600, maxWidth : '400px' }">
-    @@shown
+    @shown
 </button>
-@endslot 
+```
+</div>
+</vue-code>
 
-@endcomponent
 
-@component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
-
-    <button class="btn mt-2 mb-2" 
+<vue-code>
+<div slot="demo">
+ <button class="btn mt-2 mb-2" 
             title="I'm called when a tooltip has fully transitioned out."
-            @@hidden="onHidden"
+            @hidden="onHidden"
             v-tippy="{ arrow : true, duration : 600, maxWidth : '400px' }"
      >
-       @@hidden
+       @hidden
     </button>
+</div>
+<div slot="code">
 
-@slot('code')
+```html
 <button title="I'm called when a tooltip has fully transitioned out."
-        @@hidden="onHidden"
+        @hidden="onHidden"
         v-tippy="{ arrow : true, duration : 600, maxWidth : '400px' }">
-    @@hidden
+    @hidden
 </button>
-@endslot 
 
-@endcomponent
+```
+</div>
+</vue-code>

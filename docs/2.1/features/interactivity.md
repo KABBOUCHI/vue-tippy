@@ -3,28 +3,34 @@
 
 <interactivity-table-v2/>
 
-@component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
+<vue-code>
+<div slot="demo">
+    <button class="btn mt-2 mb-2" title="I don't close when the cursor moves onto me!" v-tippy='{ interactive : true }'>
+    Interactive with hover
+    </button>
+</div>
+<div slot="code">
 
-    <button class="btn mt-2 mb-2" title="I don't close when the cursor moves onto me!" v-tippy='{ interactive : true }'>Interactive with hover</button>
-
-    @slot('code')
+```html
 <button title="I don't close when the cursor moves onto me!"
         v-tippy='{ interactive : true }'>
     Interactive with hover
 </button>
-    @endslot 
+```
+</div>
+</vue-code>
 
-@endcomponent
+<vue-code>
+<div slot="demo">
+<button class="btn mt-2 mb-2" title="Feel free to interact with me." v-tippy='{ interactive : true, trigger: "click" }'>Interactive with click</button>
+</div>
+<div slot="code">
 
-@component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
-
-    <button class="btn mt-2 mb-2" title="Feel free to interact with me." v-tippy='{ interactive : true, trigger: "click" }'>Interactive with click</button>
-
-    @slot('code')
+```html
 <button title="Feel free to interact with me." 
         v-tippy='{ interactive : true, trigger: "click" }'>
     Interactive with click
 </button>
-    @endslot 
-
-@endcomponent
+```
+</div>
+</vue-code>
