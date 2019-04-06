@@ -86,7 +86,7 @@ module.exports = {
         [
             'script',
             {
-                src: 'https://unpkg.com/vue-tippy/dist/vue-tippy.min.js',
+                src: '//unpkg.com/vue-tippy/dist/vue-tippy.min.js',
                 defer: true
             },
         ]
