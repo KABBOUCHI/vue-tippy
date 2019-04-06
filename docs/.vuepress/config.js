@@ -1,4 +1,5 @@
 module.exports = {
+    base: '/vue-tippy/',
     title: 'VueTippy',
     description: 'A lightweight tooltip for VueJS. Based on tippy.js and powered by Popper.js',
     lastUpdated: 'Last Updated',
