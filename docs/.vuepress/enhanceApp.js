@@ -6,7 +6,8 @@ export default ({
     router, // the router instance for the app
     siteData // site metadata
 }) => {
-    window.Vue = Vue;
+    if (VueTippy)
+        Vue.use(VueTippy.default)
 
     Vue.mixin({
         data() {
