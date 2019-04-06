@@ -5,8 +5,8 @@
 
 <h3>Reactive set to false</h3>
 
-@component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
-
+<vue-code>
+<div slot="demo">
     <div id="template-1" class="hidden">
         <div class="max-w-md w-full">
              <div class="m-2">
@@ -19,9 +19,10 @@
             v-tippy="{ html: '#template-1', interactive : true, theme : 'light', animateFill : false }">
                 Static HTML Template
     </button>
+</div>
+<div slot="code">
 
-@slot('code')
-
+```html
 <div id="template-1" class="hidden">
     <div class="max-w-md w-full">
         <div class="m-2">
@@ -40,17 +41,19 @@
 <button v-tippy="{ html: '#template-1', interactive : true, theme : 'light' }">
     Static HTML Template
 </button>
-@endslot 
+```
 
-@endcomponent
+</div>
+</vue-code>
+
 
 <h3>Reactive set to false + <span class="text-purple-dark">v-tippy-html</span> directive</h3>  
 
-@component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
-
+<vue-code>
+<div slot="demo">
     <div id="template-2" class="hidden" v-tippy-html>
         <div class="max-w-md w-full">
-             (@{{ timer }}) - `<span class="text-purple-dark">v-tippy-html</span>` 
+             ({{ timer }}) - `<span class="text-purple-dark">v-tippy-html</span>` 
              directive will update the tooltip content automatically
         </div>
     </div>
@@ -58,12 +61,13 @@
             v-tippy="{ html: '#template-2', interactive : true, theme : 'light', animateFill : false }">
                 HTML Template with VueJS data/props
     </button>
+</div>
+<div slot="code">
 
-@slot('code')
-
+```html
 <div id="template-2" class="hidden" v-tippy-html>
         <div class="max-w-md w-full">
-            { { timer } }  - <span class="text-purple-dark">v-tippy-html</span> 
+            {{ timer }}  - <span class="text-purple-dark">v-tippy-html</span> 
             directive will update the tooltip content automatically
         </div>
 </div>    
@@ -71,16 +75,18 @@
 <button v-tippy="{ html: '#template-2', interactive : true, theme : 'light' }">
     Static HTML Template
 </button>
-@endslot 
+```
 
-@endcomponent
+</div>
+</vue-code>
 
 <h3>Reactive</h3>  
-@component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
 
+<vue-code>
+<div slot="demo">
     <div id="template-3">
         <div class="max-w-md w-full py-4 px-8">
-            <p> @{{ message }} | counter : @{{ counter }} </p>  
+            <p> {{ message }} | counter : {{ counter }} </p>  
            <button class="btn mt-2 mb-2" @click="counter++">Increment</button>
         </div>
     </div>
@@ -88,12 +94,13 @@
             v-tippy="{ html: '#template-3', reactive : true, interactive : true, theme : 'light', animateFill : false }">
                 Full reactive template
     </button>
+</div>
+<div slot="code">
 
-@slot('code')
-
+```html
 <div id="template-3">
     <div class="max-w-md w-full py-4 px-8">
-        <p> { { message } } | counter : { { counter } } </p>  
+        <p> {{ message }} | counter : {{ counter }} </p>  
        <button class="btn mt-2 mb-2" @click="counter++">Increment</button>
     </div>
 </div>
@@ -102,6 +109,7 @@
         interactive : true, theme : 'light', animateFill : false }">
     Full reactive template
 </button>
-@endslot 
+```
 
-@endcomponent
+</div>
+</vue-code>

@@ -200,3 +200,22 @@ h4
     background-color transparent
     border-radius 0
     box-shadow none
+
+
+.tippy-tooltip.honeybee-theme {
+  background-color: yellow;
+  border: 2px solid orange;
+  color: black;
+}
+.tippy-popper[x-placement^='top'] .tippy-tooltip.honeybee-theme .tippy-arrow {
+  border-top: 7px solid orange;
+}
+.tippy-popper[x-placement^='top'] .tippy-tooltip.honeybee-theme .tippy-arrow::after {
+  content: '';
+  position: absolute;
+  top: -8px;
+  left: -6px;
+  border-left: 6px solid transparent;
+  border-right: 6px solid transparent;
+  border-top: 6px solid yellow;
+}

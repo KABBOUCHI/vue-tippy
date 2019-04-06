@@ -1,5 +1,5 @@
 <template>
-  <div class="overflow-y-scroll my-5">
+  <div class="overflow-x-scroll my-5">
     <table class="w-full text-left table-collapse">
       <thead>
         <tr>

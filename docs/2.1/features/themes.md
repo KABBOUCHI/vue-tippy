@@ -3,8 +3,8 @@
 
 <themes-table-v2/>
 
-@component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
-
+<vue-code>
+<div slot="demo">
     <button class="btn mt-2 mb-2" 
             title="See through!" 
             v-tippy="{ arrow : true, animateFill: false, theme : 'translucent', flip : false }"
@@ -12,51 +12,58 @@
        Translucent
     </button>
 
-@slot('code')
+</div>
+<div slot="code">
+
+```html
 <button title="See through!" 
         v-tippy="{ arrow : true, animateFill: false, theme : 'translucent' }">
 Translucent
 </button>
-@endslot 
+```
+</div>
+</vue-code>
 
-@endcomponent
 
-
-@component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
-
+<vue-code>
+<div slot="demo">
     <button class="btn mt-2 mb-2" 
             title="Awesome colors!" 
             v-tippy="{ animateFill: false, theme : 'gradient' }"
      >
        Gradient
     </button>
+</div>
+<div slot="code">
 
-@slot('code')
+```html
 <button title="Awesome colors!" 
         v-tippy="{ animateFill: false, theme : 'gradient' }">
 Gradient
 </button>
-@endslot 
+```
+</div>
+</vue-code>
 
-@endcomponent
-
-@component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
-
+<vue-code>
+<div slot="demo">
     <button class="btn mt-2 mb-2" 
             title="Cool huh?" 
             v-tippy="{ animateFill: false, theme : 'light bordered'}"
      >
        Light
     </button>
+</div>
+<div slot="code">
 
-@slot('code')
+```html
 <button title="Cool huh?" 
         v-tippy="{ animateFill: false, theme : 'light bordered' }">
     Light
 </button>
-@endslot 
-
-@endcomponent
+```
+</div>
+</vue-code>
 
 ## Creating themes
 
@@ -97,24 +104,28 @@ Sharp arrows are CSS triangles which use the border trick, while round arrows ar
 
 #### Style the animateFill backdrop
 <span></span>  
+
 ```css
 .tippy-tooltip.honeybee-theme .tippy-backdrop {
   /* Your styling here. Example: */
   background-color: yellow;
 }
 ```
-#### Specify a theme
-<span></span>
-@component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
 
+#### Specify a theme
+
+<vue-code>
+<div slot="demo">
     <button class="btn mt-2 mb-2" 
             title="I'm a tooltip" 
             v-tippy="{ theme : 'honeybee' , animateFill : false}" 
      >
        Honeybee theme
     </button>
+</div>
+<div slot="code">
 
-@slot('code')
+```html
 <button title="I'm a tooltip" v-tippy="{ theme : 'honeybee' }">
     Honeybee theme
 </button>
@@ -142,25 +153,27 @@ Sharp arrows are CSS triangles which use the border trick, while round arrows ar
         border-top: 6px solid yellow;
     }
 </style>
-@endslot 
-
-@endcomponent
+```
+</div>
+</vue-code>
 
 #### Multiple themes
-<span></span>  
-@component('_partials.code-sample', ['lang' => 'html', 'class' => 'text-center']) 
 
-    <button class="btn mt-2 mb-2" 
-            title="I'm a tooltip" 
-            v-tippy="{ theme : 'honeybee light' , animateFill : false}" 
-     >
-       Multiple themes
-    </button>
+<vue-code>
+<div slot="demo">
+<button class="btn mt-2 mb-2" 
+        title="I'm a tooltip" 
+        v-tippy="{ theme : 'honeybee light' , animateFill : false}" >
+    Multiple themes
+</button>
+</div>
+<div slot="code">
 
-@slot('code')
+```html
 <button title="I'm a tooltip" v-tippy="{ theme : 'honeybee light' }">
     Multiple themes
 </button>
-@endslot 
+```
 
-@endcomponent
+</div>
+</vue-code>

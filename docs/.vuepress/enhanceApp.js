@@ -46,6 +46,10 @@ export default ({
             },
             onTippyInit(tippy) {
                 console.log('[onTippyInit]', tippy);
+            },
+            alert(msg) {
+                alert(msg);
+                console.log(msg);
             }
         }
     })

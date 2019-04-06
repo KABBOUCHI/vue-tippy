@@ -1,7 +1,7 @@
 # Callbacks (events)
 > Callbacks allow you to react to a tooltip's show and hide events. Open your browser console to see when the logs occur.
-<events-table-v2/>
 
+<events-table-v2/>
 
 <vue-code>
 <div slot="demo">
