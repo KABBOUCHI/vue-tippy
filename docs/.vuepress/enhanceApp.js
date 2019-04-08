@@ -6,8 +6,16 @@ export default ({
     router, // the router instance for the app
     siteData // site metadata
 }) => {
-    if (VueTippy)
+
+    if (typeof window !== 'undefined') {
+        window.Vue = Vue;
+
+    }
+
+    if (typeof VueTippy !== 'undefined') {
         Vue.use(VueTippy.default)
+    }
+
 
     Vue.mixin({
         data() {
@@ -23,11 +31,14 @@ export default ({
                 this.timer++;
             }, 1000);
 
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 't') {
-                    this.tippyTheme = this.tippyTheme == 'light' ? 'dark' : 'light';
-                }
-            });
+            if (typeof window !== 'undefined') {
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 't') {
+                        this.tippyTheme = this.tippyTheme == 'light' ? 'dark' : 'light';
+                    }
+                });
+            }
+
         },
         methods: {
             onShow() {

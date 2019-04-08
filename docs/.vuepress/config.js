@@ -83,13 +83,13 @@ module.exports = {
                 type: 'text/css',
             },
         ],
-        // [
-        //     'script',
-        //     {
-        //         src: 'https://unpkg.com/vue-tippy/dist/vue-tippy.min.js',
-        //         defer: true
-        //     },
-        // ]
+        [
+            'script',
+            {
+                src: 'https://unpkg.com/vue-tippy@2.1.2/dist/vue-tippy.min.js',
+                defer: true
+            },
+        ]
     ],
 
     themeConfig: {

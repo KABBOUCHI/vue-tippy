@@ -2133,8 +2133,6 @@ exports.default = {
         return value;
       });
 
-      console.log(this.options);
-
       if (!this.options.onShow) {
         this.options.onShow = function () {
           for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
