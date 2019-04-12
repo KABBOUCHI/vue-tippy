@@ -5,7 +5,7 @@ module.exports = {
     lastUpdated: 'Last Updated',
     plugins: {
         '@vuepress/google-analytics': {
-            ga: ''
+            ga: 'UA-46282921-2'
         },
         '@vuepress/pwa': {
             serviceWorker: true,
