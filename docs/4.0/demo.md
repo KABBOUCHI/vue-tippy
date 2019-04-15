@@ -7,19 +7,8 @@ The default tooltip looks like this. It has a nifty background fill animation!
 <vue-code>
 <div slot="demo">
 <button class="btn mt-2 mb-2" content="I'm a Tippy tooltip!" v-tippy-v4>
-   Tooltip using directive
+   My Button
 </button>
-
-<tippy-v4>
-
-<span slot="content">
-    I'm a Tippy tooltip!
-</span>
-<button class="btn" slot="trigger">
-Tooltip using component
-</button>
-
-</tippy-v4>
 
 </div>
 <div slot="code">
@@ -29,13 +18,33 @@ Tooltip using component
   Tooltip using directive  
 </button>
 
+<!-- OR -->
 
 <tippy>
     <span slot="content">
         I'm a Tippy tooltip!
     </span>
-   <button class="btn" slot="trigger">Tooltip using component</button>
+   <button class="btn" slot="trigger">
+       Tooltip using component + slots
+    </button>
 </tippy>
+
+<!-- OR -->
+
+<tippy content="I'm a Tippy tooltip!">
+   <button class="btn" slot="trigger">
+       Tooltip using component + trigger slot and content as attribute/prop
+   </button>
+</tippy>
+
+<!-- OR -->
+
+<tippy to="externalTrigger">
+    I'm a Tippy tooltip!
+</tippy>
+
+<button class="btn" name="externalTrigger">Tooltip using component</button>
+
 ```
 
 </div>
@@ -458,6 +467,7 @@ Attach many tippys to a single element.
     <tippy to="tippyMultiple" flip=false placement="right" multiple>Right</tippy>
     <tippy to="tippyMultiple" flip=false placement="top" multiple>Top</tippy>
     <tippy to="tippyMultiple" flip=false placement="bottom" multiple>Bottom</tippy>
+    
     <button name="tippyMultiple" class="btn"> Multiple </button>
 ```
 </div>
