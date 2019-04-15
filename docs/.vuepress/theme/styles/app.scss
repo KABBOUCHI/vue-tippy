@@ -49,3 +49,24 @@ code::-webkit-scrollbar-thumb
 .table-collapse {
     border-collapse: collapse;
 }
+
+#app table
+ { @apply .w-full .text-left .table-collapse .overflow-x-scroll .my-5}
+ 
+
+#app table thead tr th
+ { @apply  .font-semibold .text-grey-darker .p-4 .bg-grey-lightest}
+
+#app table tbody
+ { @apply .align-baseline}
+
+#app table tbody tr td:not(:last-child)
+ { @apply .p-2 .py-4 .border-t .border-grey-light .font-mono .text-purple-dark .whitespace-no-wrap}
+
+ #app table tbody tr td code
+ { @apply .text-purple-dark}
+
+#app table tbody tr td:last-of-type
+ { 
+   @apply .p-2 .py-4 .border-t .border-grey-lighter .text-grey-darker
+ }
