@@ -1,7 +1,6 @@
 module.exports = [
     {
-        title: 'COMING SOON',
-        collapsable: false,
+        title: 'DEMO',
     },
 ];
 

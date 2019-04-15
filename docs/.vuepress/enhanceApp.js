@@ -1,5 +1,8 @@
 import VueTippyV4, { TippyComponent } from '../../src'
 
+import "tippy.js/themes/google.css"
+import "tippy.js/themes/light-border.css"
+
 export default ({
     Vue, // the version of Vue being used in the VuePress app
     options, // the options for the root Vue instance
@@ -23,11 +26,12 @@ export default ({
                 message: 'Hello Vue!',
                 timer: 0,
                 counter: 0,
-                tippyTheme: 'light'
+                tippyTheme: 'light',
+                interval: null
             }
         },
         created() {
-            setInterval(() => {
+            this.interval = setInterval(() => {
                 this.timer++;
             }, 1000);
 
@@ -39,6 +43,10 @@ export default ({
                 });
             }
 
+        },
+        destroyed() {
+            if (this.interval)
+                clearInterval(this.interval)
         },
         methods: {
             onShow() {

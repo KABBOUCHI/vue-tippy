@@ -1,3 +1,4 @@
+<meta http-equiv="refresh" content="0;url=/vue-tippy/4.0/demo.html" />
 
 # V4 - Playground
 > Work in progress!
@@ -5,13 +6,21 @@
 
 <vue-code>
 <div slot="demo">
-<tippy-v4 to="dyn0" :content="timer" arrow show-on-init sticky></tippy-v4>
+<tippy-v4 to="dyn0" :content="timer" arrow show-on-init sticky trigger="manual" :hide-on-click="false"></tippy-v4>
 <button class="btn" name="dyn0">BTN0</button>
 </div>
 <div slot="code">
 
 ```html
-<tippy-v4 to="dyn0" :content="timer" arrow show-on-init sticky></tippy-v4>
+<tippy 
+    to="dyn0" 
+    :content="timer" 
+    arrow 
+    show-on-init 
+    sticky 
+    trigger="manual" 
+    :hide-on-click="false"
+></tippy>
 
 <button class="btn" name="dyn0">BTN0</button>
 ```
