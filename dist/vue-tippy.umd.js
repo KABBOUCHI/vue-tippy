@@ -9623,7 +9623,7 @@
 
   //
   var script = {
-    props: ['to', 'content', 'isEnabled', 'isVisible'],
+    props: ["to", "content", "isEnabled", "isVisible"],
     data: function data() {
       return {
         tip: null,
@@ -9640,7 +9640,7 @@
       }
 
       this.tip = tippy(elm, this.getOptions());
-      this.$emit('onCreate', this.tip);
+      this.$emit("onCreate", this.tip);
 
       if (this.isEnabled === false) {
         this.tip.disable();
@@ -9664,7 +9664,7 @@
     },
     computed: {
       isManualTrigger: function isManualTrigger() {
-        return this.options.trigger === 'manual';
+        return this.options.trigger === "manual";
       }
     },
     methods: {
@@ -9680,8 +9680,8 @@
         });
         this.options = lodash_mapvalues(this.options, function (value, key) {
           if (booleanProps.hasOwnProperty(key)) {
-            if (value === '') return true;
-            return value === 'false' ? false : value;
+            if (value === "") return true;
+            return value === "false" ? false : value;
           }
 
           return value;
@@ -9693,7 +9693,7 @@
               args[_key] = arguments[_key];
             }
 
-            _this.$emit.apply(_this, ['show'].concat(args));
+            _this.$emit.apply(_this, ["show"].concat(args));
           };
         }
 
@@ -9703,7 +9703,7 @@
               args[_key2] = arguments[_key2];
             }
 
-            _this.$emit.apply(_this, ['shown'].concat(args));
+            _this.$emit.apply(_this, ["shown"].concat(args));
           };
         }
 
@@ -9713,7 +9713,7 @@
               args[_key3] = arguments[_key3];
             }
 
-            _this.$emit.apply(_this, ['hidden'].concat(args));
+            _this.$emit.apply(_this, ["hidden"].concat(args));
           };
         }
 
@@ -9723,7 +9723,7 @@
               args[_key4] = arguments[_key4];
             }
 
-            _this.$emit.apply(_this, ['hide'].concat(args));
+            _this.$emit.apply(_this, ["hide"].concat(args));
           };
         }
 
@@ -9733,11 +9733,11 @@
               args[_key5] = arguments[_key5];
             }
 
-            _this.$emit.apply(_this, ['mount'].concat(args));
+            _this.$emit.apply(_this, ["mount"].concat(args));
           };
         }
 
-        if (!this.options.hasOwnProperty('content')) {
+        if (!this.options.hasOwnProperty("content")) {
           this.options.content = this.content ? this.content : this.$refs.content;
         }
 
@@ -9842,9 +9842,9 @@
 
     var _c = _vm._self._c || _h;
 
-    return _c("span", [_c("div", {
+    return _c("span", [_c("span", {
       ref: "trigger"
-    }, [_vm._t("trigger")], 2), _vm._v(" "), _c("div", {
+    }, [_vm._t("trigger")], 2), _vm._v(" "), _c("span", {
       ref: "content"
     }, [_vm._t("default")], 2)]);
   };
