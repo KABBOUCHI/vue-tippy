@@ -14,7 +14,7 @@
         "build:es": "rollup --config build/rollup.config.es.js",
         "build:umd": "rollup --config build/rollup.config.umd.js",
         "dev": "cross-env NODE_ENV=development rollup --config build/rollup.config.es.js --watch",
-        "prepublishOnly": "npm run test && npm run build",
+        "prepublishOnly": "npm run build",
         "test:unit": "vue-cli-service test:unit"
     },
     "main": "dist/vue-tippy.umd.js",
