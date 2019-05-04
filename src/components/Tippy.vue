@@ -1,8 +1,12 @@
 <template>
   <span>
-    <slot name="trigger"></slot>
-    <slot name="default"></slot>
-    <slot name="content"></slot>
+    <div ref="trigger">
+      <slot name="trigger"></slot>
+    </div>
+
+    <div ref="content">
+      <slot></slot>
+    </div>
   </span>
 </template>
 
@@ -27,7 +31,7 @@ export default {
     if (this.to) {
       elm = document.querySelector(`[name='${this.to}']`);
     } else {
-      elm = this.$slots.trigger[0].elm;
+      elm = this.$refs.trigger;
     }
 
     this.tip = tippy(elm, this.getOptions());
@@ -110,11 +114,7 @@ export default {
       }
 
       if (!this.options.hasOwnProperty("content"))
-        this.options.content = this.content
-          ? this.content
-          : this.$slots.content
-          ? this.$slots.content[0].elm
-          : this.$el;
+        this.options.content = this.content ? this.content : this.$refs.content;
 
       return this.options;
     }

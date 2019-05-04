@@ -21,18 +21,20 @@ The default tooltip looks like this. It has a nifty background fill animation!
 <!-- OR -->
 
 <tippy>
-    <span slot="content">
-        I'm a Tippy tooltip!
-    </span>
-   <button class="btn" slot="trigger">
-       Tooltip using component + slots
-    </button>
+
+    <template v-slot:trigger>
+        <button class="btn" >
+        Tooltip using component + slots
+        </button>
+    </template>
+
+     I'm a Tippy tooltip!
 </tippy>
 
 <!-- OR -->
 
 <tippy content="I'm a Tippy tooltip!">
-   <button class="btn" slot="trigger">
+   <button class="btn" v-slot.trigger>
        Tooltip using component + trigger slot and content as attribute/prop
    </button>
 </tippy>
@@ -250,14 +252,18 @@ Tooltips can contain HTML.
 </button>
 
 <tippy-v4 interactive :animate-fill="false" placement="bottom" distant="7" theme="light" animation="fade" trigger="click" arrow>
-<span slot="content">
-    <button class="btn" @click="timer = timer + 10">Increase</button>
-    <p class="mt-2">{{ timer }}</p>
-</span>
+ 
+<template v-slot:trigger>
+    <button class="btn">
+    HTML Content using component (click)
+    </button>
+</template>
 
-<button class="btn" slot="trigger">
-HTML Content using component (click)
-</button>
+    
+<span>
+<button class="btn" @click="timer = timer + 10">Increase</button>
+<p class="mt-2">{{ timer }}</p>
+</span>
 
 </tippy-v4>
 
@@ -280,14 +286,16 @@ HTML Content using component (click)
     animation="fade" 
     trigger="click" 
     arrow>
-<span slot="content">
+<template v-slot:trigger>
+<button>
+HTML Content using component (click)
+</button>
+</template>
+
+<span>
     <button @click="timer = timer + 10">Increase</button>
     <p>{{ timer }}</p>
 </span>
-
-<button slot="trigger">
-HTML Content using component (click)
-</button>
 </tippy>
 ```
 </div>
