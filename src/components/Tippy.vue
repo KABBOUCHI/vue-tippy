@@ -11,113 +11,112 @@
 </template>
 
 <script>
-import tippy from "tippy.js";
-import camelcaseKeys from "camelcase-keys";
-import defaultProps, { booleanProps } from "../props";
-import pickBy from "lodash.pickby";
-import mapValues from "lodash.mapvalues";
+import tippy from 'tippy.js'
+import camelcaseKeys from 'camelcase-keys'
+import defaultProps, { booleanProps } from '../props'
+import pickBy from 'lodash.pickby'
+import mapValues from 'lodash.mapvalues'
 
 export default {
-  props: ["to", "content", "isEnabled", "isVisible"],
-  data() {
+  props: ['to', 'content', 'isEnabled', 'isVisible'],
+  data () {
     return {
       tip: null,
       options: {}
-    };
+    }
   },
-  mounted() {
-    let elm = null;
+  mounted () {
+    let elm = null
 
     if (this.to) {
-      elm = document.querySelector(`[name='${this.to}']`);
+      elm = document.querySelector(`[name='${this.to}']`)
     } else {
-      elm = this.$refs.trigger;
+      elm = this.$refs.trigger
     }
 
-    this.tip = tippy(elm, this.getOptions());
+    this.tip = tippy(elm, this.getOptions())
 
-    this.$emit("onCreate", this.tip);
+    this.$emit('onCreate', this.tip)
 
     if (this.isEnabled === false) {
-      this.tip.disable();
+      this.tip.disable()
     }
 
     if (this.isManualTrigger && this.isVisible === true) {
-      this.tip.show();
+      this.tip.show()
     }
   },
   watch: {
-    content() {
+    content () {
       if (this.tip) {
-        this.tip.set(this.getOptions());
+        this.tip.set(this.getOptions())
       }
     }
   },
-  updated() {
+  updated () {
     if (this.tip && !this.content) {
-      this.tip.set(this.getOptions());
+      this.tip.set(this.getOptions())
     }
   },
   computed: {
-    isManualTrigger() {
-      return this.options.trigger === "manual";
+    isManualTrigger () {
+      return this.options.trigger === 'manual'
     }
   },
   methods: {
-    tippy() {
-      return this.tip;
+    tippy () {
+      return this.tip
     },
-    getOptions() {
-      this.options = camelcaseKeys(this.$attrs);
+    getOptions () {
+      this.options = camelcaseKeys(this.$attrs)
 
       this.options = pickBy(this.options, (value, key) => {
-        return defaultProps.hasOwnProperty(key);
-      });
+        return defaultProps.hasOwnProperty(key)
+      })
 
       this.options = mapValues(this.options, (value, key) => {
         if (booleanProps.hasOwnProperty(key)) {
-          if (value === "") return true;
+          if (value === '') return true
 
-          return value === "false" ? false : value;
+          return value === 'false' ? false : value
         }
-        return value;
-      });
+        return value
+      })
 
       if (!this.options.onShow) {
         this.options.onShow = (...args) => {
-          this.$emit("show", ...args);
-        };
+          this.$emit('show', ...args)
+        }
       }
 
       if (!this.options.onShown) {
         this.options.onShown = (...args) => {
-          this.$emit("shown", ...args);
-        };
+          this.$emit('shown', ...args)
+        }
       }
 
       if (!this.options.onHidden) {
         this.options.onHidden = (...args) => {
-          this.$emit("hidden", ...args);
-        };
+          this.$emit('hidden', ...args)
+        }
       }
 
       if (!this.options.onHide) {
         this.options.onHide = (...args) => {
-          this.$emit("hide", ...args);
-        };
+          this.$emit('hide', ...args)
+        }
       }
 
       if (!this.options.onMount) {
         this.options.onMount = (...args) => {
-          this.$emit("mount", ...args);
-        };
+          this.$emit('mount', ...args)
+        }
       }
 
-      if (!this.options.hasOwnProperty("content"))
-        this.options.content = this.content ? this.content : this.$refs.content;
+      if (!this.options.hasOwnProperty('content')) { this.options.content = this.content ? this.content : this.$refs.content }
 
-      return this.options;
+      return this.options
     }
   }
-};
+}
 </script>
