@@ -16,9 +16,9 @@ For full documentation, visit [https://kabbouchi.github.io/vue-tippy/](https://k
 ## Installation
 
 ```bash
-npm install --save vue-tippy
+npm install --save vue-tippy@next
 # or
-yarn add vue-tippy
+yarn add vue-tippy@next
 ```
 
 ## Usage
@@ -27,11 +27,12 @@ yarn add vue-tippy
 
 ```js
 import Vue from 'vue'
-import VueTippy from 'vue-tippy'
+import VueTippy, { VueComponent]} from 'vue-tippy'
 
 Vue.use(VueTippy)
 // or
 Vue.use(VueTippy,{
+    directive : 'tippy', // => v-tippy
     flipDuration: 0,
     popperOptions: {
         modifiers: {
@@ -41,69 +42,65 @@ Vue.use(VueTippy,{
         }
     }
 })
+
+Vue.component('tippy',VueComponent);
 ```
 
 ### Browser
 
 ```html
 <!-- From CDN -->
-<script src="https://unpkg.com/vue-tippy/dist/vue-tippy.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue-tippy/dist/vue-tippy.min.js"></script>
+<script src="https://unpkg.com/vue-tippy@next/dist/vue-tippy.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-tippy@next/dist/vue-tippy.min.js"></script>
 ```
 
 #### Basic
 ```html
-<button title="Hi!" v-tippy> My Button! </button>
+<button content="Hi!" v-tippy> My Button! </button>
 ```
 
 #### Bind title
 ```html
-<button :title="dynamicTitle" v-tippy> My Button! </button>
+<button :content="dynamicTitle" v-tippy> My Button! </button>
 ```
 
 #### Bind settings
 ```html
-<button title="Hello" v-tippy="{ placement : 'top',  arrow: true }"> My Button! </button>
+<button content="Hello" v-tippy="{ placement : 'top',  arrow: true }"> My Button! </button>
 ```
-
-#### HTML Template 1 (without reactivity)
-```html
-<button data-tippy-html="#contentpopup1" data-tippy-interactive="true" v-tippy> My Button! </button>
-```
+ 
+#### Vue component
 
 ```html
-<div id="contentpopup1" style="display: none" v-tippy-html>
-    <div>
-        <h3> Header</h3>
-        <p style="color: black"> {{ message }} - data binding </p>
-    </div>
-</div>
-```
-
-#### HTML Template 2 (with reactivity)
-```html
-<button v-tippy="{ html : '#contentpopup2'  , interactive : true , reactive : true }"> My Button! </button>
-```
-
-```html
-<div id="contentpopup2">
+<tippy to="myTrigger" arrow>
     <div>
         <h3> Header</h3>
         <p style="color: black"> {{ message }} - data binding </p>
         <button @click="clicked">Click<button>
     </div>
-</div>
-```
- 
-#### Vue component
-```html
-<button  v-tippy="{ html : '#comppopup'  , interactive : true, reactive : true }"> My Button! </button>
+</tippy>
+
+<button name="myTrigger">Tippy Trigger<button>
 ```
 
+
 ```html
-<vue-component-test id="comppopup"></vue-component-test>
+<tippy arrow>
+    <template v-slot:trigger>
+        <button>Tippy Trigger<button>
+    </template>
+
+     <div>
+        <h3> Header</h3>
+        <p style="color: black"> {{ message }} - data binding </p>
+        <button @click="clicked">Click<button>
+    </template>
+</tippy>
+
+
 ```
- 
+
+
 > For more info on TippyJS view the documentation and demo here: https://atomiks.github.io/tippyjs/
 
 ## License
