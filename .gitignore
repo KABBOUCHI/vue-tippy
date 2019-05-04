@@ -1,8 +1,6 @@
 .DS_Store
 node_modules/
 npm-debug.log
-test/coverage
-test/dist
+coverage
 yarn-error.log
-reports
 .idea
