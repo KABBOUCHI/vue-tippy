@@ -94,9 +94,18 @@ Vue.component('tippy',VueComponent);
         <h3> Header</h3>
         <p style="color: black"> {{ message }} - data binding </p>
         <button @click="clicked">Click<button>
-    </template>
+    </div>
 </tippy>
 
+```
+
+
+```html
+<tippy :content="`tooltip: ${message}`" arrow>
+    <template v-slot:trigger>
+        <button>Tippy Trigger<button>
+    </template>
+</tippy>
 
 ```
 
