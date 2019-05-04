@@ -23,7 +23,7 @@ The default tooltip looks like this. It has a nifty background fill animation!
 <tippy>
 
     <template v-slot:trigger>
-        <button class="btn" >
+        <button>
         Tooltip using component + slots
         </button>
     </template>
@@ -34,7 +34,7 @@ The default tooltip looks like this. It has a nifty background fill animation!
 <!-- OR -->
 
 <tippy content="I'm a Tippy tooltip!">
-   <button class="btn" v-slot.trigger>
+   <button v-slot.trigger>
        Tooltip using component + trigger slot and content as attribute/prop
    </button>
 </tippy>
@@ -45,7 +45,7 @@ The default tooltip looks like this. It has a nifty background fill animation!
     I'm a Tippy tooltip!
 </tippy>
 
-<button class="btn" name="externalTrigger">Tooltip using component</button>
+<button name="externalTrigger">Tooltip using component</button>
 
 ```
 
