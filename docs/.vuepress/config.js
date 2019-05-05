@@ -13,7 +13,8 @@ module.exports = {
         },
         'sitemap': {
             hostname: 'https://kabbouchi.github.io/vue-tippy'
-        }
+        },
+        'clean-urls': {}
     },
     postcss: {
         plugins: [
