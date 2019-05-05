@@ -6,7 +6,6 @@
         "tailwindcss": "^0.7.4",
         "viewcode": "^0.0.27",
         "vuepress": "^v1.0.0-alpha.44ya",
-        "vuepress-plugin-clean-urls": "^1.0.3",
         "vuepress-plugin-sitemap": "^2.1.1"
     },
     "scripts": {
