@@ -7,6 +7,7 @@
 
 <aside class="notice">
 <a href="https://github.com/KABBOUCHI/vue-tippy/tree/v1">For tippyJS v1 use v1 branch</a>
+<a href="https://github.com/KABBOUCHI/vue-tippy/tree/next">For tippyJS v4 use next branch</a>
 </aside>
 
 ## Documentation
