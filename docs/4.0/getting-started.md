@@ -4,15 +4,15 @@
 ## Option1: CDN
 
 ```html
-<script src="https://unpkg.com/vue-tippy@4/dist/vue-tippy.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue-tippy@4/dist/vue-tippy.min.js"></script>
+<script src="https://unpkg.com/vue-tippy@@4.0.0-beta.1/dist/vue-tippy.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-tippy@4.0.0-beta.1/dist/vue-tippy.min.js"></script>
 ```
 
 ## Option 2: Package Manager
 
 ```bash
-npm install --save vue-tippy
-yarn add vue-tippy
+npm install --save vue-tippy@next
+yarn add vue-tippy@next
 ```
 
 Then, import the vue-tippy:

@@ -5,7 +5,7 @@
         "sass-loader": "^7.1.0",
         "tailwindcss": "^0.7.4",
         "viewcode": "^0.0.27",
-        "vuepress": "^v1.0.0-alpha.44ya",
+        "vuepress": "^1.0.0-alpha.48",
         "vuepress-plugin-sitemap": "^2.1.1"
     },
     "scripts": {
@@ -18,7 +18,6 @@
         "autoprefixer": "^9.4.2",
         "node-sass": "^4.11.0",
         "postcss-import": "^12.0.1",
-        "postcss-loader": "^3.0.0",
-        "tailwindcss": "^0.7.3"
+        "postcss-loader": "^3.0.0"
     }
 }
