@@ -9623,7 +9623,7 @@
 
   //
   var script = {
-    props: ["to", "content", "isEnabled", "isVisible"],
+    props: ["to", "toSelector", "toElement", "content", "isEnabled", "isVisible"],
     data: function data() {
       return {
         tip: null,
@@ -9631,12 +9631,16 @@
       };
     },
     mounted: function mounted() {
-      var elm = null;
+      var elm = this.toElement;
 
-      if (this.to) {
-        elm = document.querySelector("[name='".concat(this.to, "']"));
-      } else {
-        elm = this.$refs.trigger;
+      if (elm == null) {
+        if (this.to) {
+          elm = document.querySelector("[name='".concat(this.to, "']"));
+        } else if (this.toSelector) {
+          elm = document.querySelector(this.toSelector);
+        } else {
+          elm = this.$refs.trigger;
+        }
       }
 
       this.tip = tippy(elm, this.getOptions());

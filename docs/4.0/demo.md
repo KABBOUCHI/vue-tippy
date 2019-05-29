@@ -47,6 +47,15 @@ The default tooltip looks like this. It has a nifty background fill animation!
 
 <button name="externalTrigger">Tooltip using component</button>
 
+
+<!-- OR -->
+
+<tippy toSelector=".cssSelector">
+    I'm a Tippy tooltip!
+</tippy>
+
+<button class="cssSelector">Tooltip using component</button>
+
 ```
 
 </div>

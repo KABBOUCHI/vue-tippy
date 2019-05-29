@@ -18,7 +18,7 @@ import pickBy from "lodash.pickby";
 import mapValues from "lodash.mapvalues";
 
 export default {
-  props: ["to", "content", "isEnabled", "isVisible"],
+  props: ["to", "toSelector", "toElement", "content", "isEnabled", "isVisible"],
   data() {
     return {
       tip: null,
@@ -26,12 +26,16 @@ export default {
     };
   },
   mounted() {
-    let elm = null;
+    let elm = this.toElement;
 
-    if (this.to) {
-      elm = document.querySelector(`[name='${this.to}']`);
-    } else {
-      elm = this.$refs.trigger;
+    if (elm == null) {
+      if (this.to) {
+        elm = document.querySelector(`[name='${this.to}']`);
+      } else if (this.toSelector) {
+        elm = document.querySelector(this.toSelector);
+      } else {
+        elm = this.$refs.trigger;
+      }
     }
 
     this.tip = tippy(elm, this.getOptions());
