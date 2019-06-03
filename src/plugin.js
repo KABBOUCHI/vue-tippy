@@ -130,7 +130,7 @@ const plugin = {
     })
 
     Vue.component('tippy', {
-      template: `<div><slot></slot></div>`,
+      render (createElement) { return createElement('div', this.$slots.default) },
       props: {
         to: {
           type: String,
@@ -182,12 +182,12 @@ const plugin = {
         },
 
         delay: {
-            type: [Number, Array],
-            default: () => [0, 20]
+          type: [Number, Array],
+          default: () => [0, 20]
         },
         duration: {
-            type: [Number, Array],
-            default: () => [325, 275]
+          type: [Number, Array],
+          default: () => [325, 275]
         },
 
         offset: {

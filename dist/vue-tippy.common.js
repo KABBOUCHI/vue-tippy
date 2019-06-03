@@ -215,7 +215,10 @@ var plugin = {
     });
 
     Vue.component('tippy', {
-      template: '<div><slot></slot></div>',
+      render: function render(createElement) {
+        return createElement('div', this.$slots.default);
+      },
+
       props: {
         to: {
           type: String,
