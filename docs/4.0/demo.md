@@ -490,3 +490,25 @@ Attach many tippys to a single element.
 </div>
 
 </vue-code>
+
+### Component: enabled and visible
+
+<vue-code>
+<div slot="demo" class="p4">
+
+<tippy-v4 to="visibleTest"  :visible="timer % 2 == 0" trigger="manual"> Visible </tippy-v4>
+<button name="visibleTest" class="btn"> Visibile prop </button>
+
+</div>
+
+<div slot="code">
+
+```html
+    <tippy to="visibleTest"  :visible="timer % 2 == 0" trigger="manual"> 
+        Visible 
+    </tippy-v4>
+    <button name="visibleTest" class="btn"> Visibile prop </button>
+```
+</div>
+
+</vue-code>

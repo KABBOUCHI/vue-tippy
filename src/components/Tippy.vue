@@ -18,7 +18,7 @@ import pickBy from "lodash.pickby";
 import mapValues from "lodash.mapvalues";
 
 export default {
-  props: ["to", "toSelector", "toElement", "content", "isEnabled", "isVisible"],
+  props: ["to", "toSelector", "toElement", "content", "enabled", "visible"],
   data() {
     return {
       tip: null,
@@ -42,11 +42,11 @@ export default {
 
     this.$emit("onCreate", this.tip);
 
-    if (this.isEnabled === false) {
+    if (this.enabled === false) {
       this.tip.disable();
     }
 
-    if (this.isManualTrigger && this.isVisible === true) {
+    if (this.isManualTrigger && this.visible === true) {
       this.tip.show();
     }
   },
@@ -54,6 +54,24 @@ export default {
     content() {
       if (this.tip) {
         this.tip.set(this.getOptions());
+      }
+    },
+    enabled(val) {
+      if (!this.tip) return;
+
+      if (val) {
+        this.tip.enable();
+      } else {
+        this.tip.disable();
+      }
+    },
+    visible(val) {
+      if (!this.tip) return;
+
+      if (val) {
+        this.tip.show();
+      } else {
+        this.tip.hide();
       }
     }
   },
