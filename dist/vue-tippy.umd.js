@@ -9637,6 +9637,7 @@
         if (val) {
           this.tip.enable();
         } else {
+          this.tip.hide();
           this.tip.disable();
         }
       },
