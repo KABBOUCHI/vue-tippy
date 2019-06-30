@@ -27,7 +27,7 @@ yarn add vue-tippy@next
 
 ```js
 import Vue from 'vue'
-import VueTippy, { VueComponent]} from 'vue-tippy'
+import VueTippy, { TippyComponent } from 'vue-tippy';
 
 Vue.use(VueTippy)
 // or
@@ -43,7 +43,7 @@ Vue.use(VueTippy,{
     }
 })
 
-Vue.component('tippy',VueComponent);
+Vue.component('tippy', TippyComponent);
 ```
 
 ### Browser
