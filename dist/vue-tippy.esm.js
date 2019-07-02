@@ -9600,9 +9600,9 @@ var script = {
 
     if (elm == null) {
       if (this.to) {
-        elm = document.querySelectorAll("[name='".concat(this.to, "']"));
+        elm = document.querySelector("[name='".concat(this.to, "']"));
       } else if (this.toSelector) {
-        elm = document.querySelectorAll(this.toSelector);
+        elm = document.querySelector(this.toSelector);
       } else {
         elm = this.$refs.trigger;
       }
@@ -9617,11 +9617,6 @@ var script = {
 
     if (this.isManualTrigger && this.visible === true) {
       this.tip.show();
-    }
-  },
-  destroyed: function destroyed() {
-    if (this.tip) {
-      this.tip.destroy();
     }
   },
   watch: {
