@@ -30,9 +30,9 @@ export default {
 
     if (elm == null) {
       if (this.to) {
-        elm = document.querySelectorAll(`[name='${this.to}']`);
+        elm = document.querySelector(`[name='${this.to}']`);
       } else if (this.toSelector) {
-        elm = document.querySelectorAll(this.toSelector);
+        elm = document.querySelector(this.toSelector);
       } else {
         elm = this.$refs.trigger;
       }
@@ -49,11 +49,6 @@ export default {
     if (this.isManualTrigger && this.visible === true) {
       this.tip.show();
     }
-  },
-  destroyed() {
-      if (this.tip) {
-          this.tip.destroy();
-      }
   },
   watch: {
     content() {
