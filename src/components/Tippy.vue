@@ -4,7 +4,7 @@
       <slot ref="trigger" name="trigger"></slot>
     </span>
 
-    <span ref="content">
+    <span ref="content" style="display:none">
       <slot></slot>
     </span>
   </span>
@@ -43,47 +43,49 @@ export default {
     this.$emit("onCreate", this.tip);
 
     if (this.enabled === false) {
-      this.tip.disable();
+      [].concat(this.tip).forEach(t => t.disable());
     }
 
     if (this.isManualTrigger && this.visible === true) {
-      this.tip.show();
+      [].concat(this.tip).forEach(t => t.show());
     }
   },
   destroyed() {
-      if (this.tip) {
-          this.tip.destroy();
-      }
+    if (this.tip) {
+      this.tippys().forEach(t => t.destroy());
+    }
   },
   watch: {
     content() {
       if (this.tip) {
-        this.tip.set(this.getOptions());
+        let options = this.getOptions();
+        this.tippys().forEach(t => t.set(options));
       }
     },
     enabled(val) {
       if (!this.tip) return;
 
       if (val) {
-        this.tip.enable();
+        this.tippys().forEach(t => t.enable());
       } else {
-        this.tip.hide();
-        this.tip.disable();
+        this.tippys().forEach(t => t.hide());
+        this.tippys().forEach(t => t.disable());
       }
     },
     visible(val) {
       if (!this.tip) return;
 
       if (val) {
-        this.tip.show();
+        this.tippys().forEach(t => t.show());
       } else {
-        this.tip.hide();
+        this.tippys().forEach(t => t.hide());
       }
     }
   },
   updated() {
     if (this.tip && !this.content) {
-      this.tip.set(this.getOptions());
+      let options = this.getOptions();
+      this.tippys().forEach(t => t.set(options));
     }
   },
   computed: {
@@ -94,6 +96,9 @@ export default {
   methods: {
     tippy() {
       return this.tip;
+    },
+    tippys() {
+      return [].concat(this.tip);
     },
     getOptions() {
       this.options = camelcaseKeys(this.$attrs);
@@ -142,7 +147,9 @@ export default {
       }
 
       if (!this.options.hasOwnProperty("content")) {
-        this.options.content = this.content ? this.content : this.$refs.content;
+        this.options.content = this.content
+          ? this.content
+          : this.$refs.content.innerHTML;
       }
 
       return this.options;

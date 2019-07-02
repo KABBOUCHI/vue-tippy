@@ -9618,47 +9618,69 @@
       this.$emit("onCreate", this.tip);
 
       if (this.enabled === false) {
-        this.tip.disable();
+        [].concat(this.tip).forEach(function (t) {
+          return t.disable();
+        });
       }
 
       if (this.isManualTrigger && this.visible === true) {
-        this.tip.show();
+        [].concat(this.tip).forEach(function (t) {
+          return t.show();
+        });
       }
     },
     destroyed: function destroyed() {
       if (this.tip) {
-        this.tip.destroy();
+        this.tippys().forEach(function (t) {
+          return t.destroy();
+        });
       }
     },
     watch: {
       content: function content() {
         if (this.tip) {
-          this.tip.set(this.getOptions());
+          var options = this.getOptions();
+          this.tippys().forEach(function (t) {
+            return t.set(options);
+          });
         }
       },
       enabled: function enabled(val) {
         if (!this.tip) return;
 
         if (val) {
-          this.tip.enable();
+          this.tippys().forEach(function (t) {
+            return t.enable();
+          });
         } else {
-          this.tip.hide();
-          this.tip.disable();
+          this.tippys().forEach(function (t) {
+            return t.hide();
+          });
+          this.tippys().forEach(function (t) {
+            return t.disable();
+          });
         }
       },
       visible: function visible(val) {
         if (!this.tip) return;
 
         if (val) {
-          this.tip.show();
+          this.tippys().forEach(function (t) {
+            return t.show();
+          });
         } else {
-          this.tip.hide();
+          this.tippys().forEach(function (t) {
+            return t.hide();
+          });
         }
       }
     },
     updated: function updated() {
       if (this.tip && !this.content) {
-        this.tip.set(this.getOptions());
+        var options = this.getOptions();
+        this.tippys().forEach(function (t) {
+          return t.set(options);
+        });
       }
     },
     computed: {
@@ -9669,6 +9691,9 @@
     methods: {
       tippy: function tippy() {
         return this.tip;
+      },
+      tippys: function tippys() {
+        return [].concat(this.tip);
       },
       getOptions: function getOptions() {
         var _this = this;
@@ -9737,7 +9762,7 @@
         }
 
         if (!this.options.hasOwnProperty("content")) {
-          this.options.content = this.content ? this.content : this.$refs.content;
+          this.options.content = this.content ? this.content : this.$refs.content.innerHTML;
         }
 
         return this.options;
@@ -9844,7 +9869,10 @@
     return _c("span", [_c("span", {
       ref: "trigger"
     }, [_vm._t("trigger")], 2), _vm._v(" "), _c("span", {
-      ref: "content"
+      ref: "content",
+      staticStyle: {
+        display: "none"
+      }
     }, [_vm._t("default")], 2)]);
   };
 
