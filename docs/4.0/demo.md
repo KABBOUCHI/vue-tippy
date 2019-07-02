@@ -15,48 +15,52 @@ The default tooltip looks like this. It has a nifty background fill animation!
 
 ```html
 <button content="I'm a Tippy tooltip!" v-tippy>
-  Tooltip using directive
+  Tooltip using directive  
 </button>
 
 <!-- OR -->
 
 <tippy>
-  <template v-slot:trigger>
-    <button>
-      Tooltip using component + slots
-    </button>
-  </template>
 
-  I'm a Tippy tooltip!
+    <template v-slot:trigger>
+        <button>
+        Tooltip using component + slots
+        </button>
+    </template>
+
+     I'm a Tippy tooltip!
 </tippy>
 
 <!-- OR -->
 
 <tippy content="I'm a Tippy tooltip!">
-  <button v-slot.trigger>
-    Tooltip using component + trigger slot and content as attribute/prop
-  </button>
+   <button v-slot.trigger>
+       Tooltip using component + trigger slot and content as attribute/prop
+   </button>
 </tippy>
 
 <!-- OR -->
 
 <tippy to="externalTrigger">
-  I'm a Tippy tooltip!
+    I'm a Tippy tooltip!
 </tippy>
 
 <button name="externalTrigger">Tooltip using component</button>
 
+
 <!-- OR -->
 
 <tippy toSelector=".cssSelector">
-  I'm a Tippy tooltip!
+    I'm a Tippy tooltip!
 </tippy>
 
 <button class="cssSelector">Tooltip using component</button>
+
 ```
 
 </div>
 </vue-code>
+
 
 #### Placement
 
@@ -74,17 +78,21 @@ Tooltips can be placed in four different ways in relation to the reference eleme
 <div slot="code">
 
 ```html
-<button content="I'm a Tippy tooltip!" v-tippy="{ placement : 'bottom' }">
-  Bottom
+<button 
+    content="I'm a Tippy tooltip!" 
+    v-tippy="{ placement : 'bottom' }">
+    Bottom
 </button>
 ```
 
 </div>
 </vue-code>
 
+
 #### Arrows
 
 Tooltips can have an arrow that points toward the reference element. The size and proportion can also be modified with CSS.
+
 
 <vue-code>
 <div slot="demo">
@@ -100,16 +108,15 @@ Tooltips can have an arrow that points toward the reference element. The size an
 <div slot="code">
 
 ```html
-<button
-  content="I'm a Tippy tooltip!"
-  v-tippy="{arrow : true, arrowType : 'round', animation : 'fade'}"
->
-  Round arrow
+<button 
+    content="I'm a Tippy tooltip!" 
+    v-tippy="{arrow : true, arrowType : 'round', animation : 'fade'}">
+    Round arrow
 </button>
 ```
-
 </div>
 </vue-code>
+
 
 #### Animations
 
@@ -142,20 +149,20 @@ Tooltips can have different types of transition animations. Note, the filling ef
 <div slot="code">
 
 ```html
-<button
-  content="I'm a Tippy tooltip!"
-  v-tippy="{ animateFill: false, animation : 'shift-toward'}"
->
-  Shift Toward
+<button 
+    content="I'm a Tippy tooltip!" 
+    v-tippy="{ animateFill: false, animation : 'shift-toward'}">
+   Shift Toward
 </button>
 ```
-
 </div>
 </vue-code>
+
 
 #### Themes
 
 Tooltips can have custom styling.
+
 
 <vue-code>
 <div slot="demo">
@@ -180,11 +187,12 @@ Tooltips can have custom styling.
 <div slot="code">
 
 ```html
-<button content="I'm a Tippy tooltip!" v-tippy="{ theme : 'light'}">
-  Light
+<button 
+    content="I'm a Tippy tooltip!" 
+    v-tippy="{ theme : 'light'}">
+    Light
 </button>
 ```
-
 </div>
 </vue-code>
 
@@ -207,11 +215,12 @@ Tooltips can also be triggered by `click` or `focus` events.
 <div slot="code">
 
 ```html
-<button content="I'm a Tippy tooltip!" v-tippy="{trigger : 'click'}">
-  Click
+<button 
+    content="I'm a Tippy tooltip!" 
+    v-tippy="{trigger : 'click'}">
+    Click
 </button>
 ```
-
 </div>
 </vue-code>
 
@@ -230,13 +239,15 @@ Tooltips can be interactive, allowing you to hover over and click inside them.
 <div slot="code">
 
 ```html
-<button content="I'm a Tippy tooltip!" v-tippy="{interactive : true}">
-  Interactive
+<button 
+    content="I'm a Tippy tooltip!" 
+    v-tippy="{interactive : true}">
+    Interactive
 </button>
 ```
-
 </div>
 </vue-code>
+
 
 #### HTML Content
 
@@ -257,6 +268,7 @@ Tooltips can contain HTML.
     </button>
 </template>
 
+    
 <span>
 <button class="btn" @click="timer = timer + 10">Increase</button>
 <p class="mt-2">{{ timer }}</p>
@@ -268,36 +280,33 @@ Tooltips can contain HTML.
 <div slot="code">
 
 ```html
-<button
-  :content="`<strong>Bolded <span>content</span> (${timer})</strong>`"
-  v-tippy-v4
->
-  HTML Content (hover)
+<button 
+    :content='`<strong>Bolded <span>content</span> (${timer})</strong>`' 
+    v-tippy-v4>
+    HTML Content (hover)
 </button>
 
-<tippy
-  interactive
-  :animate-fill="false"
-  placement="bottom"
-  distant="7"
-  theme="light"
-  animation="fade"
-  trigger="click"
-  arrow
->
-  <template v-slot:trigger>
-    <button>
-      HTML Content using component (click)
-    </button>
-  </template>
+<tippy 
+    interactive 
+    :animate-fill="false" 
+    placement="bottom" 
+    distant="7" 
+    theme="light" 
+    animation="fade" 
+    trigger="click" 
+    arrow>
+<template v-slot:trigger>
+<button>
+HTML Content using component (click)
+</button>
+</template>
 
-  <span>
+<span>
     <button @click="timer = timer + 10">Increase</button>
     <p>{{ timer }}</p>
-  </span>
+</span>
 </tippy>
 ```
-
 </div>
 </vue-code>
 
@@ -318,21 +327,23 @@ Tooltips can have different animation durations.
 <div slot="code">
 
 ```html
-<button content="I'm a Tippy tooltip!" v-tippy="{duration : 0}">
-  0
+<button 
+    content="I'm a Tippy tooltip!" 
+    v-tippy="{duration : 0}">
+    0
 </button>
 
 <tippy content="I'm a Tippy tooltip!" duration="1000">
-  <button slot="trigger" class="btn">1000</button>
+    <button slot="trigger" class="btn">1000</button>
 </tippy>
 
 <tippy content="I'm a Tippy tooltip!" :duration="[800,100]">
-  <button slot="trigger" class="btn">[800,100]</button>
+    <button slot="trigger" class="btn">[800,100]</button>
 </tippy>
 ```
-
 </div>
 </vue-code>
+
 
 #### Delay
 
@@ -351,19 +362,20 @@ Tooltips can delay hiding or showing after a trigger.
 <div slot="code">
 
 ```html
-<button content="I'm a Tippy tooltip!" v-tippy="{delay : 500}">
-  500
+<button 
+    content="I'm a Tippy tooltip!" 
+    v-tippy="{delay : 500}">
+   500
 </button>
 
 <tippy content="I'm a Tippy tooltip!" :delay="[800,0]">
-  <button slot="trigger" class="btn">[800,0]</button>
+    <button slot="trigger" class="btn">[800,0]</button>
 </tippy>
 
 <tippy content="I'm a Tippy tooltip!" :delay="[0,800]">
-  <button slot="trigger" class="btn">[0,800]</button>
+    <button slot="trigger" class="btn">[0,800]</button>
 </tippy>
 ```
-
 </div>
 </vue-code>
 
@@ -411,13 +423,15 @@ following (initial).
 <div slot="code">
 
 ```html
-<button content="I'm a Tippy tooltip!" v-tippy="{followCursor : true}">
-  Default
+<button 
+    content="I'm a Tippy tooltip!" 
+    v-tippy="{followCursor : true}">
+    Default
 </button>
 ```
-
 </div>
 </vue-code>
+
 
 ### SVGs
 
@@ -430,7 +444,7 @@ very useful, since it can be placed directly on the line.
 <svg 
     height="150" 
     width="150">
-<line x1="0" y1="0" x2="150" y2="150" style="stroke:red;strokeWidth:5" 
+    <line x1="0" y1="0" x2="150" y2="150" style="stroke:red;strokeWidth:5" 
     content="I'm a Tippy tooltip!" v-tippy-v4='{followCursor : "initial", animation:"fade", delay:100, arrow : true}'></line>
 </svg>
 
@@ -439,25 +453,20 @@ very useful, since it can be placed directly on the line.
 <div slot="code">
 
 ```html
-<svg height="150" width="150">
-  <line
-    x1="0"
-    y1="0"
-    x2="150"
-    y2="150"
-    style="stroke:red;strokeWidth:5"
-    content="I'm a Tippy tooltip!"
-    v-tippy='{followCursor : "initial", animation:"fade", delay:100, arrow : true}'
-  ></line>
+<svg 
+    height="150" 
+    width="150">
+    <line x1="0" y1="0" x2="150" y2="150" style="stroke:red;strokeWidth:5" 
+    content="I'm a Tippy tooltip!" 
+    v-tippy='{followCursor : "initial", animation:"fade", delay:100, arrow : true}'></line>
 </svg>
 ```
-
 </div>
 </vue-code>
 
 ### Multiple
 
-- Attach many tippys to a single element.
+Attach many tippys to a single element.
 
 <vue-code>
 <div slot="demo" class="p4">
@@ -471,44 +480,13 @@ very useful, since it can be placed directly on the line.
 <div slot="code">
 
 ```html
-<tippy to="tippyMultiple" flip="false" placement="left" multiple>Left</tippy>
-<tippy to="tippyMultiple" flip="false" placement="right" multiple>Right</tippy>
-<tippy to="tippyMultiple" flip="false" placement="top" multiple>Top</tippy>
-<tippy to="tippyMultiple" flip="false" placement="bottom" multiple
-  >Bottom</tippy
->
-
-<button name="tippyMultiple" class="btn">Multiple</button>
+    <tippy to="tippyMultiple" flip=false placement="left" multiple>Left</tippy>
+    <tippy to="tippyMultiple" flip=false placement="right" multiple>Right</tippy>
+    <tippy to="tippyMultiple" flip=false placement="top" multiple>Top</tippy>
+    <tippy to="tippyMultiple" flip=false placement="bottom" multiple>Bottom</tippy>
+    
+    <button name="tippyMultiple" class="btn"> Multiple </button>
 ```
-
-</div>
-
-</vue-code>
-
-- Attach one tippy to a many elements.
-
-<vue-code>
-<div slot="demo" class="p4">
-<tippy-v4 to="oneTippyMultiple">
-Appears for multiple triggers / to elements {{ timer }}
-</tippy-v4>
-<button class="btn" name="oneTippyMultiple">multiple1</button>
-<button class="btn" name="oneTippyMultiple">multiple2</button>
-<button class="btn" name="oneTippyMultiple">multiple3</button>
-
-</div>
-
-<div slot="code">
-
-```html
-<tippy to="oneTippyMultiple">
-  Appears for multiple triggers / to elements
-</tippy>
-<button class="btn" name="oneTippyMultiple">multiple1</button>
-<button class="btn" name="oneTippyMultiple">multiple2</button>
-<button class="btn" name="oneTippyMultiple">multiple3</button>
-```
-
 </div>
 
 </vue-code>
@@ -526,12 +504,11 @@ Appears for multiple triggers / to elements {{ timer }}
 <div slot="code">
 
 ```html
-<tippy to="visibleTest" :visible="timer % 2 == 0" trigger="manual">
-  Visible
-</tippy>
-<button name="visibleTest" class="btn">Visibile prop</button>
+    <tippy to="visibleTest"  :visible="timer % 2 == 0" trigger="manual"> 
+        Visible 
+    </tippy-v4>
+    <button name="visibleTest" class="btn"> Visibile prop </button>
 ```
-
 </div>
 
 </vue-code>

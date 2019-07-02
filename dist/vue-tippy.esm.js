@@ -9612,69 +9612,47 @@ var script = {
     this.$emit("onCreate", this.tip);
 
     if (this.enabled === false) {
-      [].concat(this.tip).forEach(function (t) {
-        return t.disable();
-      });
+      this.tip.disable();
     }
 
     if (this.isManualTrigger && this.visible === true) {
-      [].concat(this.tip).forEach(function (t) {
-        return t.show();
-      });
+      this.tip.show();
     }
   },
   destroyed: function destroyed() {
     if (this.tip) {
-      this.tippys().forEach(function (t) {
-        return t.destroy();
-      });
+      this.tip.destroy();
     }
   },
   watch: {
     content: function content() {
       if (this.tip) {
-        var options = this.getOptions();
-        this.tippys().forEach(function (t) {
-          return t.set(options);
-        });
+        this.tip.set(this.getOptions());
       }
     },
     enabled: function enabled(val) {
       if (!this.tip) return;
 
       if (val) {
-        this.tippys().forEach(function (t) {
-          return t.enable();
-        });
+        this.tip.enable();
       } else {
-        this.tippys().forEach(function (t) {
-          return t.hide();
-        });
-        this.tippys().forEach(function (t) {
-          return t.disable();
-        });
+        this.tip.hide();
+        this.tip.disable();
       }
     },
     visible: function visible(val) {
       if (!this.tip) return;
 
       if (val) {
-        this.tippys().forEach(function (t) {
-          return t.show();
-        });
+        this.tip.show();
       } else {
-        this.tippys().forEach(function (t) {
-          return t.hide();
-        });
+        this.tip.hide();
       }
     }
   },
   updated: function updated() {
     if (this.tip && !this.content) {
-      var options = this.getOptions();
-      this.tippys().forEach(function (t) {
-        return t.set(options);
-      });
+      this.tip.set(this.getOptions());
     }
   },
   computed: {
@@ -9685,9 +9663,6 @@ var script = {
   methods: {
     tippy: function tippy() {
       return this.tip;
-    },
-    tippys: function tippys() {
-      return [].concat(this.tip);
     },
     getOptions: function getOptions() {
       var _this = this;
@@ -9756,7 +9731,7 @@ var script = {
       }
 
       if (!this.options.hasOwnProperty("content")) {
-        this.options.content = this.content ? this.content : this.$refs.content.innerHTML;
+        this.options.content = this.content ? this.content : this.$refs.content;
       }
 
       return this.options;
@@ -9863,10 +9838,7 @@ var __vue_render__ = function __vue_render__() {
   return _c("span", [_c("span", {
     ref: "trigger"
   }, [_vm._t("trigger")], 2), _vm._v(" "), _c("span", {
-    ref: "content",
-    staticStyle: {
-      display: "none"
-    }
+    ref: "content"
   }, [_vm._t("default")], 2)]);
 };
 
