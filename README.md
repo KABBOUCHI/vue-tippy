@@ -67,7 +67,7 @@ Vue.component("tippy", TippyComponent);
 
 #### Using Vue component
 
-````html
+```html
 <tippy to="myTrigger" arrow>
   <div>
     <h3>Header</h3>
@@ -77,7 +77,9 @@ Vue.component("tippy", TippyComponent);
 </tippy>
 
 <button name="myTrigger">Tippy Trigger</button>
-``` ```html
+``` 
+
+```html
 <tippy arrow>
   <template v-slot:trigger>
     <button>Tippy Trigger</button>
@@ -89,13 +91,17 @@ Vue.component("tippy", TippyComponent);
     <button @click="clicked">Click</button>
   </div>
 </tippy>
-``` ```html
+``` 
+
+```html
 <tippy :content="`tooltip: ${message}`" arrow>
   <template v-slot:trigger>
     <button>Tippy Trigger</button>
   </template>
 </tippy>
 ````
+
+> For full v4 documentation, visit [https://kabbouchi.github.io/vue-tippy/4.0/](https://kabbouchi.github.io/vue-tippy/4.0/).
 
 > For more info on TippyJS view the documentation and demo here: https://atomiks.github.io/tippyjs/
 
