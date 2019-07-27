@@ -15,7 +15,7 @@ const booleanProps = {
   showOnInit: false,
   sticky: false,
   touch: true,
-  touchHold: false
+  touchHold: false,
 }
 export default {
   animation: 'shift-away',
@@ -47,9 +47,9 @@ export default {
   updateDuration: 0,
   wait: null,
   zIndex: 9999,
-  ...booleanProps
+  ...booleanProps,
 }
 
 export {
-    booleanProps
+  booleanProps,
 }

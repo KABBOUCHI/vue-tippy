@@ -9974,6 +9974,7 @@
 
   exports.TippyComponent = TippyComponent;
   exports.default = plugin;
+  exports.tippy = tippy;
 
   Object.defineProperty(exports, '__esModule', { value: true });
 

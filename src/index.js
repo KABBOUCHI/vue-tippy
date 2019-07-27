@@ -1,5 +1,7 @@
 import tippy from 'tippy.js'
 
+import TippyComponent from './components/Tippy.vue'
+
 var tippyDirective = 'tippy'
 
 const plugin = {
@@ -89,12 +91,10 @@ const plugin = {
 
           el._tippy.set(opts)
         }
-      }
+      },
     })
-  }
+  },
 }
-
-import TippyComponent from './components/Tippy.vue'
 
 if (typeof window !== 'undefined' && window.Vue) {
   window.Vue.use(plugin)
@@ -102,4 +102,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default plugin
-export { TippyComponent }
+export {
+  TippyComponent,
+  tippy,
+}
