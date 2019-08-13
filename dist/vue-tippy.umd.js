@@ -9675,7 +9675,8 @@
         this.options = lodash_mapvalues(this.options, function (value, key) {
           if (booleanProps.hasOwnProperty(key)) {
             if (value === "") return true;
-            return value === "false" ? false : value;
+            if (value === "false") return false;
+            if (value === "true") return true;
           }
 
           return value;

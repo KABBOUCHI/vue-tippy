@@ -100,9 +100,10 @@ export default {
       this.options = mapValues(this.options, (value, key) => {
         if (booleanProps.hasOwnProperty(key)) {
           if (value === "") return true;
-
-          return value === "false" ? false : value;
+          if (value === "false") return false;
+          if (value === "true") return true;
         }
+
         return value;
       });
 
