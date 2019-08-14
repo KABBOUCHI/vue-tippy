@@ -2607,12 +2607,12 @@
   Popper.Defaults = Defaults;
 
   /**!
-  * tippy.js v4.3.4
+  * tippy.js v4.3.5
   * (c) 2017-2019 atomiks
   * MIT License
   */
 
-  var css = ".tippy-iOS{cursor:pointer!important;-webkit-tap-highlight-color:transparent}.tippy-popper{transition-timing-function:cubic-bezier(.165,.84,.44,1);max-width:calc(100% - 8px);pointer-events:none;outline:0}.tippy-popper[x-placement^=top] .tippy-backdrop{border-radius:40% 40% 0 0}.tippy-popper[x-placement^=top] .tippy-roundarrow{bottom:-7px;bottom:-6.5px;-webkit-transform-origin:50% 0;transform-origin:50% 0;margin:0 3px}.tippy-popper[x-placement^=top] .tippy-roundarrow svg{position:absolute;left:0;-webkit-transform:rotate(180deg);transform:rotate(180deg)}.tippy-popper[x-placement^=top] .tippy-arrow{border-top:8px solid #333;border-right:8px solid transparent;border-left:8px solid transparent;bottom:-7px;margin:0 3px;-webkit-transform-origin:50% 0;transform-origin:50% 0}.tippy-popper[x-placement^=top] .tippy-backdrop{-webkit-transform-origin:0 25%;transform-origin:0 25%}.tippy-popper[x-placement^=top] .tippy-backdrop[data-state=visible]{-webkit-transform:scale(1) translate(-50%,-55%);transform:scale(1) translate(-50%,-55%)}.tippy-popper[x-placement^=top] .tippy-backdrop[data-state=hidden]{-webkit-transform:scale(.2) translate(-50%,-45%);transform:scale(.2) translate(-50%,-45%);opacity:0}.tippy-popper[x-placement^=top] [data-animation=shift-toward][data-state=visible]{-webkit-transform:translateY(-10px);transform:translateY(-10px)}.tippy-popper[x-placement^=top] [data-animation=shift-toward][data-state=hidden]{opacity:0;-webkit-transform:translateY(-20px);transform:translateY(-20px)}.tippy-popper[x-placement^=top] [data-animation=perspective]{-webkit-transform-origin:bottom;transform-origin:bottom}.tippy-popper[x-placement^=top] [data-animation=perspective][data-state=visible]{-webkit-transform:perspective(700px) translateY(-10px) rotateX(0);transform:perspective(700px) translateY(-10px) rotateX(0)}.tippy-popper[x-placement^=top] [data-animation=perspective][data-state=hidden]{opacity:0;-webkit-transform:perspective(700px) translateY(0) rotateX(60deg);transform:perspective(700px) translateY(0) rotateX(60deg)}.tippy-popper[x-placement^=top] [data-animation=fade][data-state=visible]{-webkit-transform:translateY(-10px);transform:translateY(-10px)}.tippy-popper[x-placement^=top] [data-animation=fade][data-state=hidden]{opacity:0;-webkit-transform:translateY(-10px);transform:translateY(-10px)}.tippy-popper[x-placement^=top] [data-animation=shift-away][data-state=visible]{-webkit-transform:translateY(-10px);transform:translateY(-10px)}.tippy-popper[x-placement^=top] [data-animation=shift-away][data-state=hidden]{opacity:0;-webkit-transform:translateY(0);transform:translateY(0)}.tippy-popper[x-placement^=top] [data-animation=scale]{-webkit-transform-origin:bottom;transform-origin:bottom}.tippy-popper[x-placement^=top] [data-animation=scale][data-state=visible]{-webkit-transform:translateY(-10px) scale(1);transform:translateY(-10px) scale(1)}.tippy-popper[x-placement^=top] [data-animation=scale][data-state=hidden]{opacity:0;-webkit-transform:translateY(-10px) scale(.5);transform:translateY(-10px) scale(.5)}.tippy-popper[x-placement^=bottom] .tippy-backdrop{border-radius:0 0 30% 30%}.tippy-popper[x-placement^=bottom] .tippy-roundarrow{top:-7px;-webkit-transform-origin:50% 100%;transform-origin:50% 100%;margin:0 3px}.tippy-popper[x-placement^=bottom] .tippy-roundarrow svg{position:absolute;left:0;-webkit-transform:rotate(0);transform:rotate(0)}.tippy-popper[x-placement^=bottom] .tippy-arrow{border-bottom:8px solid #333;border-right:8px solid transparent;border-left:8px solid transparent;top:-7px;margin:0 3px;-webkit-transform-origin:50% 100%;transform-origin:50% 100%}.tippy-popper[x-placement^=bottom] .tippy-backdrop{-webkit-transform-origin:0 -50%;transform-origin:0 -50%}.tippy-popper[x-placement^=bottom] .tippy-backdrop[data-state=visible]{-webkit-transform:scale(1) translate(-50%,-45%);transform:scale(1) translate(-50%,-45%)}.tippy-popper[x-placement^=bottom] .tippy-backdrop[data-state=hidden]{-webkit-transform:scale(.2) translate(-50%);transform:scale(.2) translate(-50%);opacity:0}.tippy-popper[x-placement^=bottom] [data-animation=shift-toward][data-state=visible]{-webkit-transform:translateY(10px);transform:translateY(10px)}.tippy-popper[x-placement^=bottom] [data-animation=shift-toward][data-state=hidden]{opacity:0;-webkit-transform:translateY(20px);transform:translateY(20px)}.tippy-popper[x-placement^=bottom] [data-animation=perspective]{-webkit-transform-origin:top;transform-origin:top}.tippy-popper[x-placement^=bottom] [data-animation=perspective][data-state=visible]{-webkit-transform:perspective(700px) translateY(10px) rotateX(0);transform:perspective(700px) translateY(10px) rotateX(0)}.tippy-popper[x-placement^=bottom] [data-animation=perspective][data-state=hidden]{opacity:0;-webkit-transform:perspective(700px) translateY(0) rotateX(-60deg);transform:perspective(700px) translateY(0) rotateX(-60deg)}.tippy-popper[x-placement^=bottom] [data-animation=fade][data-state=visible]{-webkit-transform:translateY(10px);transform:translateY(10px)}.tippy-popper[x-placement^=bottom] [data-animation=fade][data-state=hidden]{opacity:0;-webkit-transform:translateY(10px);transform:translateY(10px)}.tippy-popper[x-placement^=bottom] [data-animation=shift-away][data-state=visible]{-webkit-transform:translateY(10px);transform:translateY(10px)}.tippy-popper[x-placement^=bottom] [data-animation=shift-away][data-state=hidden]{opacity:0;-webkit-transform:translateY(0);transform:translateY(0)}.tippy-popper[x-placement^=bottom] [data-animation=scale]{-webkit-transform-origin:top;transform-origin:top}.tippy-popper[x-placement^=bottom] [data-animation=scale][data-state=visible]{-webkit-transform:translateY(10px) scale(1);transform:translateY(10px) scale(1)}.tippy-popper[x-placement^=bottom] [data-animation=scale][data-state=hidden]{opacity:0;-webkit-transform:translateY(10px) scale(.5);transform:translateY(10px) scale(.5)}.tippy-popper[x-placement^=left] .tippy-backdrop{border-radius:50% 0 0 50%}.tippy-popper[x-placement^=left] .tippy-roundarrow{right:-12px;-webkit-transform-origin:33.33333333% 50%;transform-origin:33.33333333% 50%;margin:3px 0}.tippy-popper[x-placement^=left] .tippy-roundarrow svg{position:absolute;left:0;-webkit-transform:rotate(90deg);transform:rotate(90deg)}.tippy-popper[x-placement^=left] .tippy-arrow{border-left:8px solid #333;border-top:8px solid transparent;border-bottom:8px solid transparent;right:-7px;margin:3px 0;-webkit-transform-origin:0 50%;transform-origin:0 50%}.tippy-popper[x-placement^=left] .tippy-backdrop{-webkit-transform-origin:50% 0;transform-origin:50% 0}.tippy-popper[x-placement^=left] .tippy-backdrop[data-state=visible]{-webkit-transform:scale(1) translate(-50%,-50%);transform:scale(1) translate(-50%,-50%)}.tippy-popper[x-placement^=left] .tippy-backdrop[data-state=hidden]{-webkit-transform:scale(.2) translate(-75%,-50%);transform:scale(.2) translate(-75%,-50%);opacity:0}.tippy-popper[x-placement^=left] [data-animation=shift-toward][data-state=visible]{-webkit-transform:translateX(-10px);transform:translateX(-10px)}.tippy-popper[x-placement^=left] [data-animation=shift-toward][data-state=hidden]{opacity:0;-webkit-transform:translateX(-20px);transform:translateX(-20px)}.tippy-popper[x-placement^=left] [data-animation=perspective]{-webkit-transform-origin:right;transform-origin:right}.tippy-popper[x-placement^=left] [data-animation=perspective][data-state=visible]{-webkit-transform:perspective(700px) translateX(-10px) rotateY(0);transform:perspective(700px) translateX(-10px) rotateY(0)}.tippy-popper[x-placement^=left] [data-animation=perspective][data-state=hidden]{opacity:0;-webkit-transform:perspective(700px) translateX(0) rotateY(-60deg);transform:perspective(700px) translateX(0) rotateY(-60deg)}.tippy-popper[x-placement^=left] [data-animation=fade][data-state=visible]{-webkit-transform:translateX(-10px);transform:translateX(-10px)}.tippy-popper[x-placement^=left] [data-animation=fade][data-state=hidden]{opacity:0;-webkit-transform:translateX(-10px);transform:translateX(-10px)}.tippy-popper[x-placement^=left] [data-animation=shift-away][data-state=visible]{-webkit-transform:translateX(-10px);transform:translateX(-10px)}.tippy-popper[x-placement^=left] [data-animation=shift-away][data-state=hidden]{opacity:0;-webkit-transform:translateX(0);transform:translateX(0)}.tippy-popper[x-placement^=left] [data-animation=scale]{-webkit-transform-origin:right;transform-origin:right}.tippy-popper[x-placement^=left] [data-animation=scale][data-state=visible]{-webkit-transform:translateX(-10px) scale(1);transform:translateX(-10px) scale(1)}.tippy-popper[x-placement^=left] [data-animation=scale][data-state=hidden]{opacity:0;-webkit-transform:translateX(-10px) scale(.5);transform:translateX(-10px) scale(.5)}.tippy-popper[x-placement^=right] .tippy-backdrop{border-radius:0 50% 50% 0}.tippy-popper[x-placement^=right] .tippy-roundarrow{left:-12px;-webkit-transform-origin:66.66666666% 50%;transform-origin:66.66666666% 50%;margin:3px 0}.tippy-popper[x-placement^=right] .tippy-roundarrow svg{position:absolute;left:0;-webkit-transform:rotate(-90deg);transform:rotate(-90deg)}.tippy-popper[x-placement^=right] .tippy-arrow{border-right:8px solid #333;border-top:8px solid transparent;border-bottom:8px solid transparent;left:-7px;margin:3px 0;-webkit-transform-origin:100% 50%;transform-origin:100% 50%}.tippy-popper[x-placement^=right] .tippy-backdrop{-webkit-transform-origin:-50% 0;transform-origin:-50% 0}.tippy-popper[x-placement^=right] .tippy-backdrop[data-state=visible]{-webkit-transform:scale(1) translate(-50%,-50%);transform:scale(1) translate(-50%,-50%)}.tippy-popper[x-placement^=right] .tippy-backdrop[data-state=hidden]{-webkit-transform:scale(.2) translate(-25%,-50%);transform:scale(.2) translate(-25%,-50%);opacity:0}.tippy-popper[x-placement^=right] [data-animation=shift-toward][data-state=visible]{-webkit-transform:translateX(10px);transform:translateX(10px)}.tippy-popper[x-placement^=right] [data-animation=shift-toward][data-state=hidden]{opacity:0;-webkit-transform:translateX(20px);transform:translateX(20px)}.tippy-popper[x-placement^=right] [data-animation=perspective]{-webkit-transform-origin:left;transform-origin:left}.tippy-popper[x-placement^=right] [data-animation=perspective][data-state=visible]{-webkit-transform:perspective(700px) translateX(10px) rotateY(0);transform:perspective(700px) translateX(10px) rotateY(0)}.tippy-popper[x-placement^=right] [data-animation=perspective][data-state=hidden]{opacity:0;-webkit-transform:perspective(700px) translateX(0) rotateY(60deg);transform:perspective(700px) translateX(0) rotateY(60deg)}.tippy-popper[x-placement^=right] [data-animation=fade][data-state=visible]{-webkit-transform:translateX(10px);transform:translateX(10px)}.tippy-popper[x-placement^=right] [data-animation=fade][data-state=hidden]{opacity:0;-webkit-transform:translateX(10px);transform:translateX(10px)}.tippy-popper[x-placement^=right] [data-animation=shift-away][data-state=visible]{-webkit-transform:translateX(10px);transform:translateX(10px)}.tippy-popper[x-placement^=right] [data-animation=shift-away][data-state=hidden]{opacity:0;-webkit-transform:translateX(0);transform:translateX(0)}.tippy-popper[x-placement^=right] [data-animation=scale]{-webkit-transform-origin:left;transform-origin:left}.tippy-popper[x-placement^=right] [data-animation=scale][data-state=visible]{-webkit-transform:translateX(10px) scale(1);transform:translateX(10px) scale(1)}.tippy-popper[x-placement^=right] [data-animation=scale][data-state=hidden]{opacity:0;-webkit-transform:translateX(10px) scale(.5);transform:translateX(10px) scale(.5)}.tippy-tooltip{position:relative;color:#fff;border-radius:.25rem;font-size:.875rem;padding:.3125rem .5625rem;line-height:1.4;text-align:center;background-color:#333}.tippy-tooltip[data-size=small]{padding:.1875rem .375rem;font-size:.75rem}.tippy-tooltip[data-size=large]{padding:.375rem .75rem;font-size:1rem}.tippy-tooltip[data-animatefill]{overflow:hidden;background-color:transparent}.tippy-tooltip[data-interactive],.tippy-tooltip[data-interactive] .tippy-roundarrow path{pointer-events:auto}.tippy-tooltip[data-inertia][data-state=visible]{transition-timing-function:cubic-bezier(.54,1.5,.38,1.11)}.tippy-tooltip[data-inertia][data-state=hidden]{transition-timing-function:ease}.tippy-arrow,.tippy-roundarrow{position:absolute;width:0;height:0}.tippy-roundarrow{width:18px;height:7px;fill:#333;pointer-events:none}.tippy-backdrop{position:absolute;background-color:#333;border-radius:50%;width:calc(110% + 2rem);left:50%;top:50%;z-index:-1;transition:all cubic-bezier(.46,.1,.52,.98);-webkit-backface-visibility:hidden;backface-visibility:hidden}.tippy-backdrop:after{content:\"\";float:left;padding-top:100%}.tippy-backdrop+.tippy-content{transition-property:opacity;will-change:opacity}.tippy-backdrop+.tippy-content[data-state=visible]{opacity:1}.tippy-backdrop+.tippy-content[data-state=hidden]{opacity:0}";
+  var css = ".tippy-iOS{cursor:pointer!important;-webkit-tap-highlight-color:transparent}.tippy-popper{transition-timing-function:cubic-bezier(.165,.84,.44,1);max-width:calc(100% - 8px);pointer-events:none;outline:0}.tippy-popper[x-placement^=top] .tippy-backdrop{border-radius:40% 40% 0 0}.tippy-popper[x-placement^=top] .tippy-roundarrow{bottom:-7px;bottom:-6.5px;-webkit-transform-origin:50% 0;transform-origin:50% 0;margin:0 3px}.tippy-popper[x-placement^=top] .tippy-roundarrow svg{position:absolute;left:0;-webkit-transform:rotate(180deg);transform:rotate(180deg)}.tippy-popper[x-placement^=top] .tippy-arrow{border-top:8px solid #333;border-right:8px solid transparent;border-left:8px solid transparent;bottom:-7px;margin:0 3px;-webkit-transform-origin:50% 0;transform-origin:50% 0}.tippy-popper[x-placement^=top] .tippy-backdrop{-webkit-transform-origin:0 25%;transform-origin:0 25%}.tippy-popper[x-placement^=top] .tippy-backdrop[data-state=visible]{-webkit-transform:scale(1) translate(-50%,-55%);transform:scale(1) translate(-50%,-55%)}.tippy-popper[x-placement^=top] .tippy-backdrop[data-state=hidden]{-webkit-transform:scale(.2) translate(-50%,-45%);transform:scale(.2) translate(-50%,-45%);opacity:0}.tippy-popper[x-placement^=top] [data-animation=shift-toward][data-state=visible]{-webkit-transform:translateY(-10px);transform:translateY(-10px)}.tippy-popper[x-placement^=top] [data-animation=shift-toward][data-state=hidden]{opacity:0;-webkit-transform:translateY(-20px);transform:translateY(-20px)}.tippy-popper[x-placement^=top] [data-animation=perspective]{-webkit-transform-origin:bottom;transform-origin:bottom}.tippy-popper[x-placement^=top] [data-animation=perspective][data-state=visible]{-webkit-transform:perspective(700px) translateY(-10px);transform:perspective(700px) translateY(-10px)}.tippy-popper[x-placement^=top] [data-animation=perspective][data-state=hidden]{opacity:0;-webkit-transform:perspective(700px) rotateX(60deg);transform:perspective(700px) rotateX(60deg)}.tippy-popper[x-placement^=top] [data-animation=fade][data-state=visible]{-webkit-transform:translateY(-10px);transform:translateY(-10px)}.tippy-popper[x-placement^=top] [data-animation=fade][data-state=hidden]{opacity:0;-webkit-transform:translateY(-10px);transform:translateY(-10px)}.tippy-popper[x-placement^=top] [data-animation=shift-away][data-state=visible]{-webkit-transform:translateY(-10px);transform:translateY(-10px)}.tippy-popper[x-placement^=top] [data-animation=shift-away][data-state=hidden]{opacity:0}.tippy-popper[x-placement^=top] [data-animation=scale]{-webkit-transform-origin:bottom;transform-origin:bottom}.tippy-popper[x-placement^=top] [data-animation=scale][data-state=visible]{-webkit-transform:translateY(-10px);transform:translateY(-10px)}.tippy-popper[x-placement^=top] [data-animation=scale][data-state=hidden]{opacity:0;-webkit-transform:translateY(-10px) scale(.5);transform:translateY(-10px) scale(.5)}.tippy-popper[x-placement^=bottom] .tippy-backdrop{border-radius:0 0 30% 30%}.tippy-popper[x-placement^=bottom] .tippy-roundarrow{top:-7px;-webkit-transform-origin:50% 100%;transform-origin:50% 100%;margin:0 3px}.tippy-popper[x-placement^=bottom] .tippy-roundarrow svg{position:absolute;left:0}.tippy-popper[x-placement^=bottom] .tippy-arrow{border-bottom:8px solid #333;border-right:8px solid transparent;border-left:8px solid transparent;top:-7px;margin:0 3px;-webkit-transform-origin:50% 100%;transform-origin:50% 100%}.tippy-popper[x-placement^=bottom] .tippy-backdrop{-webkit-transform-origin:0 -50%;transform-origin:0 -50%}.tippy-popper[x-placement^=bottom] .tippy-backdrop[data-state=visible]{-webkit-transform:scale(1) translate(-50%,-45%);transform:scale(1) translate(-50%,-45%)}.tippy-popper[x-placement^=bottom] .tippy-backdrop[data-state=hidden]{-webkit-transform:scale(.2) translate(-50%);transform:scale(.2) translate(-50%);opacity:0}.tippy-popper[x-placement^=bottom] [data-animation=shift-toward][data-state=visible]{-webkit-transform:translateY(10px);transform:translateY(10px)}.tippy-popper[x-placement^=bottom] [data-animation=shift-toward][data-state=hidden]{opacity:0;-webkit-transform:translateY(20px);transform:translateY(20px)}.tippy-popper[x-placement^=bottom] [data-animation=perspective]{-webkit-transform-origin:top;transform-origin:top}.tippy-popper[x-placement^=bottom] [data-animation=perspective][data-state=visible]{-webkit-transform:perspective(700px) translateY(10px);transform:perspective(700px) translateY(10px)}.tippy-popper[x-placement^=bottom] [data-animation=perspective][data-state=hidden]{opacity:0;-webkit-transform:perspective(700px) rotateX(-60deg);transform:perspective(700px) rotateX(-60deg)}.tippy-popper[x-placement^=bottom] [data-animation=fade][data-state=visible]{-webkit-transform:translateY(10px);transform:translateY(10px)}.tippy-popper[x-placement^=bottom] [data-animation=fade][data-state=hidden]{opacity:0;-webkit-transform:translateY(10px);transform:translateY(10px)}.tippy-popper[x-placement^=bottom] [data-animation=shift-away][data-state=visible]{-webkit-transform:translateY(10px);transform:translateY(10px)}.tippy-popper[x-placement^=bottom] [data-animation=shift-away][data-state=hidden]{opacity:0}.tippy-popper[x-placement^=bottom] [data-animation=scale]{-webkit-transform-origin:top;transform-origin:top}.tippy-popper[x-placement^=bottom] [data-animation=scale][data-state=visible]{-webkit-transform:translateY(10px);transform:translateY(10px)}.tippy-popper[x-placement^=bottom] [data-animation=scale][data-state=hidden]{opacity:0;-webkit-transform:translateY(10px) scale(.5);transform:translateY(10px) scale(.5)}.tippy-popper[x-placement^=left] .tippy-backdrop{border-radius:50% 0 0 50%}.tippy-popper[x-placement^=left] .tippy-roundarrow{right:-12px;-webkit-transform-origin:33.33333333% 50%;transform-origin:33.33333333% 50%;margin:3px 0}.tippy-popper[x-placement^=left] .tippy-roundarrow svg{position:absolute;left:0;-webkit-transform:rotate(90deg);transform:rotate(90deg)}.tippy-popper[x-placement^=left] .tippy-arrow{border-left:8px solid #333;border-top:8px solid transparent;border-bottom:8px solid transparent;right:-7px;margin:3px 0;-webkit-transform-origin:0 50%;transform-origin:0 50%}.tippy-popper[x-placement^=left] .tippy-backdrop{-webkit-transform-origin:50% 0;transform-origin:50% 0}.tippy-popper[x-placement^=left] .tippy-backdrop[data-state=visible]{-webkit-transform:scale(1) translate(-50%,-50%);transform:scale(1) translate(-50%,-50%)}.tippy-popper[x-placement^=left] .tippy-backdrop[data-state=hidden]{-webkit-transform:scale(.2) translate(-75%,-50%);transform:scale(.2) translate(-75%,-50%);opacity:0}.tippy-popper[x-placement^=left] [data-animation=shift-toward][data-state=visible]{-webkit-transform:translateX(-10px);transform:translateX(-10px)}.tippy-popper[x-placement^=left] [data-animation=shift-toward][data-state=hidden]{opacity:0;-webkit-transform:translateX(-20px);transform:translateX(-20px)}.tippy-popper[x-placement^=left] [data-animation=perspective]{-webkit-transform-origin:right;transform-origin:right}.tippy-popper[x-placement^=left] [data-animation=perspective][data-state=visible]{-webkit-transform:perspective(700px) translateX(-10px);transform:perspective(700px) translateX(-10px)}.tippy-popper[x-placement^=left] [data-animation=perspective][data-state=hidden]{opacity:0;-webkit-transform:perspective(700px) rotateY(-60deg);transform:perspective(700px) rotateY(-60deg)}.tippy-popper[x-placement^=left] [data-animation=fade][data-state=visible]{-webkit-transform:translateX(-10px);transform:translateX(-10px)}.tippy-popper[x-placement^=left] [data-animation=fade][data-state=hidden]{opacity:0;-webkit-transform:translateX(-10px);transform:translateX(-10px)}.tippy-popper[x-placement^=left] [data-animation=shift-away][data-state=visible]{-webkit-transform:translateX(-10px);transform:translateX(-10px)}.tippy-popper[x-placement^=left] [data-animation=shift-away][data-state=hidden]{opacity:0}.tippy-popper[x-placement^=left] [data-animation=scale]{-webkit-transform-origin:right;transform-origin:right}.tippy-popper[x-placement^=left] [data-animation=scale][data-state=visible]{-webkit-transform:translateX(-10px);transform:translateX(-10px)}.tippy-popper[x-placement^=left] [data-animation=scale][data-state=hidden]{opacity:0;-webkit-transform:translateX(-10px) scale(.5);transform:translateX(-10px) scale(.5)}.tippy-popper[x-placement^=right] .tippy-backdrop{border-radius:0 50% 50% 0}.tippy-popper[x-placement^=right] .tippy-roundarrow{left:-12px;-webkit-transform-origin:66.66666666% 50%;transform-origin:66.66666666% 50%;margin:3px 0}.tippy-popper[x-placement^=right] .tippy-roundarrow svg{position:absolute;left:0;-webkit-transform:rotate(-90deg);transform:rotate(-90deg)}.tippy-popper[x-placement^=right] .tippy-arrow{border-right:8px solid #333;border-top:8px solid transparent;border-bottom:8px solid transparent;left:-7px;margin:3px 0;-webkit-transform-origin:100% 50%;transform-origin:100% 50%}.tippy-popper[x-placement^=right] .tippy-backdrop{-webkit-transform-origin:-50% 0;transform-origin:-50% 0}.tippy-popper[x-placement^=right] .tippy-backdrop[data-state=visible]{-webkit-transform:scale(1) translate(-50%,-50%);transform:scale(1) translate(-50%,-50%)}.tippy-popper[x-placement^=right] .tippy-backdrop[data-state=hidden]{-webkit-transform:scale(.2) translate(-25%,-50%);transform:scale(.2) translate(-25%,-50%);opacity:0}.tippy-popper[x-placement^=right] [data-animation=shift-toward][data-state=visible]{-webkit-transform:translateX(10px);transform:translateX(10px)}.tippy-popper[x-placement^=right] [data-animation=shift-toward][data-state=hidden]{opacity:0;-webkit-transform:translateX(20px);transform:translateX(20px)}.tippy-popper[x-placement^=right] [data-animation=perspective]{-webkit-transform-origin:left;transform-origin:left}.tippy-popper[x-placement^=right] [data-animation=perspective][data-state=visible]{-webkit-transform:perspective(700px) translateX(10px);transform:perspective(700px) translateX(10px)}.tippy-popper[x-placement^=right] [data-animation=perspective][data-state=hidden]{opacity:0;-webkit-transform:perspective(700px) rotateY(60deg);transform:perspective(700px) rotateY(60deg)}.tippy-popper[x-placement^=right] [data-animation=fade][data-state=visible]{-webkit-transform:translateX(10px);transform:translateX(10px)}.tippy-popper[x-placement^=right] [data-animation=fade][data-state=hidden]{opacity:0;-webkit-transform:translateX(10px);transform:translateX(10px)}.tippy-popper[x-placement^=right] [data-animation=shift-away][data-state=visible]{-webkit-transform:translateX(10px);transform:translateX(10px)}.tippy-popper[x-placement^=right] [data-animation=shift-away][data-state=hidden]{opacity:0}.tippy-popper[x-placement^=right] [data-animation=scale]{-webkit-transform-origin:left;transform-origin:left}.tippy-popper[x-placement^=right] [data-animation=scale][data-state=visible]{-webkit-transform:translateX(10px);transform:translateX(10px)}.tippy-popper[x-placement^=right] [data-animation=scale][data-state=hidden]{opacity:0;-webkit-transform:translateX(10px) scale(.5);transform:translateX(10px) scale(.5)}.tippy-tooltip{position:relative;color:#fff;border-radius:.25rem;font-size:.875rem;padding:.3125rem .5625rem;line-height:1.4;text-align:center;background-color:#333}.tippy-tooltip[data-size=small]{padding:.1875rem .375rem;font-size:.75rem}.tippy-tooltip[data-size=large]{padding:.375rem .75rem;font-size:1rem}.tippy-tooltip[data-animatefill]{overflow:hidden;background-color:initial}.tippy-tooltip[data-interactive],.tippy-tooltip[data-interactive] .tippy-roundarrow path{pointer-events:auto}.tippy-tooltip[data-inertia][data-state=visible]{transition-timing-function:cubic-bezier(.54,1.5,.38,1.11)}.tippy-tooltip[data-inertia][data-state=hidden]{transition-timing-function:ease}.tippy-arrow,.tippy-roundarrow{position:absolute;width:0;height:0}.tippy-roundarrow{width:18px;height:7px;fill:#333;pointer-events:none}.tippy-backdrop{position:absolute;background-color:#333;border-radius:50%;width:calc(110% + 2rem);left:50%;top:50%;z-index:-1;transition:all cubic-bezier(.46,.1,.52,.98);-webkit-backface-visibility:hidden;backface-visibility:hidden}.tippy-backdrop:after{content:\"\";float:left;padding-top:100%}.tippy-backdrop+.tippy-content{transition-property:opacity;will-change:opacity}.tippy-backdrop+.tippy-content[data-state=hidden]{opacity:0}";
 
   function _extends$1() {
     _extends$1 = Object.assign || function (target) {
@@ -2632,7 +2632,7 @@
     return _extends$1.apply(this, arguments);
   }
 
-  var version = "4.3.4";
+  var version = "4.3.5";
 
   var isBrowser$1 = typeof window !== 'undefined' && typeof document !== 'undefined';
   var ua = isBrowser$1 ? navigator.userAgent : '';
@@ -3541,14 +3541,19 @@
 
     function makeSticky() {
       setTransitionDuration([popper], isIE$1 ? 0 : instance.props.updateDuration);
+      var prevRefRect = reference.getBoundingClientRect();
 
       function updatePosition() {
-        instance.popperInstance.scheduleUpdate();
+        var currentRefRect = reference.getBoundingClientRect(); // Only schedule an update if the reference rect has changed
+
+        if (prevRefRect.top !== currentRefRect.top || prevRefRect.right !== currentRefRect.right || prevRefRect.bottom !== currentRefRect.bottom || prevRefRect.left !== currentRefRect.left) {
+          instance.popperInstance.scheduleUpdate();
+        }
+
+        prevRefRect = currentRefRect;
 
         if (instance.state.isMounted) {
           requestAnimationFrame(updatePosition);
-        } else {
-          setTransitionDuration([popper], 0);
         }
       }
 
@@ -3714,6 +3719,9 @@
 
       if (isCursorOverReference || !instance.props.interactive) {
         instance.popperInstance.reference = _extends$1({}, instance.popperInstance.reference, {
+          // This will exist in next Popper.js feature release to fix #532
+          // @ts-ignore
+          referenceNode: reference,
           // These `client` values don't get used by Popper.js if they are 0
           clientWidth: 0,
           clientHeight: 0,
@@ -4089,7 +4097,9 @@
       clearDelayTimeouts();
 
       if (!instance.state.isVisible) {
-        return removeFollowCursorListener();
+        removeFollowCursorListener();
+        removeDocumentClickListener();
+        return;
       }
 
       isScheduledToShow = false;
@@ -4176,7 +4186,7 @@
       validateOptions(options, defaultProps);
       removeTriggersFromReference();
       var prevProps = instance.props;
-      var nextProps = evaluateProps(reference, _extends$1({}, instance.props, options, {
+      var nextProps = evaluateProps(reference, _extends$1({}, instance.props, {}, options, {
         ignoreAttributes: true
       }));
       nextProps.ignoreAttributes = hasOwnProperty(options, 'ignoreAttributes') ? options.ignoreAttributes || false : prevProps.ignoreAttributes;
@@ -4453,7 +4463,7 @@
       globalEventListenersBound = true;
     }
 
-    var props = _extends$1({}, defaultProps, options); // If they are specifying a virtual positioning reference, we need to polyfill
+    var props = _extends$1({}, defaultProps, {}, options); // If they are specifying a virtual positioning reference, we need to polyfill
     // some native DOM props
 
 
@@ -4523,10 +4533,10 @@
       style.textContent = css;
       style.setAttribute('data-tippy-stylesheet', '');
       var head = document.head;
-      var firstChild = head.firstChild;
+      var firstStyleOrLinkTag = head.querySelector('style,link');
 
-      if (firstChild) {
-        head.insertBefore(style, firstChild);
+      if (firstStyleOrLinkTag) {
+        head.insertBefore(style, firstStyleOrLinkTag);
       } else {
         head.appendChild(style);
       }
@@ -4535,278 +4545,143 @@
 
   injectCSS(css);
 
-  // Customized for this use-case
-  const isObject = value =>
-  	typeof value === 'object' &&
-  	value !== null &&
-  	!(value instanceof RegExp) &&
-  	!(value instanceof Error) &&
-  	!(value instanceof Date);
+  var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
 
-  const mapObject = (object, fn, options, isSeen = new WeakMap()) => {
-  	options = Object.assign({
-  		deep: false,
-  		target: {}
-  	}, options);
-
-  	if (isSeen.has(object)) {
-  		return isSeen.get(object);
-  	}
-
-  	isSeen.set(object, options.target);
-
-  	const {target} = options;
-  	delete options.target;
-
-  	const mapArray = array => array.map(x => isObject(x) ? mapObject(x, fn, options, isSeen) : x);
-  	if (Array.isArray(object)) {
-  		return mapArray(object);
-  	}
-
-  	/// TODO: Use `Object.entries()` when targeting Node.js 8
-  	for (const key of Object.keys(object)) {
-  		const value = object[key];
-  		let [newKey, newValue] = fn(key, value, object);
-
-  		if (options.deep && isObject(newValue)) {
-  			newValue = Array.isArray(newValue) ?
-  				mapArray(newValue) :
-  				mapObject(newValue, fn, options, isSeen);
-  		}
-
-  		target[newKey] = newValue;
-  	}
-
-  	return target;
-  };
-
-  var mapObj = mapObject;
-
-  const preserveCamelCase = string => {
-  	let isLastCharLower = false;
-  	let isLastCharUpper = false;
-  	let isLastLastCharUpper = false;
-
-  	for (let i = 0; i < string.length; i++) {
-  		const character = string[i];
-
-  		if (isLastCharLower && /[a-zA-Z]/.test(character) && character.toUpperCase() === character) {
-  			string = string.slice(0, i) + '-' + string.slice(i);
-  			isLastCharLower = false;
-  			isLastLastCharUpper = isLastCharUpper;
-  			isLastCharUpper = true;
-  			i++;
-  		} else if (isLastCharUpper && isLastLastCharUpper && /[a-zA-Z]/.test(character) && character.toLowerCase() === character) {
-  			string = string.slice(0, i - 1) + '-' + string.slice(i - 1);
-  			isLastLastCharUpper = isLastCharUpper;
-  			isLastCharUpper = false;
-  			isLastCharLower = true;
-  		} else {
-  			isLastCharLower = character.toLowerCase() === character && character.toUpperCase() !== character;
-  			isLastLastCharUpper = isLastCharUpper;
-  			isLastCharUpper = character.toUpperCase() === character && character.toLowerCase() !== character;
-  		}
-  	}
-
-  	return string;
-  };
-
-  const camelCase = (input, options) => {
-  	if (!(typeof input === 'string' || Array.isArray(input))) {
-  		throw new TypeError('Expected the input to be `string | string[]`');
-  	}
-
-  	options = Object.assign({
-  		pascalCase: false
-  	}, options);
-
-  	const postProcess = x => options.pascalCase ? x.charAt(0).toUpperCase() + x.slice(1) : x;
-
-  	if (Array.isArray(input)) {
-  		input = input.map(x => x.trim())
-  			.filter(x => x.length)
-  			.join('-');
-  	} else {
-  		input = input.trim();
-  	}
-
-  	if (input.length === 0) {
-  		return '';
-  	}
-
-  	if (input.length === 1) {
-  		return options.pascalCase ? input.toUpperCase() : input.toLowerCase();
-  	}
-
-  	const hasUpperCase = input !== input.toLowerCase();
-
-  	if (hasUpperCase) {
-  		input = preserveCamelCase(input);
-  	}
-
-  	input = input
-  		.replace(/^[_.\- ]+/, '')
-  		.toLowerCase()
-  		.replace(/[_.\- ]+(\w|$)/g, (_, p1) => p1.toUpperCase())
-  		.replace(/\d+(\w|$)/g, m => m.toUpperCase());
-
-  	return postProcess(input);
-  };
-
-  var camelcase = camelCase;
-  // TODO: Remove this for the next major release
-  var default_1 = camelCase;
-  camelcase.default = default_1;
-
-  class QuickLRU {
-  	constructor(opts) {
-  		opts = Object.assign({}, opts);
-
-  		if (!(opts.maxSize && opts.maxSize > 0)) {
-  			throw new TypeError('`maxSize` must be a number greater than 0');
-  		}
-
-  		this.maxSize = opts.maxSize;
-  		this.cache = new Map();
-  		this.oldCache = new Map();
-  		this._size = 0;
-  	}
-
-  	_set(key, value) {
-  		this.cache.set(key, value);
-  		this._size++;
-
-  		if (this._size >= this.maxSize) {
-  			this._size = 0;
-  			this.oldCache = this.cache;
-  			this.cache = new Map();
-  		}
-  	}
-
-  	get(key) {
-  		if (this.cache.has(key)) {
-  			return this.cache.get(key);
-  		}
-
-  		if (this.oldCache.has(key)) {
-  			const value = this.oldCache.get(key);
-  			this._set(key, value);
-  			return value;
-  		}
-  	}
-
-  	set(key, value) {
-  		if (this.cache.has(key)) {
-  			this.cache.set(key, value);
-  		} else {
-  			this._set(key, value);
-  		}
-
-  		return this;
-  	}
-
-  	has(key) {
-  		return this.cache.has(key) || this.oldCache.has(key);
-  	}
-
-  	peek(key) {
-  		if (this.cache.has(key)) {
-  			return this.cache.get(key);
-  		}
-
-  		if (this.oldCache.has(key)) {
-  			return this.oldCache.get(key);
-  		}
-  	}
-
-  	delete(key) {
-  		if (this.cache.delete(key)) {
-  			this._size--;
-  		}
-
-  		this.oldCache.delete(key);
-  	}
-
-  	clear() {
-  		this.cache.clear();
-  		this.oldCache.clear();
-  		this._size = 0;
-  	}
-
-  	* keys() {
-  		for (const el of this) {
-  			yield el[0];
-  		}
-  	}
-
-  	* values() {
-  		for (const el of this) {
-  			yield el[1];
-  		}
-  	}
-
-  	* [Symbol.iterator]() {
-  		for (const el of this.cache) {
-  			yield el;
-  		}
-
-  		for (const el of this.oldCache) {
-  			if (!this.cache.has(el[0])) {
-  				yield el;
-  			}
-  		}
-  	}
-
-  	get size() {
-  		let oldCacheSize = 0;
-  		for (const el of this.oldCache) {
-  			if (!this.cache.has(el[0])) {
-  				oldCacheSize++;
-  			}
-  		}
-
-  		return this._size + oldCacheSize;
-  	}
+  function createCommonjsModule(fn, module) {
+  	return module = { exports: {} }, fn(module, module.exports), module.exports;
   }
 
-  var quickLru = QuickLRU;
+  var humps = createCommonjsModule(function (module) {
+  (function(global) {
 
-  const has = (array, key) => array.some(x => typeof x === 'string' ? x === key : x.test(key));
-  const cache = new quickLru({maxSize: 100000});
+    var _processKeys = function(convert, obj, options) {
+      if(!_isObject(obj) || _isDate(obj) || _isRegExp(obj) || _isBoolean(obj) || _isFunction(obj)) {
+        return obj;
+      }
 
-  const camelCaseConvert = (input, options) => {
-  	options = Object.assign({
-  		deep: false
-  	}, options);
+      var output,
+          i = 0,
+          l = 0;
 
-  	const {exclude} = options;
+      if(_isArray(obj)) {
+        output = [];
+        for(l=obj.length; i<l; i++) {
+          output.push(_processKeys(convert, obj[i], options));
+        }
+      }
+      else {
+        output = {};
+        for(var key in obj) {
+          if(Object.prototype.hasOwnProperty.call(obj, key)) {
+            output[convert(key, options)] = _processKeys(convert, obj[key], options);
+          }
+        }
+      }
+      return output;
+    };
 
-  	return mapObj(input, (key, value) => {
-  		if (!(exclude && has(exclude, key))) {
-  			if (cache.has(key)) {
-  				key = cache.get(key);
-  			} else {
-  				const ret = camelcase(key);
+    // String conversion methods
 
-  				if (key.length < 100) { // Prevent abuse
-  					cache.set(key, ret);
-  				}
+    var separateWords = function(string, options) {
+      options = options || {};
+      var separator = options.separator || '_';
+      var split = options.split || /(?=[A-Z])/;
 
-  				key = ret;
-  			}
-  		}
+      return string.split(split).join(separator);
+    };
 
-  		return [key, value];
-  	}, {deep: options.deep});
-  };
+    var camelize = function(string) {
+      if (_isNumerical(string)) {
+        return string;
+      }
+      string = string.replace(/[\-_\s]+(.)?/g, function(match, chr) {
+        return chr ? chr.toUpperCase() : '';
+      });
+      // Ensure 1st char is always lowercase
+      return string.substr(0, 1).toLowerCase() + string.substr(1);
+    };
 
-  var camelcaseKeys = (input, options) => {
-  	if (Array.isArray(input)) {
-  		return Object.keys(input).map(key => camelCaseConvert(input[key], options));
-  	}
+    var pascalize = function(string) {
+      var camelized = camelize(string);
+      // Ensure 1st char is always uppercase
+      return camelized.substr(0, 1).toUpperCase() + camelized.substr(1);
+    };
 
-  	return camelCaseConvert(input, options);
-  };
+    var decamelize = function(string, options) {
+      return separateWords(string, options).toLowerCase();
+    };
+
+    // Utilities
+    // Taken from Underscore.js
+
+    var toString = Object.prototype.toString;
+
+    var _isFunction = function(obj) {
+      return typeof(obj) === 'function';
+    };
+    var _isObject = function(obj) {
+      return obj === Object(obj);
+    };
+    var _isArray = function(obj) {
+      return toString.call(obj) == '[object Array]';
+    };
+    var _isDate = function(obj) {
+      return toString.call(obj) == '[object Date]';
+    };
+    var _isRegExp = function(obj) {
+      return toString.call(obj) == '[object RegExp]';
+    };
+    var _isBoolean = function(obj) {
+      return toString.call(obj) == '[object Boolean]';
+    };
+
+    // Performant way to determine if obj coerces to a number
+    var _isNumerical = function(obj) {
+      obj = obj - 0;
+      return obj === obj;
+    };
+
+    // Sets up function which handles processing keys
+    // allowing the convert function to be modified by a callback
+    var _processor = function(convert, options) {
+      var callback = options && 'process' in options ? options.process : options;
+
+      if(typeof(callback) !== 'function') {
+        return convert;
+      }
+
+      return function(string, options) {
+        return callback(string, convert, options);
+      }
+    };
+
+    var humps = {
+      camelize: camelize,
+      decamelize: decamelize,
+      pascalize: pascalize,
+      depascalize: decamelize,
+      camelizeKeys: function(object, options) {
+        return _processKeys(_processor(camelize, options), object);
+      },
+      decamelizeKeys: function(object, options) {
+        return _processKeys(_processor(decamelize, options), object, options);
+      },
+      pascalizeKeys: function(object, options) {
+        return _processKeys(_processor(pascalize, options), object);
+      },
+      depascalizeKeys: function () {
+        return this.decamelizeKeys.apply(this, arguments);
+      }
+    };
+
+    if ( module.exports) {
+      module.exports = humps;
+    } else {
+      global.humps = humps;
+    }
+
+  })(commonjsGlobal);
+  });
 
   function _defineProperty(obj, key, value) {
     if (key in obj) {
@@ -4823,20 +4698,35 @@
     return obj;
   }
 
-  function _objectSpread(target) {
+  function ownKeys(object, enumerableOnly) {
+    var keys = Object.keys(object);
+
+    if (Object.getOwnPropertySymbols) {
+      var symbols = Object.getOwnPropertySymbols(object);
+      if (enumerableOnly) symbols = symbols.filter(function (sym) {
+        return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+      });
+      keys.push.apply(keys, symbols);
+    }
+
+    return keys;
+  }
+
+  function _objectSpread2(target) {
     for (var i = 1; i < arguments.length; i++) {
       var source = arguments[i] != null ? arguments[i] : {};
-      var ownKeys = Object.keys(source);
 
-      if (typeof Object.getOwnPropertySymbols === 'function') {
-        ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
-          return Object.getOwnPropertyDescriptor(source, sym).enumerable;
-        }));
+      if (i % 2) {
+        ownKeys(source, true).forEach(function (key) {
+          _defineProperty(target, key, source[key]);
+        });
+      } else if (Object.getOwnPropertyDescriptors) {
+        Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+      } else {
+        ownKeys(source).forEach(function (key) {
+          Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+        });
       }
-
-      ownKeys.forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
     }
 
     return target;
@@ -4861,7 +4751,7 @@
     touch: true,
     touchHold: false
   };
-  var defaultProps$1 = _objectSpread({
+  var defaultProps$1 = _objectSpread2({
     animation: 'shift-away',
     appendTo: function appendTo() {
       return document.body;
@@ -4894,12 +4784,6 @@
     wait: null,
     zIndex: 9999
   }, booleanProps);
-
-  var commonjsGlobal = typeof globalThis !== 'undefined' ? globalThis : typeof window !== 'undefined' ? window : typeof global !== 'undefined' ? global : typeof self !== 'undefined' ? self : {};
-
-  function createCommonjsModule(fn, module) {
-  	return module = { exports: {} }, fn(module, module.exports), module.exports;
-  }
 
   var lodash_pickby = createCommonjsModule(function (module, exports) {
   /**
@@ -5005,7 +4889,7 @@
   var root = freeGlobal || freeSelf || Function('return this')();
 
   /** Detect free variable `exports`. */
-  var freeExports = exports && !exports.nodeType && exports;
+  var freeExports =  exports && !exports.nodeType && exports;
 
   /** Detect free variable `module`. */
   var freeModule = freeExports && 'object' == 'object' && module && !module.nodeType && module;
@@ -7413,7 +7297,7 @@
   var root = freeGlobal || freeSelf || Function('return this')();
 
   /** Detect free variable `exports`. */
-  var freeExports = exports && !exports.nodeType && exports;
+  var freeExports =  exports && !exports.nodeType && exports;
 
   /** Detect free variable `module`. */
   var freeModule = freeExports && 'object' == 'object' && module && !module.nodeType && module;
@@ -9668,7 +9552,7 @@
       getOptions: function getOptions() {
         var _this = this;
 
-        this.options = camelcaseKeys(this.$attrs);
+        this.options = humps.camelizeKeys(this.$attrs);
         this.options = lodash_pickby(this.options, function (value, key) {
           return defaultProps$1.hasOwnProperty(key);
         });

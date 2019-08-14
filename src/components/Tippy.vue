@@ -12,11 +12,10 @@
 
 <script>
 import tippy from "tippy.js";
-import camelcaseKeys from "camelcase-keys";
+import humps from "humps";
 import defaultProps, { booleanProps } from "../props";
 import pickBy from "lodash.pickby";
 import mapValues from "lodash.mapvalues";
-
 export default {
   props: ["to", "toSelector", "toElement", "content", "enabled", "visible"],
   data() {
@@ -91,7 +90,7 @@ export default {
       return this.tip;
     },
     getOptions() {
-      this.options = camelcaseKeys(this.$attrs);
+      this.options = humps.camelizeKeys(this.$attrs);
 
       this.options = pickBy(this.options, (value, key) => {
         return defaultProps.hasOwnProperty(key);

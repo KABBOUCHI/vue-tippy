@@ -1,6 +1,6 @@
 {
     "name": "vue-tippy",
-    "version": "4.0.0-beta.7",
+    "version": "4.0.0-beta.8",
     "description": "Directive and Component wrapper for Tippy.js",
     "author": "Georges KABBOUCHI <georges.kabbouchi@gmail.com>",
     "files": [
@@ -89,8 +89,7 @@
         "vue"
     ],
     "dependencies": {
-        "camelcase": "^5.3.1",
-        "camelcase-keys": "^5.1.0",
+        "humps": "^2.0.1",
         "lodash.mapvalues": "^4.6.0",
         "lodash.pickby": "^4.6.0",
         "tippy.js": "^4.2.1"
