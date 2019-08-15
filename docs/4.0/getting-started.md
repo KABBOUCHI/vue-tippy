@@ -3,7 +3,7 @@
 ## Option1: CDN
 
 ```html
-<script src="https://unpkg.com/vue-tippy@@4.0.0-beta.8/dist/vue-tippy.min.js"></script>
+<script src="https://unpkg.com/vue-tippy@4.0.0-beta.8/dist/vue-tippy.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/vue-tippy@4.0.0-beta.8/dist/vue-tippy.min.js"></script>
 ```
 
