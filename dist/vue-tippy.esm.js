@@ -4774,6 +4774,7 @@ var defaultProps$1 = _objectSpread2({
   target: '',
   theme: 'dark',
   trigger: 'mouseenter focus',
+  triggerTarget: null,
   updateDuration: 0,
   wait: null,
   zIndex: 9999
