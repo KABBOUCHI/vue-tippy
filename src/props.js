@@ -44,7 +44,6 @@ export default {
   target: '',
   theme: 'dark',
   trigger: 'mouseenter focus',
-  triggerTarget: null,
   updateDuration: 0,
   wait: null,
   zIndex: 9999,

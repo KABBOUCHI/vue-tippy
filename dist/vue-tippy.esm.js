@@ -4774,7 +4774,6 @@ var defaultProps$1 = _objectSpread2({
   target: '',
   theme: 'dark',
   trigger: 'mouseenter focus',
-  triggerTarget: null,
   updateDuration: 0,
   wait: null,
   zIndex: 9999
@@ -9473,7 +9472,7 @@ module.exports = mapValues;
 
 //
 var script = {
-  props: ["to", "toSelector", "toElement", "content", "enabled", "visible"],
+  props: ["to", "toSelector", "toElement", "content", "enabled", "visible", "triggerTarget"],
   data: function data() {
     return {
       tip: null,
@@ -9615,6 +9614,7 @@ var script = {
         this.options.content = this.content ? this.content : this.$refs.content;
       }
 
+      this.options.triggerTarget = this.triggerTarget;
       return this.options;
     }
   }

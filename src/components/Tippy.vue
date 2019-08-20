@@ -17,7 +17,15 @@ import defaultProps, { booleanProps } from "../props";
 import pickBy from "lodash.pickby";
 import mapValues from "lodash.mapvalues";
 export default {
-  props: ["to", "toSelector", "toElement", "content", "enabled", "visible"],
+  props: [
+    "to",
+    "toSelector",
+    "toElement",
+    "content",
+    "enabled",
+    "visible",
+    "triggerTarget"
+  ],
   data() {
     return {
       tip: null,
@@ -139,6 +147,8 @@ export default {
       if (!this.options.hasOwnProperty("content")) {
         this.options.content = this.content ? this.content : this.$refs.content;
       }
+
+      this.options.triggerTarget = this.triggerTarget;
 
       return this.options;
     }
