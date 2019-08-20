@@ -17,9 +17,9 @@ For full v4 documentation, visit [https://kabbouchi.github.io/vue-tippy/4.0/](ht
 ## Installation
 
 ```bash
-npm install --save vue-tippy@next
+npm install --save vue-tippy
 # or
-yarn add vue-tippy@next
+yarn add vue-tippy
 ```
 
 ## Usage
@@ -51,8 +51,8 @@ Vue.component("tippy", TippyComponent);
 
 ```html
 <!-- From CDN -->
-<script src="https://unpkg.com/vue-tippy@next/dist/vue-tippy.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/vue-tippy@next/dist/vue-tippy.min.js"></script>
+<script src="https://unpkg.com/vue-tippy/dist/vue-tippy.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue-tippy/dist/vue-tippy.min.js"></script>
 ```
 
 #### Basic Usage
@@ -77,7 +77,7 @@ Vue.component("tippy", TippyComponent);
 </tippy>
 
 <button name="myTrigger">Tippy Trigger</button>
-``` 
+```
 
 ```html
 <tippy arrow>
@@ -91,7 +91,7 @@ Vue.component("tippy", TippyComponent);
     <button @click="clicked">Click</button>
   </div>
 </tippy>
-``` 
+```
 
 ```html
 <tippy :content="`tooltip: ${message}`" arrow>
@@ -99,7 +99,7 @@ Vue.component("tippy", TippyComponent);
     <button>Tippy Trigger</button>
   </template>
 </tippy>
-````
+```
 
 > For full v4 documentation, visit [https://kabbouchi.github.io/vue-tippy/4.0/](https://kabbouchi.github.io/vue-tippy/4.0/).
 
