@@ -5,12 +5,12 @@ import TippyComponent from './components/Tippy.vue'
 var tippyDirective = 'tippy'
 
 const plugin = {
-  install (Vue, options = {}) {
+  install(Vue, options = {}) {
     tippyDirective = options.directive || 'tippy'
 
     tippy.setDefaults(options || {})
 
-    function createTippy (el, binding, vnode) {
+    function createTippy(el, binding, vnode) {
       const handlers = (vnode.data && vnode.data.on) ||
         (vnode.componentOptions && vnode.componentOptions.listeners)
 
@@ -20,7 +20,7 @@ const plugin = {
 
       if (handlers && handlers['show']) {
         opts.onShow = function (...args) {
-          handlers['show'].fns(...args)
+          return handlers['show'].fns(...args)
         }
       }
 
@@ -37,7 +37,7 @@ const plugin = {
 
       if (handlers && handlers['hide']) {
         opts.onHide = function (...args) {
-          handlers['hide'].fns(...args)
+          return handlers['hide'].fns(...args)
         }
       }
 
@@ -69,15 +69,15 @@ const plugin = {
     }
 
     Vue.directive(tippyDirective, {
-      inserted (el, binding, vnode) {
+      inserted(el, binding, vnode) {
         Vue.nextTick(() => {
           createTippy(el, binding, vnode)
         })
       },
-      unbind (el) {
+      unbind(el) {
         el._tippy && el._tippy.destroy()
       },
-      componentUpdated (el, binding, vnode) {
+      componentUpdated(el, binding, vnode) {
         if (el._tippy) {
           const opts = binding.value || {}
 

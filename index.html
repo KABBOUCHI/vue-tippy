@@ -19,92 +19,24 @@
         </p>
         <div class="button-showcase d-flex justify-content-center flex-wrap">
 
-            <!-- BTN0 -->
-            <tippy to="dyn0" :content="i" arrow show-on-init sticky></tippy>
-
-            <button class="btn" name="dyn0">BTN0</button>
-
-            <!-- BTN1 -->
-            <tippy to="dyn" arrow="" show-on-init sticky trigger="manual">
-                {{ i }}
+            <button content="test" @show="() => true" v-tippy>test</button>
+            <tippy content="OnShown" @hide="() => false" arrow=>
+                <template #trigger>
+                    <button class="btn">OnShow</button>
+                </template>
             </tippy>
-
-            <button class="btn" name="dyn">Dynamic Title</button>
-
-
-            <!-- BTN2 -->
-            <tippy class="test" test="asdas" arrow="true">
-                <span slot="content">
-                    Hi!
-                </span>
-                <button class="btn" slot="trigger">My Button</button>
-            </tippy>
-
-
-            <!-- BTN3 -->
-            <tippy to="btn3" arrow="true" @shown="log">{{i}}</tippy>
-
-            <button class="btn" name="btn3">btn3</button>
-
-
-            <!-- BTN4 -->
-            <button class="btn" :content="i"
-                v-tippy="{ showOnInit : true , sticky : true, arrow : i % 2 == 0}">btn4</button>
-
-
-            <!-- BTN5 -->
-            <button class="btn" content="@shown" v-tippy @shown="alert('@shown')">@shown</button>
-
-            <tippy content=" <i>ITALIC<i />" arrow="true">
-                <button class="btn" slot="trigger">Italic Title</button>
-            </tippy>
-
-            <!-- 
-
-                <tippy content=" <i>ITALIC<i />" arrow="true">
-                <button class="btn" slot="trigger">Italic Title</button>
-                </tippy>
-
-                <tippy arrow="true" interactive="true">
-                    <span slot="content">
-                        <button class="btn" @click="alert(' @click')">
-                            Click Me
-                        </button>
-                    </span>
-                    <button class="btn" slot="trigger">My Button</button>
-                </tippy>
-
-                <tippy content="Animation" animate-fill="false" animation="scale" arrow="true">
-                    <button class="btn" slot="trigger">Animation</button>
-                </tippy>
-
-                <tippy content="Light" theme="light" arrow="true">
-                    <button class="btn" slot="trigger">Light</button>
-                </tippy>
-
-                <tippy content="Duration" :duration="[800,100]" arrow="true">
-                    <button class="btn" slot="trigger">Duration</button>
-                </tippy>
-
-                <tippy content="Follow Cursor" follow-cursor="true" arrow="true">
-                    <button class="btn" slot="trigger">Follow Cursor</button>
-                </tippy>
-
-                <tippy content="OnShown" :on-shown="(tip) => alert('OnShown')" arrow="true">
-                    <button class="btn" slot="trigger">OnShown</button>
-                </tippy> -->
         </div>
     </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.9/vue.js"></script>
-    <script src="dist/vue-tippy.js?2019v4a"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+    <script src="dist/vue-tippy.min.js"></script>
 
     <script>
         new Vue({
             el: "#app",
             data() {
                 return {
-                    i: 0
+                    i: 0,
                 };
             },
             created() {

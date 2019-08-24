@@ -9560,20 +9560,18 @@ var script = {
         return value;
       });
 
-      if (!this.options.onShow) {
+      if (!this.options.onShow && this.$listeners && this.$listeners["show"]) {
         this.options.onShow = function () {
-          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-          }
+          var _this$$listeners$show;
 
-          _this.$emit.apply(_this, ["show"].concat(args));
+          return (_this$$listeners$show = _this.$listeners["show"]).fns.apply(_this$$listeners$show, arguments);
         };
       }
 
       if (!this.options.onShown) {
         this.options.onShown = function () {
-          for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-            args[_key2] = arguments[_key2];
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
           }
 
           _this.$emit.apply(_this, ["shown"].concat(args));
@@ -9582,28 +9580,26 @@ var script = {
 
       if (!this.options.onHidden) {
         this.options.onHidden = function () {
-          for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-            args[_key3] = arguments[_key3];
+          for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+            args[_key2] = arguments[_key2];
           }
 
           _this.$emit.apply(_this, ["hidden"].concat(args));
         };
       }
 
-      if (!this.options.onHide) {
+      if (!this.options.onHide && this.$listeners && this.$listeners["hide"]) {
         this.options.onHide = function () {
-          for (var _len4 = arguments.length, args = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
-            args[_key4] = arguments[_key4];
-          }
+          var _this$$listeners$hide;
 
-          _this.$emit.apply(_this, ["hide"].concat(args));
+          return (_this$$listeners$hide = _this.$listeners["hide"]).fns.apply(_this$$listeners$hide, arguments);
         };
       }
 
       if (!this.options.onMount) {
         this.options.onMount = function () {
-          for (var _len5 = arguments.length, args = new Array(_len5), _key5 = 0; _key5 < _len5; _key5++) {
-            args[_key5] = arguments[_key5];
+          for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+            args[_key3] = arguments[_key3];
           }
 
           _this.$emit.apply(_this, ["mount"].concat(args));
@@ -9762,7 +9758,7 @@ var plugin = {
         opts.onShow = function () {
           var _handlers$show;
 
-          (_handlers$show = handlers['show']).fns.apply(_handlers$show, arguments);
+          return (_handlers$show = handlers['show']).fns.apply(_handlers$show, arguments);
         };
       }
 
@@ -9786,7 +9782,7 @@ var plugin = {
         opts.onHide = function () {
           var _handlers$hide;
 
-          (_handlers$hide = handlers['hide']).fns.apply(_handlers$hide, arguments);
+          return (_handlers$hide = handlers['hide']).fns.apply(_handlers$hide, arguments);
         };
       }
 

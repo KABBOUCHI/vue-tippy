@@ -114,9 +114,9 @@ export default {
         return value;
       });
 
-      if (!this.options.onShow) {
+      if (!this.options.onShow && this.$listeners && this.$listeners["show"]) {
         this.options.onShow = (...args) => {
-          this.$emit("show", ...args);
+          return this.$listeners["show"].fns(...args);
         };
       }
 
@@ -132,9 +132,9 @@ export default {
         };
       }
 
-      if (!this.options.onHide) {
+      if (!this.options.onHide && this.$listeners && this.$listeners["hide"]) {
         this.options.onHide = (...args) => {
-          this.$emit("hide", ...args);
+          return this.$listeners["hide"].fns(...args);
         };
       }
 
