@@ -37,6 +37,15 @@ Vue.use(VueTippy, {
 Vue.component("tippy", TippyComponent);
 ```
 
+Add additional themes.
+
+```js
+import "tippy.js/themes/light.css";
+import "tippy.js/themes/light-border.css";
+import "tippy.js/themes/google.css";
+import "tippy.js/themes/translucent.css";
+```
+
 You can access to tippy library like this:
 
 ```js
