@@ -51,3 +51,11 @@ You can access to tippy library like this:
 ```js
 import { tippy } from "vue-tippy";
 ```
+
+### TypeScript
+
+You will need to import the ESM directly.
+
+```js
+import VueTippy from 'vue-tippy/dist/vue-tippy.esm';
+```
