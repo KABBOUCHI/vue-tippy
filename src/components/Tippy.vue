@@ -88,6 +88,11 @@ export default {
       this.tip.set(this.getOptions());
     }
   },
+  beforeDestroy() {
+    if (!this.tip) return;
+
+    this.tip.destroy();
+  },
   computed: {
     isManualTrigger() {
       return this.options.trigger === "manual";
