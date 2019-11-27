@@ -84,7 +84,7 @@
 
 ```html
 <button title="I'm called when a tooltip has fully transitioned in."
-        @@hown="onShown"
+        @shown="onShown"
         v-tippy="{ arrow : true, duration : 600, maxWidth : '400px' }">
     @shown
 </button>
