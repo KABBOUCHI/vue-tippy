@@ -14,8 +14,6 @@
 import tippy from "tippy.js";
 import humps from "humps";
 import defaultProps, { booleanProps } from "../props";
-import pickBy from "lodash.pickby";
-import mapValues from "lodash.mapvalues";
 export default {
   props: [
     "to",
@@ -102,14 +100,8 @@ export default {
     tippy() {
       return this.tip;
     },
-    getOptions() {
-      this.options = humps.camelizeKeys(this.$attrs);
-
-      this.options = pickBy(this.options, (value, key) => {
-        return defaultProps.hasOwnProperty(key);
-      });
-
-      this.options = mapValues(this.options, (value, key) => {
+    filterOptions () {
+      const getValue = (key, value) => {
         if (booleanProps.hasOwnProperty(key)) {
           if (value === "") return true;
           if (value === "false") return false;
@@ -117,7 +109,22 @@ export default {
         }
 
         return value;
-      });
+      };
+
+      for (const key of Object.keys(this.options)) {
+        if (!defaultProps.hasOwnProperty(key)) {
+          // We're replacing this.options anyway, we don't have to worry about modifying the object
+          delete this.options[key];
+        }
+
+        this.options[key] = getValue(key, this.options[key]);
+      }
+
+      return this.options;
+    },
+    getOptions() {
+      this.options = humps.camelizeKeys(this.$attrs);
+      this.filterOptions();
 
       if (!this.options.onShow && this.$listeners && this.$listeners["show"]) {
         this.options.onShow = (...args) => {
