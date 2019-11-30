@@ -8,6 +8,18 @@ module.exports = [
         path: 'getting-started'
     },
     {
+        title: 'Features',
+        collapsable: false,
+        children: prefix('features', [
+            'default',
+            'placement',
+            'arrows',
+            'triggers',
+            'interactivity',
+            'animations'
+        ]),
+    },
+    {
         title: 'All Options',
         path: 'all-options'
     }
