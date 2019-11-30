@@ -90,8 +90,6 @@
     ],
     "dependencies": {
         "humps": "^2.0.1",
-        "lodash.mapvalues": "^4.6.0",
-        "lodash.pickby": "^4.6.0",
         "tippy.js": "^4.2.1"
     }
 }
