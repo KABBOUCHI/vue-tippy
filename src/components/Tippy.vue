@@ -46,6 +46,7 @@ export default {
     this.tip = tippy(elm, this.getOptions());
 
     this.$emit("onCreate", this.tip);
+    this.$emit("init", this.tip);
 
     if (this.enabled === false) {
       this.tip.disable();
@@ -100,7 +101,7 @@ export default {
     tippy() {
       return this.tip;
     },
-    filterOptions () {
+    filterOptions() {
       const getValue = (key, value) => {
         if (booleanProps.hasOwnProperty(key)) {
           if (value === "") return true;

@@ -4821,6 +4821,7 @@
 
       this.tip = tippy(elm, this.getOptions());
       this.$emit("onCreate", this.tip);
+      this.$emit("init", this.tip);
 
       if (this.enabled === false) {
         this.tip.disable();
