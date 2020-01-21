@@ -111,7 +111,7 @@ import "tippy.js/themes/translucent.css";
 
 > For full v4 documentation, visit [https://kabbouchi.github.io/vue-tippy/4.0/](https://kabbouchi.github.io/vue-tippy/4.0/).
 
-> For more info on TippyJS view the documentation and demo here: https://atomiks.github.io/tippyjs/
+> For more info on TippyJS view the documentation and demo here: ~https://atomiks.github.io/tippyjs/~ https://kabbouchi.github.io/tippyjs-v4-docs/
 
 ## License
 
