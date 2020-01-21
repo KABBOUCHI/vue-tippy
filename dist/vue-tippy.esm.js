@@ -4896,7 +4896,7 @@ var script = {
     getOptions: function getOptions() {
       var _this = this;
 
-      this.options = humps.camelizeKeys(this.$attrs);
+      Object.assign(this.options, humps.camelizeKeys(this.$attrs));
       this.filterOptions();
 
       if (!this.options.onShow && this.$listeners && this.$listeners["show"]) {
