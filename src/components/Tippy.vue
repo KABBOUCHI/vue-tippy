@@ -124,7 +124,7 @@ export default {
       return this.options;
     },
     getOptions() {
-      this.options = humps.camelizeKeys(this.$attrs);
+      Object.assign(this.options, humps.camelizeKeys(this.$attrs));
       this.filterOptions();
 
       if (!this.options.onShow && this.$listeners && this.$listeners["show"]) {
