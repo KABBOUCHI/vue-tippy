@@ -5044,9 +5044,9 @@ var __vue_render__ = function __vue_render__() {
 
   var _c = _vm._self._c || _h;
 
-  return _c("span", [_c("span", {
+  return _c("div", [_c("div", {
     ref: "trigger"
-  }, [_vm._t("trigger")], 2), _vm._v(" "), _c("span", {
+  }, [_vm._t("trigger")], 2), _vm._v(" "), _c("div", {
     ref: "content"
   }, [_vm._t("default")], 2)]);
 };

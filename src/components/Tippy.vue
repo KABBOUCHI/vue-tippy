@@ -1,13 +1,13 @@
 <template>
-  <span>
-    <span ref="trigger">
-      <slot ref="trigger" name="trigger"></slot>
-    </span>
+  <div>
+    <div ref="trigger">
+      <slot name="trigger"></slot>
+    </div>
 
-    <span ref="content">
+    <div ref="content">
       <slot></slot>
-    </span>
-  </span>
+    </div>
+  </div>
 </template>
 
 <script>
