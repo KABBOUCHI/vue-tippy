@@ -4807,29 +4807,7 @@
       };
     },
     mounted: function mounted() {
-      var elm = this.toElement;
-
-      if (elm == null) {
-        if (this.to) {
-          elm = document.querySelector("[name='".concat(this.to, "']"));
-        } else if (this.toSelector) {
-          elm = document.querySelector(this.toSelector);
-        } else {
-          elm = this.$refs.trigger;
-        }
-      }
-
-      this.tip = tippy(elm, this.getOptions());
-      this.$emit("onCreate", this.tip);
-      this.$emit("init", this.tip);
-
-      if (this.enabled === false) {
-        this.tip.disable();
-      }
-
-      if (this.isManualTrigger && this.visible === true) {
-        this.tip.show();
-      }
+      this.init();
     },
     watch: {
       content: function content() {
@@ -4872,6 +4850,57 @@
       }
     },
     methods: {
+      init: function init() {
+        if (this.tip) {
+          try {
+            this.tip.destroy();
+          } catch (error) {}
+
+          this.tip = null;
+        }
+
+        var elm = this.toElement;
+
+        if (elm == null) {
+          if (this.to) {
+            elm = document.querySelector("[name='".concat(this.to, "']"));
+          } else if (this.toSelector) {
+            elm = document.querySelector(this.toSelector);
+          } else {
+            elm = this.$refs.trigger;
+          }
+        }
+
+        if (!elm) {
+          return;
+        }
+
+        var tip = tippy(elm, this.getOptions());
+
+        if (!tip) {
+          return;
+        }
+
+        if (Array.isArray(tip)) {
+          if (tip.length > 0) {
+            this.tip = tip[0];
+          } else {
+            return;
+          }
+        }
+
+        this.tip = tip;
+        this.$emit("onCreate", this.tip);
+        this.$emit("init", this.tip);
+
+        if (this.enabled === false) {
+          this.tip.disable();
+        }
+
+        if (this.isManualTrigger && this.visible === true) {
+          this.tip.show();
+        }
+      },
       tippy: function tippy() {
         return this.tip;
       },
