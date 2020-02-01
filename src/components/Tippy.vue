@@ -91,8 +91,13 @@ export default {
           elm = document.querySelector(`[name='${this.to}']`);
         } else if (this.toSelector) {
           elm = document.querySelector(this.toSelector);
-        } else {
+        } else if (
+          this.$refs.trigger &&
+          this.$refs.trigger.childElementCount > 0
+        ) {
           elm = this.$refs.trigger;
+        } else {
+          elm = this.$el.parentElement;
         }
       }
 
