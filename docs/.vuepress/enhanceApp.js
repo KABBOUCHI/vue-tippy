@@ -3,12 +3,15 @@ import VueTippyV4, { TippyComponent } from '../../src'
 import "tippy.js/themes/google.css"
 import "tippy.js/themes/light-border.css"
 
+import VueCompositionApi from '@vue/composition-api';
 export default ({
     Vue, // the version of Vue being used in the VuePress app
     options, // the options for the root Vue instance
     router, // the router instance for the app
     siteData // site metadata
 }) => {
+
+    Vue.use(VueCompositionApi);
 
     if (typeof window !== 'undefined') {
         window.Vue = Vue;

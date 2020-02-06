@@ -16,7 +16,9 @@ module.exports = [
             'arrows',
             'triggers',
             'interactivity',
-            'animations'
+            'animations',
+            
+            'composition-api'
         ]),
     },
     {
