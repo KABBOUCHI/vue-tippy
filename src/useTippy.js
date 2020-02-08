@@ -7,9 +7,14 @@ export function useTippy(el, opts = {}) {
     const instance = ref(null)
 
     let onMountCbs = [];
+    let onUnmountCbs = [];
 
     const onMount = (cb) => {
         onMountCbs.push(cb);
+    }
+
+    const onUnmount = (cb) => {
+        onUnmountCbs.push(cb);
     }
 
     const init = (e, o) => {
@@ -35,6 +40,8 @@ export function useTippy(el, opts = {}) {
         if (instance.value) {
             instance.value.destroy()
         }
+
+        onUnmountCbs.forEach(cb => cb())
     })
 
     watch(Object.values(toRefs(opts)),() => {
@@ -45,6 +52,7 @@ export function useTippy(el, opts = {}) {
 
     return {
         onMount,
+        onUnmount,
         tippy: instance
     }
 }
