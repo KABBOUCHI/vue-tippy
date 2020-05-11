@@ -1,5 +1,8 @@
 import tippy from "tippy.js"
-import { isRef, onMounted, ref, onUnmounted, watch, toRefs } from "@vue/composition-api";
+import { h, isRef, onMounted, ref, onUnmounted, watch, toRefs, onUpdated } from "@vue/composition-api";
+
+
+const array_wrap = (val) => Array.isArray(val) ? val : [val];
 
 
 export function useTippy(el, opts = {}) {
@@ -29,26 +32,36 @@ export function useTippy(el, opts = {}) {
             element = el.value
         }
 
-        if (isRef(opts.content)) {
-            opts.content = opts.content.value;
+        if (Array.isArray(el)) {
+            element = el.map((e) => isRef(e) ? e.value : e)
         }
 
+        if (isRef(opts.content)) {
+
+            watch(opts.content, function (val) {
+                opts.content = val;
+                if (instance.value) {
+                    array_wrap(instance.value).forEach((t) => t.setContent(val));
+                }
+            })
+
+        }
         init(element, opts);
     });
 
     onUnmounted(() => {
         if (instance.value) {
-            instance.value.destroy()
+            array_wrap(instance.value).forEach((t) => t.destroy());
         }
 
         onUnmountCbs.forEach(cb => cb())
     })
 
-    watch(Object.values(toRefs(opts)),() => {
-      if(instance.value){
-          instance.value.set(opts)
-      }
-    }, { layz : true})
+    watch(() => opts, () => {
+        if (instance.value) {
+            array_wrap(instance.value).forEach((t) => t.set(opts));
+        }
+    }, { layz: true, deep: true })
 
     return {
         onMount,

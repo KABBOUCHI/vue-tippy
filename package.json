@@ -72,7 +72,7 @@
         "last 2 versions"
     ],
     "peerDependencies": {
-        "@vue/composition-api": "^0.3.4",
+        "@vue/composition-api": "^0.5.0",
         "vue": "^2.5.9"
     },
     "repository": {
