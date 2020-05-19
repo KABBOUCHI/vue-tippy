@@ -26,7 +26,7 @@ yarn add @vue/composition-api
 <script>
 
 import { ref} from "@vue/composition-api";
-import { useTippy } from "vue-tippy";
+import { useTippy } from "vue-tippy/composition";
 
 export default {
    setup(){
@@ -68,7 +68,7 @@ export default {
 <script>
 
 import { ref, reactive} from "@vue/composition-api";
-import { useTippy } from "vue-tippy";
+import { useTippy } from "vue-tippy/composition";
 
 export default {
    setup(){
@@ -122,7 +122,7 @@ export default {
 <script>
 
 import { ref} from "@vue/composition-api";
-import { useTippy } from "vue-tippy";
+import { useTippy } from "vue-tippy/composition";
 
 export default {
    setup(){
