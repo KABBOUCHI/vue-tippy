@@ -8,7 +8,7 @@
 
 <script>
 import { ref } from "@vue/composition-api";
-import { useTippy } from "../../../src/index";
+import { useTippy } from "../../../composition";
 
 export default {
   setup() {

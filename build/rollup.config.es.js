@@ -5,9 +5,6 @@ const config = Object.assign({}, base, {
     name: 'vue-tipy',
     file: 'dist/vue-tippy.esm.js',
     format: 'es',
-    globals: {
-      '@vue/composition-api': 'vueCompositionApi'
-    }
   },
 })
 

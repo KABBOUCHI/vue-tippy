@@ -5,7 +5,8 @@
     "author": "Georges KABBOUCHI <georges.kabbouchi@gmail.com>",
     "files": [
         "dist",
-        "src"
+        "src",
+        "composition"
     ],
     "scripts": {
         "build": "NODE_ENV=production npm run build:browser && npm run build:es && npm run build:umd",

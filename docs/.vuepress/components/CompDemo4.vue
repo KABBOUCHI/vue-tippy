@@ -10,7 +10,7 @@
 
 <script>
 import { ref, watch, defineComponent } from "@vue/composition-api";
-import { useTippy } from "../../../src/index";
+import { useTippy } from "../../../composition";
 import CompDemo2Vue from "./CompDemo2.vue";
 
 export default defineComponent({

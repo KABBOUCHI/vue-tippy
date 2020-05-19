@@ -1,5 +1,3 @@
-import vueCompositionApi from '@vue/composition-api';
-
 /**!
  * @fileOverview Kickass library to create and place poppers near their reference elements.
  * @version 1.16.1
@@ -5106,99 +5104,6 @@ var __vue_component__ = normalizeComponent({
   staticRenderFns: __vue_staticRenderFns__
 }, __vue_inject_styles__, __vue_script__, __vue_scope_id__, __vue_is_functional_template__, __vue_module_identifier__, false, undefined, undefined, undefined);
 
-var array_wrap = function array_wrap(val) {
-  return Array.isArray(val) ? val : [val];
-};
-
-function useTippy(el) {
-  var opts = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
-  if (typeof vueCompositionApi == 'undefined') {
-    console.warn("asdasd");
-    return {};
-  }
-
-  var isRef = vueCompositionApi.isRef,
-      onMounted = vueCompositionApi.onMounted,
-      ref = vueCompositionApi.ref,
-      onUnmounted = vueCompositionApi.onUnmounted,
-      watch = vueCompositionApi.watch;
-  var instance = ref(null);
-  var onMountCbs = [];
-  var onUnmountCbs = [];
-
-  var onMount = function onMount(cb) {
-    onMountCbs.push(cb);
-  };
-
-  var onUnmount = function onUnmount(cb) {
-    onUnmountCbs.push(cb);
-  };
-
-  var init = function init(e, o) {
-    instance.value = tippy(e, o);
-    onMountCbs.forEach(function (cb) {
-      return cb(instance.value);
-    });
-  };
-
-  onMounted(function () {
-    var element = el;
-
-    if (isRef(el)) {
-      element = el.value;
-    }
-
-    if (Array.isArray(el)) {
-      element = el.map(function (e) {
-        return isRef(e) ? e.value : e;
-      });
-    }
-
-    if (isRef(opts.content)) {
-      watch(opts.content, function (val) {
-        opts.content = val;
-
-        if (instance.value) {
-          array_wrap(instance.value).forEach(function (t) {
-            return t.setContent(val);
-          });
-        }
-      });
-    }
-
-    init(element, opts);
-  });
-  onUnmounted(function () {
-    if (instance.value) {
-      array_wrap(instance.value).forEach(function (t) {
-        return t.destroy();
-      });
-    }
-
-    onUnmountCbs.forEach(function (cb) {
-      return cb();
-    });
-  });
-  watch(function () {
-    return opts;
-  }, function () {
-    if (instance.value) {
-      array_wrap(instance.value).forEach(function (t) {
-        return t.set(opts);
-      });
-    }
-  }, {
-    layz: true,
-    deep: true
-  });
-  return {
-    onMount: onMount,
-    onUnmount: onUnmount,
-    tippy: instance
-  };
-}
-
 var tippyDirective = 'tippy';
 var plugin = {
   install: function install(Vue) {
@@ -5306,4 +5211,4 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export default plugin;
-export { __vue_component__ as TippyComponent, tippy, useTippy };
+export { __vue_component__ as TippyComponent, tippy };

@@ -1,0 +1,1 @@
+export { useTippy } from './useTippy'

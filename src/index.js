@@ -106,4 +106,3 @@ export {
   TippyComponent,
   tippy,
 }
-export { useTippy } from './useTippy'
