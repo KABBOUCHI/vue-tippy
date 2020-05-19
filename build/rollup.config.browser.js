@@ -7,6 +7,9 @@ const config = Object.assign({}, base, {
     name: 'VueTippy',
     file: 'dist/vue-tippy.min.js',
     format: 'iife',
+    globals: {
+      '@vue/composition-api': 'vueCompositionApi'
+    }
   },
 })
 

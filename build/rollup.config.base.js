@@ -10,6 +10,7 @@ const config = require('../package.json')
 
 export default {
   input: 'src/index.js',
+  external: ['@vue/composition-api'],
   plugins: [
     resolve({
       mainFields: ['module', 'jsnext:main', 'main', 'browser'],
