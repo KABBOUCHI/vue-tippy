@@ -1,0 +1,6 @@
+{
+    "tippy/content": {
+      "type": "any",
+      "description": "The content of the tippy"
+    }
+}

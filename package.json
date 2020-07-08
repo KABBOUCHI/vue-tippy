@@ -1,96 +1,101 @@
 {
-    "name": "vue-tippy",
-    "version": "4.5.1",
-    "description": "Directive and Component wrapper for Tippy.js",
-    "author": "Georges KABBOUCHI <georges.kabbouchi@gmail.com>",
-    "files": [
-        "dist",
-        "src",
-        "composition"
-    ],
-    "scripts": {
-        "build": "NODE_ENV=production npm run build:browser && npm run build:es && npm run build:umd",
-        "test": "npm run test:unit",
-        "build:browser": "rollup --config build/rollup.config.browser.js",
-        "build:es": "rollup --config build/rollup.config.es.js",
-        "build:umd": "rollup --config build/rollup.config.umd.js",
-        "dev": "cross-env NODE_ENV=development rollup --config build/rollup.config.es.js --watch",
-        "prepublishOnly": "npm run build",
-        "test:unit": "vue-cli-service test:unit"
-    },
-    "main": "dist/vue-tippy.umd.js",
-    "module": "dist/vue-tippy.esm.js",
-    "unpkg": "dist/vue-tippy.min.js",
-    "devDependencies": {
-        "@babel/core": "^7.4.0",
-        "@babel/plugin-proposal-class-properties": "^7.4.0",
-        "@babel/plugin-syntax-dynamic-import": "^7.2.0",
-        "@babel/plugin-transform-runtime": "^7.4.0",
-        "@babel/polyfill": "^7.4.3",
-        "@babel/preset-env": "^7.4.2",
-        "@vue/cli-plugin-babel": "^3.5.1",
-        "@vue/cli-plugin-eslint": "^3.5.1",
-        "@vue/cli-plugin-unit-jest": "^3.5.3",
-        "@vue/cli-service": "^3.5.1",
-        "@vue/test-utils": "^1.0.0-beta.29",
-        "babel-core": "7.0.0-bridge.0",
-        "babel-eslint": "^10.0.1",
-        "babel-jest": "^24.7.1",
-        "clean-css": "^4.1.8",
-        "cross-env": "^5.0.5",
-        "eslint": "^5.16.0",
-        "eslint-config-standard": "^12.0.0",
-        "eslint-plugin-html": "^5.0.3",
-        "eslint-plugin-import": "^2.7.0",
-        "eslint-plugin-node": "^8.0.1",
-        "eslint-plugin-promise": "^4.1.1",
-        "eslint-plugin-standard": "^4.0.0",
-        "faker": "^4.1.0",
-        "highlight.js": "^9.7.0",
-        "jest": "^24.7.1",
-        "jest-serializer-vue": "^2.0.2",
-        "jest-vue": "^0.8.2",
-        "rollup": "^1.10.0",
-        "rollup-plugin-analyzer": "^3.0.0",
-        "rollup-plugin-babel": "^4.3.2",
-        "rollup-plugin-commonjs": "^9.3.4",
-        "rollup-plugin-css-only": "^1.0.0",
-        "rollup-plugin-node-resolve": "^4.2.3",
-        "rollup-plugin-postcss": "^2.0.3",
-        "rollup-plugin-replace": "^2.0.0",
-        "rollup-plugin-terser": "^4.0.4",
-        "rollup-plugin-vue": "^5.0.0",
-        "sass": "^1.18.0",
-        "sass-loader": "^7.1.0",
-        "screenfull": "^3.3.2",
-        "vue": "^2.6.10",
-        "vue-router": "^3.0.1",
-        "vue-template-compiler": "^2.6.10"
-    },
-    "browserslist": [
-        "> 1%",
-        "last 2 versions"
-    ],
-    "peerDependencies": {
-        "vue": "^2.5.9"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/KABBOUCHI/vue-tippy.git"
-    },
-    "bugs": {
-        "url": "https://github.com/KABBOUCHI/vue-tippy/issues"
-    },
-    "homepage": "https://github.com/KABBOUCHI/vue-tippy#readme",
-    "license": "MIT",
-    "keywords": [
-        "tooltip",
-        "tippy",
-        "tippy.js",
-        "vue"
-    ],
-    "dependencies": {
-        "humps": "^2.0.1",
-        "tippy.js": "^4.3.5"
-    }
+  "name": "vue-tippy",
+  "version": "4.6.0",
+  "description": "Directive and Component wrapper for Tippy.js",
+  "author": "Georges KABBOUCHI <georges.kabbouchi@gmail.com>",
+  "files": [
+    "dist",
+    "src",
+    "composition",
+    "vetur"
+  ],
+  "scripts": {
+    "build": "NODE_ENV=production npm run build:browser && npm run build:es && npm run build:umd",
+    "test": "npm run test:unit",
+    "build:browser": "rollup --config build/rollup.config.browser.js",
+    "build:es": "rollup --config build/rollup.config.es.js",
+    "build:umd": "rollup --config build/rollup.config.umd.js",
+    "dev": "cross-env NODE_ENV=development rollup --config build/rollup.config.es.js --watch",
+    "prepublishOnly": "npm run build",
+    "test:unit": "vue-cli-service test:unit"
+  },
+  "main": "dist/vue-tippy.umd.js",
+  "module": "dist/vue-tippy.esm.js",
+  "unpkg": "dist/vue-tippy.min.js",
+  "devDependencies": {
+    "@babel/core": "^7.4.0",
+    "@babel/plugin-proposal-class-properties": "^7.4.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@babel/plugin-transform-runtime": "^7.4.0",
+    "@babel/polyfill": "^7.4.3",
+    "@babel/preset-env": "^7.4.2",
+    "@vue/cli-plugin-babel": "^3.5.1",
+    "@vue/cli-plugin-eslint": "^3.5.1",
+    "@vue/cli-plugin-unit-jest": "^3.5.3",
+    "@vue/cli-service": "^3.5.1",
+    "@vue/test-utils": "^1.0.0-beta.29",
+    "babel-core": "7.0.0-bridge.0",
+    "babel-eslint": "^10.0.1",
+    "babel-jest": "^24.7.1",
+    "clean-css": "^4.1.8",
+    "cross-env": "^5.0.5",
+    "eslint": "^5.16.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-html": "^5.0.3",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.1.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "faker": "^4.1.0",
+    "highlight.js": "^9.7.0",
+    "jest": "^24.7.1",
+    "jest-serializer-vue": "^2.0.2",
+    "jest-vue": "^0.8.2",
+    "rollup": "^1.10.0",
+    "rollup-plugin-analyzer": "^3.0.0",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-plugin-commonjs": "^9.3.4",
+    "rollup-plugin-css-only": "^1.0.0",
+    "rollup-plugin-node-resolve": "^4.2.3",
+    "rollup-plugin-postcss": "^2.0.3",
+    "rollup-plugin-replace": "^2.0.0",
+    "rollup-plugin-terser": "^4.0.4",
+    "rollup-plugin-vue": "^5.0.0",
+    "sass": "^1.18.0",
+    "sass-loader": "^7.1.0",
+    "screenfull": "^3.3.2",
+    "vue": "^2.6.10",
+    "vue-router": "^3.0.1",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "peerDependencies": {
+    "vue": "^2.5.9"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KABBOUCHI/vue-tippy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KABBOUCHI/vue-tippy/issues"
+  },
+  "homepage": "https://github.com/KABBOUCHI/vue-tippy#readme",
+  "license": "MIT",
+  "keywords": [
+    "tooltip",
+    "tippy",
+    "tippy.js",
+    "vue"
+  ],
+  "dependencies": {
+    "humps": "^2.0.1",
+    "tippy.js": "^4.3.5"
+  },
+  "vetur": {
+    "tags": "vetur/tags.json",
+    "attributes": "vetur/attributes.json"
+  }
 }
