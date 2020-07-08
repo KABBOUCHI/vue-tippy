@@ -72,7 +72,6 @@
         "last 2 versions"
     ],
     "peerDependencies": {
-        "@vue/composition-api": "^1.0.0-beta.2",
         "vue": "^2.5.9"
     },
     "repository": {
