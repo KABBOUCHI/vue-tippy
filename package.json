@@ -1,6 +1,6 @@
 {
     "name": "vue-tippy",
-    "version": "4.4.0",
+    "version": "4.5.0",
     "description": "Directive and Component wrapper for Tippy.js",
     "author": "Georges KABBOUCHI <georges.kabbouchi@gmail.com>",
     "files": [
@@ -32,7 +32,6 @@
         "@vue/cli-plugin-eslint": "^3.5.1",
         "@vue/cli-plugin-unit-jest": "^3.5.3",
         "@vue/cli-service": "^3.5.1",
-        "@vue/composition-api": "^0.3.4",
         "@vue/test-utils": "^1.0.0-beta.29",
         "babel-core": "7.0.0-bridge.0",
         "babel-eslint": "^10.0.1",
@@ -73,7 +72,7 @@
         "last 2 versions"
     ],
     "peerDependencies": {
-        "@vue/composition-api": "^0.5.0",
+        "@vue/composition-api": "^1.0.0-beta.2",
         "vue": "^2.5.9"
     },
     "repository": {
