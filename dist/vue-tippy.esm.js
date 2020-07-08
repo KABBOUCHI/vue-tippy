@@ -5158,6 +5158,7 @@ var plugin = {
 
       if (el.getAttribute('title') && !opts.content) {
         opts.content = el.getAttribute('title');
+        el.removeAttribute('title');
       }
 
       if (el.getAttribute('content') && !opts.content) {
@@ -5192,6 +5193,7 @@ var plugin = {
 
           if (el.getAttribute('title') && !opts.content) {
             opts.content = el.getAttribute('title');
+            el.removeAttribute('title');
           }
 
           if (el.getAttribute('content') && !opts.content) {

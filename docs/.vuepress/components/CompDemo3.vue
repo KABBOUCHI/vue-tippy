@@ -16,13 +16,13 @@ export default {
     const content = ref(null);
 
     useTippy(btn, {
-      content: "asd"
+      content,
     });
 
     return {
       btn,
-      content
+      content,
     };
-  }
+  },
 };
 </script>
