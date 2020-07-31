@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VueTippy v6</title>
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="app" class="h-screen flex justify-center items-center"></div>
+
+    <script src="https://unpkg.com/vue@3.0.0-rc.5/dist/vue.global.js"></script>
+    <script src="./dist/vue-tippy.global.js"></script>
+    <script>
+      const { createApp, h, ref } = Vue
+      const { useTippy } = VueTippy
+
+      createApp({
+        setup() {
+          const element = ref()
+
+          useTippy(element, {
+            content: 'Test',
+          })
+          return () => [
+            h('span', { ref: element }, 'HI!'),
+            h(VueTippy.Tippy, { content: 'test' }, 'HI2!'),
+          ]
+        },
+      }).mount(document.querySelector('#app'))
+    </script>
+  </body>
+</html>
