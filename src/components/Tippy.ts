@@ -7,12 +7,12 @@ declare module '@vue/runtime-core' {
   interface ComponentCustomProps extends TippyOptions {}
 }
 
-const pluginProps = [
-  'animateFill',
-  'followCursor',
-  'inlinePositioning',
-  'sticky',
-]
+// const pluginProps = [
+//   'animateFill',
+//   'followCursor',
+//   'inlinePositioning',
+//   'sticky',
+// ]
 const booleanProps = [
   'a11y',
   'allowHTML',
@@ -33,8 +33,6 @@ const booleanProps = [
 let props: ComponentObjectPropsOptions = {}
 
 Object.keys(tippy.defaultProps).forEach((prop: string) => {
-  if (pluginProps.includes(prop)) return
-
   if (booleanProps.includes(prop)) {
     props[prop] = {
       type: Boolean,
