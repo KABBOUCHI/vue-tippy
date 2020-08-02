@@ -9,10 +9,12 @@
     <button ref="button3">My Button 3</button>
     <button ref="button4">My Button 4</button>
     <button ref="button5">My Button 5</button>
+    <button ref="button6">My Button 6</button>
+    <button @click="button6Inc">My Button 6 - Inc & Refresh</button>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref, h, computed } from 'vue'
+import { defineComponent, ref, h, computed, reactive } from 'vue'
 import { useTippy } from '../src'
 import Counter from './Counter.vue'
 
@@ -27,6 +29,7 @@ export default defineComponent({
     const button3 = ref<HTMLButtonElement>()
     const button4 = ref<HTMLButtonElement>()
     const button5 = ref<HTMLButtonElement>()
+    const button6 = ref<HTMLButtonElement>()
 
     useTippy(button, {
       content: 'Test',
@@ -38,6 +41,7 @@ export default defineComponent({
     useTippy(button2, {
       content: h('h1', 'hi ' + counter.value),
     })
+
     useTippy(button3, {
       content: computed(() =>
         h(
@@ -66,12 +70,23 @@ export default defineComponent({
       showOnCreate: true,
     })
 
+    const options = reactive({
+      content: '1',
+    })
+
+    useTippy(button6, options)
+
+    const button6Inc = () => {
+      options.content = 'a'
+    }
     return {
       button,
       button2,
       button3,
       button4,
       button5,
+      button6,
+      button6Inc,
     }
   },
 })

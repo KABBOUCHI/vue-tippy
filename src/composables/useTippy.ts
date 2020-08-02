@@ -1,6 +1,16 @@
 import tippy, { Instance, Props, Content } from 'tippy.js'
-import { ref, onMounted, Ref, isRef, isVNode, render, watch } from 'vue'
-import { TippyOptions } from '../types'
+import {
+  ref,
+  onMounted,
+  Ref,
+  isRef,
+  isReactive,
+  isVNode,
+  render,
+  watch,
+  VNode,
+} from 'vue'
+import { TippyOptions, TippyContent } from '../types'
 
 export function useTippy(
   el: Element | Ref<Element> | Ref<Element | undefined>,
@@ -16,42 +26,62 @@ export function useTippy(
     return container
   }
 
+  const getContent = (content: TippyContent): Content => {
+    let newContent: Content
+
+    let unwrappedContent: Content | VNode = isRef(content)
+      ? content.value
+      : content
+
+    if (isVNode(unwrappedContent)) {
+      render(unwrappedContent, getContainer())
+
+      newContent = () => getContainer()
+    } else {
+      newContent = unwrappedContent
+    }
+
+    return newContent
+  }
+  const getProps = (opts: TippyOptions): Partial<Props> => {
+    let options: any = {}
+
+    if (isRef(opts)) {
+      options = opts.value
+    } else if (isReactive(opts)) {
+      options = { ...opts }
+    } else {
+      options = { ...opts }
+    }
+
+    if (options.content) options.content = getContent(options.content)
+
+    return options as Props
+  }
+
   onMounted(() => {
     if (!el) return
 
     let target = isRef(el) ? el.value : el
-    let options = { ...opts }
 
-    if (isRef(options.content)) {
-      options.content = options.content.value
-    }
-
-    if (isVNode(options.content)) {
-      render(options.content, getContainer())
-
-      options.content = () => getContainer()
-    }
-    target && (instance.value = tippy(target, options as Props))
+    target && (instance.value = tippy(target, getProps(opts)))
   })
 
-  if (isRef(opts.content)) {
+  let watchSource: any = null
+
+  if (isRef(opts) || isReactive(opts)) {
+    watchSource = opts
+  } else if (isRef(opts.content)) {
+    watchSource = opts.content
+  }
+
+  if (watchSource) {
     watch(
-      opts.content,
+      watchSource,
       () => {
         if (!instance.value) return
 
-        let content = opts.content
-
-        if (isRef(opts.content)) {
-          content = opts.content.value
-        }
-
-        if (isVNode(content)) {
-          render(content, getContainer())
-
-          content = () => getContainer()
-        }
-        instance.value.setContent(content as Content)
+        instance.value.setProps(getProps(opts))
       },
       { immediate: false }
     )
@@ -59,5 +89,10 @@ export function useTippy(
 
   return {
     tippy: instance,
+    refresh: () => {
+      if (!instance.value) return
+
+      instance.value.setProps(getProps(opts))
+    },
   }
 }
