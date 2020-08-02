@@ -4,5 +4,7 @@ import { useTippy } from './composables/useTippy'
 import { TippyOptions } from './types'
 import 'tippy.js/dist/tippy.css'
 
-export { tippy, Tippy, useTippy }
+const setDefaultProps = tippy.setDefaultProps
+
+export { useTippy, tippy, setDefaultProps, Tippy }
 export { TippyOptions }
