@@ -11,6 +11,7 @@ import {
   VNode,
   h,
   onUnmounted,
+  getCurrentInstance,
 } from 'vue'
 import { TippyOptions, TippyContent } from '../types'
 
@@ -78,7 +79,7 @@ export function useTippy(
     instance.value.setContent(getContent(opts.content))
   }
 
-  onMounted(() => {
+  const init = () => {
     if (!el) return
 
     let target = isRef(el) ? el.value : el
@@ -86,14 +87,26 @@ export function useTippy(
     if (typeof target === 'function') target = target()
 
     target && (instance.value = tippy(target, getProps(opts)))
-  })
+  }
 
-  onUnmounted(() => {
-    if (instance.value) {
-      instance.value.destroy()
+  const vm = getCurrentInstance()
+
+  if (vm) {
+    if (vm.isMounted) {
+      init()
+    } else {
+      onMounted(init)
     }
-    container = null
-  })
+
+    onUnmounted(() => {
+      if (instance.value) {
+        instance.value.destroy()
+      }
+      container = null
+    })
+  } else {
+    init()
+  }
 
   if (isRef(opts) || isReactive(opts)) {
     watch(opts, refresh, { immediate: false })
