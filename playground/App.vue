@@ -6,42 +6,15 @@
       <tippy content="test">
         <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg">Hi</button>
       </tippy>
-
-      <pre><code>{{
-
-`<tippy content="test"> 
-  <button>Hi</button>
-</tippy>
-`
-}}</code></pre>
     </div>
 
     <div class="mt-6">
       <span class="font-semibold mr-4">useTippy + callbacks(console.log):</span>
       <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg" ref="button">My Button</button>
-
-      <pre><code>{{
-        
-`useTippy(button, {
-  content: 'Test',
-  onMount() {
-    console.log('here')
-  },
-})
-`
-}}</code></pre>
     </div>
     <div class="mt-6">
       <span class="font-semibold mr-4">useTippy + h(tag) content:</span>
       <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg" ref="button2">My Button 2</button>
-
-      <pre><code>{{
-        
-`useTippy(button2, {
-  content: h('h1', 'hi'),
-})
-`
-}}</code></pre>
     </div>
     <div class="mt-6">
       <span class="font-semibold mr-4">useTippy + h (reactive) content:</span>
@@ -204,28 +177,3 @@ export default defineComponent({
   },
 })
 </script>
-
-<style >
-pre {
-  color: #e2e8f0;
-  background-color: #2d3748;
-  overflow-x: auto;
-  font-size: 0.875em;
-  line-height: 1.7142857;
-  margin-top: 1.7142857em;
-  margin-bottom: 1.7142857em;
-  border-radius: 0.375rem;
-  padding: 0.8571429em 1.1428571em;
-}
-code {
-  background-color: transparent;
-  border-width: 0;
-  border-radius: 0;
-  padding: 0;
-  font-weight: 400;
-  color: inherit;
-  font-size: inherit;
-  font-family: inherit;
-  line-height: inherit;
-}
-</style>
