@@ -43,6 +43,7 @@ export function useTippy(
 
     return newContent
   }
+
   const getProps = (opts: TippyOptions): Partial<Props> => {
     let options: any = {}
 
@@ -57,6 +58,12 @@ export function useTippy(
     if (options.content) options.content = getContent(options.content)
 
     return options as Props
+  }
+
+  const refresh = () => {
+    if (!instance.value) return
+
+    instance.value.setProps(getProps(opts))
   }
 
   onMounted(() => {
@@ -76,23 +83,11 @@ export function useTippy(
   }
 
   if (watchSource) {
-    watch(
-      watchSource,
-      () => {
-        if (!instance.value) return
-
-        instance.value.setProps(getProps(opts))
-      },
-      { immediate: false }
-    )
+    watch(watchSource, refresh, { immediate: false })
   }
 
   return {
     tippy: instance,
-    refresh: () => {
-      if (!instance.value) return
-
-      instance.value.setProps(getProps(opts))
-    },
+    refresh,
   }
 }

@@ -77,7 +77,7 @@ export default defineComponent({
     useTippy(button6, options)
 
     const button6Inc = () => {
-      options.content = 'a'
+      options.content = String(parseInt(options.content) + 1)
     }
     return {
       button,
