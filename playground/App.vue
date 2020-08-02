@@ -1,14 +1,68 @@
 <template>
   <div>
-    <tippy content="test">Hi</tippy>
+    <div>
+      <span class="font-semibold mr-4">Tippy Component:</span>
 
-    <button ref="button">My Button</button>
-    <button ref="button2">My Button 2</button>
-    <button ref="button3">My Button 3</button>
-    <button ref="button4">My Button 4</button>
-    <button ref="button5">My Button 5</button>
-    <button ref="button6">My Button 6</button>
-    <button @click="button6Inc">My Button 6 - Inc & Refresh</button>
+      <tippy content="test">
+        <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg">Hi</button>
+      </tippy>
+
+      <pre><code>{{
+
+`<tippy content="test"> 
+  <button>Hi</button>
+</tippy>
+`
+}}</code></pre>
+    </div>
+
+    <div class="mt-6">
+      <span class="font-semibold mr-4">useTippy + callbacks(console.log):</span>
+      <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg" ref="button">My Button</button>
+
+      <pre><code>{{
+        
+`useTippy(button, {
+  content: 'Test',
+  onMount() {
+    console.log('here')
+  },
+})
+`
+}}</code></pre>
+    </div>
+    <div class="mt-6">
+      <span class="font-semibold mr-4">useTippy + h(tag) content:</span>
+      <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg" ref="button2">My Button 2</button>
+
+      <pre><code>{{
+        
+`useTippy(button2, {
+  content: h('h1', 'hi'),
+})
+`
+}}</code></pre>
+    </div>
+    <div class="mt-6">
+      <span class="font-semibold mr-4">useTippy + h (reactive) content:</span>
+      <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg" ref="button3">My Button 3</button>
+    </div>
+    <div class="mt-6">
+      <span class="font-semibold mr-4">useTippy + h(SFC) content:</span>
+      <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg" ref="button4">My Button 4</button>
+    </div>
+    <div class="mt-6">
+      <span class="font-semibold mr-4">useTippy + SFC content:</span>
+      <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg" ref="button5">My Button 5</button>
+    </div>
+    <div class="mt-6">
+      <span class="font-semibold mr-4">useTippy + reactive options:</span>
+      <button
+        class="mr-4 text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
+        @click="button6Inc"
+      >My Button 6 - Inc & Refresh</button>
+      <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg" ref="button6">My Button 6</button>
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -22,9 +76,10 @@ import {
   onUnmounted,
   watch,
 } from 'vue'
-import { useTippy } from '../src'
+import { useTippy, tippy, TippyOptions } from '../src'
 import Counter from './Counter.vue'
 
+tippy.setDefaultProps({ placement: 'right' })
 function useMousePosition() {
   const x = ref(0)
   const y = ref(0)
@@ -68,7 +123,7 @@ export default defineComponent({
     })
 
     useTippy(button2, {
-      content: h('h1', 'hi ' + counter.value),
+      content: h('h1', 'hi'),
     })
 
     useTippy(button3, {
@@ -100,8 +155,11 @@ export default defineComponent({
       showOnCreate: true,
     })
 
-    const options = reactive({
+    const options = reactive<TippyOptions>({
       content: '1',
+      sticky: true,
+      showOnCreate: true,
+      hideOnClick: false,
     })
 
     useTippy(button6, options)
@@ -117,8 +175,9 @@ export default defineComponent({
       showOnCreate: true,
       trigger: 'manual',
       // sticky: true, // slow?
+      placement: 'top',
       hideOnClick: false,
-      arrow: `<svg style="color: red;width:20px;height:20px" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd"></path></svg>`,
+      arrow: `<svg style="color: black;width:20px;height:20px" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd"></path></svg>`,
       getReferenceClientRect: function () {
         return {
           width: 0,
@@ -145,3 +204,28 @@ export default defineComponent({
   },
 })
 </script>
+
+<style >
+pre {
+  color: #e2e8f0;
+  background-color: #2d3748;
+  overflow-x: auto;
+  font-size: 0.875em;
+  line-height: 1.7142857;
+  margin-top: 1.7142857em;
+  margin-bottom: 1.7142857em;
+  border-radius: 0.375rem;
+  padding: 0.8571429em 1.1428571em;
+}
+code {
+  background-color: transparent;
+  border-width: 0;
+  border-radius: 0;
+  padding: 0;
+  font-weight: 400;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: inherit;
+}
+</style>
