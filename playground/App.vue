@@ -133,6 +133,7 @@ export default defineComponent({
       sticky: true,
       showOnCreate: true,
       hideOnClick: false,
+      trigger: 'manual',
     })
 
     useTippy(button6, options)
