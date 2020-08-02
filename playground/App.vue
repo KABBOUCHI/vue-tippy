@@ -10,7 +10,7 @@
 <script lang="ts">
 import { defineComponent, ref } from 'vue'
 import { useTippy } from '../src'
-import { TippyOptions } from '../src/composables/useTippy'
+import { TippyOptions } from '../src'
 export default defineComponent({
   setup() {
     const button = ref<HTMLButtonElement>()

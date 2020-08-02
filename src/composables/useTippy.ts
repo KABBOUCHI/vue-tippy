@@ -1,7 +1,6 @@
-import tippy, { Instance, Props } from 'tippy.js'
+import tippy, { Instance } from 'tippy.js'
 import { ref, onMounted, Ref, isRef } from 'vue'
-
-export declare type TippyOptions = Props
+import { TippyOptions } from '../types'
 
 export function useTippy(
   el: Element | Ref<Element> | Ref<Element | undefined>,

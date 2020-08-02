@@ -1,6 +1,6 @@
 import { defineComponent, ref, h, PropType } from 'vue'
 import { Content } from 'tippy.js'
-import { useTippy } from '../composables/useTippy'
+import { useTippy } from '../composables'
 
 export default defineComponent({
   props: {
