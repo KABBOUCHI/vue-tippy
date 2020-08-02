@@ -4,7 +4,7 @@ import { useTippy } from '../composables'
 
 export default defineComponent({
   props: {
-    content: Object as PropType<Content>,
+    content: {} as PropType<Content>,
   },
   setup(props) {
     const elem = ref<Element>()

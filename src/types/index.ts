@@ -1,3 +1,8 @@
-import { Props } from 'tippy.js'
+import { Props, Content } from 'tippy.js'
+import { VNode, Ref } from 'vue'
 
-export declare type TippyOptions = Props
+export declare type TippyOptions = Partial<
+  Omit<Props, 'content'> & {
+    content: Content | VNode | Ref
+  }
+>
