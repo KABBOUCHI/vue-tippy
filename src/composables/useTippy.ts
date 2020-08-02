@@ -10,6 +10,7 @@ import {
   watch,
   VNode,
   h,
+  onUnmounted,
 } from 'vue'
 import { TippyOptions, TippyContent } from '../types'
 
@@ -77,6 +78,13 @@ export function useTippy(
     let target = isRef(el) ? el.value : el
 
     target && (instance.value = tippy(target, getProps(opts)))
+  })
+
+  onUnmounted(() => {
+    if (instance.value) {
+      instance.value.destroy()
+    }
+    container = null
   })
 
   let watchSource: any = null
