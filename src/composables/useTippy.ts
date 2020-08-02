@@ -15,7 +15,7 @@ import {
 import { TippyOptions, TippyContent } from '../types'
 
 export function useTippy(
-  el: Element | Ref<Element> | Ref<Element | undefined>,
+  el: Element | (() => Element) | Ref<Element> | Ref<Element | undefined>,
   opts: TippyOptions = {}
 ) {
   const instance = ref<Instance>()
@@ -72,10 +72,18 @@ export function useTippy(
     instance.value.setProps(getProps(opts))
   }
 
+  const refreshContent = () => {
+    if (!instance.value || !opts.content) return
+
+    instance.value.setContent(getContent(opts.content))
+  }
+
   onMounted(() => {
     if (!el) return
 
     let target = isRef(el) ? el.value : el
+
+    if (typeof target === 'function') target = target()
 
     target && (instance.value = tippy(target, getProps(opts)))
   })
@@ -87,20 +95,15 @@ export function useTippy(
     container = null
   })
 
-  let watchSource: any = null
-
   if (isRef(opts) || isReactive(opts)) {
-    watchSource = opts
+    watch(opts, refresh, { immediate: false })
   } else if (isRef(opts.content)) {
-    watchSource = opts.content
-  }
-
-  if (watchSource) {
-    watch(watchSource, refresh, { immediate: false })
+    watch(opts.content, refreshContent, { immediate: false })
   }
 
   return {
     tippy: instance,
     refresh,
+    refreshContent,
   }
 }

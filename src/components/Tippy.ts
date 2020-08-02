@@ -37,8 +37,6 @@ Object.keys(tippy.defaultProps).forEach((prop: string) => {
     props[prop] = {
       type: Boolean,
       default: function () {
-        console.log(tippy.defaultProps[prop as keyof DefaultProps])
-
         return tippy.defaultProps[prop as keyof DefaultProps] as Boolean
       },
     }
@@ -50,8 +48,6 @@ Object.keys(tippy.defaultProps).forEach((prop: string) => {
     }
   }
 })
-
-console.log(props)
 
 export default defineComponent({
   props,

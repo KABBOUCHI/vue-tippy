@@ -12,10 +12,41 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, ref, h, computed, reactive } from 'vue'
+import {
+  defineComponent,
+  ref,
+  h,
+  computed,
+  reactive,
+  onMounted,
+  onUnmounted,
+  watch,
+} from 'vue'
 import { useTippy } from '../src'
 import Counter from './Counter.vue'
 
+function useMousePosition() {
+  const x = ref(0)
+  const y = ref(0)
+
+  function handler(e: MouseEvent) {
+    x.value = e.clientX
+    y.value = e.clientY
+  }
+
+  onMounted(() => {
+    window.addEventListener('mousemove', handler, false)
+  })
+
+  onUnmounted(() => {
+    window.removeEventListener('mousemove', handler, false)
+  })
+
+  return {
+    x,
+    y,
+  }
+}
 export default defineComponent({
   setup() {
     const counter = ref<number>(0)
@@ -78,6 +109,29 @@ export default defineComponent({
     const button6Inc = () => {
       options.content = String(parseInt(options.content) + 1)
     }
+
+    const { x, y } = useMousePosition()
+
+    const { tippy } = useTippy(() => document.body, {
+      content: computed(() => `(${x.value},${y.value})`),
+      showOnCreate: true,
+      trigger: 'manual',
+      // sticky: true, // slow?
+      hideOnClick: false,
+      getReferenceClientRect: function () {
+        return {
+          width: 0,
+          height: 0,
+          top: y.value,
+          right: x.value,
+          bottom: y.value,
+          left: x.value,
+        }
+      },
+    })
+
+    watch([x, y], () => tippy.value?.popperInstance?.update())
+
     return {
       button,
       button2,
