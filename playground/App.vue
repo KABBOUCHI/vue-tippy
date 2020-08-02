@@ -1,8 +1,6 @@
 <template>
   <div>
-    <tippy content="test">
-      Hi
-    </tippy>
+    <tippy content="test">Hi</tippy>
 
     <button ref="button">My Button</button>
     <button ref="button2">My Button 2</button>
@@ -63,9 +61,10 @@ export default defineComponent({
       interactive: true,
       showOnCreate: true,
     })
-
     useTippy(button5, {
-      content: h(Counter),
+      content: defineComponent(() => {
+        return () => h('p', 'Hellooooo')
+      }),
       interactive: true,
       showOnCreate: true,
     })

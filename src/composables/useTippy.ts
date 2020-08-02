@@ -9,6 +9,7 @@ import {
   render,
   watch,
   VNode,
+  h,
 } from 'vue'
 import { TippyOptions, TippyContent } from '../types'
 
@@ -29,13 +30,17 @@ export function useTippy(
   const getContent = (content: TippyContent): Content => {
     let newContent: Content
 
-    let unwrappedContent: Content | VNode = isRef(content)
+    let unwrappedContent: Content | VNode | { render: Function } = isRef(
+      content
+    )
       ? content.value
       : content
 
     if (isVNode(unwrappedContent)) {
       render(unwrappedContent, getContainer())
-
+      newContent = () => getContainer()
+    } else if (typeof unwrappedContent === 'object') {
+      render(h(unwrappedContent), getContainer())
       newContent = () => getContainer()
     } else {
       newContent = unwrappedContent
