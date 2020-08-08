@@ -1,0 +1,26 @@
+{
+  "tippy/content": {
+    "type": "any",
+    "description": "The content of the tippy"
+  },
+  "tippy/allowHTML": {
+    "type": "boolean",
+    "description": "Determines if content strings are parsed as HTML instead of text"
+  },
+  "tippy/arrow": {
+    "type": "boolean|string|Element",
+    "description": "Determines if the tippy has an arrow"
+  },
+  "tippy/theme": {
+    "type": "string",
+    "description": "Determines the theme of the tippy element."
+  },
+  "tippy/sticky": {
+    "type": "boolean|string",
+    "description": "Determines if the tippy sticks to the reference element while it is mounted."
+  },
+  "tippy/followCursor": {
+    "type": "boolean|string",
+    "description": "Determines if the tippy follows the user's mouse cursor."
+  }
+}

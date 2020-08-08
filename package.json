@@ -12,6 +12,7 @@
   "files": [
     "dist/*.js",
     "dist/vue-tippy.d.ts",
+    "vetur/*.json",
     "README.md"
   ],
   "scripts": {
@@ -51,7 +52,7 @@
     "tippy.js": "^6.2.6"
   },
   "vetur": {
-    "tags": "dist/vetur-tags.json",
-    "attributes": "dist/vetur-attributes.json"
+    "tags": "vetur/tags.json",
+    "attributes": "vetur/attributes.json"
   }
 }
