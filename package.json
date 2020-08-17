@@ -1,6 +1,6 @@
 {
   "name": "vue-tippy",
-  "version": "4.6.0",
+  "version": "4.7.0",
   "description": "Directive and Component wrapper for Tippy.js",
   "author": "Georges KABBOUCHI <georges.kabbouchi@gmail.com>",
   "files": [
@@ -60,7 +60,7 @@
     "rollup-plugin-postcss": "^2.0.3",
     "rollup-plugin-replace": "^2.0.0",
     "rollup-plugin-terser": "^4.0.4",
-    "rollup-plugin-vue": "^5.0.0",
+    "rollup-plugin-vue": "^4.7.2",
     "sass": "^1.18.0",
     "sass-loader": "^7.1.0",
     "screenfull": "^3.3.2",
