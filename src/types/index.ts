@@ -1,3 +1,4 @@
+import Tippy from '../components/Tippy'
 import { Props, Content } from 'tippy.js'
 import { VNode, Ref, Component } from 'vue'
 
@@ -8,3 +9,5 @@ export declare type TippyOptions = Partial<
     content: TippyContent
   }
 >
+
+export declare type TippyComponent = InstanceType<typeof Tippy>

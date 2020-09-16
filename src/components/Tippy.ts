@@ -49,7 +49,7 @@ Object.keys(tippy.defaultProps).forEach((prop: string) => {
   }
 })
 
-export default defineComponent({
+const TippyComponent = defineComponent({
   props,
   setup(props) {
     const elem = ref<Element>()
@@ -61,3 +61,5 @@ export default defineComponent({
     return h('span', { ref: 'elem' }, slot)
   },
 })
+
+export default TippyComponent

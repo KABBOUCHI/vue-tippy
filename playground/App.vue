@@ -10,23 +10,38 @@
 
     <div class="mt-6">
       <span class="font-semibold mr-4">useTippy + callbacks(console.log):</span>
-      <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg" ref="button">My Button</button>
+      <button
+        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
+        ref="button"
+      >My Button</button>
     </div>
     <div class="mt-6">
       <span class="font-semibold mr-4">useTippy + h(tag) content:</span>
-      <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg" ref="button2">My Button 2</button>
+      <button
+        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
+        ref="button2"
+      >My Button 2</button>
     </div>
     <div class="mt-6">
       <span class="font-semibold mr-4">useTippy + h (reactive) content:</span>
-      <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg" ref="button3">My Button 3</button>
+      <button
+        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
+        ref="button3"
+      >My Button 3</button>
     </div>
     <div class="mt-6">
       <span class="font-semibold mr-4">useTippy + h(SFC) content:</span>
-      <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg" ref="button4">My Button 4</button>
+      <button
+        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
+        ref="button4"
+      >My Button 4</button>
     </div>
     <div class="mt-6">
       <span class="font-semibold mr-4">useTippy + SFC content:</span>
-      <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg" ref="button5">My Button 5</button>
+      <button
+        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
+        ref="button5"
+      >My Button 5</button>
     </div>
     <div class="mt-6">
       <span class="font-semibold mr-4">useTippy + reactive options:</span>
@@ -34,7 +49,19 @@
         class="mr-4 text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
         @click="button6Inc"
       >My Button 6 - Inc & Refresh</button>
-      <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg" ref="button6">My Button 6</button>
+      <button
+        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
+        ref="button6"
+      >My Button 6</button>
+    </div>
+
+    <div class="mt-6">
+      <span class="font-semibold mr-4">Tippy component + change content and props realtime using component ref:</span>
+      <tippy ref="tippyComponent1">
+        <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg">
+          Tippy Component + h(SFC) content
+        </button>
+      </tippy>
     </div>
   </div>
 </template>
@@ -49,7 +76,7 @@ import {
   onUnmounted,
   watch,
 } from 'vue'
-import { useTippy, tippy, TippyOptions } from '../src'
+import { useTippy, tippy, TippyOptions, TippyComponent } from '../src'
 import Counter from './Counter.vue'
 
 tippy.setDefaultProps({ placement: 'right' })
@@ -166,6 +193,22 @@ export default defineComponent({
 
     watch([x, y], () => tippy.value?.popperInstance?.update())
 
+    const tippyComponent1 = ref<TippyComponent>()
+
+    onMounted(() => {
+      tippyComponent1.value?.setProps({
+        interactive: true,
+        offset: [0, 30],
+        placement: 'top',
+      })
+
+      tippyComponent1.value?.setContent(
+        h(Counter, {
+          initialValue: 42,
+        })
+      )
+    })
+
     return {
       button,
       button2,
@@ -174,6 +217,7 @@ export default defineComponent({
       button5,
       button6,
       button6Inc,
+      tippyComponent1,
     }
   },
 })

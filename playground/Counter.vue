@@ -6,9 +6,14 @@
 import { defineComponent } from 'vue'
 
 export default defineComponent({
+  props: {
+    initialValue: {
+      default: 0,
+    },
+  },
   data() {
     return {
-      count: 0,
+      count: this.initialValue,
     }
   },
 })

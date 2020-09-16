@@ -15,6 +15,13 @@ import {
 } from 'vue'
 import { TippyOptions, TippyContent } from '../types'
 
+tippy.setDefaultProps({
+  //@ts-ignore
+  onShow: instance => {
+    if (!instance.props.content) return false
+  },
+})
+
 export function useTippy(
   el: Element | (() => Element) | Ref<Element> | Ref<Element | undefined>,
   opts: TippyOptions = {}
@@ -114,9 +121,19 @@ export function useTippy(
     watch(opts.content, refreshContent, { immediate: false })
   }
 
+  const setContent = (value: TippyContent) => {
+    instance.value?.setContent(getContent(value))
+  }
+
+  const setProps = (value: TippyOptions) => {
+    instance.value?.setProps(getProps(value))
+  }
+
   return {
     tippy: instance,
     refresh,
     refreshContent,
+    setContent,
+    setProps,
   }
 }
