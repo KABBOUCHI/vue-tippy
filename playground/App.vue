@@ -57,11 +57,25 @@
 
     <div class="mt-6">
       <span class="font-semibold mr-4">Tippy component + change content and props realtime using component ref:</span>
-      <tippy ref="tippyComponent1">
+      <tippy
+        ref="tippyComponent1"
+        @create="log"
+        @hide="log"
+      >
         <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg">
           Tippy Component + h(SFC) content
         </button>
       </tippy>
+    </div>
+
+    <div class="mt-6">
+      <span class="font-semibold mr-4">v-tippy:</span>
+      <button
+        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
+        @mount="log"
+        v-tippy="{ content: 'Hello ' +  counter}"
+      >Tippy directive</button>
+
     </div>
   </div>
 </template>
@@ -76,10 +90,9 @@ import {
   onUnmounted,
   watch,
 } from 'vue'
-import { useTippy, tippy, TippyOptions, TippyComponent } from '../src'
+import { useTippy, TippyOptions, TippyComponent } from '../src'
 import Counter from './Counter.vue'
 
-tippy.setDefaultProps({ placement: 'right' })
 function useMousePosition() {
   const x = ref(0)
   const y = ref(0)
@@ -210,6 +223,7 @@ export default defineComponent({
     })
 
     return {
+      counter,
       button,
       button2,
       button3,
@@ -218,6 +232,7 @@ export default defineComponent({
       button6,
       button6Inc,
       tippyComponent1,
+      log: console.log,
     }
   },
 })

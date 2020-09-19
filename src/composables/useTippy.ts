@@ -106,10 +106,7 @@ export function useTippy(
     }
 
     onUnmounted(() => {
-      if (instance.value) {
-        instance.value.destroy()
-      }
-      container = null
+      destroy()
     })
   } else {
     init()
@@ -129,11 +126,19 @@ export function useTippy(
     instance.value?.setProps(getProps(value))
   }
 
+  const destroy = () => {
+    if (instance.value) {
+      instance.value.destroy()
+    }
+    container = null
+  }
+
   return {
     tippy: instance,
     refresh,
     refreshContent,
     setContent,
     setProps,
+    destroy,
   }
 }

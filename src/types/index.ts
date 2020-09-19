@@ -1,5 +1,5 @@
 import Tippy from '../components/Tippy'
-import { Props, Content } from 'tippy.js'
+import { Props, Content, DefaultProps } from 'tippy.js'
 import { VNode, Ref, Component } from 'vue'
 
 export declare type TippyContent = Content | VNode | Component | Ref
@@ -11,3 +11,9 @@ export declare type TippyOptions = Partial<
 >
 
 export declare type TippyComponent = InstanceType<typeof Tippy>
+
+export interface TippyPluginOptions {
+  directive?: string
+  component?: string
+  defaultProps?: Partial<DefaultProps>
+}

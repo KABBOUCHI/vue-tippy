@@ -1,9 +1,11 @@
 // necessary for webpack
 ///<reference path="../src/global.d.ts"/>
 import { createApp } from 'vue'
-import { Tippy } from '../src'
+import VueTippy from '../src'
 
 import App from './App.vue'
 const app = createApp(App)
-app.component('tippy', Tippy)
+app.use(VueTippy, {
+  defaultProps: { placement: 'right' },
+})
 app.mount('#app')
