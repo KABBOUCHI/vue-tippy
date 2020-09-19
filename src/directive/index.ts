@@ -44,7 +44,7 @@ const directive: Directive = {
       opts.content = el.getAttribute('content')
     }
 
-    el.$tippy = useTippy(el, opts)
+    useTippy(el, opts)
   },
   unmounted(el) {
     if (el.$tippy) {

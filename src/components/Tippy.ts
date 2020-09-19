@@ -53,7 +53,8 @@ const TippyComponent = defineComponent({
   props,
   setup(props) {
     const elem = ref<Element>()
-    return { elem, ...useTippy(elem, props) }
+    const tippy = useTippy(elem, props)
+    return { elem, ...tippy }
   },
   render() {
     let slot = this.$slots.default ? this.$slots.default() : []
