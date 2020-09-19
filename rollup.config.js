@@ -66,6 +66,7 @@ function createConfig(format, output, plugins = []) {
   output.banner = banner
   output.externalLiveBindings = false
   output.globals = { vue: 'Vue' }
+  output.exports = 'named'
 
   const isProductionBuild = /\.prod\.js$/.test(output.file)
   const isGlobalBuild = format === 'global'
@@ -139,9 +140,9 @@ function createReplacePlugin(
     __VERSION__: `"${pkg.version}"`,
     __DEV__: isBundlerESMBuild
       ? // preserve to be handled by bundlers
-        `(process.env.NODE_ENV !== 'production')`
+      `(process.env.NODE_ENV !== 'production')`
       : // hard coded dev/prod builds
-        !isProduction,
+      !isProduction,
     // this is only used during tests
     __TEST__: isBundlerESMBuild ? `(process.env.NODE_ENV === 'test')` : false,
     // If the build is expected to run directly in the browser (global / esm builds)

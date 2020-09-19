@@ -7,7 +7,7 @@
     "sourceMap": false,
     "noEmit": true,
 
-    "target": "esnext",
+    "target": "es2019",
     "module": "esnext",
     "moduleResolution": "node",
     "allowJs": false,
