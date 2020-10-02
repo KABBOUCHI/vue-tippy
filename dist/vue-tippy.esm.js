@@ -4917,9 +4917,9 @@ var script = {
         if (!defaultProps$1.hasOwnProperty(key)) {
           // We're replacing this.options anyway, we don't have to worry about modifying the object
           delete this.options[key];
+        } else {
+          this.options[key] = getValue(key, this.options[key]);
         }
-
-        this.options[key] = getValue(key, this.options[key]);
       }
 
       return this.options;
