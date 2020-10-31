@@ -77,6 +77,24 @@
       >Tippy directive</button>
 
     </div>
+
+    <div class="mt-6 space-x-2">
+      <span class="font-semibold mr-4">Singleton tippy with a transition:</span>
+      <button
+        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
+        ref="singleton1"
+      >singleton1</button>
+
+      <button
+        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
+        ref="singleton2"
+      >singleton2</button>
+
+      <button
+        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
+        ref="singleton3"
+      >singleton3</button>
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -90,7 +108,7 @@ import {
   onUnmounted,
   watch,
 } from 'vue'
-import { useTippy, TippyOptions, TippyComponent } from '../src'
+import { useSingleton, useTippy, TippyOptions, TippyComponent } from '../src'
 import Counter from './Counter.vue'
 
 function useMousePosition() {
@@ -222,7 +240,29 @@ export default defineComponent({
       )
     })
 
+    const singleton1 = ref()
+    const singleton2 = ref()
+    const singleton3 = ref()
+
+    const { tippy: tippySingleton1 } = useTippy(singleton1, {
+      content: 'Singleton 1',
+    })
+    const { tippy: tippySingleton2 } = useTippy(singleton2, {
+      content: 'Singleton 2',
+    })
+    const { tippy: tippySingleton3 } = useTippy(singleton3, {
+      content: 'Singleton 3',
+    })
+
+    useSingleton([tippySingleton1, tippySingleton2, tippySingleton3], {
+      placement: 'top',
+      moveTransition: 'transform 0.2s ease-out',
+    })
+
     return {
+      singleton1,
+      singleton2,
+      singleton3,
       counter,
       button,
       button2,

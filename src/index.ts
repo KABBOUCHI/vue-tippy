@@ -10,6 +10,8 @@ import directive from './directive'
 import plugin from './plugin'
 
 import { useTippy } from './composables/useTippy'
+import { useSingleton } from './composables/useSingleton'
+
 import 'tippy.js/dist/tippy.css'
 
 const setDefaultProps = tippy.setDefaultProps
@@ -18,7 +20,7 @@ setDefaultProps({
   plugins: [sticky, inlinePositioning, followCursor, animateFill],
 })
 
-export { useTippy, tippy, setDefaultProps, Tippy, directive }
+export { useTippy, tippy, useSingleton, setDefaultProps, Tippy, directive }
 
 export * from './types'
 export default plugin
