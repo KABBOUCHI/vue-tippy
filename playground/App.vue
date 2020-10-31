@@ -95,6 +95,27 @@
         ref="singleton3"
       >singleton3</button>
     </div>
+
+    <div class="mt-6 space-x-2">
+      <span class="font-semibold mr-4">Singleton v-tippy with a transition:</span>
+      <button
+        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
+        :ref="v => singletons.push(v)"
+        v-tippy="{content : 'Tooltip 1'}"
+      >singleton1</button>
+
+      <button
+        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
+        :ref="v => singletons.push(v)"
+        v-tippy="{content : 'Tooltip 2'}"
+      >singleton2</button>
+
+      <button
+        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
+        :ref="v => singletons.push(v)"
+        v-tippy="{content : 'Tooltip 3'}"
+      >singleton3</button>
+    </div>
   </div>
 </template>
 <script lang="ts">
@@ -258,11 +279,18 @@ export default defineComponent({
       placement: 'top',
       moveTransition: 'transform 0.2s ease-out',
     })
+    const singletons = ref([])
+
+    useSingleton(singletons, {
+      placement: 'top',
+      moveTransition: 'transform 0.2s ease-out',
+    })
 
     return {
       singleton1,
       singleton2,
       singleton3,
+      singletons,
       counter,
       button,
       button2,
