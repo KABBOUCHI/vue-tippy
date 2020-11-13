@@ -506,7 +506,7 @@ Attach many tippys to a single element.
 ```html
     <tippy to="visibleTest"  :visible="timer % 2 == 0" trigger="manual"> 
         Visible 
-    </tippy-v4>
+    </tippy>
     <button name="visibleTest" class="btn"> Visibile prop </button>
 ```
 </div>
