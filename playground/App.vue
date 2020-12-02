@@ -72,7 +72,7 @@
       <span class="font-semibold mr-4">v-tippy:</span>
       <button
         class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
-        @mount="log"
+        @tippyMount="() => log('v-tippy mounted')"
         v-tippy="{ content: 'Hello ' +  counter}"
       >Tippy directive</button>
 

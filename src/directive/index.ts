@@ -5,33 +5,33 @@ const directive: Directive = {
   mounted(el, binding, vnode) {
     const opts = binding.value || {}
 
-    if (vnode.props && vnode.props.onShow) {
+    if (vnode.props && vnode.props.onTippyShow) {
       opts.onShow = function (...args: any[]) {
-        return vnode.props?.onShow(...args)
+        return vnode.props?.onTippyShow(...args)
       }
     }
 
-    if (vnode.props && vnode.props.onShown) {
+    if (vnode.props && vnode.props.onTippyShown) {
       opts.onShown = function (...args: any[]) {
-        return vnode.props?.onShown(...args)
+        return vnode.props?.onTippyShown(...args)
       }
     }
 
-    if (vnode.props && vnode.props.onHidden) {
+    if (vnode.props && vnode.props.onTippyHidden) {
       opts.onHidden = function (...args: any[]) {
-        return vnode.props?.onHidden(...args)
+        return vnode.props?.onTippyHidden(...args)
       }
     }
 
-    if (vnode.props && vnode.props.onHide) {
+    if (vnode.props && vnode.props.onTippyHide) {
       opts.onHide = function (...args: any[]) {
-        return vnode.props?.onHide(...args)
+        return vnode.props?.onTippyHide(...args)
       }
     }
 
-    if (vnode.props && vnode.props.onMount) {
+    if (vnode.props && vnode.props.onTippyMount) {
       opts.onMount = function (...args: any[]) {
-        return vnode.props?.onMount(...args)
+        return vnode.props?.onTippyMount(...args)
       }
     }
 
