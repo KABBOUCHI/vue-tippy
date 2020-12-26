@@ -1,13 +1,11 @@
+import { TippyInstance, TippyInstances } from 'src/types'
 import {
   createSingleton,
   CreateSingletonProps,
   Instance,
   Props,
 } from 'tippy.js'
-import { onMounted, ref, Ref } from 'vue'
-
-type TippyInstance = Instance | Element | undefined
-type TippyInstances = Ref<TippyInstance>[] | Ref<TippyInstance[]>
+import { onMounted, ref } from 'vue'
 
 export function useSingleton(
   instances: TippyInstances,
