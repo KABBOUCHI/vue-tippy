@@ -1,0 +1,10 @@
+{
+  "title": "VueTippy",
+  "url": "https://vue-tippy.netlify.app",
+  "logo": {
+    "light": "/logo-light.svg",
+    "dark": "/logo-dark.svg"
+  },
+  "github": "KABBOUCHI/vue-tippy",
+  "twitter": "@KABBOUCHI"
+}
