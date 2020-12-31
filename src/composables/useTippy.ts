@@ -38,7 +38,8 @@ function renderVue23(vnode: any, target: Element) {
     //@ts-ignore
     const app = new Vue({
       el: target,
-      render: typeof vnode === 'function' ? vnode : () => vnode,
+      setup: typeof vnode === 'function' ? vnode : null,
+      render: typeof vnode === 'function' ? null : () => vnode,
     })
 
     target.appendChild(app.$el)
