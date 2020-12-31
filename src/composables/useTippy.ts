@@ -36,10 +36,12 @@ function isVue23Node(node: any) {
 function renderVue23(vnode: any, target: Element) {
   if (isVue2) {
     //@ts-ignore
-    new Vue({
+    const app = new Vue({
       el: target,
       render: typeof vnode === 'function' ? vnode : () => vnode,
     })
+
+    target.appendChild(app.$el)
   } else {
     render(vnode, target)
   }
