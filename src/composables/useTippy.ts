@@ -12,6 +12,7 @@ import {
   h,
   onUnmounted,
   getCurrentInstance,
+  isVue2,
 } from 'vue-demi'
 import { TippyOptions, TippyContent } from '../types'
 
@@ -48,14 +49,19 @@ export function useTippy(
       ? content.value
       : content
 
-    if (isVNode(unwrappedContent)) {
-      render(unwrappedContent, getContainer())
-      newContent = () => getContainer()
-    } else if (typeof unwrappedContent === 'object') {
-      render(h(unwrappedContent), getContainer())
-      newContent = () => getContainer()
-    } else {
+    if (isVue2) {
+      //@ts-ignore
       newContent = unwrappedContent
+    } else {
+      if (isVNode(unwrappedContent)) {
+        render(unwrappedContent, getContainer())
+        newContent = () => getContainer()
+      } else if (typeof unwrappedContent === 'object') {
+        render(h(unwrappedContent), getContainer())
+        newContent = () => getContainer()
+      } else {
+        newContent = unwrappedContent
+      }
     }
 
     return newContent
