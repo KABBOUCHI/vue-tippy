@@ -13,6 +13,7 @@ import {
   onUnmounted,
   getCurrentInstance,
   isVue2,
+  Vue,
 } from 'vue-demi'
 import { TippyOptions, TippyContent } from '../types'
 

@@ -7979,16 +7979,10 @@ vue-template-es2015-compiler@^1.9.0:
   resolved "https://registry.yarnpkg.com/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
 
-vue-tippy@../:
-  version "6.0.0-alpha.9"
-  dependencies:
-    tippy.js "^6.2.6"
-    vue-demi "^0.5.3"
-
-vue-tippy@^6.0.0-alpha.9:
-  version "6.0.0-alpha.9"
-  resolved "https://registry.yarnpkg.com/vue-tippy/-/vue-tippy-6.0.0-alpha.9.tgz#fc17dad50cb24b3d2d7ee80105bb3b19c1c92f30"
-  integrity sha512-dQjp0yGcJHfzANcqDXjEEPkb+WZFhp42vo3pWk+qO5J/7/ptkqQz9jTHfFT82kgrbtciXNXP3+W0M93sAO2Czg==
+vue-tippy@^6.0.0-alpha.10:
+  version "6.0.0-alpha.10"
+  resolved "https://registry.yarnpkg.com/vue-tippy/-/vue-tippy-6.0.0-alpha.10.tgz#977a8170eee4bdd02516ef90ab6997953ede4f7f"
+  integrity sha512-V6m8R4Hpf7cWTG0+OsW0gVkCGx7PK90Il9tRGOAUEm9aKDJV74650m0pFB5Xjm1OpdY3o+gKwU0zWBHvoO9Oyg==
   dependencies:
     tippy.js "^6.2.6"
     vue-demi "^0.5.3"
