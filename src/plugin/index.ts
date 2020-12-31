@@ -1,6 +1,6 @@
 import TippyComponent from '../components/Tippy'
 import directive from '../directive'
-import { Plugin } from 'vue'
+import { Plugin } from 'vue-demi'
 import tippy from 'tippy.js'
 import { TippyPluginOptions } from '../types'
 

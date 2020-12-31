@@ -1,6 +1,6 @@
 import Tippy from '../components/Tippy'
 import { Props, Content, DefaultProps, Instance } from 'tippy.js'
-import { VNode, Ref, Component } from 'vue'
+import { VNode, Ref, Component } from 'vue-demi'
 
 export declare type TippyContent = Content | VNode | Component | Ref
 

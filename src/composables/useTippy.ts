@@ -12,7 +12,7 @@ import {
   h,
   onUnmounted,
   getCurrentInstance,
-} from 'vue'
+} from 'vue-demi'
 import { TippyOptions, TippyContent } from '../types'
 
 tippy.setDefaultProps({

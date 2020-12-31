@@ -1,4 +1,4 @@
-import { defineComponent, ref, h, ComponentObjectPropsOptions } from 'vue'
+import { defineComponent, ref, h, ComponentObjectPropsOptions } from 'vue-demi'
 import { TippyOptions } from '../types'
 import { useTippy } from '../composables'
 import tippy, { DefaultProps } from 'tippy.js'

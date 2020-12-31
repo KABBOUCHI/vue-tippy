@@ -21,7 +21,8 @@
     "dev": "webpack-dev-server --mode=development"
   },
   "peerDependencies": {
-    "vue": "^3.0.0"
+    "@vue/composition-api": "^1.0.0-beta.22",
+    "vue": "^2.0.0 || >=3.0.0"
   },
   "devDependencies": {
     "@microsoft/api-extractor": "7.8.1",
@@ -51,7 +52,8 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "tippy.js": "^6.2.6"
+    "tippy.js": "^6.2.6",
+    "vue-demi": "^0.5.3"
   },
   "vetur": {
     "tags": "vetur/tags.json",
