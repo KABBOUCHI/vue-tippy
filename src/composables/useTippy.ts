@@ -37,8 +37,9 @@ function renderVue23(vnode: any, target: Element) {
   if (isVue2) {
     //@ts-ignore
     new Vue({
+      el: target,
       render: typeof vnode === 'function' ? vnode : () => vnode,
-    }).$mount(target)
+    })
   } else {
     render(vnode, target)
   }
