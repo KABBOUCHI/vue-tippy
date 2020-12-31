@@ -1,13 +1,5 @@
 <template>
   <div>
-    <div>
-      <span class="font-semibold mr-4">Tippy Component:</span>
-
-      <tippy content="test">
-        <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg">Hi</button>
-      </tippy>
-    </div>
-
     <div class="mt-6">
       <span class="font-semibold mr-4">useTippy + callbacks(console.log):</span>
       <button
@@ -55,29 +47,6 @@
       >My Button 6</button>
     </div>
 
-    <div class="mt-6">
-      <span class="font-semibold mr-4">Tippy component + change content and props realtime using component ref:</span>
-      <tippy
-        ref="tippyComponent1"
-        @create="log"
-        @hide="log"
-      >
-        <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg">
-          Tippy Component + h(SFC) content
-        </button>
-      </tippy>
-    </div>
-
-    <div class="mt-6">
-      <span class="font-semibold mr-4">v-tippy:</span>
-      <button
-        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
-        @tippyMount="() => log('v-tippy mounted')"
-        v-tippy="{ content: 'Hello ' +  counter}"
-      >Tippy directive</button>
-
-    </div>
-
     <div class="mt-6 space-x-2">
       <span class="font-semibold mr-4">Singleton tippy with a transition:</span>
       <button
@@ -96,29 +65,9 @@
       >singleton3</button>
     </div>
 
-    <div class="mt-6 space-x-2">
-      <span class="font-semibold mr-4">Singleton v-tippy with a transition:</span>
-      <button
-        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
-        :ref="v => singletons.push(v)"
-        v-tippy="{content : 'Tooltip 1'}"
-      >singleton1</button>
-
-      <button
-        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
-        :ref="v => singletons.push(v)"
-        v-tippy="{content : 'Tooltip 2'}"
-      >singleton2</button>
-
-      <button
-        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
-        :ref="v => singletons.push(v)"
-        v-tippy="{content : 'Tooltip 3'}"
-      >singleton3</button>
-    </div>
   </div>
 </template>
-<script lang="ts">
+<script>
 import {
   defineComponent,
   ref,
@@ -128,15 +77,18 @@ import {
   onMounted,
   onUnmounted,
   watch,
-} from 'vue'
-import { useSingleton, useTippy, TippyOptions, TippyComponent } from '../src'
+} from '@vue/composition-api'
+
+import { setDefaultProps, useSingleton, useTippy } from 'vue-tippy'
 import Counter from './Counter.vue'
+
+setDefaultProps({ placement: 'right' })
 
 function useMousePosition() {
   const x = ref(0)
   const y = ref(0)
 
-  function handler(e: MouseEvent) {
+  function handler(e) {
     x.value = e.clientX
     y.value = e.clientY
   }
@@ -156,16 +108,14 @@ function useMousePosition() {
 }
 export default defineComponent({
   setup() {
-    const counter = ref<number>(0)
+    const counter = ref(0)
 
-    setInterval(() => counter.value++, 1000)
-
-    const button = ref<HTMLButtonElement>()
-    const button2 = ref<HTMLButtonElement>()
-    const button3 = ref<HTMLButtonElement>()
-    const button4 = ref<HTMLButtonElement>()
-    const button5 = ref<HTMLButtonElement>()
-    const button6 = ref<HTMLButtonElement>()
+    const button = ref()
+    const button2 = ref()
+    const button3 = ref()
+    const button4 = ref()
+    const button5 = ref()
+    const button6 = ref()
 
     useTippy(button, {
       content: 'Test',
@@ -183,8 +133,10 @@ export default defineComponent({
         h(
           'button',
           {
-            onClick: () => {
-              counter.value++
+            on: {
+              click: () => {
+                counter.value++
+              },
             },
           },
           'Counter ' + counter.value
@@ -207,7 +159,7 @@ export default defineComponent({
       showOnCreate: true,
     })
 
-    const options = reactive<TippyOptions>({
+    const options = reactive({
       content: '1',
       sticky: true,
       showOnCreate: true,
@@ -231,7 +183,7 @@ export default defineComponent({
       placement: 'top',
       hideOnClick: false,
       arrow: `<svg style="color: black;width:20px;height:20px" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd"></path></svg>`,
-      getReferenceClientRect: function() {
+      getReferenceClientRect: function () {
         return {
           width: 0,
           height: 0,
@@ -243,22 +195,9 @@ export default defineComponent({
       },
     })
 
-    watch([x, y], () => tippy.value?.popperInstance?.update())
-
-    const tippyComponent1 = ref<TippyComponent>()
-
-    onMounted(() => {
-      tippyComponent1.value?.setProps({
-        interactive: true,
-        offset: [0, 30],
-        placement: 'top',
-      })
-
-      tippyComponent1.value?.setContent(
-        h(Counter, {
-          initialValue: 42,
-        })
-      )
+    watch([x, y], () => {
+      if (tippy.value && tippy.value.popperInstance)
+        tippy.value.popperInstance.update()
     })
 
     const singleton1 = ref()
@@ -279,18 +218,11 @@ export default defineComponent({
       placement: 'top',
       moveTransition: 'transform 0.2s ease-out',
     })
-    const singletons = ref([])
-
-    useSingleton(singletons, {
-      placement: 'top',
-      moveTransition: 'transform 0.2s ease-out',
-    })
 
     return {
       singleton1,
       singleton2,
       singleton3,
-      singletons,
       counter,
       button,
       button2,
@@ -299,7 +231,6 @@ export default defineComponent({
       button5,
       button6,
       button6Inc,
-      tippyComponent1,
       log: console.log,
     }
   },

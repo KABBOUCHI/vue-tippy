@@ -23,6 +23,26 @@ tippy.setDefaultProps({
   },
 })
 
+function isVue23Node(node: any) {
+  if (isVue2) {
+    return (
+      (typeof node === 'object' && !!node.tag) || typeof node === 'function'
+    )
+  } else {
+    return isVNode(node)
+  }
+}
+function renderVue23(vnode: any, target: Element) {
+  if (isVue2) {
+    //@ts-ignore
+    new Vue({
+      render: typeof vnode === 'function' ? vnode : () => vnode,
+    }).$mount(target)
+  } else {
+    render(vnode, target)
+  }
+}
+
 export function useTippy(
   el: Element | (() => Element) | Ref<Element> | Ref<Element | undefined>,
   opts: TippyOptions = {},
@@ -49,19 +69,14 @@ export function useTippy(
       ? content.value
       : content
 
-    if (isVue2) {
-      //@ts-ignore
-      newContent = unwrappedContent
+    if (isVue23Node(unwrappedContent)) {
+      renderVue23(unwrappedContent, getContainer())
+      newContent = () => getContainer()
+    } else if (typeof unwrappedContent === 'object') {
+      renderVue23(h(unwrappedContent), getContainer())
+      newContent = () => getContainer()
     } else {
-      if (isVNode(unwrappedContent)) {
-        render(unwrappedContent, getContainer())
-        newContent = () => getContainer()
-      } else if (typeof unwrappedContent === 'object') {
-        render(h(unwrappedContent), getContainer())
-        newContent = () => getContainer()
-      } else {
-        newContent = unwrappedContent
-      }
+      newContent = unwrappedContent
     }
 
     return newContent
