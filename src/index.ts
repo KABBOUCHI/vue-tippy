@@ -3,6 +3,7 @@ import tippy, {
   inlinePositioning,
   followCursor,
   animateFill,
+  roundArrow,
 } from 'tippy.js'
 
 import Tippy from './components/Tippy'
@@ -17,10 +18,20 @@ import 'tippy.js/dist/tippy.css'
 const setDefaultProps = tippy.setDefaultProps
 
 setDefaultProps({
+  ignoreAttributes: true,
   plugins: [sticky, inlinePositioning, followCursor, animateFill],
 })
 
-export { useTippy, tippy, useSingleton, setDefaultProps, Tippy, directive }
+export {
+  useTippy,
+  roundArrow,
+  tippy,
+  useSingleton,
+  setDefaultProps,
+  Tippy,
+  directive,
+  plugin,
+}
 
 export * from './types'
 export default plugin
