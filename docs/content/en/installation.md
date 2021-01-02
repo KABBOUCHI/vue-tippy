@@ -1,0 +1,47 @@
+---
+title: Installation
+description: ''
+category: Getting started
+position: 2
+---
+
+Add `vue-tippy` dependency to your project:
+
+<code-group>
+  <code-block label="Yarn" active>
+
+```bash
+yarn add vue-tippy@v6
+```
+
+  </code-block>
+  <code-block label="NPM">
+
+```bash
+npm install vue-tippy@v6
+```
+
+  </code-block>
+
+### Install VueTippy globally (optional)
+
+```js
+import { createApp } from 'vue'
+
+import VueTippy from 'vue-tippy'
+// or
+import { plugin as VueTippy } from 'vue-tippy'
+
+const app = createApp({})
+
+app.use(
+  VueTippy,
+  // optional
+  {
+    directive: 'tippy', // => v-tippy
+    component: 'tippy', // => <tippy/>
+  }
+)
+
+app.mount('#app')
+```

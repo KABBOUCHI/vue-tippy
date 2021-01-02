@@ -18,7 +18,8 @@
   "scripts": {
     "build": "NODE_ENV=production rollup -c rollup.config.js",
     "build:dts": "api-extractor run --local --verbose",
-    "dev": "webpack-dev-server --mode=development"
+    "dev": "webpack-dev-server --mode=development",
+    "dev:docs": "cd docs && yarn dev"
   },
   "peerDependencies": {
     "vue": "^3.0.0"
