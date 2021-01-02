@@ -1,5 +1,5 @@
 import { useTippy } from '../composables'
-import { Directive } from 'vue-demi'
+import { Directive } from 'vue'
 
 const directive: Directive = {
   mounted(el, binding, vnode) {

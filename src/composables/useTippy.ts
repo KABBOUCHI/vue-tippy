@@ -12,9 +12,7 @@ import {
   h,
   onUnmounted,
   getCurrentInstance,
-  isVue2,
-  Vue,
-} from 'vue-demi'
+} from 'vue'
 import { TippyOptions, TippyContent } from '../types'
 
 tippy.setDefaultProps({
@@ -23,30 +21,6 @@ tippy.setDefaultProps({
     if (!instance.props.content) return false
   },
 })
-
-function isVue23Node(node: any) {
-  if (isVue2) {
-    return (
-      (typeof node === 'object' && !!node.tag) || typeof node === 'function'
-    )
-  } else {
-    return isVNode(node)
-  }
-}
-function renderVue23(vnode: any, target: Element) {
-  if (isVue2) {
-    //@ts-ignore
-    const app = new Vue({
-      el: target,
-      setup: typeof vnode === 'function' ? vnode : null,
-      render: typeof vnode === 'function' ? null : () => vnode,
-    })
-
-    target.appendChild(app.$el)
-  } else {
-    render(vnode, target)
-  }
-}
 
 export function useTippy(
   el: Element | (() => Element) | Ref<Element> | Ref<Element | undefined>,
@@ -74,11 +48,11 @@ export function useTippy(
       ? content.value
       : content
 
-    if (isVue23Node(unwrappedContent)) {
-      renderVue23(unwrappedContent, getContainer())
+    if (isVNode(unwrappedContent)) {
+      render(unwrappedContent, getContainer())
       newContent = () => getContainer()
     } else if (typeof unwrappedContent === 'object') {
-      renderVue23(h(unwrappedContent), getContainer())
+      render(h(unwrappedContent), getContainer())
       newContent = () => getContainer()
     } else {
       newContent = unwrappedContent

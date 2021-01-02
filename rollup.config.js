@@ -65,7 +65,7 @@ function createConfig(format, output, plugins = []) {
   output.sourcemap = !!process.env.SOURCE_MAP
   output.banner = banner
   output.externalLiveBindings = false
-  output.globals = { 'vue-demi': 'VueDemi' }
+  output.globals = { 'vue': 'Vue' }
   output.exports = 'named'
 
   const isProductionBuild = /\.prod\.js$/.test(output.file)
@@ -96,7 +96,7 @@ function createConfig(format, output, plugins = []) {
   // during a single build.
   hasTSChecked = true
 
-  const external = ['vue-demi']
+  const external = ['vue']
 
   const nodePlugins = [resolve(), commonjs()]
 

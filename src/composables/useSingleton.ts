@@ -5,7 +5,7 @@ import {
   Instance,
   Props,
 } from 'tippy.js'
-import { onMounted, ref } from 'vue-demi'
+import { onMounted, ref } from 'vue'
 
 export function useSingleton(
   instances: TippyInstances,
