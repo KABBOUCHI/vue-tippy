@@ -72,7 +72,15 @@ export function useTippy(
       options = { ...opts }
     }
 
-    if (options.content) options.content = getContent(options.content)
+    if (options.content) {
+      options.content = getContent(options.content)
+    }
+
+    if (options.triggerTarget) {
+      options.triggerTarget = isRef(options.triggerTarget)
+        ? options.triggerTarget.value
+        : options.triggerTarget
+    }
 
     return options as Props
   }

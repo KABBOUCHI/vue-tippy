@@ -3,10 +3,17 @@ import { Props, Content, DefaultProps, Instance } from 'tippy.js'
 import { VNode, Ref, Component } from 'vue'
 
 export declare type TippyContent = Content | VNode | Component | Ref
+export declare type TippyTarget =
+  | Element
+  | Element[]
+  | Ref<Element | undefined>
+  | Ref<Element[] | undefined>
+  | null
 
 export declare type TippyOptions = Partial<
-  Omit<Props, 'content'> & {
+  Omit<Props, 'content' | 'triggerTarget'> & {
     content: TippyContent
+    triggerTarget: TippyTarget
   }
 >
 

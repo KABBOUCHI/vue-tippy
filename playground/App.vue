@@ -56,6 +56,17 @@
     </div>
 
     <div class="mt-6">
+      <span
+        ref="target7"
+        class="font-semibold mr-4"
+      >useTippy + triggerTarget:</span>
+      <button
+        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
+        ref="button7"
+      >My Button 7</button>
+    </div>
+
+    <div class="mt-6">
       <span class="font-semibold mr-4">Tippy component + change content and props realtime using component ref:</span>
       <tippy
         ref="tippyComponent1"
@@ -166,6 +177,8 @@ export default defineComponent({
     const button4 = ref<HTMLButtonElement>()
     const button5 = ref<HTMLButtonElement>()
     const button6 = ref<HTMLButtonElement>()
+    const button7 = ref<HTMLButtonElement>()
+    const target7 = ref<HTMLButtonElement>()
 
     useTippy(button, {
       content: 'Test',
@@ -220,6 +233,12 @@ export default defineComponent({
     const button6Inc = () => {
       options.content = String(parseInt(options.content) + 1)
     }
+
+    useTippy(target7, {
+      content: 'Triggered by button7',
+      placement: 'bottom',
+      triggerTarget: button7,
+    })
 
     const { x, y } = useMousePosition()
 
@@ -299,6 +318,8 @@ export default defineComponent({
       button5,
       button6,
       button6Inc,
+      button7,
+      target7,
       tippyComponent1,
       log: console.log,
     }
