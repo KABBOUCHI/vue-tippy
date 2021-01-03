@@ -681,6 +681,9 @@ useTippy(target, {
   triggerTarget: someElement,
   // Element[]
   triggerTarget: [someElement1, someElement2],
+  // import { ref } from 'vue'
+  // const refTriggerTarget = ref(); // <span ref="refTriggerTarget" >...
+  triggerTarget: refTriggerTarget,
 })
 ```
 
