@@ -51,9 +51,17 @@ Object.keys(tippy.defaultProps).forEach((prop: string) => {
 
 const TippyComponent = defineComponent({
   props,
-  setup(props) {
+  setup(props, { slots }) {
     const elem = ref<Element>()
-    const tippy = useTippy(elem, props)
+
+    let options = { ...props } as TippyOptions
+    if (slots.content != null && typeof slots.content != 'undefined') {
+      options.content = {
+        render: () => slots.content!(),
+      }
+    }
+
+    const tippy = useTippy(elem, options)
     return { elem, ...tippy }
   },
   render() {

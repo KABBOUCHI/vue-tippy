@@ -9,6 +9,23 @@
     </div>
 
     <div class="mt-6">
+      <span class="font-semibold mr-4">Tippy Component with content slot:</span>
+
+      <tippy interactive>
+        <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg">Hi</button>
+
+        <template #content>
+          <button
+            class="text-sm py-2 px-3 bg-gray-100 text-black rounded-lg"
+            @click="counter++"
+          >
+            Counter {{ counter }} (click to increase)
+          </button>
+        </template>
+      </tippy>
+    </div>
+
+    <div class="mt-6">
       <span class="font-semibold mr-4">useTippy + callbacks(console.log):</span>
       <button
         class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
