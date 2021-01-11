@@ -1,6 +1,20 @@
 <template>
   <div>
     <div>
+      <span class="font-semibold mr-4">Tippy Component + custom element target:</span>
+
+      <tippy
+        content="test"
+        to="#btn123"
+      ></tippy>
+
+      <button
+        id="btn123"
+        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
+      >Hi</button>
+    </div>
+
+    <div>
       <span class="font-semibold mr-4">Tippy Component:</span>
 
       <tippy content="test">

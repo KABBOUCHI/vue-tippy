@@ -49,19 +49,37 @@ Object.keys(tippy.defaultProps).forEach((prop: string) => {
   }
 })
 
+props['to'] = {}
+
 const TippyComponent = defineComponent({
   props,
   setup(props, { slots }) {
     const elem = ref<Element>()
 
-    let options = { ...props } as TippyOptions
+    let options = { ...props } as TippyOptions & {
+      to: String | Element | null | undefined
+    }
+    if (options.to) {
+      delete options.to
+    }
+
     if (slots.content != null && typeof slots.content != 'undefined') {
       options.content = {
         render: () => slots.content!(),
       }
     }
 
-    const tippy = useTippy(elem, options)
+    let target: any = elem
+
+    if (props.to) {
+      if (props.to instanceof Element) {
+        target = () => props.to
+      } else if (typeof props.to === 'string' || props.to instanceof String) {
+        target = () => document.querySelector(props.to)
+      }
+    }
+
+    const tippy = useTippy(target, options)
     return { elem, ...tippy }
   },
   render() {
