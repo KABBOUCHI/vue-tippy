@@ -31,6 +31,7 @@ import { createApp } from 'vue'
 import VueTippy from 'vue-tippy'
 // or
 import { plugin as VueTippy } from 'vue-tippy'
+import 'tippy.js/dist/tippy.css' // optional for styling
 
 const app = createApp({})
 

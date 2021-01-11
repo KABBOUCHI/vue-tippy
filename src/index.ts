@@ -13,8 +13,6 @@ import plugin from './plugin'
 import { useTippy } from './composables/useTippy'
 import { useSingleton } from './composables/useSingleton'
 
-import 'tippy.js/dist/tippy.css'
-
 const setDefaultProps = tippy.setDefaultProps
 
 setDefaultProps({
