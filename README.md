@@ -10,6 +10,14 @@
 <a href="https://github.com/KABBOUCHI/vue-tippy/tree/v1">For tippyJS v1 use v1 branch</a>
 </aside>
 
+<br/>
+
+<aside class="notice">
+<a href="https://vue-tippy.netlify.app/">Vue 3 alpha version</a>
+</aside>
+
+
+
 ## Documentation
 
 For full v4 documentation, visit [https://kabbouchi.github.io/vue-tippy/4.0/](https://kabbouchi.github.io/vue-tippy/4.0/).
