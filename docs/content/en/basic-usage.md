@@ -34,6 +34,14 @@ position: 4
   <tippy content="Hi!">
     <button>Tippy!</button>
   </tippy>
+
+  <tippy>
+    <button>Tippy!</button>
+
+    <template #content>
+      Hi!
+    </template>
+  </tippy>
 </template>
 
 <!-- 
