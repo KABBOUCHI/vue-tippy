@@ -84,7 +84,7 @@ const TippyComponent = defineComponent({
     return { elem, contentElem, ...tippy }
   },
   render() {
-    let slot = this.$slots.default ? this.$slots.default() : []
+    let slot = this.$slots.default ? this.$slots.default(this) : []
     return h('span', { ref: 'elem' },  this.$slots.content ?[
       slot,
         h('span', { ref : 'contentElem' }, this.$slots.content(this))
