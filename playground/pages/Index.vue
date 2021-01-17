@@ -56,8 +56,8 @@
         <span class="font-semibold mr-4">Tippy component + content slot data</span>
       <tippy interactive :hideOnClick="false"> 
          <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg">Hi</button>
-        <template #content="{ tippy }" class="relative">
-            <button class="absolute top-0 right-0 m-2 w-6 h-6 bg-white text-black rounded" @click="tippy && tippy.hide()">&times;</button>
+        <template #content="{ tippy, hide }" class="relative">
+            <button class="absolute top-0 right-0 m-2 w-6 h-6 bg-white text-black rounded" @click="hide()">&times;</button>
             <pre class="p-4">{{ tippy && tippy.state }}</pre>
         </template>
       </tippy>
