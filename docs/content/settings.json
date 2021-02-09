@@ -2,5 +2,10 @@
   "title": "VueTippy",
   "url": "https://vue-tippy.netlify.app",
   "github": "KABBOUCHI/vue-tippy",
-  "twitter": "@KABBOUCHI"
+  "twitter": "@KABBOUCHI",
+  "algolia": {
+    "apiKey": "N7576EOD4Q",
+    "indexName": "prod_docs",
+    "langAttribute": "language"
+  }
 }
