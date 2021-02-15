@@ -3819,10 +3819,10 @@ dir-glob@^3.0.1:
   dependencies:
     path-type "^4.0.0"
 
-docus@^0.0.7:
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/docus/-/docus-0.0.7.tgz#d774b6dde716e49f2b22e7453af3df9112a404fa"
-  integrity sha512-yd8gjmzFPPGLjZBIwBEy/O6YuW3ZFPjc+t7xO1mEM+I0o10XEcbF+tJtNRTrzbeHIq3qGHoZXBbTfLaf7y6RDQ==
+docus@^0.0.8:
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/docus/-/docus-0.0.8.tgz#4077c94f702f4fe7e85cca66e35227f5e51aa5df"
+  integrity sha512-1lmqBuPWTTYbZWBR8LGSVEWq9AqNFBJZ1MQngV3vCiZXPzrhlpEiTgkNwikI/m79Ae9THS1KrJuMepyGdEqsmg==
   dependencies:
     "@docsearch/css" "^1.0.0-alpha.28"
     "@docsearch/js" "^1.0.0-alpha.28"
