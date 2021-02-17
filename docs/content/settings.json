@@ -11,7 +11,7 @@
   },
   "twitter": "@KABBOUCHI",
   "algolia": {
-    "apiKey": "d8bb34f345ca54362176cf78fcf4ed9d",
+    "apiKey": "37a8c0266932ce63f6edc40c19aa4e55",
     "indexName": "vue-tippy"
   }
 }
