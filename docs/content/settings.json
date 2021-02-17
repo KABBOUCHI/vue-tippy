@@ -5,8 +5,8 @@
   "defaultBranch" : "next",
   "twitter": "@KABBOUCHI",
   "algolia": {
-    "apiKey": "N7576EOD4Q",
-    "indexName": "prod_docs",
-    "langAttribute": "language"
+    "apiKey": "37a8c0266932ce63f6edc40c19aa4e55",
+    "indexName": "vue-tippy",
+    "langAttribute": "lang"
   }
 }
