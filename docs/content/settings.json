@@ -1,12 +1,17 @@
 {
   "title": "VueTippy",
   "url": "https://vue-tippy.netlify.app",
-  "github": "KABBOUCHI/vue-tippy",
-  "defaultBranch" : "next",
+  "github": {
+    "apiUrl": "https://api.github.com",
+    "branch": "next",
+    "dir": "docs",
+    "releases": false,
+    "repo": "KABBOUCHI/vue-tippy",
+    "url": "https://github.com"
+  },
   "twitter": "@KABBOUCHI",
   "algolia": {
-    "apiKey": "37a8c0266932ce63f6edc40c19aa4e55",
-    "indexName": "vue-tippy",
-    "langAttribute": "lang"
+    "apiKey": "d8bb34f345ca54362176cf78fcf4ed9d",
+    "indexName": "vue-tippy"
   }
 }
