@@ -2,12 +2,10 @@
   "title": "VueTippy",
   "url": "https://vue-tippy.netlify.app",
   "github": {
-    "apiUrl": "https://api.github.com",
+    "repo": "KABBOUCHI/vue-tippy",
     "branch": "next",
     "dir": "docs",
-    "releases": false,
-    "repo": "KABBOUCHI/vue-tippy",
-    "url": "https://github.com"
+    "releases": false
   },
   "twitter": "@KABBOUCHI",
   "algolia": {
