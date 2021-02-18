@@ -1,89 +1,84 @@
-import tippy from "tippy.js";
+import tippy from 'tippy.js'
 import {
-  h,
   isRef,
+  reactive,
   isReactive,
   onMounted,
   ref,
   onUnmounted,
   watch,
-  toRefs,
-  onUpdated,
-} from "@vue/composition-api";
+} from '@vue/composition-api'
 
-const array_wrap = (val) => (Array.isArray(val) ? val : [val]);
+const array_wrap = (val) => (Array.isArray(val) ? val : [val])
 
-export function useTippy(el, opts = {}) {
-  const instance = ref(null);
+export function useTippy (el, opts = {}) {
+  const instance = ref(null)
 
-  let onMountCbs = [];
-  let onUnmountCbs = [];
+  let onMountCbs = []
+  let onUnmountCbs = []
 
   const onMount = (cb) => {
-    onMountCbs.push(cb);
-  };
+    onMountCbs.push(cb)
+  }
 
   const onUnmount = (cb) => {
-    onUnmountCbs.push(cb);
-  };
+    onUnmountCbs.push(cb)
+  }
 
   const init = (e, o) => {
-    instance.value = tippy(e, o);
-    onMountCbs.forEach((cb) => cb(instance.value));
-  };
+    instance.value = tippy(e, o)
+    onMountCbs.forEach((cb) => cb(instance.value))
+  }
 
   onMounted(() => {
-    let element = el;
+    let element = el
 
     if (isRef(el)) {
-      element = el.value;
+      element = el.value
     }
 
     if (Array.isArray(el)) {
-      element = el.map((e) => (isRef(e) ? e.value : e));
+      element = el.map((e) => (isRef(e) ? e.value : e))
     }
 
     if (isRef(opts.content)) {
       watch(
         opts.content,
-        function(val) {
-          console.log(val);
-
-          opts.content = val;
+        function (val) {
           if (instance.value) {
-            array_wrap(instance.value).forEach((t) => t.setContent(val));
+            array_wrap(instance.value).forEach((t) => t.setContent(val))
           }
         },
-        { immediate: true }
-      );
+        { immediate: false }
+      )
     }
-    init(element, opts);
-  });
+    init(element, reactive(opts))
+  })
 
   onUnmounted(() => {
     if (instance.value) {
-      array_wrap(instance.value).forEach((t) => t.destroy());
+      array_wrap(instance.value).forEach((t) => t.destroy())
     }
 
-    onUnmountCbs.forEach((cb) => cb());
-  });
+    onUnmountCbs.forEach((cb) => cb())
+  })
 
   if (isReactive(opts) || isRef(opts)) {
-    const watchSource = isReactive(opts) ? () => opts : opts;
+    const watchSource = isReactive(opts) ? () => opts : opts
     watch(
-      opts,
-      () => {
+      watchSource,
+      (val) => {
         if (instance.value) {
-          array_wrap(instance.value).forEach((t) => t.set(opts));
+          array_wrap(instance.value).forEach((t) => t.set(val))
         }
       },
-      { immediate: true, deep: true }
-    );
+      { immediate: false, deep: true }
+    )
   }
 
   return {
     onMount,
     onUnmount,
     tippy: instance,
-  };
+  }
 }

@@ -161,8 +161,7 @@ yarn add @vue/composition-api
 
 <script>
   import { ref, watch, defineComponent } from "@vue/composition-api";
-  import { useTippy } from "../../../src/index";
-  import CompDemo2Vue from "./CompDemo2.vue";
+  import { useTippy } from "vue-tippy/composition";
 
   export default defineComponent({
     setup() {
