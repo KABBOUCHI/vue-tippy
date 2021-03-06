@@ -1,5 +1,6 @@
-import VueTippyV4, { TippyComponent } from '../../src'
+import VueTippyV4, { TippyComponent } from '../../src/index-nostyles'
 
+import "tippy.js/index.css"
 import "tippy.js/themes/google.css"
 import "tippy.js/themes/light-border.css"
 

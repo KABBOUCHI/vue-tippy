@@ -11,7 +11,7 @@
 </template>
 
 <script>
-import tippy from 'tippy.js'
+import tippy from 'tippy.js/esm/index'
 import humps from "humps";
 import defaultProps, { booleanProps } from "../props";
 export default {
