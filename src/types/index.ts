@@ -26,4 +26,4 @@ export interface TippyPluginOptions {
 }
 
 export type TippyInstance = Instance | Element | undefined
-export type TippyInstances = Ref<TippyInstance>[] | Ref<TippyInstance[]>
+export type TippyInstances = Ref<TippyInstance>[] | Ref<TippyInstance[]> | (() => TippyInstance[])

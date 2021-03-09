@@ -16,7 +16,7 @@ export function useSingleton(
   onMounted(() => {
     const pendingTippyInstances: TippyInstance[] = Array.isArray(instances)
       ? instances.map(i => i.value)
-      : instances.value
+      : typeof instances === 'function' ? instances() :  instances.value
 
     const tippyInstances: Instance<any>[] = pendingTippyInstances
       .map((instance: TippyInstance) => {

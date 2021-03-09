@@ -7,6 +7,7 @@ import "tippy.js/dist/tippy.css";
 import App from './App.vue'
 import PageIndex from './pages/Index.vue'
 import PageNestedComponents from './pages/NestedComponents.vue'
+import PageSingletonComponents from './pages/SingletonComponents.vue'
 import Counter from './components/Counter.vue'
 import UiIcon from "./components/Icon.vue";
 
@@ -15,6 +16,7 @@ const router = createRouter({
   routes :[
     { path: '/', component: PageIndex },
     { path: '/nested-components', component: PageNestedComponents },
+    { path: '/singleton-components', component: PageSingletonComponents },
   ]
 })
 
