@@ -7,6 +7,7 @@ import tippy, {
 } from 'tippy.js'
 
 import Tippy from './components/Tippy'
+import TippySingleton from './components/TippySingleton'
 import directive from './directive'
 import plugin from './plugin'
 
@@ -27,6 +28,7 @@ export {
   useSingleton,
   setDefaultProps,
   Tippy,
+  TippySingleton,
   directive,
   plugin,
 }

@@ -17,16 +17,22 @@
     <div class="mt-6">
       <span class="font-semibold mr-4">Tippy Component:</span>
 
-      <tippy content="test">
-        <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg">Hi</button>
+      <tippy
+        content="test"
+        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
+      >
+        Hi
       </tippy>
     </div>
 
     <div class="mt-6">
       <span class="font-semibold mr-4">Tippy Component with content slot:</span>
 
-      <tippy interactive>
-        <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg">Hi</button>
+      <tippy
+        interactive
+        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
+      >
+        Hi
 
         <template #content>
           <button
@@ -39,28 +45,43 @@
       </tippy>
     </div>
 
-     <div class="mt-6">
+    <div class="mt-6">
       <span class="font-semibold mr-4">Tippy Component with component content slot:</span>
 
-      <tippy interactive>
-        <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg">Hi</button>
+      <tippy
+        interactive
+        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
+      >
+        Hi
 
         <template #content>
-          <counter/>
+          <counter />
         </template>
       </tippy>
     </div>
 
-
-     <div class="mt-6">
-        <span class="font-semibold mr-4">Tippy component + content slot data</span>
-      <tippy interactive :hideOnClick="false" trigger="manual"> 
+    <div class="mt-6">
+      <span class="font-semibold mr-4">Tippy component + content slot data</span>
+      <tippy
+        interactive
+        :hideOnClick="false"
+        trigger="manual"
+      >
         <template #default="{ show }">
-         <button @click="show" class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg">Hi</button>
+          <button
+            @click="show"
+            class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
+          >Hi</button>
         </template>
-        <template #content="{ tippy, hide }" class="relative">
-            <button class="absolute top-0 right-0 m-2 w-6 h-6 bg-white text-black rounded" @click="hide()">&times;</button>
-            <pre class="p-4">{{ tippy && tippy.state }}</pre>
+        <template
+          #content="{ tippy, hide }"
+          class="relative"
+        >
+          <button
+            class="absolute top-0 right-0 m-2 w-6 h-6 bg-white text-black rounded"
+            @click="hide()"
+          >&times;</button>
+          <pre class="p-4">{{ tippy && tippy.state }}</pre>
         </template>
       </tippy>
     </div>

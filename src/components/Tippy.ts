@@ -52,7 +52,7 @@ Object.keys(tippy.defaultProps).forEach((prop: string) => {
 props['to'] = {}
 
 props['tag'] = {
-  default : 'span'
+  default : 'button'
 }
 
 props['contentTag'] = {
@@ -97,7 +97,7 @@ const TippyComponent = defineComponent({
   },
   render() {
     let slot = this.$slots.default ? this.$slots.default(this) : []
-    return h(this.tag, { ref: 'elem' },  this.$slots.content ?[
+    return h(this.tag, { ref: 'elem' , 'data-v-tippy' : '' },  this.$slots.content ?[
       slot,
         h(this.contentTag, { ref : 'contentElem', class : this.contentClass }, this.$slots.content(this))
     ] : slot)

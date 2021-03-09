@@ -22,6 +22,7 @@ export declare type TippyComponent = InstanceType<typeof Tippy>
 export interface TippyPluginOptions {
   directive?: string
   component?: string
+  componentSingleton?: string
   defaultProps?: Partial<DefaultProps>
 }
 

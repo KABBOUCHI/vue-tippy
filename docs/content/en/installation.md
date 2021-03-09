@@ -41,6 +41,7 @@ app.use(
   {
     directive: 'tippy', // => v-tippy
     component: 'tippy', // => <tippy/>
+    componentSingleton: 'tippy-singleton', // => <tippy-singleton/>
   }
 )
 
