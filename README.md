@@ -59,7 +59,7 @@ app.mount('#app')
 
   export default {
     directives: {
-      'v-tippy': directive,
+      tippy: directive,
     },
   }
 </script>

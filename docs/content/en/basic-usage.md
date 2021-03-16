@@ -21,7 +21,7 @@ position: 4
 
   export default {
     directives: {
-      'v-tippy': directive,
+      tippy: directive,
     },
   }
 </script>
