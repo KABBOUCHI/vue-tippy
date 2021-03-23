@@ -52,7 +52,7 @@ Object.keys(tippy.defaultProps).forEach((prop: string) => {
 props['to'] = {}
 
 props['tag'] = {
-  default : 'button'
+  default : 'span'
 }
 
 props['contentTag'] = {
