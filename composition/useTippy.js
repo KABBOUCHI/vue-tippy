@@ -40,6 +40,9 @@ export function useTippy (el, opts = {}) {
     if (Array.isArray(el)) {
       element = el.map((e) => (isRef(e) ? e.value : e))
     }
+    if(element._isVue){
+      element = element.$el;
+    }
 
     if (isRef(opts.content)) {
       watch(

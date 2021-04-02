@@ -191,3 +191,41 @@ yarn add @vue/composition-api
 
 </div>
 </vue-code>
+
+#### Example 5
+
+<vue-code>
+<div slot="demo">
+<comp-demo-5/>
+</div>
+<div slot="code">
+
+```html
+<template>
+  <base-button ref="btn">Composition API with Vue Component</base-button>
+</template>
+
+<script>
+import { ref } from "@vue/composition-api";
+import { useTippy } from "vue-tippy/composition";
+import BaseButton from './BaseButton.vue';
+
+export default {
+  components: { BaseButton },
+  setup() {
+    const btn = ref(null);
+
+    useTippy(btn, {
+      content: "Cool!"
+    });
+
+    return {
+      btn
+    };
+  }
+};
+</script>
+```
+
+</div>
+</vue-code>
