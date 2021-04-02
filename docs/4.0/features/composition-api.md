@@ -229,3 +229,65 @@ export default {
 
 </div>
 </vue-code>
+
+
+#### Example 6
+
+<vue-code>
+<div slot="demo">
+<comp-demo-6/>
+</div>
+<div slot="code">
+
+```html
+<template>
+  <div>
+    <button v-if="shown" @click="hide">Hide and Unmount Tippy</button>
+    <button v-else @click="show">Show and Mount Tippy</button>
+
+    <div v-if="shown"> 
+      <button ref="btn">Composition API</button>
+    </div>
+  </div>
+</template>
+
+<script>
+import { defineComponent, ref, nextTick } from "@vue/composition-api";
+import { useTippy } from "vue-tippy/composition";
+
+export default defineComponent({
+  setup() {
+    const shown = ref(false);
+    const btn = ref();
+
+    const { mount, unmount } = useTippy(btn, {
+      content: "Cool!"
+    }, { mount: false });
+
+    const show = async () => {
+      shown.value = true
+
+      await nextTick() // wait for ref to be populated 
+
+      mount()
+    }
+
+    const hide = () => {
+      unmount()
+
+      shown.value = false
+    }
+
+    return {
+      shown,
+      show,
+      hide,
+      btn
+    };
+  }
+});
+</script>
+```
+
+</div>
+</vue-code>

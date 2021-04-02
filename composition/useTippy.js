@@ -11,7 +11,7 @@ import {
 
 const array_wrap = (val) => (Array.isArray(val) ? val : [val])
 
-export function useTippy (el, opts = {}) {
+export function useTippy (el, opts = {}, settings = { mount: true }) {
   const instance = ref(null)
 
   let onMountCbs = []
@@ -29,8 +29,7 @@ export function useTippy (el, opts = {}) {
     instance.value = tippy(e, o)
     onMountCbs.forEach((cb) => cb(instance.value))
   }
-
-  onMounted(() => {
+  const mount = () => {
     let element = el
 
     if (isRef(el)) {
@@ -40,8 +39,13 @@ export function useTippy (el, opts = {}) {
     if (Array.isArray(el)) {
       element = el.map((e) => (isRef(e) ? e.value : e))
     }
-    if(element._isVue){
-      element = element.$el;
+
+    if (!element) {
+      return
+    }
+
+    if (element._isVue) {
+      element = element.$el
     }
 
     if (isRef(opts.content)) {
@@ -56,7 +60,17 @@ export function useTippy (el, opts = {}) {
       )
     }
     init(element, reactive(opts))
-  })
+  }
+
+  const unmount = () => {
+    if (instance.value) {
+      instance.value.destroy()
+    }
+  }
+
+  if (settings.mount) {
+    onMounted(mount)
+  }
 
   onUnmounted(() => {
     if (instance.value) {
@@ -80,6 +94,8 @@ export function useTippy (el, opts = {}) {
   }
 
   return {
+    mount,
+    unmount,
     onMount,
     onUnmount,
     tippy: instance,
