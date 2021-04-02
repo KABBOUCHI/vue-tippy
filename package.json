@@ -1,6 +1,6 @@
 {
   "name": "vue-tippy",
-  "version": "4.9.0",
+  "version": "4.10.0",
   "description": "Directive and Component wrapper for Tippy.js",
   "author": "Georges KABBOUCHI <georges.kabbouchi@gmail.com>",
   "files": [
