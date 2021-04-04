@@ -10,8 +10,8 @@
 ## Option 2: Package Manager
 
 ```bash
-npm install --save vue-tippy
-yarn add vue-tippy
+npm install --save vue-tippy@v4
+yarn add vue-tippyy@v4
 ```
 
 Then, import the vue-tippy:
