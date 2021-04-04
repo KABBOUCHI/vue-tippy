@@ -11,7 +11,7 @@
 
 ```bash
 npm install --save vue-tippy@v4
-yarn add vue-tippyy@v4
+yarn add vue-tippy@v4
 ```
 
 Then, import the vue-tippy:
