@@ -4938,23 +4938,19 @@ var script = {
         };
       }
 
-      if (!this.options.onShown) {
+      if (!this.options.onShow && this.$listeners && this.$listeners["shown"]) {
         this.options.onShown = function () {
-          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-            args[_key] = arguments[_key];
-          }
+          var _this$$listeners$show2;
 
-          _this.$emit.apply(_this, ["shown"].concat(args));
+          return (_this$$listeners$show2 = _this.$listeners["shown"]).fns.apply(_this$$listeners$show2, arguments);
         };
       }
 
-      if (!this.options.onHidden) {
+      if (!this.options.onHidden && this.$listeners && this.$listeners["hidden"]) {
         this.options.onHidden = function () {
-          for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-            args[_key2] = arguments[_key2];
-          }
+          var _this$$listeners$hidd;
 
-          _this.$emit.apply(_this, ["hidden"].concat(args));
+          return (_this$$listeners$hidd = _this.$listeners["hidden"]).fns.apply(_this$$listeners$hidd, arguments);
         };
       }
 
@@ -4966,13 +4962,11 @@ var script = {
         };
       }
 
-      if (!this.options.onMount) {
+      if (!this.options.onMount && this.$listeners && this.$listeners["mount"]) {
         this.options.onMount = function () {
-          for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-            args[_key3] = arguments[_key3];
-          }
+          var _this$$listeners$moun;
 
-          _this.$emit.apply(_this, ["mount"].concat(args));
+          return (_this$$listeners$moun = _this.$listeners["mount"]).fns.apply(_this$$listeners$moun, arguments);
         };
       }
 

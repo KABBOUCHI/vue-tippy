@@ -167,15 +167,15 @@ export default {
         };
       }
 
-      if (!this.options.onShown) {
+      if (!this.options.onShow && this.$listeners && this.$listeners["shown"]) {
         this.options.onShown = (...args) => {
-          this.$emit("shown", ...args);
+          return this.$listeners["shown"].fns(...args);
         };
       }
 
-      if (!this.options.onHidden) {
+      if (!this.options.onHidden && this.$listeners && this.$listeners["hidden"]) {
         this.options.onHidden = (...args) => {
-          this.$emit("hidden", ...args);
+          return this.$listeners["hidden"].fns(...args);
         };
       }
 
@@ -185,9 +185,9 @@ export default {
         };
       }
 
-      if (!this.options.onMount) {
+      if (!this.options.onMount && this.$listeners && this.$listeners["mount"]) {
         this.options.onMount = (...args) => {
-          this.$emit("mount", ...args);
+            return this.$listeners["mount"].fns(...args);
         };
       }
 
