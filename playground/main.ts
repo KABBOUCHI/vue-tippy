@@ -8,6 +8,7 @@ import App from './App.vue'
 import PageIndex from './pages/Index.vue'
 import PageNestedComponents from './pages/NestedComponents.vue'
 import PageSingletonComponents from './pages/SingletonComponents.vue'
+import Testing from './pages/Testing.vue'
 import Counter from './components/Counter.vue'
 import UiIcon from "./components/Icon.vue";
 
@@ -17,6 +18,7 @@ const router = createRouter({
     { path: '/', component: PageIndex },
     { path: '/nested-components', component: PageNestedComponents },
     { path: '/singleton-components', component: PageSingletonComponents },
+    { path: '/testing', component: Testing },
   ]
 })
 

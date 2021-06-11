@@ -12,6 +12,7 @@ import directive from './directive'
 import plugin from './plugin'
 
 import { useTippy } from './composables/useTippy'
+import { useTippyComponent } from './composables/useTippyComponent'
 import { useSingleton } from './composables/useSingleton'
 
 const setDefaultProps = tippy.setDefaultProps
@@ -23,6 +24,7 @@ setDefaultProps({
 
 export {
   useTippy,
+  useTippyComponent,
   roundArrow,
   tippy,
   useSingleton,
