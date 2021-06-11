@@ -29,6 +29,7 @@ export function useTippy(
     mount: boolean
   } = { mount: true }
 ) {
+  const vm = getCurrentInstance()
   const instance = ref<Instance>()
 
   let container: Element | null = null
@@ -49,10 +50,21 @@ export function useTippy(
       : content
 
     if (isVNode(unwrappedContent)) {
+      if (vm) {
+        unwrappedContent.appContext = vm.appContext
+      }
+
       render(unwrappedContent, getContainer())
       newContent = () => getContainer()
     } else if (typeof unwrappedContent === 'object') {
-      render(h(unwrappedContent), getContainer())
+      let comp = h(unwrappedContent)
+
+      if (vm) {
+        comp.appContext = vm.appContext
+      }
+
+      render(comp, getContainer())
+
       newContent = () => getContainer()
     } else {
       newContent = unwrappedContent
@@ -169,8 +181,6 @@ export function useTippy(
   }
 
   if (settings.mount) {
-    const vm = getCurrentInstance()
-
     if (vm) {
       if (vm.isMounted) {
         mount()
