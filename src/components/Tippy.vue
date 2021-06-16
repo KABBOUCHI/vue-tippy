@@ -158,7 +158,11 @@ export default {
       return this.options;
     },
     getOptions() {
+
+      this.options.content = this.content ? this.content : this.$refs.content;
+
       Object.assign(this.options, humps.camelizeKeys(this.$attrs));
+      
       this.filterOptions();
 
       if (!this.options.onShow && this.$listeners && this.$listeners["show"]) {
@@ -187,12 +191,8 @@ export default {
 
       if (!this.options.onMount && this.$listeners && this.$listeners["mount"]) {
         this.options.onMount = (...args) => {
-            return this.$listeners["mount"].fns(...args);
+          return this.$listeners["mount"].fns(...args);
         };
-      }
-
-      if (!this.options.hasOwnProperty("content")) {
-        this.options.content = this.content ? this.content : this.$refs.content;
       }
 
       this.options.triggerTarget = this.triggerTarget;

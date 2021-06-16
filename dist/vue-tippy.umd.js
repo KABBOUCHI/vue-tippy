@@ -4933,6 +4933,7 @@
       getOptions: function getOptions() {
         var _this = this;
 
+        this.options.content = this.content ? this.content : this.$refs.content;
         Object.assign(this.options, humps.camelizeKeys(this.$attrs));
         this.filterOptions();
 
@@ -4974,10 +4975,6 @@
 
             return (_this$$listeners$moun = _this.$listeners["mount"]).fns.apply(_this$$listeners$moun, arguments);
           };
-        }
-
-        if (!this.options.hasOwnProperty("content")) {
-          this.options.content = this.content ? this.content : this.$refs.content;
         }
 
         this.options.triggerTarget = this.triggerTarget;
