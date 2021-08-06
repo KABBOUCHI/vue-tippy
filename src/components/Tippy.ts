@@ -69,7 +69,7 @@ const TippyComponent = defineComponent({
     const elem = ref<Element>()
     const contentElem = ref<Element>()
 
-    let options = { ...props } as TippyOptions & {
+    let options = props as TippyOptions & {
       to: String | Element | null | undefined
     }
     if (options.to) {
