@@ -1,17 +1,18 @@
 <template>
   <div>
     <div>
-      <span class="font-semibold mr-4">Tippy Component + custom element target:</span>
+      <span class="font-semibold mr-4"
+        >Tippy Component + custom element target:</span
+      >
 
-      <tippy
-        content="test"
-        to="#btn123"
-      ></tippy>
+      <tippy content="test" to="#btn123"></tippy>
 
       <button
         id="btn123"
         class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
-      >Hi</button>
+      >
+        Hi
+      </button>
     </div>
 
     <div class="mt-6">
@@ -46,7 +47,9 @@
     </div>
 
     <div class="mt-6">
-      <span class="font-semibold mr-4">Tippy Component with component content slot:</span>
+      <span class="font-semibold mr-4"
+        >Tippy Component with component content slot:</span
+      >
 
       <tippy
         interactive
@@ -61,26 +64,25 @@
     </div>
 
     <div class="mt-6">
-      <span class="font-semibold mr-4">Tippy component + content slot data</span>
-      <tippy
-        interactive
-        :hideOnClick="false"
-        trigger="manual"
+      <span class="font-semibold mr-4"
+        >Tippy component + content slot data</span
       >
+      <tippy interactive :hideOnClick="false" trigger="manual">
         <template #default="{ show }">
           <button
             @click="show"
             class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
-          >Hi</button>
+          >
+            Hi
+          </button>
         </template>
-        <template
-          #content="{ tippy, hide }"
-          class="relative"
-        >
+        <template #content="{ tippy, hide }" class="relative">
           <button
             class="absolute top-0 right-0 m-2 w-6 h-6 bg-white text-black rounded"
             @click="hide()"
-          >&times;</button>
+          >
+            &times;
+          </button>
           <pre class="p-4">{{ tippy && tippy.state }}</pre>
         </template>
       </tippy>
@@ -91,66 +93,80 @@
       <button
         class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
         ref="button"
-      >My Button</button>
+      >
+        My Button
+      </button>
     </div>
     <div class="mt-6">
       <span class="font-semibold mr-4">useTippy + h(tag) content:</span>
       <button
         class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
         ref="button2"
-      >My Button 2</button>
+      >
+        My Button 2
+      </button>
     </div>
     <div class="mt-6">
       <span class="font-semibold mr-4">useTippy + h (reactive) content:</span>
       <button
         class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
         ref="button3"
-      >My Button 3</button>
+      >
+        My Button 3
+      </button>
     </div>
     <div class="mt-6">
       <span class="font-semibold mr-4">useTippy + h(SFC) content:</span>
       <button
         class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
         ref="button4"
-      >My Button 4</button>
+      >
+        My Button 4
+      </button>
     </div>
     <div class="mt-6">
       <span class="font-semibold mr-4">useTippy + SFC content:</span>
       <button
         class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
         ref="button5"
-      >My Button 5</button>
+      >
+        My Button 5
+      </button>
     </div>
     <div class="mt-6">
       <span class="font-semibold mr-4">useTippy + reactive options:</span>
       <button
         class="mr-4 text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
         @click="button6Inc"
-      >My Button 6 - Inc & Refresh</button>
+      >
+        My Button 6 - Inc & Refresh
+      </button>
       <button
         class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
         ref="button6"
-      >My Button 6</button>
+      >
+        My Button 6
+      </button>
     </div>
 
     <div class="mt-6">
-      <span
-        ref="target7"
-        class="font-semibold mr-4"
-      >useTippy + triggerTarget:</span>
+      <span ref="target7" class="font-semibold mr-4"
+        >useTippy + triggerTarget:</span
+      >
       <button
         class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
         ref="button7"
-      >My Button 7</button>
+      >
+        My Button 7
+      </button>
     </div>
 
     <div class="mt-6">
-      <span class="font-semibold mr-4">Tippy component + change content and props realtime using component ref:</span>
-      <tippy
-        ref="tippyComponent1"
-        @create="log"
-        @hide="log"
+      <span class="font-semibold mr-4"
+        >Tippy component + change content and props realtime using component
+        ref:</span
       >
+      <tippy ref="tippyComponent1" @create="log" @hide="log">
         <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg">
           Tippy Component + h(SFC) content
         </button>
@@ -162,9 +178,10 @@
       <button
         class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
         @tippyMount="() => log('v-tippy mounted')"
-        v-tippy="{ content: 'Hello ' +  counter}"
-      >Tippy directive</button>
-
+        v-tippy="{ content: 'Hello ' + counter }"
+      >
+        Tippy directive
+      </button>
     </div>
 
     <div class="mt-6 space-x-2">
@@ -172,38 +189,52 @@
       <button
         class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
         ref="singleton1"
-      >singleton1</button>
+      >
+        singleton1
+      </button>
 
       <button
         class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
         ref="singleton2"
-      >singleton2</button>
+      >
+        singleton2
+      </button>
 
       <button
         class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
         ref="singleton3"
-      >singleton3</button>
+      >
+        singleton3
+      </button>
     </div>
 
     <div class="mt-6 space-x-2">
-      <span class="font-semibold mr-4">Singleton v-tippy with a transition:</span>
+      <span class="font-semibold mr-4"
+        >Singleton v-tippy with a transition:</span
+      >
       <button
         class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
         :ref="v => singletons.push(v)"
-        v-tippy="{content : 'Tooltip 1'}"
-      >singleton1</button>
+        v-tippy="{ content: 'Tooltip 1' }"
+      >
+        singleton1
+      </button>
 
       <button
         class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
         :ref="v => singletons.push(v)"
-        v-tippy="{content : 'Tooltip 2'}"
-      >singleton2</button>
+        v-tippy="{ content: 'Tooltip 2' }"
+      >
+        singleton2
+      </button>
 
       <button
         class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
         :ref="v => singletons.push(v)"
-        v-tippy="{content : 'Tooltip 3'}"
-      >singleton3</button>
+        v-tippy="{ content: 'Tooltip 3' }"
+      >
+        singleton3
+      </button>
     </div>
   </div>
 </template>
@@ -366,7 +397,7 @@ export default defineComponent({
       content: 'Singleton 1',
     })
     const { tippy: tippySingleton2 } = useTippy(singleton2, {
-      content: 'Singleton 2',
+      content: '<b>Singleton 2</b>',
     })
     const { tippy: tippySingleton3 } = useTippy(singleton3, {
       content: 'Singleton 3',

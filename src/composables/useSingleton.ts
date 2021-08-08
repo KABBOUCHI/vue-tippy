@@ -16,7 +16,9 @@ export function useSingleton(
   onMounted(() => {
     const pendingTippyInstances: TippyInstance[] = Array.isArray(instances)
       ? instances.map(i => i.value)
-      : typeof instances === 'function' ? instances() :  instances.value
+      : typeof instances === 'function'
+      ? instances()
+      : instances.value
 
     const tippyInstances: Instance<any>[] = pendingTippyInstances
       .map((instance: TippyInstance) => {
@@ -28,7 +30,12 @@ export function useSingleton(
       })
       .filter(Boolean)
 
-    singleton.value = createSingleton(tippyInstances, optionalProps)
+    singleton.value = createSingleton(
+      tippyInstances,
+      optionalProps
+        ? { allowHTML: true, ...optionalProps }
+        : { allowHTML: true }
+    )
   })
 
   return {
