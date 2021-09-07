@@ -5119,7 +5119,12 @@
       function createTippy(el, binding, vnode) {
         var handlers = vnode.data && vnode.data.on || vnode.componentOptions && vnode.componentOptions.listeners;
         var opts = binding.value || {};
+        var modifiers = Object.keys(binding.modifiers || {});
         opts = Object.assign({}, options, opts);
+
+        if (modifiers.length) {
+          opts.placement = opts.placement || modifiers[0];
+        }
 
         if (handlers && handlers['show']) {
           opts.onShow = function () {
