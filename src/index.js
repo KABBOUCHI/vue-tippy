@@ -15,8 +15,13 @@ const plugin = {
         (vnode.componentOptions && vnode.componentOptions.listeners)
 
       let opts = binding.value || {}
+      let modifiers = Object.keys(binding.modifiers || {});
 
       opts = Object.assign({}, options, opts)
+
+      if (modifiers.length) {
+        opts.placement = opts.placement || modifiers[0];
+      }
 
       if (handlers && handlers['show']) {
         opts.onShow = function (...args) {
