@@ -3,7 +3,7 @@ import { Directive } from 'vue'
 
 const directive: Directive = {
   mounted(el, binding, vnode) {
-    const opts = binding.value || {}
+    const opts = typeof binding.value === "string" ? { content: binding.value } : binding.value || {}
 
     if (vnode.props && vnode.props.onTippyShow) {
       opts.onShow = function (...args: any[]) {
@@ -55,7 +55,7 @@ const directive: Directive = {
   },
 
   updated(el, binding) {
-    const opts = binding.value || {}
+    const opts = typeof binding.value === "string" ? { content: binding.value } : binding.value || {}
 
     if (el.getAttribute('title') && !opts.content) {
       opts.content = el.getAttribute('title')

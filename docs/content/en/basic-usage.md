@@ -10,6 +10,7 @@ position: 4
 ```html
 <template>
   <button v-tippy="{ content: 'Hi!' }">Tippy!</button>
+  <button v-tippy="'Hello!'">Tippy!</button>
 </template>
 
 <!-- 

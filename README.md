@@ -48,6 +48,7 @@ app.mount('#app')
 ```html
 <template>
   <button v-tippy="{ content: 'Hi!' }">Tippy!</button>
+  <button v-tippy="'Hello!'">Tippy!</button>
 </template>
 
 <!-- 
