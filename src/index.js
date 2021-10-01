@@ -15,12 +15,19 @@ const plugin = {
         (vnode.componentOptions && vnode.componentOptions.listeners)
 
       let opts = binding.value || {}
-      let modifiers = Object.keys(binding.modifiers || {});
+
+      const modifiers = Object.keys(binding.modifiers || {});
+      const placement = modifiers.find(modifier => modifier !== 'arrow');
+      const withArrow = modifiers.findIndex(modifier => modifier === 'arrow') !== -1;
 
       opts = Object.assign({}, options, opts)
 
-      if (modifiers.length) {
-        opts.placement = opts.placement || modifiers[0];
+      if (placement) {
+        opts.placement = opts.placement || placement;
+      }
+
+      if (withArrow) {
+        opts.arrow = opts.arrow !== undefined ? opts.arrow : true;
       }
 
       if (handlers && handlers['show']) {
