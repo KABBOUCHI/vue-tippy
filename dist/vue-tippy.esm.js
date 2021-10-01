@@ -5112,12 +5112,24 @@ var plugin = {
 
     function createTippy(el, binding, vnode) {
       var handlers = vnode.data && vnode.data.on || vnode.componentOptions && vnode.componentOptions.listeners;
-      var opts = binding.value || {};
+      var opts = typeof binding.value === 'string' ? {
+        content: binding.value
+      } : binding.value || {};
       var modifiers = Object.keys(binding.modifiers || {});
+      var placement = modifiers.find(function (modifier) {
+        return modifier !== 'arrow';
+      });
+      var withArrow = modifiers.findIndex(function (modifier) {
+        return modifier === 'arrow';
+      }) !== -1;
       opts = Object.assign({}, options, opts);
 
-      if (modifiers.length) {
-        opts.placement = opts.placement || modifiers[0];
+      if (placement) {
+        opts.placement = opts.placement || placement;
+      }
+
+      if (withArrow) {
+        opts.arrow = opts.arrow !== undefined ? opts.arrow : true;
       }
 
       if (handlers && handlers['show']) {
