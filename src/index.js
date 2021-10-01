@@ -5,29 +5,29 @@ import TippyComponent from './components/Tippy.vue'
 var tippyDirective = 'tippy'
 
 const plugin = {
-  install(Vue, options = {}) {
+  install (Vue, options = {}) {
     tippyDirective = options.directive || 'tippy'
 
     tippy.setDefaults(options || {})
 
-    function createTippy(el, binding, vnode) {
+    function createTippy (el, binding, vnode) {
       const handlers = (vnode.data && vnode.data.on) ||
         (vnode.componentOptions && vnode.componentOptions.listeners)
 
-      let opts = binding.value || {}
+      let opts = typeof binding.value === 'string' ? { content: binding.value } : binding.value || {}
 
-      const modifiers = Object.keys(binding.modifiers || {});
-      const placement = modifiers.find(modifier => modifier !== 'arrow');
-      const withArrow = modifiers.findIndex(modifier => modifier === 'arrow') !== -1;
+      const modifiers = Object.keys(binding.modifiers || {})
+      const placement = modifiers.find(modifier => modifier !== 'arrow')
+      const withArrow = modifiers.findIndex(modifier => modifier === 'arrow') !== -1
 
       opts = Object.assign({}, options, opts)
 
       if (placement) {
-        opts.placement = opts.placement || placement;
+        opts.placement = opts.placement || placement
       }
 
       if (withArrow) {
-        opts.arrow = opts.arrow !== undefined ? opts.arrow : true;
+        opts.arrow = opts.arrow !== undefined ? opts.arrow : true
       }
 
       if (handlers && handlers['show']) {
@@ -82,15 +82,15 @@ const plugin = {
     }
 
     Vue.directive(tippyDirective, {
-      inserted(el, binding, vnode) {
+      inserted (el, binding, vnode) {
         Vue.nextTick(() => {
           createTippy(el, binding, vnode)
         })
       },
-      unbind(el) {
+      unbind (el) {
         el._tippy && el._tippy.destroy()
       },
-      componentUpdated(el, binding, vnode) {
+      componentUpdated (el, binding, vnode) {
         if (el._tippy) {
           const opts = binding.value || {}
 
