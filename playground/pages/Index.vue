@@ -176,11 +176,23 @@
     <div class="mt-6">
       <span class="font-semibold mr-4">v-tippy:</span>
       <button
-        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
+        class="text-sm py-2 px-3 mr-4 bg-gray-900 text-white rounded-lg"
         @tippyMount="() => log('v-tippy mounted')"
         v-tippy="{ content: 'Hello ' + counter }"
       >
         Tippy directive
+      </button>
+      <button
+        class="text-sm py-2 px-3 mr-4 bg-gray-900 text-white rounded-lg"
+        v-tippy="'Passing in a string'"
+      >
+        Tippy directive with a string
+      </button>
+      <button
+        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
+        v-tippy="`Hello ${counter}`"
+      >
+        Tippy directive with template literals
       </button>
     </div>
 
