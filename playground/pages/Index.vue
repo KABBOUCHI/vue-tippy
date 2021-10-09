@@ -248,6 +248,16 @@
         singleton3
       </button>
     </div>
+
+    <div class="mt-6">
+      <span class="font-semibold mr-4">v-tippy with modifiers</span>
+      <button
+        class="text-sm py-2 px-3 mr-4 bg-gray-900 text-white rounded-lg"
+        v-tippy.left.arrow="'Hello'"
+      >
+        Tippy
+      </button>
+    </div>
   </div>
 </template>
 <script lang="ts">
