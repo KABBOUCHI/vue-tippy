@@ -5,6 +5,18 @@ const directive: Directive = {
   mounted(el, binding, vnode) {
     const opts = typeof binding.value === "string" ? { content: binding.value } : binding.value || {}
 
+    const modifiers = Object.keys(binding.modifiers || {})
+    const placement = modifiers.find(modifier => modifier !== 'arrow')
+    const withArrow = modifiers.findIndex(modifier => modifier === 'arrow') !== -1
+
+    if (placement) {
+      opts.placement = opts.placement || placement
+    }
+
+    if (withArrow) {
+      opts.arrow = opts.arrow !== undefined ? opts.arrow : true
+    }
+
     if (vnode.props && vnode.props.onTippyShow) {
       opts.onShow = function (...args: any[]) {
         return vnode.props?.onTippyShow(...args)
