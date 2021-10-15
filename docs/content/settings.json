@@ -9,7 +9,8 @@
   },
   "twitter": "@KABBOUCHI",
   "algolia": {
-    "apiKey": "37a8c0266932ce63f6edc40c19aa4e55",
+    "appId": "KCUFOKFDD2",
+    "apiKey": "d12646a77678194b5a6159381bfe1208",
     "indexName": "vue-tippy"
   }
 }
