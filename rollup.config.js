@@ -20,21 +20,17 @@ let hasTSChecked = false
 const outputConfigs = {
   // each file name has the format: `dist/${name}.${format}.js`
   // format being a key of this object
-  'esm-bundler': {
+  mjs: {
     file: pkg.module,
     format: `es`,
   },
   cjs: {
-    file: pkg.main,
+    file: pkg.module.replace('esm-bundler', 'cjs'),
     format: `cjs`,
   },
   global: {
     file: pkg.unpkg,
     format: `iife`,
-  },
-  esm: {
-    file: pkg.browser,
-    format: `es`,
   },
 }
 
@@ -68,11 +64,11 @@ function createConfig(format, output, plugins = []) {
   output.globals = { 'vue': 'Vue' }
   output.exports = 'named'
 
-  const isProductionBuild = /\.prod\.js$/.test(output.file)
+  const isProductionBuild = output.file.endsWith('.prod.js')
   const isGlobalBuild = format === 'global'
   const isRawESMBuild = format === 'esm'
   const isNodeBuild = format === 'cjs'
-  const isBundlerESMBuild = /esm-bundler/.test(format)
+  const isBundlerESMBuild = format === 'esm' || format === 'mjs'
 
   if (isGlobalBuild) output.name = 'VueTippy'
 
