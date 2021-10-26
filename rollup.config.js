@@ -3,14 +3,27 @@ import ts from 'rollup-plugin-typescript2'
 import replace from '@rollup/plugin-replace'
 import resolve from '@rollup/plugin-node-resolve'
 import commonjs from '@rollup/plugin-commonjs'
-import postcss from 'rollup-plugin-postcss'
+import pascalcase from 'pascalcase'
 
 const pkg = require('./package.json')
 const name = pkg.name
 
+function getAuthors(pkg) {
+  const { contributors, author } = pkg
+
+  const authors = new Set()
+  if (contributors && contributors)
+    contributors.forEach((contributor) => {
+      authors.add(contributor.name)
+    })
+  if (author) authors.add(author.name)
+
+  return Array.from(authors).join(', ')
+}
+
 const banner = `/*!
   * ${pkg.name} v${pkg.version}
-  * (c) ${new Date().getFullYear()} Georges KABBOUCHI
+  * (c) ${new Date().getFullYear()} ${getAuthors(pkg)}
   * @license MIT
   */`
 
@@ -25,66 +38,71 @@ const outputConfigs = {
     format: `es`,
   },
   cjs: {
-    file: pkg.module.replace('esm-bundler', 'cjs'),
+    file: pkg.module.replace('mjs', 'cjs'),
     format: `cjs`,
   },
   global: {
     file: pkg.unpkg,
     format: `iife`,
   },
+  browser: {
+    file: 'dist/vue-tippy.esm-browser.js',
+    format: `es`,
+  },
 }
 
-const allFormats = Object.keys(outputConfigs)
-// in vue-router there are not that many
-const packageFormats = allFormats
-const packageConfigs = packageFormats.map(format =>
+const packageBuilds = Object.keys(outputConfigs)
+const packageConfigs = packageBuilds.map((format) =>
   createConfig(format, outputConfigs[format])
 )
 
 // only add the production ready if we are bundling the options
-packageFormats.forEach(format => {
-  if (format === 'cjs') {
-    packageConfigs.push(createProductionConfig(format))
-  } else if (format === 'global') {
-    packageConfigs.push(createMinifiedConfig(format))
+packageBuilds.forEach((buildName) => {
+  if (buildName === 'cjs') {
+    packageConfigs.push(createProductionConfig(buildName))
+  } else if (buildName === 'global') {
+    packageConfigs.push(createMinifiedConfig(buildName))
   }
 })
 
 export default packageConfigs
 
-function createConfig(format, output, plugins = []) {
+function createConfig(buildName, output, plugins = []) {
   if (!output) {
-    console.log(require('chalk').yellow(`invalid format: "${format}"`))
+    console.log(require('chalk').yellow(`invalid format: "${buildName}"`))
     process.exit(1)
   }
 
   output.sourcemap = !!process.env.SOURCE_MAP
   output.banner = banner
   output.externalLiveBindings = false
-  output.globals = { 'vue': 'Vue' }
-  output.exports = 'named'
+  output.globals = {
+    'vue-demi': 'VueDemi',
+    vue: 'Vue',
+    '@vue/composition-api': 'vueCompositionApi',
+  }
 
-  const isProductionBuild = output.file.endsWith('.prod.js')
-  const isGlobalBuild = format === 'global'
-  const isRawESMBuild = format === 'esm'
-  const isNodeBuild = format === 'cjs'
-  const isBundlerESMBuild = format === 'esm' || format === 'mjs'
+  const isProductionBuild = /\.prod\.[cmj]s$/.test(output.file)
+  const isGlobalBuild = buildName === 'global'
+  const isRawESMBuild = buildName === 'browser'
+  const isNodeBuild = buildName === 'cjs'
+  const isBundlerESMBuild = buildName === 'browser' || buildName === 'mjs'
 
-  if (isGlobalBuild) output.name = 'VueTippy'
+  if (isGlobalBuild) output.name = pascalcase(pkg.name)
 
   const shouldEmitDeclarations = !hasTSChecked
 
   const tsPlugin = ts({
     check: !hasTSChecked,
-    tsconfig: path.resolve(__dirname, 'tsconfig.json'),
-    cacheRoot: path.resolve(__dirname, 'node_modules/.rts2_cache'),
+    tsconfig: path.resolve(__dirname, './tsconfig.json'),
+    cacheRoot: path.resolve(__dirname, './node_modules/.rts2_cache'),
     tsconfigOverride: {
       compilerOptions: {
         sourceMap: output.sourcemap,
         declaration: shouldEmitDeclarations,
         declarationMap: shouldEmitDeclarations,
       },
-      exclude: [],
+      exclude: ['packages/*/__tests__', 'packages/*/test-dts'],
     },
   })
   // we only need to check TS and generate declarations once for each build.
@@ -92,7 +110,10 @@ function createConfig(format, output, plugins = []) {
   // during a single build.
   hasTSChecked = true
 
-  const external = ['vue']
+  const external = ['vue-demi', 'vue', '@vue/composition-api']
+  if (!isGlobalBuild) {
+    external.push('@vue/devtools-api')
+  }
 
   const nodePlugins = [resolve(), commonjs()]
 
@@ -113,7 +134,6 @@ function createConfig(format, output, plugins = []) {
       ),
       ...nodePlugins,
       ...plugins,
-      postcss(),
     ],
     output,
     // onwarn: (msg, warn) => {
@@ -134,35 +154,43 @@ function createReplacePlugin(
   const replacements = {
     __COMMIT__: `"${process.env.COMMIT}"`,
     __VERSION__: `"${pkg.version}"`,
-    __DEV__: isBundlerESMBuild
-      ? // preserve to be handled by bundlers
-      `(process.env.NODE_ENV !== 'production')`
-      : // hard coded dev/prod builds
-      !isProduction,
+    __DEV__:
+      isBundlerESMBuild || (isNodeBuild && !isProduction)
+        ? // preserve to be handled by bundlers
+        `(process.env.NODE_ENV !== 'production')`
+        : // hard coded dev/prod builds
+        JSON.stringify(!isProduction),
     // this is only used during tests
-    __TEST__: isBundlerESMBuild ? `(process.env.NODE_ENV === 'test')` : false,
+    __TEST__:
+      isBundlerESMBuild || isNodeBuild
+        ? `(process.env.NODE_ENV === 'test')`
+        : 'false',
     // If the build is expected to run directly in the browser (global / esm builds)
-    __BROWSER__: isBrowserBuild,
+    __BROWSER__: JSON.stringify(isBrowserBuild),
     // is targeting bundlers?
-    __BUNDLER__: isBundlerESMBuild,
-    __GLOBAL__: isGlobalBuild,
+    __BUNDLER__: JSON.stringify(isBundlerESMBuild),
+    __GLOBAL__: JSON.stringify(isGlobalBuild),
     // is targeting Node (SSR)?
-    __NODE_JS__: isNodeBuild,
-    'process.env.NODE_ENV': JSON.stringify('production'),
+    __NODE_JS__: JSON.stringify(isNodeBuild),
   }
   // allow inline overrides like
   //__RUNTIME_COMPILE__=true yarn build
-  Object.keys(replacements).forEach(key => {
+  Object.keys(replacements).forEach((key) => {
     if (key in process.env) {
       replacements[key] = process.env[key]
     }
   })
-  return replace(replacements)
+  return replace({
+    preventAssignment: true,
+    values: replacements,
+  })
 }
 
 function createProductionConfig(format) {
+  const extension = format === 'cjs' ? 'cjs' : 'js'
+  const descriptor = format === 'cjs' ? '' : `.${format}`
   return createConfig(format, {
-    file: `dist/${name}.${format}.prod.js`,
+    file: `dist/${name}${descriptor}.prod.${extension}`,
     format: outputConfigs[format].format,
   })
 }
@@ -172,7 +200,7 @@ function createMinifiedConfig(format) {
   return createConfig(
     format,
     {
-      file: `dist/${name}.${format}.prod.js`,
+      file: `dist/${name}.${format === 'global' ? 'iife' : format}.prod.js`,
       format: outputConfigs[format].format,
     },
     [

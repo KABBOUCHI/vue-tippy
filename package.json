@@ -1,21 +1,29 @@
 {
   "name": "vue-tippy",
-  "version": "6.0.0-alpha.35",
+  "version": "6.0.0-alpha.36",
   "main": "index.js",
-  "module": "dist/vue-tippy.esm-bundler.js",
+  "module": "dist/vue-tippy.mjs",
   "unpkg": "dist/vue-tippy.iife.js",
   "jsdelivr": "dist/vue-tippy.iife.js",
   "types": "dist/vue-tippy.d.ts",
   "exports": {
     ".": {
-      "import": {
-        "node": "./index.mjs",
-        "default": "./dist/vue-tippy.esm-bundler.js"
+      "browser": "./dist/vue-tippy.esm-browser.js",
+      "node": {
+        "import": {
+          "production": "./dist/vue-tippy.prod.cjs",
+          "development": "./dist/vue-tippy.mjs",
+          "default": "./dist/vue-tippy.mjs"
+        },
+        "require": {
+          "production": "./dist/vue-tippy.prod.cjs",
+          "development": "./dist/vue-tippy.cjs",
+          "default": "./index.js"
+        }
       },
-      "require": "./index.js"
+      "import": "./dist/vue-tippy.mjs"
     },
     "./package.json": "./package.json",
-    "./index.mjs": "./index.mjs",
     "./dist/*": "./dist/*"
   },
   "sideEffects": false,
@@ -26,7 +34,7 @@
     "dist/*.cjs",
     "dist/vue-tippy.d.ts",
     "index.js",
-    "index.mjs",
+    "index.cjs",
     "vetur/*.json",
     "LICENSE",
     "README.md"
