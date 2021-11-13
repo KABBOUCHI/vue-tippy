@@ -14,7 +14,7 @@ const plugin = {
       const handlers = (vnode.data && vnode.data.on) ||
         (vnode.componentOptions && vnode.componentOptions.listeners)
 
-      let opts = typeof binding.value === 'string' ? { content: binding.value } : binding.value || {}
+      let opts = deriveOpts(binding)
 
       const modifiers = Object.keys(binding.modifiers || {})
       const placement = modifiers.find(modifier => modifier !== 'arrow')
@@ -92,7 +92,7 @@ const plugin = {
       },
       componentUpdated (el, binding, vnode) {
         if (el._tippy) {
-          const opts = binding.value || {}
+          const opts = deriveOpts(binding)
 
           if (el.getAttribute('title') && !opts.content) {
             opts.content = el.getAttribute('title')
@@ -107,6 +107,10 @@ const plugin = {
         }
       },
     })
+
+    function deriveOpts (binding) {
+      return typeof binding.value === 'string' ? { content: binding.value } : binding.value || {}
+    }
   },
 }
 
