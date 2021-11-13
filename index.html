@@ -19,7 +19,7 @@
         </p>
         <div class="button-showcase d-flex justify-content-center flex-wrap">
 
-            <button content="test" @show="() => true" v-tippy>test</button>
+            <button @show="() => true" v-tippy="'test'">test</button>
             <tippy content="OnShown" @hide="() => false" arrow=>
                 <template #trigger>
                     <button class="btn">OnShow</button>

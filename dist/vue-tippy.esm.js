@@ -5112,9 +5112,7 @@ var plugin = {
 
     function createTippy(el, binding, vnode) {
       var handlers = vnode.data && vnode.data.on || vnode.componentOptions && vnode.componentOptions.listeners;
-      var opts = typeof binding.value === 'string' ? {
-        content: binding.value
-      } : binding.value || {};
+      var opts = deriveOpts(binding);
       var modifiers = Object.keys(binding.modifiers || {});
       var placement = modifiers.find(function (modifier) {
         return modifier !== 'arrow';
@@ -5205,7 +5203,7 @@ var plugin = {
       },
       componentUpdated: function componentUpdated(el, binding, vnode) {
         if (el._tippy) {
-          var opts = binding.value || {};
+          var opts = deriveOpts(binding);
 
           if (el.getAttribute('title') && !opts.content) {
             opts.content = el.getAttribute('title');
@@ -5220,6 +5218,12 @@ var plugin = {
         }
       }
     });
+
+    function deriveOpts(binding) {
+      return typeof binding.value === 'string' ? {
+        content: binding.value
+      } : binding.value || {};
+    }
   }
 };
 
