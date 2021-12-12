@@ -1,6 +1,6 @@
 {
   "name": "vue-tippy",
-  "version": "6.0.0-alpha.36",
+  "version": "6.0.0-alpha.37",
   "main": "index.js",
   "module": "dist/vue-tippy.mjs",
   "unpkg": "dist/vue-tippy.iife.js",
@@ -43,7 +43,8 @@
     "build": "NODE_ENV=production rollup -c rollup.config.js",
     "build:dts": "api-extractor run --local --verbose",
     "dev": "webpack-dev-server --mode=development",
-    "dev:docs": "cd docs && yarn dev"
+    "dev:docs": "cd docs && yarn dev",
+    "prepublishOnly": "yarn build"
   },
   "peerDependencies": {
     "vue": "^3.0.0"
