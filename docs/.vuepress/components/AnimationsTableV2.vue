@@ -32,7 +32,7 @@
         <tr>
           <td
             class="p-2 border-t border-grey-lighter font-mono text-xs text-purple-dark whitespace-no-wrap"
-          >animationFill</td>
+          >animateFill</td>
           <td
             class="p-2 border-t border-grey-lighter font-mono text-xs text-blue-dark whitespace-pre"
           >true</td>
