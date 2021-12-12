@@ -125,6 +125,10 @@ useTippy(targets, {
 
 ## arrow
 
+<alert type="warning">
+   <a href="/themes" target="_blank">Theme</a> or <a href="/themes#styling-the-arrow" target="_blank">Styling the arrow</a> is required
+</alert>
+
 Determines if the tippy has an arrow.
 
 ```js

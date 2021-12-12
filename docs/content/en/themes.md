@@ -7,6 +7,11 @@ position: 7
 
 Tippies can have any custom styling via CSS.
 
+## Base Style
+
+```js
+import 'tippy.js/dist/tippy.css'
+```
 ## Included themes
 
 The package comes with themes for you to use:
