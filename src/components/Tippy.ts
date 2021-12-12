@@ -4,7 +4,7 @@ import { useTippy } from '../composables'
 import tippy, { DefaultProps } from 'tippy.js'
 
 declare module '@vue/runtime-core' {
-  interface ComponentCustomProps extends TippyOptions {}
+  interface ComponentCustomProps extends TippyOptions { }
 }
 
 // const pluginProps = [
@@ -52,15 +52,15 @@ Object.keys(tippy.defaultProps).forEach((prop: string) => {
 props['to'] = {}
 
 props['tag'] = {
-  default : 'span'
+  default: 'span'
 }
 
 props['contentTag'] = {
-  default : 'span'
+  default: 'span'
 }
 
 props['contentClass'] = {
-  default : null
+  default: null
 }
 
 const TippyComponent = defineComponent({
@@ -69,11 +69,13 @@ const TippyComponent = defineComponent({
     const elem = ref<Element>()
     const contentElem = ref<Element>()
 
-    let options = props as TippyOptions & {
-      to: String | Element | null | undefined
-    }
-    if (options.to) {
-      delete options.to
+    let options = { ...props } as TippyOptions;
+
+    for (const prop of ['to', 'tag', 'contentTag', 'contentClass']) {
+      if (options.hasOwnProperty(prop)) {
+        // @ts-ignore
+        delete options[prop];
+      }
     }
 
     let target: any = elem
@@ -89,7 +91,7 @@ const TippyComponent = defineComponent({
     const tippy = useTippy(target, options)
 
     onMounted(() => {
-      if(slots.content)
+      if (slots.content)
         tippy.setContent(() => contentElem.value)
     })
 
@@ -97,9 +99,9 @@ const TippyComponent = defineComponent({
   },
   render() {
     let slot = this.$slots.default ? this.$slots.default(this) : []
-    return h(this.tag, { ref: 'elem' , 'data-v-tippy' : '' },  this.$slots.content ?[
+    return h(this.tag, { ref: 'elem', 'data-v-tippy': '' }, this.$slots.content ? [
       slot,
-        h(this.contentTag, { ref : 'contentElem', class : this.contentClass }, this.$slots.content(this))
+      h(this.contentTag, { ref: 'contentElem', class: this.contentClass }, this.$slots.content(this))
     ] : slot)
   },
 })
