@@ -1,6 +1,6 @@
 {
   "name": "vue-tippy",
-  "version": "6.0.0-alpha.37",
+  "version": "6.0.0-alpha.38",
   "main": "index.js",
   "module": "dist/vue-tippy.mjs",
   "unpkg": "dist/vue-tippy.iife.js",
@@ -44,7 +44,7 @@
     "build:dts": "api-extractor run --local --verbose",
     "dev": "webpack-dev-server --mode=development",
     "dev:docs": "cd docs && yarn dev",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "yarn build && yarn build:dts"
   },
   "peerDependencies": {
     "vue": "^3.0.0"
