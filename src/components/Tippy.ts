@@ -1,4 +1,4 @@
-import { defineComponent, ref, h, ComponentObjectPropsOptions, onMounted } from 'vue'
+import { defineComponent, ref, h, ComponentObjectPropsOptions, onMounted, nextTick } from 'vue'
 import { TippyOptions } from '../types'
 import { useTippy } from '../composables'
 import tippy, { DefaultProps } from 'tippy.js'
@@ -68,6 +68,7 @@ const TippyComponent = defineComponent({
   setup(props, { slots }) {
     const elem = ref<Element>()
     const contentElem = ref<Element>()
+    const mounted = ref(false)
 
     let options = { ...props } as TippyOptions;
 
@@ -91,17 +92,21 @@ const TippyComponent = defineComponent({
     const tippy = useTippy(target, options)
 
     onMounted(() => {
-      if (slots.content)
-        tippy.setContent(() => contentElem.value)
+      mounted.value = true
+
+      nextTick(() => {
+        if (slots.content)
+          tippy.setContent(() => contentElem.value)
+      })
     })
 
-    return { elem, contentElem, ...tippy }
+    return { elem, contentElem, mounted, ...tippy }
   },
   render() {
     let slot = this.$slots.default ? this.$slots.default(this) : []
     return h(this.tag, { ref: 'elem', 'data-v-tippy': '' }, this.$slots.content ? [
       slot,
-      h(this.contentTag, { ref: 'contentElem', class: this.contentClass }, this.$slots.content(this))
+      h(this.contentTag, { ref: 'contentElem', style: { display: this.mounted ? 'inherit' : 'none' }, class: this.contentClass }, this.$slots.content(this)),
     ] : slot)
   },
 })
