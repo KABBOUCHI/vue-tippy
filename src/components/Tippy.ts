@@ -68,6 +68,7 @@ const TippyComponent = defineComponent({
   setup(props, { slots }) {
     const elem = ref<Element>()
     const contentElem = ref<Element>()
+    const mounted = ref(false)
 
     let options = { ...props } as TippyOptions;
 
@@ -91,17 +92,19 @@ const TippyComponent = defineComponent({
     const tippy = useTippy(target, options)
 
     onMounted(() => {
+      mounted.value = true
+
       if (slots.content)
         tippy.setContent(() => contentElem.value)
     })
 
-    return { elem, contentElem, ...tippy }
+    return { elem, contentElem, mounted, ...tippy }
   },
   render() {
     let slot = this.$slots.default ? this.$slots.default(this) : []
     return h(this.tag, { ref: 'elem', 'data-v-tippy': '' }, this.$slots.content ? [
       slot,
-      h(this.contentTag, { ref: 'contentElem', class: this.contentClass }, this.$slots.content(this))
+      this.mounted ? h(this.contentTag, { ref: 'contentElem', class: this.contentClass }, this.$slots.content(this)) : undefined,
     ] : slot)
   },
 })
