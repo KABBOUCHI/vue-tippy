@@ -81,7 +81,7 @@ const TippyComponent = defineComponent({
     let target: any = elem
 
     if (props.to) {
-      if (props.to instanceof Element) {
+      if (typeof Element !== 'undefined' && props.to instanceof Element) {
         target = () => props.to
       } else if (typeof props.to === 'string' || props.to instanceof String) {
         target = () => document.querySelector(props.to)
