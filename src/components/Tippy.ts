@@ -106,7 +106,7 @@ const TippyComponent = defineComponent({
     let slot = this.$slots.default ? this.$slots.default(this) : []
     return h(this.tag, { ref: 'elem', 'data-v-tippy': '' }, this.$slots.content ? [
       slot,
-      h(this.contentTag, { ref: 'contentElem', style: { visibility: this.mounted ? 'inherit' : 'hidden' }, class: this.contentClass }, this.$slots.content(this)),
+      h(this.contentTag, { ref: 'contentElem', style: { display: this.mounted ? 'inherit' : 'none' }, class: this.contentClass }, this.$slots.content(this)),
     ] : slot)
   },
 })
