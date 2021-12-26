@@ -58,7 +58,7 @@ position: 4
 </script>
 ```
 
-### Using composition api
+### Composition API
 
 ```js
 import { defineComponent, ref, h } from 'vue'

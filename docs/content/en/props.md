@@ -158,9 +158,26 @@ useTippy(target, {
   content: document.createElement('div'),
   // (reference) => string | Element
   content: reference => reference.getAttribute('title'),
+  // using a ref value
   // import { ref } from 'vue'
   // const refContent = ref("Hi!")
   content: refContent,
+  // using a computed property
+  content: computed(() => `(${x.value},${y.value})`),
+  // Render function
+  content: h('h1', 'Hello'),
+  // Vue Component without props
+  content: VueComponent,
+  // Vue Component with props
+  content: h(VueComponent, { message: 'Hello' }),
+  // Vue Component with reactive props
+  content: computed(() =>
+    h(Counter, { onClick: () => counter.value++ }, 'Click Me!')
+  ),
+  // using define component
+  content: defineComponent(() => {
+    return () => h('p', 'Hellooooo')
+  }),
 })
 ```
 
@@ -690,8 +707,7 @@ useTippy(target, {
   triggerTarget: refTriggerTarget,
 })
 ```
-
-## zIndex
+E## zIndex
 
 Specifies the `z-index` CSS on the root popper node.
 
