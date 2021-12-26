@@ -31,6 +31,13 @@ export function useTippy(
 ) {
   const vm = getCurrentInstance()
   const instance = ref<Instance>()
+  const state = ref({
+    isEnabled: false,
+    isVisible: false,
+    isDestroyed: false,
+    isMounted: false,
+    isShown: false,
+  })
 
   let container: Element | null = null
 
@@ -94,6 +101,39 @@ export function useTippy(
         : options.triggerTarget
     }
 
+    options.plugins.push({
+      fn() {
+        return {
+          onCreate() {
+            state.value.isEnabled = true
+          },
+          onMount() {
+            state.value.isMounted = true
+          },
+          onShow() {
+            state.value.isMounted = true
+            state.value.isVisible = true
+          },
+          onShown() {
+            state.value.isShown = true
+          },
+          onHide() {
+            state.value.isMounted = false
+            state.value.isVisible = false
+          },
+          onHidden() {
+            state.value.isShown = false
+          },
+          onUnmounted() {
+            state.value.isMounted = false
+          },
+          onDestroy() {
+            state.value.isDestroyed = true
+          },
+        }
+      }
+    })
+
     return options as Props
   }
 
@@ -122,7 +162,7 @@ export function useTippy(
       try {
         //@ts-ignore
         // delete instance.value.reference.$tippy
-      } catch (error) {}
+      } catch (error) { }
 
       instance.value.destroy()
       instance.value = undefined
@@ -140,10 +180,12 @@ export function useTippy(
 
   const disable = () => {
     instance.value?.disable()
+    state.value.isEnabled = false;
   }
 
   const enable = () => {
     instance.value?.enable()
+    state.value.isEnabled = true;
   }
 
   const unmount = () => {
@@ -159,7 +201,6 @@ export function useTippy(
 
     if (target) {
       instance.value = tippy(target, getProps(opts))
-
       //@ts-ignore
       target.$tippy = response
     }
@@ -178,6 +219,7 @@ export function useTippy(
     enable,
     unmount,
     mount,
+    state,
   }
 
   if (settings.mount) {
