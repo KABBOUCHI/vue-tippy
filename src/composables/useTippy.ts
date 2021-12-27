@@ -84,7 +84,7 @@ export function useTippy(
     let options: any = {}
 
     if (isRef(opts)) {
-      options = opts.value
+      options = opts.value || {}
     } else if (isReactive(opts)) {
       options = { ...opts }
     } else {
