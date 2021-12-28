@@ -101,6 +101,10 @@ export function useTippy(
         : options.triggerTarget
     }
 
+    if(! options.plugins || !Array.isArray(options.plugins)) {
+      options.plugins = []
+    }
+
     options.plugins.push({
       fn() {
         return {
