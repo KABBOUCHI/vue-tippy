@@ -101,12 +101,15 @@ export function useTippy(
         : options.triggerTarget
     }
 
-    if(! options.plugins || !Array.isArray(options.plugins)) {
+    if (!options.plugins || !Array.isArray(options.plugins)) {
       options.plugins = []
     }
 
+    options.plugins = options.plugins.filter((plugin: any) => plugin.name !== 'vueTippyReactiveState');
+
     options.plugins.push({
-      fn() {
+      name: 'vueTippyReactiveState',
+      fn: () => {
         return {
           onCreate() {
             state.value.isEnabled = true
