@@ -77,12 +77,10 @@ function createConfig(buildName, output, plugins = []) {
   output.banner = banner
   output.externalLiveBindings = false
   output.globals = {
-    'vue-demi': 'VueDemi',
     vue: 'Vue',
-    '@vue/composition-api': 'vueCompositionApi',
   }
 
-  const isProductionBuild = /\.prod\.[cmj]s$/.test(output.file)
+  const isProductionBuild = /\.prod\.(js|mjs|cjs)$/.test(output.file)
   const isGlobalBuild = buildName === 'global'
   const isRawESMBuild = buildName === 'browser'
   const isNodeBuild = buildName === 'cjs'
@@ -172,6 +170,9 @@ function createReplacePlugin(
     __GLOBAL__: JSON.stringify(isGlobalBuild),
     // is targeting Node (SSR)?
     __NODE_JS__: JSON.stringify(isNodeBuild),
+
+    // tippy.js
+    'process.env.NODE_ENV': isProduction ? '"production"' : '"development"',
   }
   // allow inline overrides like
   //__RUNTIME_COMPILE__=true yarn build
