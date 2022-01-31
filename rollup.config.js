@@ -172,7 +172,7 @@ function createReplacePlugin(
     __NODE_JS__: JSON.stringify(isNodeBuild),
 
     // tippy.js
-    'process.env.NODE_ENV': isProduction ? '"production"' : '"development"',
+    'process.env.NODE_ENV': isBundlerESMBuild || isProduction ? '"production"' : '"development"',
   }
   // allow inline overrides like
   //__RUNTIME_COMPILE__=true yarn build
