@@ -105,6 +105,10 @@ const TippyComponent = defineComponent({
       emit('state', unref(tippy.state))
     }, { immediate: true, deep: true })
 
+    watch(props, () => {
+      tippy.setProps(props)
+    })
+
     return { elem, contentElem, mounted, ...tippy }
   },
   render() {
