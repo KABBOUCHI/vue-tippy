@@ -111,11 +111,11 @@ const TippyComponent = defineComponent({
 
     return { elem, contentElem, mounted, ...tippy }
   },
-  render() {
-    let slot = this.$slots.default ? this.$slots.default(this) : []
+  render(vm : ReturnType<typeof useTippy>) {
+    let slot = this.$slots.default ? this.$slots.default(vm) : []
     return h(this.tag, { ref: 'elem', 'data-v-tippy': '' }, this.$slots.content ? [
       slot,
-      h(this.contentTag, { ref: 'contentElem', style: { display: this.mounted ? 'inherit' : 'none' }, class: this.contentClass }, this.$slots.content(this)),
+      h(this.contentTag, { ref: 'contentElem', style: { display: this.mounted ? 'inherit' : 'none' }, class: this.contentClass }, this.$slots.content(vm)),
     ] : slot)
   },
 })
