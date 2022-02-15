@@ -39,11 +39,11 @@ export function useTippy(
     isShown: false,
   })
 
-  let container: Element | null = null
+  let container: any = null
 
   const getContainer = () => {
     if (container) return container
-    container = document.createElement('fragment')
+    container = document.createDocumentFragment()
     return container
   }
 
