@@ -66,7 +66,7 @@ props['contentClass'] = {
 const TippyComponent = defineComponent({
   props,
   emits: ['state'],
-  setup(props, { slots, emit }) {
+  setup(props, { slots, emit, expose }) {
     const elem = ref<Element>()
     const contentElem = ref<Element>()
     const mounted = ref(false)
@@ -109,14 +109,32 @@ const TippyComponent = defineComponent({
       tippy.setProps(props)
     })
 
-    return { elem, contentElem, mounted, ...tippy }
-  },
-  render(vm: ReturnType<typeof useTippy>) {
-    let slot = this.$slots.default ? this.$slots.default(vm) : []
-    return h(this.tag, { ref: 'elem', 'data-v-tippy': '' }, this.$slots.content ? [
-      slot,
-      h(this.contentTag, { ref: 'contentElem', style: { display: this.mounted ? 'inherit' : 'none' }, class: this.contentClass }, this.$slots.content(vm)),
-    ] : slot)
+    let exposed = {
+      elem,
+      contentElem,
+      mounted,
+      ...tippy
+    }
+
+    expose(exposed)
+
+    const slot = slots.default ? slots.default(exposed) : []
+
+    return () => {
+
+      return h(props.tag, { ref: elem, 'data-v-tippy': '' }, slots.content ? [
+        slot,
+        h(
+          props.contentTag,
+          {
+            ref: contentElem,
+            style: { display: mounted.value ? 'inherit' : 'none' },
+            class: props.contentClass
+          },
+          slots.content(exposed)
+        ),
+      ] : slot)
+    }
   },
 })
 
