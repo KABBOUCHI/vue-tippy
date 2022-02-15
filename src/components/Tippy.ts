@@ -35,7 +35,7 @@ let props: ComponentObjectPropsOptions = {}
 Object.keys(tippy.defaultProps).forEach((prop: string) => {
   if (booleanProps.includes(prop)) {
     props[prop] = {
-      type: Boolean,
+      type: prop === 'arrow' ? [String, Boolean, SVGElement, DocumentFragment] : Boolean,
       default: function () {
         return tippy.defaultProps[prop as keyof DefaultProps] as Boolean
       },
@@ -111,7 +111,7 @@ const TippyComponent = defineComponent({
 
     return { elem, contentElem, mounted, ...tippy }
   },
-  render(vm : ReturnType<typeof useTippy>) {
+  render(vm: ReturnType<typeof useTippy>) {
     let slot = this.$slots.default ? this.$slots.default(vm) : []
     return h(this.tag, { ref: 'elem', 'data-v-tippy': '' }, this.$slots.content ? [
       slot,
