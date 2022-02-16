@@ -1,4 +1,4 @@
-import { defineComponent, ref, h, ComponentObjectPropsOptions, onMounted, nextTick, watch, unref } from 'vue'
+import { defineComponent, ref, h, ComponentObjectPropsOptions, onMounted, watch, unref } from 'vue'
 import { TippyOptions } from '../types'
 import { useTippy } from '../composables'
 import tippy, { DefaultProps } from 'tippy.js'
@@ -92,13 +92,11 @@ const TippyComponent = defineComponent({
 
     const tippy = useTippy(target, options)
 
-    onMounted(() => {
+    onMounted(async () => {
       mounted.value = true
 
-      nextTick(() => {
-        if (slots.content)
-          tippy.setContent(() => contentElem.value)
-      })
+      if (slots.content)
+        tippy.setContent(() => contentElem.value)
     })
 
     watch(tippy.state, () => {
