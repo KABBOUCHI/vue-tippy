@@ -118,9 +118,8 @@ const TippyComponent = defineComponent({
 
     expose(exposed)
 
-    const slot = slots.default ? slots.default(exposed) : []
-
     return () => {
+      const slot = slots.default ? slots.default(exposed) : []
 
       return h(props.tag, { ref: elem, 'data-v-tippy': '' }, slots.content ? [
         slot,
