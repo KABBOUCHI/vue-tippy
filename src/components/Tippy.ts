@@ -2,7 +2,8 @@ import { defineComponent, ref, h, ComponentObjectPropsOptions, onMounted, nextTi
 import { TippyOptions } from '../types'
 import { useTippy } from '../composables'
 import tippy, { DefaultProps } from 'tippy.js'
-
+//@ts-ignore
+import { deepUnref } from 'vue-deepunref';
 declare module '@vue/runtime-core' {
   interface ComponentCustomProps extends TippyOptions { }
 }
@@ -119,7 +120,10 @@ const TippyComponent = defineComponent({
     expose(exposed)
 
     return () => {
-      const slot = slots.default ? slots.default(exposed) : []
+
+      let exposedUnref = deepUnref(exposed)
+
+      const slot = slots.default ? slots.default(exposedUnref) : []
 
       return h(props.tag, { ref: elem, 'data-v-tippy': '' }, slots.content ? [
         slot,
@@ -130,7 +134,7 @@ const TippyComponent = defineComponent({
             style: { display: mounted.value ? 'inherit' : 'none' },
             class: props.contentClass
           },
-          slots.content(exposed)
+          slots.content(exposedUnref)
         ),
       ] : slot)
     }

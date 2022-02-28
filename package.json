@@ -80,7 +80,8 @@
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "tippy.js": "^6.3.7"
+    "tippy.js": "^6.3.7",
+    "vue-deepunref": "^1.0.1"
   },
   "vetur": {
     "tags": "vetur/tags.json",
