@@ -70,13 +70,17 @@ const TippyComponent = defineComponent({
     const contentElem = ref<Element>()
     const mounted = ref(false)
 
-    let options = { ...props } as TippyOptions;
 
-    for (const prop of ['to', 'tag', 'contentTag', 'contentClass']) {
-      if (options.hasOwnProperty(prop)) {
-        // @ts-ignore
-        delete options[prop];
+    const getOptions = () => {
+      let options = { ...props } as TippyOptions;
+      for (const prop of ['to', 'tag', 'contentTag', 'contentClass']) {
+        if (options.hasOwnProperty(prop)) {
+          // @ts-ignore
+          delete options[prop];
+        }
       }
+
+      return options
     }
 
     let target: any = elem
@@ -89,7 +93,7 @@ const TippyComponent = defineComponent({
       }
     }
 
-    const tippy = useTippy(target, options)
+    const tippy = useTippy(target, getOptions())
 
     onMounted(() => {
       mounted.value = true
@@ -105,7 +109,10 @@ const TippyComponent = defineComponent({
     }, { immediate: true, deep: true })
 
     watch(props, () => {
-      tippy.setProps(props)
+      tippy.setProps(getOptions())
+
+      if (slots.content)
+        tippy.setContent(() => contentElem.value)
     })
 
     let exposed = {
