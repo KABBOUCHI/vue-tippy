@@ -1,6 +1,6 @@
 {
   "name": "vue-tippy",
-  "version": "6.0.0-alpha.55",
+  "version": "6.0.0-alpha.56",
   "main": "index.js",
   "module": "dist/vue-tippy.mjs",
   "unpkg": "dist/vue-tippy.iife.js",
