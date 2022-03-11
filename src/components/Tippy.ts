@@ -34,7 +34,7 @@ let props: ComponentObjectPropsOptions = {}
 Object.keys(tippy.defaultProps).forEach((prop: string) => {
   if (booleanProps.includes(prop)) {
     props[prop] = {
-      type: prop === 'arrow' ? [String, Boolean, SVGElement, DocumentFragment] : Boolean,
+      type: prop === 'arrow' ? [String, Boolean, ...typeof Element !== 'undefined' ? [SVGElement, DocumentFragment] : [Function]] : Boolean,
       default: function () {
         return tippy.defaultProps[prop as keyof DefaultProps] as Boolean
       },
