@@ -707,7 +707,7 @@ useTippy(target, {
   triggerTarget: refTriggerTarget,
 })
 ```
-E## zIndex
+## zIndex
 
 Specifies the `z-index` CSS on the root popper node.
 
