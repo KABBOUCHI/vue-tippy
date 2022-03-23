@@ -22,7 +22,7 @@ Click [here](/props) to see full documentation on props.
 ## Advanced Usage
 
 ```html
-<button v-tippy="{ content: 'Hello!', arrow: true, theme: 'light'">
+<button v-tippy="{ content: 'Hello!', arrow: true, theme: 'light'}">
   Tippy!
 </button>
 ```
