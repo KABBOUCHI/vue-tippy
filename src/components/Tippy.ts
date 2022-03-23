@@ -109,7 +109,7 @@ const TippyComponent = defineComponent({
       emit('state', unref(tippy.state))
     }, { immediate: true, deep: true })
 
-    watch(props, () => {
+    watch(() => props, () => {
       tippy.setProps(getOptions())
 
       if (slots.content)
