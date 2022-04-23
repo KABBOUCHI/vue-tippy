@@ -31,7 +31,31 @@ const booleanProps = [
 
 let props: ComponentObjectPropsOptions = {}
 
+props['hideOnClick'] = {
+  type: [String, Boolean],
+  default: tippy.defaultProps.hideOnClick,
+}
+
+props['to'] = {}
+
+props['tag'] = {
+  default: 'span'
+}
+
+props['contentTag'] = {
+  default: 'span'
+}
+
+props['contentClass'] = {
+  default: null
+}
+
+
 Object.keys(tippy.defaultProps).forEach((prop: string) => {
+  if (props[prop]) {
+    return
+  }
+
   if (booleanProps.includes(prop)) {
     props[prop] = {
       // TODO: add SVGElement and DocumentFragment for arrow prop
@@ -48,20 +72,6 @@ Object.keys(tippy.defaultProps).forEach((prop: string) => {
     }
   }
 })
-
-props['to'] = {}
-
-props['tag'] = {
-  default: 'span'
-}
-
-props['contentTag'] = {
-  default: 'span'
-}
-
-props['contentClass'] = {
-  default: null
-}
 
 const TippyComponent = defineComponent({
   props,
