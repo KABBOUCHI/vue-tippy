@@ -1,13 +1,13 @@
 <template>
-  <div>
-    <div ref="trigger">
+  <component :is="tag">
+    <component :is="triggerTag || tag" ref="trigger">
       <slot name="trigger"></slot>
-    </div>
+    </component>
 
-    <div ref="content">
+    <component :is="contentTag || tag" ref="content">
       <slot></slot>
-    </div>
-  </div>
+    </component>
+  </component>
 </template>
 
 <script>
@@ -15,15 +15,21 @@ import tippy from 'tippy.js'
 import humps from "humps";
 import defaultProps, { booleanProps } from "../props";
 export default {
-  props: [
-    "to",
-    "toSelector",
-    "toElement",
-    "content",
-    "enabled",
-    "visible",
-    "triggerTarget"
-  ],
+  props: {
+    to: undefined,
+    toSelector: undefined,
+    toElement: undefined,
+    content: undefined,
+    enabled: undefined,
+    visible: undefined,
+    triggerTarget: undefined,
+    tag: {
+      type: String,
+      default: "div"
+    },
+    triggerTag: String,
+    contentTag: String
+  },
   data() {
     return {
       tip: null,

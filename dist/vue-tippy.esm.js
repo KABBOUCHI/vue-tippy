@@ -4793,7 +4793,21 @@ var defaultProps$1 = _objectSpread2({
 
 //
 var script = {
-  props: ["to", "toSelector", "toElement", "content", "enabled", "visible", "triggerTarget"],
+  props: {
+    to: undefined,
+    toSelector: undefined,
+    toElement: undefined,
+    content: undefined,
+    enabled: undefined,
+    visible: undefined,
+    triggerTarget: undefined,
+    tag: {
+      type: String,
+      default: "div"
+    },
+    triggerTag: String,
+    contentTag: String
+  },
   data: function data() {
     return {
       tip: null,
@@ -5073,11 +5087,15 @@ var __vue_render__ = function __vue_render__() {
 
   var _c = _vm._self._c || _h;
 
-  return _c("div", [_c("div", {
-    ref: "trigger"
-  }, [_vm._t("trigger")], 2), _vm._v(" "), _c("div", {
-    ref: "content"
-  }, [_vm._t("default")], 2)]);
+  return _c(_vm.tag, {
+    tag: "component"
+  }, [_c(_vm.triggerTag || _vm.tag, {
+    ref: "trigger",
+    tag: "component"
+  }, [_vm._t("trigger")], 2), _vm._v(" "), _c(_vm.contentTag || _vm.tag, {
+    ref: "content",
+    tag: "component"
+  }, [_vm._t("default")], 2)], 1);
 };
 
 var __vue_staticRenderFns__ = [];
