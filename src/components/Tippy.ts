@@ -1,4 +1,4 @@
-import { defineComponent, ref, h, UnwrapNestedRefs, onMounted, nextTick, watch, unref, reactive } from 'vue'
+import { defineComponent, ref, h, UnwrapNestedRefs, onMounted, nextTick, watch, unref, reactive, PropType } from 'vue'
 import { TippyOptions } from '../types'
 import { useTippy } from '../composables'
 import tippy from 'tippy.js'
@@ -17,7 +17,7 @@ declare module '@vue/runtime-core' {
 const TippyComponent = defineComponent({
   props: {
     to: {
-      type: [String, Element],
+      type: [String, Function] as PropType<string | Element>,
     },
     tag: {
       type: String,
