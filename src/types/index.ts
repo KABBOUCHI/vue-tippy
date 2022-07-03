@@ -11,9 +11,10 @@ export declare type TippyTarget =
   | null
 
 export declare type TippyOptions = Partial<
-  Omit<Props, 'content' | 'triggerTarget'> & {
+  Omit<Props, 'content' | 'triggerTarget' | 'getReferenceClientRect'> & {
     content: TippyContent
     triggerTarget: TippyTarget
+    getReferenceClientRect: null | (() => DOMRect & any)
   }
 >
 

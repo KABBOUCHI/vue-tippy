@@ -1,86 +1,87 @@
-import { defineComponent, ref, h, ComponentObjectPropsOptions, onMounted, nextTick, watch, unref } from 'vue'
+import { defineComponent, ref, h, UnwrapNestedRefs, onMounted, nextTick, watch, unref, reactive } from 'vue'
 import { TippyOptions } from '../types'
 import { useTippy } from '../composables'
-import tippy, { DefaultProps } from 'tippy.js'
+import tippy from 'tippy.js'
+
 declare module '@vue/runtime-core' {
-  interface ComponentCustomProps extends TippyOptions { }
-}
-
-// const pluginProps = [
-//   'animateFill',
-//   'followCursor',
-//   'inlinePositioning',
-//   'sticky',
-// ]
-const booleanProps = [
-  'a11y',
-  'allowHTML',
-  'arrow',
-  'flip',
-  'flipOnUpdate',
-  'hideOnClick',
-  'ignoreAttributes',
-  'inertia',
-  'interactive',
-  'lazy',
-  'multiple',
-  'showOnInit',
-  'touch',
-  'touchHold',
-]
-
-let props: ComponentObjectPropsOptions = {}
-
-props['hideOnClick'] = {
-  type: [String, Boolean],
-  default: tippy.defaultProps.hideOnClick,
-}
-
-props['to'] = {}
-
-props['tag'] = {
-  default: 'span'
-}
-
-props['contentTag'] = {
-  default: 'span'
-}
-
-props['contentClass'] = {
-  default: null
-}
-
-
-Object.keys(tippy.defaultProps).forEach((prop: string) => {
-  if (props[prop]) {
-    return
+  interface ComponentCustomProps extends TippyOptions {
+    to: string | Element
+    tag: string
+    contentTag: string
+    contentClass: string
   }
+  interface ComponentCustomProperties extends UnwrapNestedRefs<ReturnType<typeof useTippy>> { }
+}
 
-  if (booleanProps.includes(prop)) {
-    props[prop] = {
-      // TODO: add SVGElement and DocumentFragment for arrow prop
-      type: prop === 'arrow' ? [String, Boolean, Function] : Boolean,
-      default: function () {
-        return tippy.defaultProps[prop as keyof DefaultProps] as Boolean
-      },
-    }
-  } else {
-    props[prop] = {
-      default: function () {
-        return tippy.defaultProps[prop as keyof DefaultProps]
-      },
-    }
-  }
-})
 
 const TippyComponent = defineComponent({
-  props,
+  props: {
+    to: {
+      type: [String, Element],
+    },
+    tag: {
+      type: String,
+      default: 'span'
+    },
+    contentTag: {
+      type: String,
+      default: 'span'
+    },
+    contentClass: {
+      type: String,
+      default: null
+    },
+    appendTo: { default: () => tippy.defaultProps['appendTo'] },
+    aria: { default: () => tippy.defaultProps['aria'] },
+    delay: { default: () => tippy.defaultProps['delay'] },
+    duration: { default: () => tippy.defaultProps['duration'] },
+    getReferenceClientRect: { default: () => tippy.defaultProps['getReferenceClientRect'] },
+    hideOnClick: { default: () => tippy.defaultProps['hideOnClick'] },
+    ignoreAttributes: { default: () => tippy.defaultProps['ignoreAttributes'] },
+    interactive: { default: () => tippy.defaultProps['interactive'] },
+    interactiveBorder: { default: () => tippy.defaultProps['interactiveBorder'] },
+    interactiveDebounce: { default: () => tippy.defaultProps['interactiveDebounce'] },
+    moveTransition: { default: () => tippy.defaultProps['moveTransition'] },
+    offset: { default: () => tippy.defaultProps['offset'] },
+    onAfterUpdate: { default: () => tippy.defaultProps['onAfterUpdate'] },
+    onBeforeUpdate: { default: () => tippy.defaultProps['onBeforeUpdate'] },
+    onCreate: { default: () => tippy.defaultProps['onCreate'] },
+    onDestroy: { default: () => tippy.defaultProps['onDestroy'] },
+    onHidden: { default: () => tippy.defaultProps['onHidden'] },
+    onHide: { default: () => tippy.defaultProps['onHide'] },
+    onMount: { default: () => tippy.defaultProps['onMount'] },
+    onShow: { default: () => tippy.defaultProps['onShow'] },
+    onShown: { default: () => tippy.defaultProps['onShown'] },
+    onTrigger: { default: () => tippy.defaultProps['onTrigger'] },
+    onUntrigger: { default: () => tippy.defaultProps['onUntrigger'] },
+    onClickOutside: { default: () => tippy.defaultProps['onClickOutside'] },
+    placement: { default: () => tippy.defaultProps['placement'] },
+    plugins: { default: () => tippy.defaultProps['plugins'] },
+    popperOptions: { default: () => tippy.defaultProps['popperOptions'] },
+    render: { default: () => tippy.defaultProps['render'] },
+    showOnCreate: { default: () => tippy.defaultProps['showOnCreate'] },
+    touch: { default: () => tippy.defaultProps['touch'] },
+    trigger: { default: () => tippy.defaultProps['trigger'] },
+    triggerTarget: { default: () => tippy.defaultProps['triggerTarget'] },
+    animateFill: { default: () => tippy.defaultProps['animateFill'] },
+    followCursor: { default: () => tippy.defaultProps['followCursor'] },
+    inlinePositioning: { default: () => tippy.defaultProps['inlinePositioning'] },
+    sticky: { default: () => tippy.defaultProps['sticky'] },
+    allowHTML: { default: () => tippy.defaultProps['allowHTML'] },
+    animation: { default: () => tippy.defaultProps['animation'] },
+    arrow: { default: () => tippy.defaultProps['arrow'] },
+    content: { default: () => tippy.defaultProps['content'] },
+    inertia: { default: () => tippy.defaultProps['inertia'] },
+    maxWidth: { default: () => tippy.defaultProps['maxWidth'] },
+    role: { default: () => tippy.defaultProps['role'] },
+    theme: { default: () => tippy.defaultProps['theme'] },
+    zIndex: { default: () => tippy.defaultProps['zIndex'] }
+  },
   emits: ['state'],
   setup(props, { slots, emit, expose }) {
     const elem = ref<Element>()
     const contentElem = ref<Element>()
     const mounted = ref(false)
-
 
     const getOptions = () => {
       let options = { ...props } as TippyOptions;
@@ -100,7 +101,7 @@ const TippyComponent = defineComponent({
       if (typeof Element !== 'undefined' && props.to instanceof Element) {
         target = () => props.to
       } else if (typeof props.to === 'string' || props.to instanceof String) {
-        target = () => document.querySelector(props.to)
+        target = () => document.querySelector(props.to as any)
       }
     }
 
@@ -126,41 +127,28 @@ const TippyComponent = defineComponent({
         tippy.setContent(() => contentElem.value)
     })
 
-    let exposed = {
+    let exposed = reactive({
       elem,
       contentElem,
       mounted,
       ...tippy
-    }
+    })
 
     expose(exposed)
 
     return () => {
+      const slot = slots.default ? slots.default(exposed) : []
 
-      let exposedUnref = {
-        elem: elem.value,
-        contentElem: contentElem.value,
-        mounted: mounted.value,
-        ...Object.keys(tippy).reduce((acc, key) => {
-          //@ts-ignore
-          acc[key] = unref(tippy[key])
-
-          return acc;
-        }, {})
-      }
-
-      const slot = slots.default ? slots.default(exposedUnref) : []
-
-      return h(props.tag, { ref: elem, 'data-v-tippy': '' }, slots.content ? [
+      return h(props.tag as string, { ref: elem, 'data-v-tippy': '' }, slots.content ? [
         slot,
         h(
-          props.contentTag,
+          props.contentTag as string,
           {
             ref: contentElem,
             style: { display: mounted.value ? 'inherit' : 'none' },
             class: props.contentClass
           },
-          slots.content(exposedUnref)
+          slots.content(exposed)
         ),
       ] : slot)
     }

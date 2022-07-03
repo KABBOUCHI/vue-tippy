@@ -1,8 +1,8 @@
 <template>
   <div class="grid grid-cols-3 gap-4">
-    <tippy :content="content" :hide-on-click="false">
+    <Tippy :content="content" :hide-on-click="false" arrow>
       <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg w-full" @click="content++">Component</button>
-    </tippy>
+    </Tippy>
 
     <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg" ref="btn" @click="content++">Composition</button>
 

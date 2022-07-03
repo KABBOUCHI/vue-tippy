@@ -1,20 +1,20 @@
 import { h, ref } from 'vue'
-import { TippyOptions } from '../types'
-import TippyComponent from './../components/Tippy'
+import { TippyComponent, TippyOptions } from '../types'
+import Tippy from './../components/Tippy'
 
 export function useTippyComponent(
   opts: TippyOptions = {},
   children?: any
 ) {
-  const instance = ref()
+  const instance = ref<TippyComponent>()
 
   return {
     instance,
     TippyComponent: h(
-      TippyComponent,
+      Tippy,
       {
-        ...opts,
-        onVnodeMounted: vnode => {
+        ...opts as any,
+        onVnodeMounted: (vnode:any) => {
           //@ts-ignore
           instance.value = vnode.component.ctx
         },
