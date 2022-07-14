@@ -1,6 +1,7 @@
 import Tippy from '../components/Tippy'
+import { useTippy } from '../composables'
 import { Props, Content, DefaultProps, Instance } from 'tippy.js'
-import { VNode, Ref, Component } from 'vue'
+import { VNode, Ref, Component, UnwrapNestedRefs } from 'vue'
 
 export declare type TippyContent = Content | VNode | Component | Ref
 export declare type TippyTarget =
@@ -18,7 +19,15 @@ export declare type TippyOptions = Partial<
   }
 >
 
-export declare type TippyComponent = InstanceType<typeof Tippy>
+export declare type TippyComponent = InstanceType<
+  typeof Tippy &
+  UnwrapNestedRefs<
+    Pick<
+      ReturnType<typeof useTippy>,
+      'tippy' | 'refresh' | 'refreshContent' | 'setContent' | 'setProps' | 'destroy' | 'hide' | 'show' | 'disable' | 'enable' | 'unmount' | 'mount' | 'state'
+    >
+  >
+>
 
 export interface TippyPluginOptions {
   directive?: string
