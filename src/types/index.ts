@@ -19,13 +19,10 @@ export declare type TippyOptions = Partial<
   }
 >
 
-export declare type TippyComponent = InstanceType<
-  typeof Tippy &
-  UnwrapNestedRefs<
-    Pick<
-      ReturnType<typeof useTippy>,
-      'tippy' | 'refresh' | 'refreshContent' | 'setContent' | 'setProps' | 'destroy' | 'hide' | 'show' | 'disable' | 'enable' | 'unmount' | 'mount' | 'state'
-    >
+export declare type TippyComponent = InstanceType<typeof Tippy> & UnwrapNestedRefs<
+  Pick<
+    ReturnType<typeof useTippy>,
+    'tippy' | 'refresh' | 'refreshContent' | 'setContent' | 'setProps' | 'destroy' | 'hide' | 'show' | 'disable' | 'enable' | 'unmount' | 'mount' | 'state'
   >
 >
 
