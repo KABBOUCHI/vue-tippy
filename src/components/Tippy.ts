@@ -36,9 +36,9 @@ const TippyComponent = defineComponent({
     delay: { default: () => tippy.defaultProps['delay'] },
     duration: { default: () => tippy.defaultProps['duration'] },
     getReferenceClientRect: { default: () => tippy.defaultProps['getReferenceClientRect'] },
-    hideOnClick: { default: () => tippy.defaultProps['hideOnClick'] },
-    ignoreAttributes: { default: () => tippy.defaultProps['ignoreAttributes'] },
-    interactive: { default: () => tippy.defaultProps['interactive'] },
+    hideOnClick: { type: [Boolean, String], default: () => tippy.defaultProps['hideOnClick'] },
+    ignoreAttributes: { type: Boolean, default: () => tippy.defaultProps['ignoreAttributes'] },
+    interactive: { type: Boolean, default: () => tippy.defaultProps['interactive'] },
     interactiveBorder: { default: () => tippy.defaultProps['interactiveBorder'] },
     interactiveDebounce: { default: () => tippy.defaultProps['interactiveDebounce'] },
     moveTransition: { default: () => tippy.defaultProps['moveTransition'] },
@@ -59,15 +59,15 @@ const TippyComponent = defineComponent({
     plugins: { default: () => tippy.defaultProps['plugins'] },
     popperOptions: { default: () => tippy.defaultProps['popperOptions'] },
     render: { default: () => tippy.defaultProps['render'] },
-    showOnCreate: { default: () => tippy.defaultProps['showOnCreate'] },
-    touch: { default: () => tippy.defaultProps['touch'] },
+    showOnCreate: { type: Boolean, default: () => tippy.defaultProps['showOnCreate'] },
+    touch: { type: [Boolean, String, Array], default: () => tippy.defaultProps['touch'] },
     trigger: { default: () => tippy.defaultProps['trigger'] },
     triggerTarget: { default: () => tippy.defaultProps['triggerTarget'] },
-    animateFill: { default: () => tippy.defaultProps['animateFill'] },
-    followCursor: { default: () => tippy.defaultProps['followCursor'] },
-    inlinePositioning: { default: () => tippy.defaultProps['inlinePositioning'] },
-    sticky: { default: () => tippy.defaultProps['sticky'] },
-    allowHTML: { default: () => tippy.defaultProps['allowHTML'] },
+    animateFill: { type: Boolean, default: () => tippy.defaultProps['animateFill'] },
+    followCursor: { type: [Boolean, String], default: () => tippy.defaultProps['followCursor'] },
+    inlinePositioning: { type: Boolean, default: () => tippy.defaultProps['inlinePositioning'] },
+    sticky: { type: [Boolean, String], default: () => tippy.defaultProps['sticky'] },
+    allowHTML: { type: Boolean, default: () => tippy.defaultProps['allowHTML'] },
     animation: { default: () => tippy.defaultProps['animation'] },
     arrow: { default: () => tippy.defaultProps['arrow'] },
     content: { default: () => tippy.defaultProps['content'] },
@@ -84,7 +84,7 @@ const TippyComponent = defineComponent({
     const mounted = ref(false)
 
     const getOptions = () => {
-      let options = { ...props } as TippyOptions;
+      let options = { ...props } as any as TippyOptions;
       for (const prop of ['to', 'tag', 'contentTag', 'contentClass']) {
         if (options.hasOwnProperty(prop)) {
           // @ts-ignore
