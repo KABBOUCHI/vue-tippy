@@ -14,6 +14,8 @@ const plugin = {
       const handlers = (vnode.data && vnode.data.on) ||
         (vnode.componentOptions && vnode.componentOptions.listeners)
 
+      el.setAttribute('data-tippy-directive', '')
+
       let opts = deriveOpts(binding)
 
       const modifiers = Object.keys(binding.modifiers || {})

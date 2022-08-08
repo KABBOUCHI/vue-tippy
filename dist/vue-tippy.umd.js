@@ -5094,13 +5094,22 @@
     var _c = _vm._self._c || _h;
 
     return _c(_vm.tag, {
-      tag: "component"
+      tag: "component",
+      attrs: {
+        "data-tippy-component": ""
+      }
     }, [_c(_vm.triggerTag || _vm.tag, {
       ref: "trigger",
-      tag: "component"
+      tag: "component",
+      attrs: {
+        "data-tippy-component-trigger": ""
+      }
     }, [_vm._t("trigger")], 2), _vm._v(" "), _c(_vm.contentTag || _vm.tag, {
       ref: "content",
-      tag: "component"
+      tag: "component",
+      attrs: {
+        "data-tippy-component-content": ""
+      }
     }, [_vm._t("default")], 2)], 1);
   };
 
@@ -5136,6 +5145,7 @@
 
       function createTippy(el, binding, vnode) {
         var handlers = vnode.data && vnode.data.on || vnode.componentOptions && vnode.componentOptions.listeners;
+        el.setAttribute('data-tippy-directive', '');
         var opts = deriveOpts(binding);
         var modifiers = Object.keys(binding.modifiers || {});
         var placement = modifiers.find(function (modifier) {

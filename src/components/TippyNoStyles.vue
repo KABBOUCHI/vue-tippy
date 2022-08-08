@@ -1,5 +1,5 @@
 <template>
-  <component :is="tag">
+  <component :is="tag" data-tippy-component>
     <component :is="triggerTag || tag" ref="trigger">
       <slot name="trigger"></slot>
     </component>

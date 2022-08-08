@@ -1,10 +1,10 @@
 <template>
-  <component :is="tag">
-    <component :is="triggerTag || tag" ref="trigger">
+  <component :is="tag" data-tippy-component>
+    <component :is="triggerTag || tag" ref="trigger" data-tippy-component-trigger>
       <slot name="trigger"></slot>
     </component>
 
-    <component :is="contentTag || tag" ref="content">
+    <component :is="contentTag || tag" ref="content" data-tippy-component-content>
       <slot></slot>
     </component>
   </component>
