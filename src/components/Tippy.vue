@@ -4,7 +4,7 @@
       <slot name="trigger"></slot>
     </component>
 
-    <component :is="contentTag || tag" ref="content" data-tippy-component-content>
+    <component :is="contentTag || tag" ref="content">
       <slot></slot>
     </component>
   </component>

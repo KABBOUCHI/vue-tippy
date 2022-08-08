@@ -5106,10 +5106,7 @@
       }
     }, [_vm._t("trigger")], 2), _vm._v(" "), _c(_vm.contentTag || _vm.tag, {
       ref: "content",
-      tag: "component",
-      attrs: {
-        "data-tippy-component-content": ""
-      }
+      tag: "component"
     }, [_vm._t("default")], 2)], 1);
   };
 
