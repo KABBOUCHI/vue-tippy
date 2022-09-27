@@ -13,7 +13,7 @@
 
 ## Documentation
 
-For full v4 documentation, visit [https://kabbouchi.github.io/vue-tippy/4.0/](https://kabbouchi.github.io/vue-tippy/4.0/).
+For full v4 documentation, visit [https://kabbouchi.github.io/vue-tippy/4.0/](https://kabbouchi.github.io/vue-tippy/4.0/).  
 For v6 alpha documentation, visit [https://vue-tippy.netlify.app/](https://vue-tippy.netlify.app/).
 
 ## Installation
