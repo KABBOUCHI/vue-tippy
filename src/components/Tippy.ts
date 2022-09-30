@@ -125,7 +125,7 @@ const TippyComponent = defineComponent({
 
       if (slots.content)
         tippy.setContent(() => contentElem.value)
-    })
+    },{ deep: true})
 
     let exposed = reactive({
       elem,
