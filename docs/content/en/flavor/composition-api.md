@@ -98,7 +98,6 @@ useTippy(btn, {
 
 <script setup>
 import { useSingleton } from 'vue-tippy'
-import Counter from '@components/Counter.vue'
 
 const singletons = ref([])
 
