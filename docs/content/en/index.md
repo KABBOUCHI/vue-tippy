@@ -20,10 +20,10 @@ features:
   </span>
 </div>
 
-<a class="no-underline hover:no-underline text-blue-dark" href='https://github.com/atomiks/tippyjs' target='_blank'>Tippy.js</a> is the complete tooltip, popover, dropdown, and menu solution for the web, powered by Popper.
+<a class="underline hover:no-underline text-blue-dark" href='https://github.com/atomiks/tippyjs' target='_blank'>Tippy.js</a> is the complete tooltip, popover, dropdown, and menu solution for the web, powered by Popper.
 <br/>
 <br/>
-`VueTippy` is a `Vue.js v3` wrapper for the `Tippy.js` library, which allows you to use the tooltips as a Vue component and as a directive.
+`VueTippy` is a Vue 3 wrapper for the `Tippy.js` library, which allows you to use the tooltips as a Vue component and as a directive.
 
 It is designed to work-friendly with `Vue.js`
 
