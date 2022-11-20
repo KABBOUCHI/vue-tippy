@@ -83,3 +83,28 @@ useTippy(btn, {
 })
 </script>
 ```
+
+## Singleton
+
+### Example 1
+
+```vue
+<template>
+  <div>
+    <button :ref="v => singletons.push(v)" v-tippy="'Tooltip 1'">Button 1</button>
+    <button :ref="v => singletons.push(v)" v-tippy="'Tooltip 2'">Button 2</button>
+  </div>
+</template>
+
+<script setup>
+import { useSingleton } from 'vue-tippy'
+import Counter from '@components/Counter.vue'
+
+const singletons = ref([])
+
+useSingleton(singletons, {
+  placement: 'top',
+  moveTransition: 'transform 0.2s ease-out',
+})
+</script>
+```

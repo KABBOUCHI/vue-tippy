@@ -60,3 +60,24 @@ Click [here](/props) to see full documentation on props.
   <template #content>Hi!</template>
 </tippy>
 ```
+## Singleton
+
+### Example 1
+
+```html
+<tippy-singleton move-transition="transform 0.2s ease-out" placement="top">
+  <tippy
+    class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
+    content="Working tooltip"
+  >
+    Button 1
+  </tippy>
+
+  <tippy
+    class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
+    content="Working tooltip"
+  >
+    Button 2
+  </tippy>
+</tippy-singleton>
+```
