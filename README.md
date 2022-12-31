@@ -4,9 +4,14 @@
 
 > Vue.js 3 wrapper for Tippy.js
 
+<aside class="notice">
+<a href="https://github.com/KABBOUCHI/vue-tippy/tree/v4">For tippyJS v4 use v4 branch</a>
+</aside>
+
+
 ## Documentation
 
-For full v6 documentation, visit https://vue-tippy.netlify.app
+For full v6 documentation, visit [https://vue-tippy.netlify.app/](https://vue-tippy.netlify.app/).
 
 ## Installation
 
