@@ -19,9 +19,9 @@ For v6 alpha documentation, visit [https://vue-tippy.netlify.app/](https://vue-t
 ## Installation
 
 ```bash
-npm install --save vue-tippy
+npm install --save vue-tippy@v4
 # or
-yarn add vue-tippy
+yarn add vue-tippy@v4
 ```
 
 ## Usage
