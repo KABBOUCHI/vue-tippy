@@ -18,7 +18,7 @@ yarn add vue-tippy@v6
   <code-block label="NPM">
 
 ```bash
-npm install vue-tippy@next
+npm install vue-tippy@v6
 ```
 
   </code-block>
