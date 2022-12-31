@@ -5,7 +5,7 @@
 > Vue.js 3 wrapper for Tippy.js
 
 <aside class="notice">
-<a href="https://github.com/KABBOUCHI/vue-tippy/tree/v4">For tippyJS v4 use v4 branch</a>
+<a href="https://github.com/KABBOUCHI/vue-tippy/tree/v4">For Tippy.js v4 use v4 branch</a>
 </aside>
 
 
