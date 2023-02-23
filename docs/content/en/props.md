@@ -459,7 +459,17 @@ useTippy(target, {
   },
 })
 ```
+## onHidden
 
+Invoked once the tippy has been fully hidden and unmounted from the DOM.
+
+```js
+useTippy(target, {
+  onHidden(instance) {
+    // ...
+  },
+})
+```
 ## onHide
 
 Invoked once the tippy begins to hide.
