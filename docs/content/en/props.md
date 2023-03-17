@@ -655,7 +655,7 @@ useTippy(target, {
 
 ## themes
 
-Determines the theme of the tippy element. The core CSS defaults to a dark `#333` theme. This can be overridden by a custom theme. See [Themes](#themes) for details.
+Determines the theme of the tippy element. The core CSS defaults to a dark `#333` theme. This can be overridden by a custom theme. See [Themes](/themes) for details.
 
 ```js
 useTippy(target, {
