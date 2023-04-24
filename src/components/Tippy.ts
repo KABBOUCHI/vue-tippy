@@ -20,11 +20,11 @@ const TippyComponent = defineComponent({
       type: [String, Function] as PropType<string | Element>,
     },
     tag: {
-      type: String,
+      type: [String, Object],
       default: 'span'
     },
     contentTag: {
-      type: String,
+      type: [String, Object],
       default: 'span'
     },
     contentClass: {
