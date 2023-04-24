@@ -1,4 +1,4 @@
-import { defineComponent, ref, h, UnwrapNestedRefs, onMounted, nextTick, watch, unref, reactive, PropType } from 'vue'
+import { defineComponent, ref, h, UnwrapNestedRefs, onMounted, nextTick, watch, unref, reactive, PropType, resolveComponent } from 'vue'
 import { TippyOptions } from '../types'
 import { useTippy } from '../composables'
 import tippy from 'tippy.js'
@@ -95,7 +95,7 @@ const TippyComponent = defineComponent({
       return options
     }
 
-    let target: any = () => elem.value?.children[0] || elem.value
+    let target: any = () =>  elem.value
 
     if (props.to) {
       if (typeof Element !== 'undefined' && props.to instanceof Element) {
@@ -139,10 +139,13 @@ const TippyComponent = defineComponent({
     return () => {
       const slot = slots.default ? slots.default(exposed) : []
 
-      return h(props.tag as string, { ref: elem, 'data-v-tippy': '' }, slots.content ? [
+      const tag = typeof props.tag === 'string' ? resolveComponent(props.tag as string) : props.tag
+      const contentTag = typeof props.contentTag === 'string' ? resolveComponent(props.contentTag as string) : props.contentTag
+
+      return h(tag, { ref: elem, 'data-v-tippy': '' }, slots.content ? [
         slot,
         h(
-          props.contentTag as string,
+          contentTag,
           {
             ref: contentElem,
             style: { display: mounted.value ? 'inherit' : 'none' },
