@@ -95,7 +95,7 @@ const TippyComponent = defineComponent({
       return options
     }
 
-    let target: any = elem
+    let target: any = () => elem.value?.children[0] || elem.value
 
     if (props.to) {
       if (typeof Element !== 'undefined' && props.to instanceof Element) {

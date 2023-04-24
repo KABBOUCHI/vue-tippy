@@ -10,6 +10,7 @@ import App from './App.vue'
 import PageIndex from './pages/Index.vue'
 import PageNestedComponents from './pages/NestedComponents.vue'
 import PageSingletonComponents from './pages/SingletonComponents.vue'
+import PageWga from './pages/Wga.vue'
 import ReactiveProps from './pages/ReactiveProps.vue'
 import Testing from './pages/Testing.vue'
 import ReactiveState from './pages/ReactiveState.vue'
@@ -27,6 +28,7 @@ const router = createRouter({
     { path: '/reactive-props', component: ReactiveProps },
     { path: '/reactive-state', component: ReactiveState },
     { path: '/theme', component: Theme },
+    { path: '/wga', component: PageWga },
   ]
 })
 
