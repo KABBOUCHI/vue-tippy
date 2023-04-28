@@ -177,7 +177,7 @@ export default {
         };
       }
 
-      if (!this.options.onShow && this.$listeners && this.$listeners["shown"]) {
+      if (!this.options.onShown && this.$listeners && this.$listeners["shown"]) {
         this.options.onShown = (...args) => {
           return this.$listeners["shown"].fns(...args);
         };
