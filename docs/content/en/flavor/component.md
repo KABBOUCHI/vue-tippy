@@ -15,7 +15,7 @@ Click [here](/props) to see full documentation on props.
 
 | Prop            | Type                  | Default | Description           |
 | :-------------- | :-------------------- | :------ | :-------------------- |
-| `tag`           | `String`              | `span`  | Trigger wrapper tag   |
+| `tag`           | `String` or `null`    | `span`  | Trigger wrapper tag   |
 | `content-tag`   | `String`              | `span`  | Content wrapper tag   |
 | `content-class` | `String`              | `null`  | Content wrapper class |
 | `to`            | `Element` or `String` | `null`  | Target selector       |
