@@ -30,6 +30,16 @@ Click [here](/props) to see full documentation on props.
 
 ## Advanced Usage
 
+## Example 0
+
+Mount tippy on the child node instead of default tag
+
+```html
+<tippy content="Hi!" :tag="null">
+  <button>Tippy!</button>
+</tippy>
+```
+
 ### Example 1
 
 ```html
