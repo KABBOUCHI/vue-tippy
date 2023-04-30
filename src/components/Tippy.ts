@@ -95,7 +95,7 @@ const TippyComponent = defineComponent({
       return options
     }
 
-    let target: any = () =>  elem.value
+    let target: any = () => elem.value
 
     if (props.to) {
       if (typeof Element !== 'undefined' && props.to instanceof Element) {
@@ -125,7 +125,7 @@ const TippyComponent = defineComponent({
 
       if (slots.content)
         tippy.setContent(() => contentElem.value)
-    },{ deep: true})
+    }, { deep: true })
 
     let exposed = reactive({
       elem,
@@ -139,8 +139,29 @@ const TippyComponent = defineComponent({
     return () => {
       const slot = slots.default ? slots.default(exposed) : []
 
-      const tag = typeof props.tag === 'string' ? resolveComponent(props.tag as string) : props.tag
       const contentTag = typeof props.contentTag === 'string' ? resolveComponent(props.contentTag as string) : props.contentTag
+
+      if (!props.tag) {
+        const trigger = h(slot[0] as any, {
+          ref: elem, 'data-v-tippy': ''
+        });
+
+        return slots.content ?
+          [
+            trigger, h(
+              contentTag,
+              {
+                ref: contentElem,
+                style: { display: mounted.value ? 'inherit' : 'none' },
+                class: props.contentClass
+              },
+              slots.content(exposed)
+            )
+          ]
+          : trigger
+      }
+
+      const tag = typeof props.tag === 'string' ? resolveComponent(props.tag as string) : props.tag
 
       return h(tag, { ref: elem, 'data-v-tippy': '' }, slots.content ? [
         slot,
