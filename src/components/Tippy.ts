@@ -13,6 +13,15 @@ declare module '@vue/runtime-core' {
   interface ComponentCustomProperties extends UnwrapNestedRefs<ReturnType<typeof useTippy>> { }
 }
 
+function toValue(r: any): any {
+  return typeof r === 'function'
+    ? (r as any)()
+    : unref(r)
+}
+function unrefElement(elRef: any): any {
+  const plain = toValue(elRef)
+  return (plain as any)?.$el ?? plain
+}
 
 const TippyComponent = defineComponent({
   props: {
@@ -95,7 +104,7 @@ const TippyComponent = defineComponent({
       return options
     }
 
-    let target: any = () => elem.value
+    let target: any = () => unrefElement(elem)
 
     if (props.to) {
       if (typeof Element !== 'undefined' && props.to instanceof Element) {
