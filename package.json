@@ -8,6 +8,7 @@
   "types": "dist/vue-tippy.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/vue-tippy.d.ts",
       "browser": "./dist/vue-tippy.esm-browser.js",
       "node": {
         "import": "./dist/vue-tippy.mjs",
