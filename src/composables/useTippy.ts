@@ -6,12 +6,12 @@ import {
   isRef,
   isReactive,
   isVNode,
-  render,
   watch,
   VNode,
   h,
   onUnmounted,
   getCurrentInstance,
+  createApp,
 } from 'vue'
 import { TippyOptions, TippyContent } from '../types'
 
@@ -26,8 +26,9 @@ export function useTippy(
   el: Element | (() => Element) | Ref<Element> | Ref<Element | undefined>,
   opts: TippyOptions = {},
   settings: {
-    mount: boolean
-  } = { mount: true }
+    mount: boolean,
+    appName: string,
+  } = { mount: true, appName: 'Tippy' }
 ) {
   const vm = getCurrentInstance()
   const instance = ref<Instance>()
@@ -38,12 +39,13 @@ export function useTippy(
     isMounted: false,
     isShown: false,
   })
+  const createAppMounted = ref(false)
 
   let container: any = null
 
   const getContainer = () => {
     if (container) return container
-    container = document.createDocumentFragment()
+    container = document.createElement("aside")
     return container
   }
 
@@ -56,28 +58,43 @@ export function useTippy(
       ? content.value
       : content
 
-    if (isVNode(unwrappedContent)) {
-      if (vm) {
-        unwrappedContent.appContext = vm.appContext
-      }
 
-      render(unwrappedContent, getContainer())
+    if (isVNode(unwrappedContent)) {
+      if (!createAppMounted.value) {
+        if (vm) {
+          unwrappedContent.appContext = vm.appContext
+        }
+        createApp({
+          name: settings.appName,
+          render: () => unwrappedContent,
+        })
+          .mount(getContainer())
+        createAppMounted.value = true
+      }
       newContent = () => getContainer()
     } else if (typeof unwrappedContent === 'object') {
-      let comp = h(unwrappedContent)
+      if (!createAppMounted.value) {
 
-      if (vm) {
-        comp.appContext = vm.appContext
+        let comp = h(unwrappedContent)
+
+        if (vm) {
+          comp.appContext = vm.appContext
+        }
+
+        createApp({
+          name: settings.appName,
+          render: () => comp,
+        })
+          .mount(getContainer())
+        createAppMounted.value = true
       }
-
-      render(comp, getContainer())
 
       newContent = () => getContainer()
     } else {
       newContent = unwrappedContent
     }
 
-    return newContent
+    return newContent!
   }
 
   const getProps = (opts: TippyOptions): Partial<Props> => {
