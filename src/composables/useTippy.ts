@@ -30,6 +30,8 @@ export function useTippy(
     appName: string,
   } = { mount: true, appName: 'Tippy' }
 ) {
+  settings = Object.assign({ mount: true, appName: 'Tippy' }, settings);
+  
   const vm = getCurrentInstance()
   const instance = ref<Instance>()
   const state = ref({
