@@ -115,12 +115,13 @@ const TippyComponent = defineComponent({
     }
 
     const tippy = useTippy(target, getOptions())
+    const contentSlot = slots.content
 
     onMounted(() => {
       mounted.value = true
 
       nextTick(() => {
-        if (slots.content)
+        if (contentSlot) 
           tippy.setContent(() => contentElem.value)
       })
     })
@@ -132,7 +133,7 @@ const TippyComponent = defineComponent({
     watch(() => props, () => {
       tippy.setProps(getOptions())
 
-      if (slots.content)
+      if (contentSlot)
         tippy.setContent(() => contentElem.value)
     }, { deep: true })
 
@@ -149,41 +150,33 @@ const TippyComponent = defineComponent({
       const slot = slots.default ? slots.default(exposed) : []
 
       const contentTag = typeof props.contentTag === 'string' ? props.contentTag as string : props.contentTag
+      const content = contentSlot
+        ? h(
+            contentTag,
+            {
+              ref: contentElem,
+              style: { display: mounted.value ? 'inherit' : 'none' },
+              class: props.contentClass,
+            },
+            contentSlot(exposed)
+          )
+        : null
 
       if (!props.tag) {
         const trigger = h(slot[0] as any, {
           ref: elem, 'data-v-tippy': ''
         });
 
-        return slots.content ?
-          [
-            trigger, h(
-              contentTag,
-              {
-                ref: contentElem,
-                style: { display: mounted.value ? 'inherit' : 'none' },
-                class: props.contentClass
-              },
-              slots.content(exposed)
-            )
-          ]
-          : trigger
+        return content ? [trigger, content] : trigger
       }
 
       const tag = typeof props.tag === 'string' ? props.tag as string : props.tag
 
-      return h(tag, { ref: elem, 'data-v-tippy': '' }, slots.content ? [
-        slot,
-        h(
-          contentTag,
-          {
-            ref: contentElem,
-            style: { display: mounted.value ? 'inherit' : 'none' },
-            class: props.contentClass
-          },
-          slots.content(exposed)
-        ),
-      ] : slot)
+      return h(
+        tag,
+        { ref: elem, 'data-v-tippy': '' },
+        content ? [slot, content] : slot
+      )
     }
   },
 })
