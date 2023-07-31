@@ -89,6 +89,7 @@ const TippyComponent = defineComponent({
   emits: ['state'],
   setup(props, { slots, emit, expose }) {
     const elem = ref<Element>()
+    const findParentHelper = ref<HTMLElement>()
     const contentElem = ref<Element>()
     const mounted = ref(false)
 
@@ -109,13 +110,24 @@ const TippyComponent = defineComponent({
     if (props.to) {
       if (typeof Element !== 'undefined' && props.to instanceof Element) {
         target = () => props.to
+      } else if (props.to === 'parent') {
+        target = () => {
+          let el = elem.value
+          if (!el) {
+            el = elem.value = findParentHelper.value!.parentElement as HTMLElement
+          }
+          return el
+        }
       } else if (typeof props.to === 'string' || props.to instanceof String) {
         target = () => document.querySelector(props.to as any)
       }
     }
 
     const tippy = useTippy(target, getOptions())
-    const contentSlot = slots.content
+    let contentSlot = slots.content
+    if (!contentSlot && props.to === 'parent') {
+      contentSlot = slots.default
+    }
 
     onMounted(() => {
       mounted.value = true
@@ -147,8 +159,6 @@ const TippyComponent = defineComponent({
     expose(exposed)
 
     return () => {
-      const slot = slots.default ? slots.default(exposed) : []
-
       const contentTag = typeof props.contentTag === 'string' ? props.contentTag as string : props.contentTag
       const content = contentSlot
         ? h(
@@ -162,6 +172,24 @@ const TippyComponent = defineComponent({
           )
         : null
 
+      if (props.to === 'parent') {
+        const result = []
+        if (!elem.value) {
+          const findParentHelperNode = h('span', {
+            ref: findParentHelper,
+            'data-v-tippy': '',
+            style: { display: 'none' },
+          })
+          result.push(findParentHelperNode)
+        }
+        if (content) {
+          result.push(content)
+        }
+
+        return result
+      }
+
+      const slot = slots.default ? slots.default(exposed) : []
       if (!props.tag) {
         const trigger = h(slot[0] as any, {
           ref: elem, 'data-v-tippy': ''

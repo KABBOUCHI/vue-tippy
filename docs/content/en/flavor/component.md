@@ -70,6 +70,20 @@ Mount tippy on the child node instead of default tag
   <template #content>Hi!</template>
 </tippy>
 ```
+
+### Example 3
+Tippy as a child using `to="parent"`. \
+Works like `:tag="null"`, but applies the tooltip to the parent element instead of the child.
+
+```html
+<button>
+  <tippy to="parent" content-tag="div" ontent-class="content-wrapper">
+    Hi!
+  </tippy>
+  Tippy!
+</button>
+```
+
 ## Singleton
 
 ### Example 1
