@@ -11,6 +11,7 @@ import PageIndex from './pages/Index.vue'
 import PageNestedComponents from './pages/NestedComponents.vue'
 import PageSingletonComponents from './pages/SingletonComponents.vue'
 import PageWga from './pages/Wga.vue'
+import PageAppContext from './pages/AppContext.vue'
 import ReactiveProps from './pages/ReactiveProps.vue'
 import Testing from './pages/Testing.vue'
 import ReactiveState from './pages/ReactiveState.vue'
@@ -29,6 +30,7 @@ const router = createRouter({
     { path: '/reactive-state', component: ReactiveState },
     { path: '/theme', component: Theme },
     { path: '/wga', component: PageWga },
+    { path: '/app-context', component: PageAppContext },
   ]
 })
 
@@ -36,6 +38,10 @@ const router = createRouter({
 const app = createApp(App)
 app.component('counter', Counter)
 app.component("ui-icon", UiIcon);
+
+app.provide('settings', {
+  appName: 'Vue Tippy',
+})
 
 app.use(router)
 app.use(VueTippy, {

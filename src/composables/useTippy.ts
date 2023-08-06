@@ -12,6 +12,8 @@ import {
   onUnmounted,
   getCurrentInstance,
   createApp,
+  shallowRef,
+  App,
 } from 'vue'
 import { TippyOptions, TippyContent } from '../types'
 
@@ -31,7 +33,7 @@ export function useTippy(
   } = { mount: true, appName: 'Tippy' }
 ) {
   settings = Object.assign({ mount: true, appName: 'Tippy' }, settings);
-  
+
   const vm = getCurrentInstance()
   const instance = ref<Instance>()
   const state = ref({
@@ -41,13 +43,13 @@ export function useTippy(
     isMounted: false,
     isShown: false,
   })
-  const createAppMounted = ref(false)
+  const headlessApp = shallowRef<App>()
 
   let container: any = null
 
   const getContainer = () => {
     if (container) return container
-    container = document.createElement("aside")
+    container = document.createDocumentFragment()
     return container
   }
 
@@ -62,33 +64,34 @@ export function useTippy(
 
 
     if (isVNode(unwrappedContent)) {
-      if (!createAppMounted.value) {
-        if (vm) {
-          unwrappedContent.appContext = vm.appContext
-        }
-        createApp({
+      if (!headlessApp.value) {
+        headlessApp.value = createApp({
           name: settings.appName,
           render: () => unwrappedContent,
         })
-          .mount(getContainer())
-        createAppMounted.value = true
+
+        if (vm) {
+          Object.assign(headlessApp.value._context, vm.appContext)
+        }
+
+        headlessApp.value.mount(getContainer())
       }
       newContent = () => getContainer()
     } else if (typeof unwrappedContent === 'object') {
-      if (!createAppMounted.value) {
+      if (!headlessApp.value) {
 
         let comp = h(unwrappedContent)
 
-        if (vm) {
-          comp.appContext = vm.appContext
-        }
-
-        createApp({
+        headlessApp.value = createApp({
           name: settings.appName,
           render: () => comp,
         })
-          .mount(getContainer())
-        createAppMounted.value = true
+
+        if (vm) {
+          Object.assign(headlessApp.value._context, vm.appContext)
+        }
+
+        headlessApp.value.mount(getContainer())
       }
 
       newContent = () => getContainer()
@@ -194,6 +197,8 @@ export function useTippy(
       instance.value = undefined
     }
     container = null
+    headlessApp.value?.unmount()
+    headlessApp.value = undefined
   }
 
   const show = () => {
@@ -255,14 +260,14 @@ export function useTippy(
       } else {
         onMounted(mount)
       }
-
-      onUnmounted(() => {
-        destroy()
-      })
     } else {
       mount()
     }
   }
+
+  onUnmounted(() => {
+    destroy()
+  })
 
   if (isRef(opts) || isReactive(opts)) {
     watch(opts, refresh, { immediate: false })
