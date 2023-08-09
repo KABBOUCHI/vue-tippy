@@ -265,9 +265,11 @@ export function useTippy(
     }
   }
 
-  onUnmounted(() => {
-    destroy()
-  })
+  if (vm) {
+    onUnmounted(() => {
+      destroy()
+    })
+  }
 
   if (isRef(opts) || isReactive(opts)) {
     watch(opts, refresh, { immediate: false })
