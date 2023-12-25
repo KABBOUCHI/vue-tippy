@@ -56,18 +56,8 @@ app.mount('#app')
   <button v-tippy="'Hello!'">Tippy!</button>
 </template>
 
-<!-- 
-  The below is optional in case you 
-  installed the plugin globally
- -->
-<script>
-  import { directive } from 'vue-tippy'
-
-  export default {
-    directives: {
-      tippy: directive,
-    },
-  }
+<script setup>
+import { directive as VTippy } from 'vue-tippy'
 </script>
 ```
 
@@ -75,21 +65,13 @@ app.mount('#app')
 
 ```html
 <template>
-  <tippy content="Hi!">
+  <Tippy content="Hi!">
     <button>Tippy!</button>
-  </tippy>
+  </Tippy>
 </template>
 
-<!-- 
-  The below is optional in case you 
-  installed the plugin globally
- -->
-<script>
-  import { Tippy } from 'vue-tippy'
-
-  export default {
-    components: [Tippy],
-  }
+<script setup>
+import { Tippy } from 'vue-tippy'
 </script>
 ```
 
