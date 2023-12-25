@@ -77,7 +77,7 @@ Works like `:tag="null"`, but applies the tooltip to the parent element instead 
 
 ```html
 <button>
-  <tippy to="parent" content-tag="div" ontent-class="content-wrapper">
+  <tippy to="parent" content-tag="div" content-class="content-wrapper">
     Hi!
   </tippy>
   Tippy!
