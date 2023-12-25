@@ -89,6 +89,33 @@
     </div>
 
     <div class="mt-6">
+      <span class="font-semibold mr-4">Tippy as a child component with prop content:</span>
+
+      <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg">
+        Hi
+        <tippy to="parent" content="Test"></tippy>
+      </button>
+    </div>
+
+    <div class="mt-6">
+      <span class="font-semibold mr-4">Tippy as a child component with #content template:</span>
+
+      <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg">
+        Hi
+        <tippy to="parent"><template #content>Test</template></tippy>
+      </button>
+    </div>
+
+    <div class="mt-6">
+      <span class="font-semibold mr-4">Tippy as a child component with direct content:</span>
+      
+      <button class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg">
+        Hi
+        <tippy to="parent">{{counter}} and counting</tippy>
+      </button>
+    </div>
+
+    <div class="mt-6">
       <span class="font-semibold mr-4">useTippy + callbacks(console.log):</span>
       <button
         class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"

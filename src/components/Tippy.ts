@@ -89,6 +89,7 @@ const TippyComponent = defineComponent({
   emits: ['state'],
   setup(props, { slots, emit, expose }) {
     const elem = ref<Element>()
+    const findParentHelper = ref<HTMLElement>()
     const contentElem = ref<Element>()
     const mounted = ref(false)
 
@@ -109,18 +110,30 @@ const TippyComponent = defineComponent({
     if (props.to) {
       if (typeof Element !== 'undefined' && props.to instanceof Element) {
         target = () => props.to
+      } else if (props.to === 'parent') {
+        target = () => {
+          let el = elem.value
+          if (!el) {
+            el = elem.value = findParentHelper.value!.parentElement as HTMLElement
+          }
+          return el
+        }
       } else if (typeof props.to === 'string' || props.to instanceof String) {
         target = () => document.querySelector(props.to as any)
       }
     }
 
     const tippy = useTippy(target, getOptions())
+    let contentSlot = slots.content
+    if (!contentSlot && props.to === 'parent') {
+      contentSlot = slots.default
+    }
 
     onMounted(() => {
       mounted.value = true
 
       nextTick(() => {
-        if (slots.content)
+        if (contentSlot) 
           tippy.setContent(() => contentElem.value)
       })
     })
@@ -132,7 +145,7 @@ const TippyComponent = defineComponent({
     watch(() => props, () => {
       tippy.setProps(getOptions())
 
-      if (slots.content)
+      if (contentSlot)
         tippy.setContent(() => contentElem.value)
     }, { deep: true })
 
@@ -146,44 +159,52 @@ const TippyComponent = defineComponent({
     expose(exposed)
 
     return () => {
-      const slot = slots.default ? slots.default(exposed) : []
-
       const contentTag = typeof props.contentTag === 'string' ? props.contentTag as string : props.contentTag
+      const content = contentSlot
+        ? h(
+            contentTag,
+            {
+              ref: contentElem,
+              style: { display: mounted.value ? 'inherit' : 'none' },
+              class: props.contentClass,
+            },
+            contentSlot(exposed)
+          )
+        : null
 
+      if (props.to === 'parent') {
+        const result = []
+        if (!elem.value) {
+          const findParentHelperNode = h('span', {
+            ref: findParentHelper,
+            'data-v-tippy': '',
+            style: { display: 'none' },
+          })
+          result.push(findParentHelperNode)
+        }
+        if (content) {
+          result.push(content)
+        }
+
+        return result
+      }
+
+      const slot = slots.default ? slots.default(exposed) : []
       if (!props.tag) {
         const trigger = h(slot[0] as any, {
           ref: elem, 'data-v-tippy': ''
         });
 
-        return slots.content ?
-          [
-            trigger, h(
-              contentTag,
-              {
-                ref: contentElem,
-                style: { display: mounted.value ? 'inherit' : 'none' },
-                class: props.contentClass
-              },
-              slots.content(exposed)
-            )
-          ]
-          : trigger
+        return content ? [trigger, content] : trigger
       }
 
       const tag = typeof props.tag === 'string' ? props.tag as string : props.tag
 
-      return h(tag, { ref: elem, 'data-v-tippy': '' }, slots.content ? [
-        slot,
-        h(
-          contentTag,
-          {
-            ref: contentElem,
-            style: { display: mounted.value ? 'inherit' : 'none' },
-            class: props.contentClass
-          },
-          slots.content(exposed)
-        ),
-      ] : slot)
+      return h(
+        tag,
+        { ref: elem, 'data-v-tippy': '' },
+        content ? [slot, content] : slot
+      )
     }
   },
 })
