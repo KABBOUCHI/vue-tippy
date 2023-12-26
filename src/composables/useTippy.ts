@@ -67,7 +67,9 @@ export function useTippy(
       if (!headlessApp.value) {
         headlessApp.value = createApp({
           name: settings.appName,
-          render: () => unwrappedContent,
+          setup: () => {
+            return () => isRef(content) ? content.value : content
+          },
         })
 
         if (vm) {
@@ -79,12 +81,11 @@ export function useTippy(
       newContent = () => getContainer()
     } else if (typeof unwrappedContent === 'object') {
       if (!headlessApp.value) {
-
-        let comp = h(unwrappedContent)
-
         headlessApp.value = createApp({
           name: settings.appName,
-          render: () => comp,
+          setup: () => {
+            return () => h(isRef(content) ? content.value : content as any)
+          },
         })
 
         if (vm) {
