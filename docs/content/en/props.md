@@ -418,7 +418,7 @@ Invoked before the tippy props has been updated.
 
 ```js
 useTippy(target, {
-  onAfterUpdate(instance, partialProps) {
+  onBeforeUpdate(instance, partialProps) {
     // ...
   },
 })
