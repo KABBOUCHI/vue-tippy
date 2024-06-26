@@ -91,8 +91,8 @@ useTippy(btn, {
 ```vue
 <template>
   <div>
-    <button :ref="v => singletons.push(v)" v-tippy="'Tooltip 1'">Button 1</button>
-    <button :ref="v => singletons.push(v)" v-tippy="'Tooltip 2'">Button 2</button>
+    <button ref="singletons" v-tippy="'Tooltip 1'">Button 1</button>
+    <button ref="singletons" v-tippy="'Tooltip 2'">Button 2</button>
   </div>
 </template>
 
