@@ -44,6 +44,7 @@ Object.keys(tippy.defaultProps).forEach((prop: string) => {
   }
 })
 
+
 const TippySingleton = defineComponent({
   props,
   setup(props) {
@@ -60,20 +61,9 @@ const TippySingleton = defineComponent({
     this.instances = Array.from(elements)
       .map((el: any) => el._tippy)
       .filter(Boolean)
+
+    this.singleton?.setInstances(this.instances)
   },
-
-  updated() {
-    const parent = this.$el?.parentElement
-
-    if (parent) {
-      const elements = parent.querySelectorAll('[data-v-tippy]')
-
-      this.instances = Array.from(elements)
-        .map((el: any) => el._tippy)
-        .filter(Boolean)
-    }
-  },
-
   render() {
     let slot = this.$slots.default ? this.$slots.default() : []
 

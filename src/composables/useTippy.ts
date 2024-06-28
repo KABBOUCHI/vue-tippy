@@ -28,11 +28,11 @@ export function useTippy(
   el: Element | (() => Element) | Ref<Element> | Ref<Element | undefined>,
   opts: TippyOptions = {},
   settings: {
-    mount: boolean
-    appName: string
+    mount: boolean,
+    appName: string,
   } = { mount: true, appName: 'Tippy' }
 ) {
-  settings = Object.assign({ mount: true, appName: 'Tippy' }, settings)
+  settings = Object.assign({ mount: true, appName: 'Tippy' }, settings);
 
   const vm = getCurrentInstance()
   const instance = ref<Instance>()
@@ -62,12 +62,13 @@ export function useTippy(
       ? content.value
       : content
 
+
     if (isVNode(unwrappedContent)) {
       if (!headlessApp.value) {
         headlessApp.value = createApp({
           name: settings.appName,
           setup: () => {
-            return () => (isRef(content) ? content.value : content)
+            return () => isRef(content) ? content.value : content
           },
         })
 
@@ -83,7 +84,7 @@ export function useTippy(
         headlessApp.value = createApp({
           name: settings.appName,
           setup: () => {
-            return () => h(isRef(content) ? content.value : (content as any))
+            return () => h(isRef(content) ? content.value : content as any)
           },
         })
 
@@ -127,9 +128,7 @@ export function useTippy(
       options.plugins = []
     }
 
-    options.plugins = options.plugins.filter(
-      (plugin: any) => plugin.name !== 'vueTippyReactiveState'
-    )
+    options.plugins = options.plugins.filter((plugin: any) => plugin.name !== 'vueTippyReactiveState');
 
     options.plugins.push({
       name: 'vueTippyReactiveState',
@@ -162,7 +161,7 @@ export function useTippy(
             state.value.isDestroyed = true
           },
         }
-      },
+      }
     })
 
     return options as Props
@@ -193,7 +192,7 @@ export function useTippy(
       try {
         //@ts-ignore
         // delete instance.value.reference.$tippy
-      } catch (error) {}
+      } catch (error) { }
 
       instance.value.destroy()
       instance.value = undefined
@@ -213,12 +212,12 @@ export function useTippy(
 
   const disable = () => {
     instance.value?.disable()
-    state.value.isEnabled = false
+    state.value.isEnabled = false;
   }
 
   const enable = () => {
     instance.value?.enable()
-    state.value.isEnabled = true
+    state.value.isEnabled = true;
   }
 
   const unmount = () => {
