@@ -45,16 +45,11 @@ export function useSingleton(
   watch(
     Array.isArray(instances) ? () => instances.map(i => i.value) : instances,
     () => {
-      refresh()
+      singleton.value?.setInstances(getTippyInstances())
     }
   )
 
-  const refresh = () => {
-    singleton.value?.setInstances(getTippyInstances())
-  }
-
   return {
     singleton,
-    refresh,
   }
 }
