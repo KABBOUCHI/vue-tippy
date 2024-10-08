@@ -4,7 +4,7 @@ import { useSingleton } from '../composables'
 import { TippyOptions } from '../types'
 import tippy, { DefaultProps } from 'tippy.js'
 
-declare module '@vue/runtime-core' {
+declare module 'vue' {
   interface ComponentCustomProps extends TippyOptions {}
 }
 
