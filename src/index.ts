@@ -4,6 +4,7 @@ import tippy, {
   followCursor,
   animateFill,
   roundArrow,
+  hideAll,
 } from 'tippy.js'
 
 import Tippy from './components/Tippy'
@@ -27,6 +28,7 @@ export {
   useTippyComponent,
   roundArrow,
   tippy,
+  hideAll,
   useSingleton,
   setDefaultProps,
   Tippy,
