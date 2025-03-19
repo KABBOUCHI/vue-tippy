@@ -189,6 +189,13 @@
     </div>
 
     <div class="mt-6">
+      <span class="font-semibold mr-4">useTippy + vue component:</span>
+      <UiButton ref="vueComponentButton">
+        Vue component Button
+      </UiButton>
+    </div>
+
+    <div class="mt-6">
       <span class="font-semibold mr-4"
         >Tippy component + change content and props realtime using component
         ref:</span
@@ -300,6 +307,7 @@ import {
 } from 'vue'
 import { useSingleton, useTippy, TippyOptions, TippyComponent } from '../../src'
 import Counter from '../components/Counter.vue'
+import UiButton from '../components/Button.vue'
 
 function useMousePosition() {
   const x = ref(0)
@@ -324,6 +332,7 @@ function useMousePosition() {
   }
 }
 export default defineComponent({
+  components: { UiButton },
   setup() {
     const counter = ref<number>(0)
 
@@ -396,6 +405,12 @@ export default defineComponent({
       content: 'Triggered by button7',
       placement: 'bottom',
       triggerTarget: button7,
+    })
+
+    const vueComponentButton = ref()
+
+    useTippy(vueComponentButton, {
+      content: 'Test Vue component',
     })
 
     const { x, y } = useMousePosition()
@@ -478,6 +493,7 @@ export default defineComponent({
       button6Inc,
       button7,
       target7,
+      vueComponentButton,
       tippyComponent1,
       log: console.log,
     }
