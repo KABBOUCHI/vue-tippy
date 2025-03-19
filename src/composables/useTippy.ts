@@ -232,7 +232,8 @@ export function useTippy(
     if (typeof target === 'function') target = target()
 
     if (target) {
-      instance.value = tippy(target, getProps(opts))
+      //@ts-ignore
+      instance.value = tippy(target?.$el ?? target, getProps(opts))
       //@ts-ignore
       target.$tippy = response
     }
