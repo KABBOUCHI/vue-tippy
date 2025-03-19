@@ -24,8 +24,14 @@ tippy.setDefaultProps({
   },
 })
 
+const isComponentInstance = (value: any): value is { $el: any } => {
+  return value instanceof Object && '$' in value && '$el' in value
+}
+
+type TippyElement = Element | any //  TODO: use ComponentPublicInstance
+
 export function useTippy(
-  el: Element | (() => Element) | Ref<Element> | Ref<Element | undefined>,
+  el: TippyElement | (() => TippyElement) | Ref<TippyElement> | Ref<TippyElement | undefined>,
   opts: TippyOptions = {},
   settings: {
     mount: boolean,
@@ -231,9 +237,13 @@ export function useTippy(
 
     if (typeof target === 'function') target = target()
 
+    if (isComponentInstance(target)) {
+      target = target.$el as Element
+    }
+
     if (target) {
       //@ts-ignore
-      instance.value = tippy(target?.$el ?? target, getProps(opts))
+      instance.value = tippy(target, getProps(opts))
       //@ts-ignore
       target.$tippy = response
     }
