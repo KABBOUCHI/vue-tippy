@@ -2,7 +2,6 @@ import tippy, { Instance, Props, Content } from 'tippy.js'
 import {
   ref,
   onMounted,
-  Ref,
   isRef,
   isReactive,
   isVNode,
@@ -15,7 +14,8 @@ import {
   shallowRef,
   App,
 } from 'vue'
-import { TippyOptions, TippyContent } from '../types'
+import { TippyOptions, TippyContent, MaybeRef, MaybeRefOrGetter } from '../types'
+import { isObject, isString, toValue, isComponentInstance } from '../utils'
 
 tippy.setDefaultProps({
   //@ts-ignore
@@ -24,15 +24,11 @@ tippy.setDefaultProps({
   },
 })
 
-const isComponentInstance = (value: any): value is { $el: any } => {
-  return value instanceof Object && '$' in value && '$el' in value
-}
-
 type TippyElement = Element | any //  TODO: use ComponentPublicInstance
 
 export function useTippy(
-  el: TippyElement | (() => TippyElement) | Ref<TippyElement> | Ref<TippyElement | undefined>,
-  opts: TippyOptions = {},
+  el: MaybeRefOrGetter<TippyElement>,
+  opts: TippyOptions | MaybeRef<string> = {},
   settings: {
     mount: boolean,
     appName: string,
@@ -109,15 +105,15 @@ export function useTippy(
     return newContent!
   }
 
-  const getProps = (opts: TippyOptions): Partial<Props> => {
+  const getProps = (opts: TippyOptions | MaybeRef<string>): Partial<Props> => {
+    const value = toValue(opts);
+
     let options: any = {}
 
-    if (isRef(opts)) {
-      options = opts.value || {}
-    } else if (isReactive(opts)) {
-      options = { ...opts }
+    if (isString(value)) {
+      options = { content: value }
     } else {
-      options = { ...opts }
+      options = { ...value }
     }
 
     if (options.content) {
@@ -173,23 +169,41 @@ export function useTippy(
     return options as Props
   }
 
+  const getOptsContent = () => {
+    const value = toValue(opts)
+
+    if (isString(value)) {
+      return value
+    }
+
+    return value?.content
+  }
+
   const refresh = () => {
     if (!instance.value) return
 
-    instance.value.setProps(getProps(opts))
+    if (isObject(toValue(opts))) {
+      instance.value.setProps(getProps(opts))
+    } else {
+      refreshContent()
+    }
   }
 
   const refreshContent = () => {
-    if (!instance.value || !opts.content) return
+    if (!instance.value) return
 
-    instance.value.setContent(getContent(opts.content))
+    const content = getOptsContent()
+
+    if (!content) return
+
+    instance.value.setContent(getContent(content))
   }
 
   const setContent = (value: TippyContent) => {
     instance.value?.setContent(getContent(value))
   }
 
-  const setProps = (value: TippyOptions) => {
+  const setProps = (value: TippyOptions | MaybeRef<string>) => {
     instance.value?.setProps(getProps(value))
   }
 
@@ -283,9 +297,9 @@ export function useTippy(
     })
   }
 
-  if (isRef(opts) || isReactive(opts)) {
+  if ((isRef(opts) || isReactive(opts)) && !isString(opts)) {
     watch(opts, refresh, { immediate: false })
-  } else if (isRef(opts.content)) {
+  } else if (isObject(opts) && isRef(opts.content)) {
     watch(opts.content, refreshContent, { immediate: false })
   }
 
