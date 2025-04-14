@@ -26,3 +26,15 @@ Click [here](/props) to see full documentation on props.
   Tippy!
 </button>
 ```
+
+For dynamically setting if tooltip is enabled:
+
+```js
+const isTippyEnabled = ref(true);
+```
+
+```html
+<button v-tippy="{ content: 'Hello!', enabled: isTippyEnabled }">
+  Tippy!
+</button>
+```
