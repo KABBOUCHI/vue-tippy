@@ -17,6 +17,14 @@ import {
 } from 'vue'
 import { TippyOptions, TippyContent } from '../types'
 
+interface TippyState {
+  isEnabled: boolean
+  isVisible: boolean
+  isDestroyed: boolean
+  isMounted: boolean
+  isShown: boolean
+}
+
 tippy.setDefaultProps({
   //@ts-ignore
   onShow: instance => {
@@ -37,12 +45,26 @@ export function useTippy(
     mount: boolean,
     appName: string,
   } = { mount: true, appName: 'Tippy' }
-) {
+) : {
+    tippy: Ref<Instance | undefined>
+    refresh: () => void
+    refreshContent: () => void
+    setContent: (value: TippyContent) => void
+    setProps: (value: TippyOptions) => void
+    destroy: () => void
+    hide: () => void
+    show: () => void
+    disable: () => void
+    enable: () => void
+    unmount: () => void
+    mount: () => void
+    state: Ref<TippyState>
+} {
   settings = Object.assign({ mount: true, appName: 'Tippy' }, settings);
 
   const vm = getCurrentInstance()
   const instance = ref<Instance>()
-  const state = ref({
+  const state = ref<TippyState>({
     isEnabled: false,
     isVisible: false,
     isDestroyed: false,
