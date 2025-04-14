@@ -8,6 +8,7 @@ const directive: Directive = {
     const modifiers = Object.keys(binding.modifiers || {})
     const placement = modifiers.find(modifier => modifier !== 'arrow')
     const withArrow = modifiers.findIndex(modifier => modifier === 'arrow') !== -1
+    const enabled = opts.enabled ?? true;
 
     if (placement) {
       opts.placement = opts.placement || placement
@@ -56,7 +57,11 @@ const directive: Directive = {
       opts.content = el.getAttribute('content')
     }
 
-    useTippy(el, opts)
+    const { disable } = useTippy(el, opts)
+
+    if (!enabled) {
+      disable();
+    }
   },
   unmounted(el) {
     if (el.$tippy) {
@@ -68,6 +73,7 @@ const directive: Directive = {
 
   updated(el, binding) {
     const opts = typeof binding.value === "string" ? { content: binding.value } : binding.value || {}
+    const enabled = opts.enabled ?? true;
 
     if (el.getAttribute('title') && !opts.content) {
       opts.content = el.getAttribute('title')
@@ -82,6 +88,14 @@ const directive: Directive = {
       el.$tippy.setProps(opts || {})
     } else if (el._tippy) {
       el._tippy.setProps(opts || {})
+    }
+
+    const isTippyEnabled = el.$tippy?.state.value.isEnabled;
+    
+    if (enabled && !isTippyEnabled) {
+      el.$tippy.enable();
+    } else if (!enabled && isTippyEnabled) {
+      el.$tippy.disable();
     }
   },
 }

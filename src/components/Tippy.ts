@@ -9,6 +9,7 @@ declare module 'vue' {
     tag: string
     contentTag: string
     contentClass: string
+    enabled: boolean
   }
   interface ComponentCustomProperties extends UnwrapNestedRefs<ReturnType<typeof useTippy>> { }
 }
@@ -84,9 +85,10 @@ const TippyComponent = defineComponent({
     maxWidth: { default: () => tippy.defaultProps['maxWidth'] },
     role: { default: () => tippy.defaultProps['role'] },
     theme: { default: () => tippy.defaultProps['theme'] },
-    zIndex: { default: () => tippy.defaultProps['zIndex'] }
+    zIndex: { default: () => tippy.defaultProps['zIndex'] },
+    enabled: { type: Boolean, default: true },
   },
-  emits: ['state'],
+  emits: ['state', 'update:enabled'],
   setup(props, { slots, emit, expose }) {
     const elem = ref<Element>()
     const findParentHelper = ref<HTMLElement>()
@@ -138,8 +140,22 @@ const TippyComponent = defineComponent({
       })
     })
 
-    watch(tippy.state, () => {
+    watch(() => props.enabled, (newValue) => {
+      const isTippyEnabled = tippy.state.value.isEnabled;
+
+      if (newValue && !isTippyEnabled) {
+        tippy.enable();
+      } else if (!newValue && isTippyEnabled) {
+        tippy.disable();
+      }
+    });
+
+    watch(tippy.state, (newValue, oldValue) => {
       emit('state', unref(tippy.state))
+
+      if (newValue.isEnabled !== oldValue?.isEnabled && props.enabled !== newValue.isEnabled)
+        emit('update:enabled', newValue.isEnabled)
+      
     }, { immediate: true, deep: true })
 
     watch(() => props, () => {

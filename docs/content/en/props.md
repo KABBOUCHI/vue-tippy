@@ -195,7 +195,7 @@ useTippy(target, {
   delay: [100, 200],
   // show delay is 100ms, hide delay is the default
   delay: [100, null],
-}
+})
 ```
 
 ## duration
@@ -212,7 +212,19 @@ useTippy(target, {
   duration: [100, 200],
   // show duration is 100ms, hide duration is the default
   duration: [100, null],
-}
+})
+```
+
+## enabled
+
+Controls if tooltip is enabled.
+
+```js
+useTippy(target, {
+  // default
+  enabled: true,
+  enabled: false
+})
 ```
 
 ## followCursor
