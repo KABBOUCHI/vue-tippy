@@ -1,7 +1,7 @@
 import Tippy from '../components/Tippy'
 import { useTippy } from '../composables'
 import { Props, Content, DefaultProps, Instance } from 'tippy.js'
-import { VNode, Ref, Component, UnwrapNestedRefs } from 'vue'
+import { VNode, Ref, Component, UnwrapNestedRefs, ShallowRef, WritableComputedRef, ComputedRef } from 'vue'
 
 export declare type TippyContent = Content | VNode | Component | Ref
 export declare type TippyTarget =
@@ -35,3 +35,11 @@ export interface TippyPluginOptions {
 
 export type TippyInstance = Instance | Element | undefined
 export type TippyInstances = Ref<TippyInstance>[] | Ref<TippyInstance[]> | (() => TippyInstance[])
+
+export type MaybeRef<T = any> =
+  | T
+  | Ref<T>
+  | ShallowRef<T>
+  | WritableComputedRef<T>
+
+export type MaybeRefOrGetter<T = any> = MaybeRef<T> | ComputedRef<T> | (() => T)
