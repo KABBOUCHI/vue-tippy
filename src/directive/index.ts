@@ -68,6 +68,11 @@ const directive: Directive = {
 
   updated(el, binding) {
     const opts = typeof binding.value === "string" ? { content: binding.value } : binding.value || {}
+    
+    // any kind of falsy content value, even undefined, should be treated as null - 'no tooltip to show'
+    if (!opts.content) {
+      opts.content = null
+    }
 
     if (el.getAttribute('title') && !opts.content) {
       opts.content = el.getAttribute('title')
