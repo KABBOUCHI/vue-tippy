@@ -196,6 +196,26 @@
     </div>
 
     <div class="mt-6">
+      <span class="font-semibold mr-4">useTippy + plain string:</span>
+      <button
+        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg"
+        ref="buttonText"
+      >
+        My Button with plain string
+      </button>
+    </div>
+
+    <div class="mt-6">
+      <span class="font-semibold mr-4">useTippy + computed string:</span>
+      <button
+        class="text-sm py-2 px-3 bg-gray-900 text-white rounded-lg ml-3"
+        ref="buttonTextComputed"
+      >
+        My Button with computed string
+      </button>
+    </div>
+
+    <div class="mt-6">
       <span class="font-semibold mr-4"
         >Tippy component + change content and props realtime using component
         ref:</span
@@ -413,6 +433,15 @@ export default defineComponent({
       content: 'Test Vue component',
     })
 
+    const buttonText = ref<HTMLButtonElement>()
+
+    useTippy(buttonText, 'String content')
+
+    const buttonTextComputed = ref<HTMLButtonElement>()
+    const computedText = computed(() => `Counter: ${counter.value}`)
+
+    useTippy(buttonTextComputed, computedText);
+
     const { x, y } = useMousePosition()
 
     const { tippy } = useTippy(() => document.body, {
@@ -494,6 +523,8 @@ export default defineComponent({
       button7,
       target7,
       vueComponentButton,
+      buttonText,
+      buttonTextComputed,
       tippyComponent1,
       log: console.log,
     }
