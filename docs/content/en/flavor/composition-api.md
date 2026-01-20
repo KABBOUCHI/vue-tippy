@@ -5,7 +5,7 @@ position: 13
 category: Flavor
 ---
 
-<alert type="warning"> Work in progess </alert>
+<alert type="warning"> Work in progress </alert>
 
 Low level, flexible composition, great for build tooltips with complex interactions.
 
