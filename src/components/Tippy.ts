@@ -1,4 +1,4 @@
-import { defineComponent, ref, h, UnwrapNestedRefs, onMounted, nextTick, watch, unref, reactive, PropType } from 'vue'
+import { defineComponent, ref, h, UnwrapNestedRefs, onMounted, nextTick, watch, unref, reactive } from 'vue'
 import { TippyOptions } from '../types'
 import { useTippy } from '../composables'
 import tippy from 'tippy.js'
@@ -26,7 +26,7 @@ function unrefElement(elRef: any): any {
 const TippyComponent = defineComponent({
   props: {
     to: {
-      type: [String, Function] as PropType<string | Element>,
+      type: [String, Element],
     },
     tag: {
       type: [String, Object],
