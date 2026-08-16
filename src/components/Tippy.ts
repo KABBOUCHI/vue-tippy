@@ -26,7 +26,9 @@ function unrefElement(elRef: any): any {
 const TippyComponent = defineComponent({
   props: {
     to: {
-      type: [String, Function] as PropType<string | Element>,
+      type: (typeof Element === 'undefined'
+        ? [String]
+        : [String, Element]) as PropType<string | Element>,
     },
     tag: {
       type: [String, Object],
