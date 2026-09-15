@@ -124,16 +124,15 @@ const TippyComponent = defineComponent({
     }
 
     const tippy = useTippy(target, getOptions())
-    let contentSlot = slots.content
-    if (!contentSlot && props.to === 'parent') {
-      contentSlot = slots.default
-    }
+
+    const getContentSlot = () =>
+      slots.content || (props.to === 'parent' ? slots.default : undefined)
 
     onMounted(() => {
       mounted.value = true
 
       nextTick(() => {
-        if (contentSlot) 
+        if (getContentSlot()) 
           tippy.setContent(() => contentElem.value)
       })
     })
@@ -145,7 +144,7 @@ const TippyComponent = defineComponent({
     watch(() => props, () => {
       tippy.setProps(getOptions())
 
-      if (contentSlot)
+      if (getContentSlot())
         tippy.setContent(() => contentElem.value)
     }, { deep: true })
 
@@ -159,6 +158,7 @@ const TippyComponent = defineComponent({
     expose(exposed)
 
     return () => {
+      const contentSlot = getContentSlot()
       const contentTag = typeof props.contentTag === 'string' ? props.contentTag as string : props.contentTag
       const content = contentSlot
         ? h(
