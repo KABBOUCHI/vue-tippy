@@ -124,8 +124,7 @@ const TippyComponent = defineComponent({
     }
 
     const tippy = useTippy(target, getOptions())
-    // `slots` is updated in place on every re-render, so the slot has to be
-    // read each time rather than captured once.
+
     const getContentSlot = () =>
       slots.content || (props.to === 'parent' ? slots.default : undefined)
 
